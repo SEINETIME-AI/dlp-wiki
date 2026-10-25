@@ -17,6 +17,17 @@ const config: Config = {
 
   onBrokenLinks: 'throw',
 
+  // Release package shown by <DownloadCard /> on the install page; url points to the zot artifactory.
+  customFields: {
+    release: {
+      version: '',
+      fileName: 'dlp-stack-deploy.zip',
+      url: '',
+      offlineUrl: '',
+      sha256: '',
+    },
+  },
+
   i18n: {
     defaultLocale: 'vi',
     locales: ['vi'],

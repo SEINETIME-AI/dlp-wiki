@@ -1,0 +1,43 @@
+import type {ReactNode} from 'react';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+
+import styles from './DownloadCard.module.css';
+
+type Release = {
+  version: string;
+  fileName: string;
+  url: string;
+  offlineUrl: string;
+  sha256: string;
+};
+
+export default function DownloadCard(): ReactNode {
+  const {siteConfig} = useDocusaurusContext();
+  const release = siteConfig.customFields?.release as Release;
+  const meta = [release.fileName, release.version && `v${release.version}`, release.sha256 && `SHA-256: ${release.sha256}`]
+    .filter(Boolean)
+    .join(' · ');
+
+  return (
+    <div className={styles.card}>
+      <div className={styles.text}>
+        <strong>Gói cài đặt server NextDLP</strong>
+        <code className={styles.meta}>{meta}</code>
+      </div>
+      <div className={styles.actions}>
+        {release.url ? (
+          <a className="button button--primary" href={release.url}>
+            Tải gói cài đặt
+          </a>
+        ) : (
+          <span className={styles.missing}>Liên hệ đội hỗ trợ NextDLP để nhận gói cài đặt.</span>
+        )}
+        {release.offlineUrl && (
+          <a className="button button--secondary" href={release.offlineUrl}>
+            Bản offline đầy đủ
+          </a>
+        )}
+      </div>
+    </div>
+  );
+}

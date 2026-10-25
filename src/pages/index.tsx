@@ -31,7 +31,7 @@ const starts = [
     text: 'Tải gói server, tạo bộ cài Agent theo đơn vị và đưa máy trạm đầu tiên lên Console.',
   },
   {
-    to: '/docs/classification/policies',
+    to: '/docs/getting-started/quickstart',
     title: 'Sử dụng',
     text: 'Soạn chính sách phân loại, quản lý kiểm kê dữ liệu, duyệt yêu cầu đổi nhãn và xem báo cáo.',
   },
