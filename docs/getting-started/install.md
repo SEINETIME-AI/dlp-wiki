@@ -56,6 +56,8 @@ docker compose -f docker-compose.deploy.yml ps
 
 Mở trình duyệt tới `http://10.0.0.5` và đăng nhập bằng tài khoản quản trị mặc định **admin / admin**.
 
+![Màn hình đăng nhập Console](/img/console/login.png)
+
 :::danger Bắt buộc
 
 Đổi mật khẩu admin ngay sau lần đăng nhập đầu tiên: bấm vào tên tài khoản ở góc trên bên phải và chọn **Đổi mật khẩu**. Mật khẩu mới cần tối thiểu 12 ký tự.
@@ -70,15 +72,21 @@ Trước khi tạo bộ cài, Console cần có ít nhất một đơn vị và 
 
 Vào **Tổ chức › Cơ cấu tổ chức** và tạo một **Công ty con** (rồi thêm **Phòng ban** bên dưới) hoặc một **Ban chuyên môn**. Bộ cài luôn được gắn với một đơn vị lá: phòng ban của công ty con, hoặc chính ban chuyên môn. Xem [Cơ cấu tổ chức](../organization/org.md).
 
+![Trang Cơ cấu tổ chức](/img/console/organization.png)
+
 ### Bước 6. Tạo chính sách Agent
 
 Vào **Thiết bị & Agent › Chính sách Agent** và bấm **Chính sách Agent mới**. Giữ các giá trị mặc định là đủ cho lần đầu. Xem [Chính sách Agent](../endpoints/agent-policy.md).
+
+![Trang Chính sách Agent](/img/console/agent-policies.png)
 
 ## Phần 3. Cài agent lên máy trạm
 
 ### Bước 7. Tạo bộ cài cho đơn vị
 
 Vào **Thiết bị & Agent › Bộ cài Agent** và bấm **Tạo bộ cài mới**. Chọn Công ty con hoặc Ban chuyên môn, chọn phòng ban sẽ triển khai, chọn chính sách Agent vừa tạo, rồi nhập IP máy chủ vào ô **Agent server**.
+
+![Hộp thoại Tạo bộ cài Agent, ô Agent server điền IP máy chủ](/img/console/agent-deployment-create.png)
 
 :::warning Không để trống ô Agent server
 
@@ -89,6 +97,8 @@ Nếu để trống, agent sẽ kết nối về `localhost`, tức là chỉ ho
 ### Bước 8. Tải và cài bộ cài
 
 Khi bộ cài chuyển sang trạng thái **Sẵn sàng**, bấm **Tải bộ cài** để nhận một file zip. Chép file này sang máy trạm, giải nén, rồi chạy file `.msi` và chấp nhận hộp thoại quyền quản trị.
+
+![Danh sách bộ cài ở trạng thái Sẵn sàng](/img/console/agent-deployment.png)
 
 Muốn cài không cần thao tác, mở PowerShell với quyền quản trị trong thư mục đã giải nén và chạy:
 
@@ -102,6 +112,8 @@ Vì bộ cài là file MSI chuẩn, bạn có thể dùng cùng lệnh này vớ
 ### Bước 9. Kiểm tra kết nối
 
 Trong vòng một phút, máy trạm xuất hiện tại **Thiết bị & Agent › Máy trạm** với trạng thái **Trực tuyến**, và số máy đã đăng ký của bộ cài tăng thêm một. Hệ thống cũng tự tạo một tài khoản Console cho máy này, xem [Người dùng & phân quyền](../organization/users.md).
+
+![Máy trạm đã đăng ký ở trạng thái hoạt động](/img/console/endpoints.png)
 
 Nếu máy không xuất hiện, xem [Xử lý sự cố](../operations/troubleshooting.md).
 

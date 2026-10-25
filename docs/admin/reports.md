@@ -6,9 +6,13 @@ description: Báo cáo tổng hợp kết quả phân loại theo thời gian v�
 
 NextDLP có hai nơi xem số liệu. Trang **Tổng quan** là màn hình đầu tiên sau khi đăng nhập, cho cái nhìn nhanh về số tài liệu đã phân loại, dữ liệu nhạy cảm, số máy đang hoạt động, số yêu cầu cần duyệt và xu hướng phân loại. Trang **Báo cáo & quản trị › Báo cáo** đi sâu hơn và cho phép xuất dữ liệu.
 
+![Trang Tổng quan](/img/console/dashboard.png)
+
 ## Nội dung trang Báo cáo
 
 Trang hiển thị số tệp đã kiểm kê, lượng dữ liệu nhạy cảm, số nhóm nhãn và số đơn vị có dữ liệu, cùng hai biểu đồ: **Phân bổ nhãn bảo mật** và **Dữ liệu theo đơn vị**.
+
+![Trang Báo cáo](/img/console/reports.png)
 
 Chọn **Khoảng thời gian báo cáo** để giới hạn số liệu, biểu đồ và mọi tệp xuất trên trang. Tài liệu được tính theo lần phân loại gần nhất; để trống để lấy toàn bộ.
 

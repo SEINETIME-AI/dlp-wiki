@@ -20,6 +20,8 @@ Bấm **Tạo bộ cài mới** và điền các thông tin sau.
 
 Chính sách phân loại không cần gắn vào bộ cài: agent tự nhận chính sách đang bật của đơn vị mỗi khi kết nối.
 
+![Hộp thoại Tạo bộ cài Agent](/img/console/agent-deployment-create.png)
+
 :::warning Agent server phải là IP mà máy trạm truy cập được
 
 Hãy nhập IP nội bộ của máy chủ, ví dụ `10.0.0.5`. Không dùng `localhost` hoặc để trống, vì khi đó agent chỉ hoạt động trên chính máy chủ.
@@ -38,6 +40,8 @@ Sau khi tạo, server đóng gói bộ cài trong nền. Trạng thái của b�
 | Hết hạn | Bộ cài không còn dùng được để đăng ký máy mới. |
 
 Mỗi dòng có các thao tác **Tải bộ cài**, **Tạo lại**, **Thu hồi** và **Xóa**. Dùng **Tạo lại** khi cần đóng gói lại với cấu hình mới, ví dụ sau khi đổi IP máy chủ.
+
+![Danh sách bộ cài Agent](/img/console/agent-deployment.png)
 
 ## Nội dung gói tải về
 

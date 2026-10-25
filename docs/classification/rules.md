@@ -12,6 +12,8 @@ Thư viện có sẵn các mẫu **Chính thức** do hệ thống cung cấp, v
 
 Trước khi lưu, hãy nhập dữ liệu mẫu vào ô **Chuỗi thử nghiệm** để kiểm tra biểu thức khớp đúng những gì bạn muốn.
 
+![Thư viện Quy tắc nhận diện](/img/console/detection-rules.png)
+
 ```text
 # Ví dụ: số căn cước công dân 12 chữ số
 \b\d{12}\b

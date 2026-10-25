@@ -16,6 +16,8 @@ Trang **Thiết bị & Agent › Máy trạm** liệt kê mọi máy đã cài a
 
 Phía trên danh sách là các ô thống kê tổng số máy, số máy đang hoạt động, số máy mất kết nối và số máy đang chờ đồng bộ chính sách.
 
+![Trang Máy trạm](/img/console/endpoints.png)
+
 ## Thao tác quản trị
 
 **Chuyển đơn vị** đổi phòng ban của máy sau khi đã đăng ký, ví dụ khi nhân viên chuyển công tác. Máy sẽ dùng chính sách phân loại của đơn vị mới. Lưu ý rằng chính sách Agent vẫn đi theo bộ cài cũ; nếu cần cấu hình vận hành của đơn vị mới, hãy cài lại bằng bộ cài của đơn vị đó.

@@ -8,11 +8,15 @@ Chính sách phân loại là nơi bạn mô tả "tài liệu như thế nào t
 
 Chính sách chỉ định nghĩa cách gắn nhãn. Phạm vi thư mục cần quét được cấu hình riêng tại [Nguồn dữ liệu](../data/sources.md).
 
+![Danh sách chính sách phân loại](/img/console/policies.png)
+
 ## Tạo chính sách
 
-Bấm **Chính sách mới**. Ở phần **Thông tin chung**, đặt tên, chọn đơn vị áp dụng và chọn chế độ OCR. Sau đó thêm các điều kiện ở phần **Điều kiện phân loại**, rồi bấm **Lưu & đẩy xuống agent**.
+Bấm **Chính sách mới**. Trình soạn chính sách có bốn tab: **Thông tin chung**, **Điều kiện phân loại**, **Gợi ý AI** và **JSON**. Ở tab Thông tin chung, nhập tên, chọn công ty con hoặc ban chuyên môn, chọn phòng ban áp dụng và chế độ OCR. Sau đó thêm các điều kiện ở tab Điều kiện phân loại, rồi bấm **Tạo chính sách**. Khi sửa một chính sách đã có, nút này là **Lưu & đẩy xuống agent**.
 
-Chính sách mới luôn ở trạng thái **tắt** để bạn rà soát trước khi áp dụng. Khi đã sẵn sàng, bật công tắc **Kích hoạt**. Đơn vị áp dụng không thể thay đổi khi chính sách đang bật.
+![Tab Thông tin chung](/img/console/policies-create.png)
+
+Công tắc **Kích hoạt** mặc định tắt để bạn rà soát trước khi áp dụng; chính sách chỉ có hiệu lực khi công tắc bật. Đơn vị áp dụng không thể thay đổi khi chính sách đang bật.
 
 ## Kỹ thuật nhận diện
 
@@ -30,9 +34,13 @@ Trong một điều kiện Từ khóa / Regex, các bộ khớp có quan hệ **
 
 Mỗi điều kiện có thể đặt một **Tên điều kiện** dễ hiểu, ví dụ "CCCD trong hồ sơ nhân sự". Tên này hiển thị trong Nhật ký phân loại và báo cáo thay cho mã quy tắc, giúp người xem hiểu ngay vì sao file bị gắn nhãn.
 
+![Hộp thoại Thêm điều kiện phân loại](/img/console/policies-condition.png)
+
 ## Chọn kỹ thuật cho cả chính sách
 
 Mục **Kỹ thuật phân loại** cho phép bật hoặc tắt từng kỹ thuật trong phạm vi một chính sách. Mặc định mọi kỹ thuật đều bật. Khi bạn bỏ chọn một kỹ thuật, các điều kiện thuộc kỹ thuật đó vẫn được lưu nhưng **không chạy** và hiển thị mờ, để bạn bật lại khi cần. Cần bật ít nhất một kỹ thuật.
+
+![Tab Điều kiện phân loại với phần Kỹ thuật phân loại](/img/console/policies-conditions-tab.png)
 
 Tính năng này hữu ích khi bạn muốn so sánh kết quả giữa các kỹ thuật, hoặc khi quy chế của tổ chức chỉ chấp nhận phân loại theo một phương pháp nhất định.
 

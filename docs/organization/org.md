@@ -25,6 +25,8 @@ Bấm **Tạo đơn vị**, chọn loại đơn vị, nhập tên và mã đơn 
 
 Trang có hai cách xem: **Cây phân cấp** để thao tác nhanh và **Sơ đồ tổ chức** để trình bày. Bấm vào một đơn vị để xem chi tiết gồm phòng ban, máy trạm và chính sách đang áp dụng. Bạn có thể xuất toàn bộ cơ cấu ra CSV.
 
+![Cây phân cấp của Cơ cấu tổ chức](/img/console/organization.png)
+
 ## Chính sách kế thừa
 
 Một phòng ban chưa có chính sách phân loại riêng sẽ **kế thừa** chính sách đang bật của công ty con cấp trên. Console hiển thị nhãn "Kế thừa · tên chính sách" cho các phòng ban này. Khi phòng ban có chính sách riêng, chính sách riêng **thay thế hoàn toàn** chính sách của công ty con, không gộp với nhau.

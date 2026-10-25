@@ -8,6 +8,8 @@ Chính sách Agent là mẫu cấu hình vận hành của agent: bao lâu báo 
 
 Chính sách Agent khác với chính sách phân loại. Nó không quyết định file được gắn nhãn gì, mà chỉ quyết định agent chạy ra sao trên máy.
 
+![Trang Chính sách Agent](/img/console/agent-policies.png)
+
 ## Tham số cấu hình
 
 | Tham số | Ý nghĩa |

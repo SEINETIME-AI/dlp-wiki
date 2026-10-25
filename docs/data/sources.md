@@ -10,9 +10,13 @@ Nguồn dữ liệu cho agent biết phải theo dõi thư mục nào. Agent kh�
 
 Mọi máy thuộc đơn vị sở hữu một nguồn sẽ nhận nguồn đó và theo dõi thư mục liên tục. Khi có file mới hoặc file thay đổi, agent tự đưa file vào hàng đợi phân loại. Bạn không cần đặt lịch quét.
 
+![Trang Nguồn dữ liệu](/img/console/data-sources.png)
+
 ## Tạo nguồn
 
 Bấm **Thêm nguồn dữ liệu** và điền các phần sau.
+
+![Hộp thoại Thêm nguồn dữ liệu](/img/console/data-sources-create.png)
 
 | Trường | Ý nghĩa |
 |---|---|

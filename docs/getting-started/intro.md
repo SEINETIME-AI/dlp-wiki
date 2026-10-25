@@ -26,6 +26,8 @@ Nhãn được lưu trên server NextDLP và ghi thẳng vào thuộc tính củ
 
 NextDLP không thay thế DLP. Việc thực thi như chặn email hay chặn sao chép USB vẫn do DLP hiện có đảm nhận, dựa trên nhãn mà NextDLP cung cấp. Báo cáo của NextDLP tập trung vào kiểm kê và nhãn phân loại, không bao gồm các sự kiện vi phạm do DLP ghi nhận.
 
+![Trang Tổng quan của Console](/img/console/dashboard.png)
+
 ## Thành phần hệ thống
 
 | Thành phần | Vai trò |

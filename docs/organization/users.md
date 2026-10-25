@@ -6,6 +6,8 @@ description: Tài khoản Console được phân theo vai trò, mỗi vai trò c
 
 Mỗi người dùng Console có một vai trò và một phạm vi đơn vị. Vai trò quyết định người đó làm được gì; phạm vi quyết định họ làm được ở đâu. Bạn quản lý tài khoản tại **Báo cáo & quản trị › Người dùng & phân quyền**.
 
+![Trang Người dùng & phân quyền](/img/console/access-control.png)
+
 ## Vai trò
 
 | Vai trò | Cách tạo | Phạm vi và quyền chính |

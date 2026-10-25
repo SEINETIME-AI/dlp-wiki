@@ -6,6 +6,8 @@ description: Trang Hệ thống tập trung cấu hình nền tảng, tích hợ
 
 Trang **Báo cáo & quản trị › Hệ thống** tập trung các cấu hình áp dụng cho toàn bộ nền tảng. Chỉ Quản trị hệ thống truy cập được trang này.
 
+![Trang Hệ thống](/img/console/system.png)
+
 ## Các khu vực cấu hình
 
 | Khu vực | Nội dung |

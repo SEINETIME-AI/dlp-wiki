@@ -10,7 +10,11 @@ Kiểm kê dữ liệu là danh mục mọi tài liệu mà agent đã quét, c�
 
 Tab **Kiểm kê** liệt kê tài liệu kèm định dạng, nhãn bảo mật, loại tài liệu, máy nguồn và nguồn dữ liệu. Bạn có thể tìm theo tên hoặc đường dẫn, lọc theo nguồn và nhãn, hoặc chỉ xem tài liệu **Nhạy cảm**.
 
+![Trang Kiểm kê dữ liệu](/img/console/documents.png)
+
 Bấm vào một tài liệu để mở **Chi tiết tài liệu**, gồm nhãn hiện tại, trạng thái và lịch sử nhãn.
+
+![Chi tiết tài liệu với nút Cập nhật nhãn](/img/console/documents-detail.png)
 
 | Trạng thái | Ý nghĩa |
 |---|---|
