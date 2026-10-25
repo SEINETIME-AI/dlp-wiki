@@ -1,0 +1,24 @@
+/* Palette from the wiki mockup (NextDLP_wiki_Docs_Mockup.html). */
+:root {
+  --nd-ink: #0e1726;
+  --ifm-color-primary: #1d4ed8;
+  --ifm-color-primary-dark: #1a46c2;
+  --ifm-color-primary-darker: #1942b8;
+  --ifm-color-primary-darkest: #143697;
+  --ifm-color-primary-light: #2f5ee6;
+  --ifm-color-primary-lighter: #3a66e7;
+  --ifm-color-primary-lightest: #5b80eb;
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme='dark'] {
+  --ifm-color-primary: #6b93ff;
+  --ifm-color-primary-dark: #4d7cff;
+  --ifm-color-primary-darker: #3e70ff;
+  --ifm-color-primary-darkest: #0f4dff;
+  --ifm-color-primary-light: #89aaff;
+  --ifm-color-primary-lighter: #98b5ff;
+  --ifm-color-primary-lightest: #c6d6ff;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}

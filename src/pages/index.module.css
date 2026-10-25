@@ -1,0 +1,83 @@
+.hero {
+  padding: 4.5rem 0;
+  background: var(--nd-ink);
+  color: #fff;
+}
+
+.over {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: #93b4ff;
+}
+
+.title {
+  max-width: 760px;
+  margin: 0.75rem 0 1rem;
+  font-size: 2.6rem;
+  line-height: 1.2;
+  color: #fff;
+}
+
+.lead {
+  max-width: 680px;
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+  color: #c8d2e3;
+}
+
+.sec {
+  padding: 3.5rem 0 0;
+}
+
+.sec:last-child {
+  padding-bottom: 4.5rem;
+}
+
+.sub {
+  color: var(--ifm-color-emphasis-700);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.card {
+  display: block;
+  padding: 1.5rem;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 12px;
+  color: inherit;
+}
+
+a.card:hover {
+  border-color: var(--ifm-color-primary);
+  text-decoration: none;
+  color: inherit;
+}
+
+.card p {
+  margin: 0;
+  color: var(--ifm-color-emphasis-700);
+}
+
+.tag {
+  margin-bottom: 0.5rem;
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--ifm-color-primary);
+}
+
+@media screen and (max-width: 996px) {
+  .hero {
+    padding: 3rem 0;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+}
