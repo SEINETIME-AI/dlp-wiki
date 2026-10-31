@@ -56,11 +56,11 @@ Lý do trong ngoặc của cảnh báo cho biết agent dừng ở đâu. Một 
 
 ## Chưa đầy đủ không có nghĩa là an toàn
 
-Một tài liệu chưa được phân tích đầy đủ có thể mang nhãn thấp, thậm chí ở trạng thái Chưa gắn nhãn, chỉ vì phần chứa dữ liệu nhạy cảm nằm ở đoạn agent chưa đọc. Đừng coi nhãn của những tài liệu này là kết luận cuối cùng. Cảnh báo cũng không tự đưa tài liệu vào hàng chờ rà soát, để danh sách rà soát không bị ngập bởi video và bản sao lưu; việc theo dõi là của quản trị viên.
+Một tài liệu chưa được phân tích đầy đủ có thể chứa dữ liệu nhạy cảm ở đoạn agent chưa đọc. Vì vậy, theo mặc định, tài liệu nào bị bỏ lại một phần nội dung (tệp nén lồng quá sâu hoặc có mật khẩu, tệp lớn hơn Mức quét, bản scan vượt số trang OCR…) mà phần đã đọc chưa đạt mức Mật sẽ được gắn **Chờ rà soát**. Phần giải thích ghi rõ "Nhãn được nâng lên Chờ rà soát theo Chính sách Agent". Bạn đổi ngưỡng này trong [Chính sách Agent](../endpoints/agent-policy.md#tệp-chưa-đọc-hết). Video, ảnh đĩa, bản sao lưu và tệp vượt Kích thước tối đa của nguồn dữ liệu không bị gắn Chờ rà soát, để danh sách rà soát không bị ngập.
 
 ### Bước 1. Rà soát định kỳ
 
-Mỗi tuần, lọc Kiểm kê dữ liệu theo **Chưa phân tích đầy đủ** và xem các tài liệu mới xuất hiện, ưu tiên tài liệu nằm trong thư mục của các phòng ban nhạy cảm.
+Mỗi tuần, lọc Kiểm kê dữ liệu theo nhãn **Chờ rà soát** và theo **Chưa phân tích đầy đủ**, rồi xem các tài liệu mới xuất hiện, ưu tiên tài liệu nằm trong thư mục của các phòng ban nhạy cảm.
 
 ### Bước 2. Điều chỉnh cấu hình khi lý do lặp lại
 
@@ -103,7 +103,7 @@ Những cải tiến dưới đây giúp agent đọc được nhiều hơn tron
 
 Khi mở chi tiết của một tệp nén, phần giải thích cho biết mức của tệp nén được lấy từ tệp nào bên trong, số tệp đã phân loại, số tệp có mật khẩu và số tệp bị bỏ qua. Bên dưới là danh sách các tệp đã phân loại, tệp mật nhất đứng đầu, mỗi tệp kèm nhãn và lý do riêng. Những tệp không đọc được được liệt kê theo tên cùng lý do như "Có mật khẩu", "Quá lớn" hoặc "Tệp nén lồng quá sâu".
 
-Mỗi Mức quét quy định tổng dung lượng giải nén và số tầng lồng nhau được mở: mức Nhẹ và Chuẩn mở một tầng tệp nén bên trong, mức Sâu mở hai tầng. Xem bảng giới hạn tại [Chính sách Agent](../endpoints/agent-policy.md#mức-quét).
+Mỗi Mức quét quy định tổng dung lượng giải nén và số tầng lồng nhau được mở: mức Nhẹ mở một tầng tệp nén bên trong, mức Chuẩn và Sâu mở hai tầng. Mỗi tệp nén được đọc tối đa 1.000 tệp bên trong, mỗi tệp tối đa 20 MB. Xem bảng giới hạn tại [Chính sách Agent](../endpoints/agent-policy.md#mức-quét).
 
 ## Đọc tiếp
 

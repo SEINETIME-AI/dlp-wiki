@@ -22,6 +22,7 @@ Bấm **Chính sách Agent mới**, đặt tên cho chính sách (ví dụ "Máy
 |---|---|
 | Heartbeat (giây) | Chu kỳ agent báo trạng thái và kiểm tra chính sách mới. Tối thiểu 15 giây. |
 | Mức quét | Agent đọc tài liệu kỹ đến đâu: **Nhẹ**, **Chuẩn** hoặc **Sâu**. Mặc định là Chuẩn. Xem mục bên dưới. |
+| Tệp chưa phân tích đầy đủ thì gắn ít nhất | Nhãn tối thiểu cho tệp agent không đọc hết được. Mặc định là **Chờ rà soát**. Xem [Tệp chưa đọc hết](#tệp-chưa-đọc-hết). |
 | Offline cache (ngày) | Thời gian agent giữ kết quả chờ gửi khi không kết nối được server. |
 
 ## Mức quét
@@ -48,13 +49,25 @@ Bảng dưới đây tóm tắt đầy đủ giới hạn của từng mức đ�
 | Số trang scan được đọc chữ (OCR) mỗi tệp | 20 | 100 | 500 |
 | Thời gian tối đa cho một tệp | 10 phút | 30 phút | 60 phút |
 | Tổng dung lượng giải nén của một tệp nén | 100 MB | 250 MB | 1 GB |
-| Số tầng tệp nén lồng nhau được mở | 1 | 1 | 2 |
+| Số tầng tệp nén lồng nhau được mở | 1 | 2 | 2 |
+| Số tệp bên trong một tệp nén | 1.000 | 1.000 | 1.000 |
+| Dung lượng mỗi tệp bên trong tệp nén | 20 MB | 20 MB | 20 MB |
 
 ### Khi tài liệu vượt giới hạn
 
 Không có tài liệu nào bị bỏ qua trong im lặng. Một tệp văn bản (như `.txt`, `.csv`, `.log`, `.json`, `.xml`) lớn hơn ngưỡng đọc toàn bộ vẫn được đọc phần đầu và phần cuối, rồi gắn nhãn theo những gì đã đọc. Các định dạng khác như PDF, Word hay Excel lớn hơn ngưỡng này chưa được đọc nội dung, mà được đánh giá theo thông tin của tệp. Một bản scan dài hơn số trang OCR vẫn được kiểm tra dấu mộc trên mọi trang, chỉ phần chữ của các trang còn lại là chưa được đọc. Một tệp chạy quá thời gian cho phép được kết luận dựa trên phần đã đọc xong.
 
 Trong mọi trường hợp đó, tài liệu vẫn có nhãn và vẫn xuất hiện trong Kiểm kê dữ liệu, nhưng kèm cảnh báo **Tài liệu chưa được phân tích đầy đủ** cùng lý do. Xem [Tệp lớn & mức phân tích](../data/large-files.md) để biết cách đọc cảnh báo và xử lý.
+
+### Tệp chưa đọc hết
+
+Phần chưa đọc có thể chứa dữ liệu nhạy cảm mà phần đã đọc không có. Vì vậy mỗi Chính sách Agent có một ngưỡng **Tệp chưa phân tích đầy đủ thì gắn ít nhất**, áp dụng khi agent không đọc hết nội dung của tệp: tệp nén lồng quá sâu, có mật khẩu, quá nhiều tệp hoặc quá dung lượng; tài liệu có mật khẩu; tệp lớn hơn Mức quét; bản scan vượt số trang OCR; tệp chạy quá thời gian.
+
+Nếu nhãn từ phần đã đọc **bằng hoặc cao hơn** ngưỡng, nhãn đó được giữ. Nếu thấp hơn hoặc chưa có nhãn, tệp được gắn mức ngưỡng. Ngưỡng không bao giờ hạ nhãn xuống. Mức **Chờ rà soát** được xếp ngang với Mật: tệp đọc một phần mà phần đã đọc là Tối mật vẫn giữ Tối mật.
+
+Mặc định là **Chờ rà soát**, vì hệ thống không biết bên trong có gì. DLP có thể chặn hoặc cảnh báo theo nhãn này, còn quản trị viên lọc Kiểm kê dữ liệu theo **Chờ rà soát**, xem lý do trong chi tiết tài liệu rồi **Cập nhật nhãn**. Chọn **Không áp dụng** để giữ nhãn từ phần đã đọc, hoặc một mức bảo mật cụ thể như Mật.
+
+Ngưỡng không áp dụng cho tệp không phải tài liệu (video, ảnh đĩa, bản sao lưu) và tệp lớn hơn Kích thước tối đa mà bạn đặt cho nguồn dữ liệu, để danh sách rà soát không bị ngập.
 
 ### Chọn mức nào
 
