@@ -29,7 +29,7 @@ AssistOCR là dịch vụ OCR tự host trong mạng nội bộ, giúp đọc �
 
 Nếu không dùng AssistOCR, hãy để trống URL và tắt dịch vụ, đồng thời chọn chế độ **OCR cục bộ** trong các chính sách phân loại.
 
-:::tip Kiểm tra trạng thái báo lỗi?
+:::tip[Kiểm tra trạng thái báo lỗi?]
 
 Hãy xác minh URL và kết nối mạng nội bộ giữa server NextDLP và máy chủ AssistOCR.
 

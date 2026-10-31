@@ -41,7 +41,7 @@ Với bản offline đầy đủ trên máy chủ không có internet, thêm tu�
 
 Script nạp các image, khởi động toàn bộ dịch vụ và in ra địa chỉ truy cập khi xong.
 
-:::tip Script bị chặn?
+:::tip[Script bị chặn?]
 
 Nếu PowerShell báo không cho phép chạy script, hãy chạy lại bằng lệnh `powershell -ExecutionPolicy Bypass -File .\docker\load-and-start.ps1`.
 
@@ -61,7 +61,7 @@ Mở trình duyệt tới `https://10.0.0.5`. Lần đầu truy cập, trình du
 
 ![Màn hình đăng nhập Console](/img/console/login.png)
 
-:::danger Bắt buộc
+:::danger[Bắt buộc]
 
 Console yêu cầu đặt mật khẩu mới ngay ở lần đăng nhập đầu tiên. Với gói cài đặt V1 (Console ở địa chỉ `http://`), hãy tự đổi mật khẩu admin ngay sau lần đăng nhập đầu tiên: bấm vào tên tài khoản ở góc trên bên phải và chọn **Đổi mật khẩu**. Mật khẩu mới cần tối thiểu 12 ký tự.
 
@@ -91,7 +91,7 @@ Vào **Thiết bị & Agent › Bộ cài Agent** và bấm **Tạo bộ cài m�
 
 ![Hộp thoại Tạo bộ cài Agent, ô Agent server điền IP máy chủ](/img/console/agent-deployment-create.png)
 
-:::warning Không để trống ô Agent server
+:::warning[Không để trống ô Agent server]
 
 Nếu để trống, agent sẽ kết nối về `localhost`, tức là chỉ hoạt động khi cài trên chính máy chủ. Máy trạm khác sẽ không bao giờ xuất hiện trên Console.
 

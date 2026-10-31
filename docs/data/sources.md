@@ -27,7 +27,7 @@ Bấm **Thêm nguồn dữ liệu** và điền các phần sau.
 | Include / Exclude paths | Thư mục con cần quét và thư mục cần bỏ qua như archive hoặc temp. |
 | Kích thước tối đa | Chọn 100 MB, 250 MB, 500 MB, 1 GB hoặc 2 GB (mặc định 500 MB). File lớn hơn ngưỡng không được đọc nội dung nhưng vẫn hiện trong Kiểm kê dữ liệu kèm cảnh báo. |
 
-:::tip Thu hẹp phạm vi quét
+:::tip[Thu hẹp phạm vi quét]
 
 Hãy khai báo ít nhất một đuôi file hoặc thư mục cần quét. Không nên chọn cả ổ đĩa như `C:\` làm gốc, vì agent sẽ phải duyệt cả các thư mục hệ thống.
 
@@ -51,7 +51,7 @@ Với tệp nằm trong ngưỡng của nguồn, Mức quét cho biết agent đ
 
 Ví dụ, một nguồn đặt Kích thước tối đa 1 GB trên máy dùng Mức quét Chuẩn. Tệp 100 MB được đọc toàn bộ. Tệp 600 MB vượt ngưỡng đọc toàn bộ của mức Chuẩn nên được gắn cờ chưa phân tích đầy đủ: nếu là tệp văn bản như `.csv` thì agent đọc phần đầu và phần cuối, còn nếu là PDF hay tài liệu Office thì agent chỉ đánh giá theo thông tin của tệp. Tệp 3 GB vượt ngưỡng của nguồn nên chỉ được ghi nhận theo thông tin của tệp. Muốn tệp lớn trên máy chủ tệp được đọc toàn bộ, hãy tăng cả hai: chọn Mức quét Sâu và đặt Kích thước tối đa của nguồn đủ lớn.
 
-:::note Đuôi file và thư mục bị loại trừ
+:::note[Đuôi file và thư mục bị loại trừ]
 
 Khác với Kích thước tối đa, những tệp bạn chủ động loại bằng **Exclude extensions** hoặc **Exclude paths** vẫn nằm ngoài phạm vi quét và không xuất hiện trong Kiểm kê dữ liệu.
 

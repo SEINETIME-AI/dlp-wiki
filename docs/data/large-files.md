@@ -6,7 +6,7 @@ description: Cách agent xử lý tệp lớn, bản scan dài và tệp nén, c
 
 import {Cards, Card} from '@site/src/components/FeatureCards';
 
-:::note Bản tiếp theo
+:::note[Bản tiếp theo]
 
 Các tính năng trên trang này có trong bản cập nhật tiếp theo của NextDLP. Xem [Bản tiếp theo](../releases/next.md).
 

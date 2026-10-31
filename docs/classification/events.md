@@ -37,7 +37,7 @@ Khi nhiều file có cùng nội dung, agent tái sử dụng kết quả phân 
 
 Bấm **Xuất CSV** hoặc **Xuất PDF** để tải nhật ký trong khoảng thời gian đã lọc. Mỗi dòng gồm thời gian, máy, IP, đơn vị, chủ sở hữu file, đường dẫn, nhãn, quy tắc đã khớp và đoạn nội dung khớp đã được che bớt. Toàn bộ nội dung file không bao giờ được xuất.
 
-:::info Nhật ký không thể sửa
+:::info[Nhật ký không thể sửa]
 
 Nhật ký phân loại là bất biến và chỉ được ghi thêm, để bảo đảm giá trị kiểm toán. Để điều chỉnh nhãn của một tài liệu, hãy dùng [Kiểm kê dữ liệu & đổi nhãn](../data/inventory.md).
 

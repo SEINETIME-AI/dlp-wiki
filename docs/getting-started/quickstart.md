@@ -42,7 +42,7 @@ Trên máy trạm, lưu một file Word có cụm "bảng lương" vào `C:\HoSo
 
 ![Chi tiết sự kiện giải thích vì sao file được gắn nhãn](/img/console/events-detail.png)
 
-:::tip Không thấy file?
+:::tip[Không thấy file?]
 
 Hãy kiểm tra ba điều: máy trạm đang **Trực tuyến**, đuôi file nằm trong danh sách đuôi cần quét của nguồn dữ liệu, và chính sách đã được **Kích hoạt** cho đúng đơn vị của máy.
 

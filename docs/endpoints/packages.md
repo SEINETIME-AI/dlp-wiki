@@ -22,7 +22,7 @@ Chính sách phân loại không cần gắn vào bộ cài: agent tự nhận c
 
 ![Hộp thoại Tạo bộ cài Agent](/img/console/agent-deployment-create.png)
 
-:::warning Agent server phải là IP mà máy trạm truy cập được
+:::warning[Agent server phải là IP mà máy trạm truy cập được]
 
 Hãy nhập IP nội bộ của máy chủ, ví dụ `10.0.0.5`. Không dùng `localhost` hoặc để trống, vì khi đó agent chỉ hoạt động trên chính máy chủ.
 

@@ -36,7 +36,7 @@ Server mở các cổng dưới đây. Chỉ cổng 80, 443, 9090 và 9091 cần
 | 9091 | gRPC cho agent | Máy trạm |
 | 5432, 6379 | PostgreSQL và Redis | Chỉ nội bộ máy chủ |
 
-:::warning Lưu ý
+:::warning[Lưu ý]
 
 Máy trạm và người dùng Console phải kết nối được tới server qua cổng **443** và **9091** (với gói V1 là **80** và **9091**). Hãy mở các cổng này trên tường lửa của máy chủ trước khi cài agent, ví dụ bằng lệnh PowerShell quyền quản trị:
 

@@ -60,7 +60,7 @@ message LookupResponse {
 
 Dùng `Lookup` cho từng file và `LookupBatch` khi cần tra số lượng lớn qua một luồng duy nhất. Trường `found` bằng `false` khi file chưa được NextDLP phân loại, hoặc khi nội dung file đã thay đổi so với lần phân loại gần nhất. Trong trường hợp đó, DLP nên áp dụng hành động mặc định theo quy chế của tổ chức.
 
-:::warning Cổng dịch vụ tra nhãn
+:::warning[Cổng dịch vụ tra nhãn]
 
 Dịch vụ tra nhãn chạy trên một cổng riêng của server, và trong gói cài đặt hiện tại cổng này chưa được mở ra ngoài. Hãy liên hệ đội hỗ trợ NextDLP để được hướng dẫn mở cổng khi tích hợp. Xem [Lỗi đã biết](../releases/known-issues.md).
 

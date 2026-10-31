@@ -62,7 +62,7 @@ Trong mọi trường hợp đó, tài liệu vẫn có nhãn và vẫn xuất h
 
 Mức quét chỉ quyết định agent đọc kỹ đến đâu đối với những tệp đã nằm trong phạm vi quét. Việc một tệp có được đọc nội dung hay không còn phụ thuộc vào **Kích thước tối đa** của [Nguồn dữ liệu](../data/sources.md#kích-thước-tối-đa-và-mức-quét).
 
-:::info Chính sách tạo từ phiên bản trước
+:::info[Chính sách tạo từ phiên bản trước]
 
 Các chính sách Agent đã lưu trước khi có Mức quét được hiểu là **Chuẩn**. Giá trị "File tối đa" cũ không còn được áp dụng. Nếu trước đây bạn đã hạ ngưỡng này cho máy yếu, hãy mở lại chính sách và chọn **Nhẹ**.
 

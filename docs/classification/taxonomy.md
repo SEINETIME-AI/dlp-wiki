@@ -32,7 +32,7 @@ Loại tài liệu có thể **phân cấp không giới hạn**. Bấm **Thêm 
 
 Mỗi loại có tên, màu và trạng thái **Đang dùng** hoặc **Ngừng dùng**. Một loại còn loại con thì phải ngừng dùng hoặc xoá các loại con trước.
 
-:::tip Khuyến nghị
+:::tip[Khuyến nghị]
 
 Chuyển nhãn sang trạng thái **Ngừng dùng** thay vì xoá, để giữ nguyên lịch sử phân loại của các tài liệu đã gắn nhãn đó.
 

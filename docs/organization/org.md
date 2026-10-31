@@ -31,7 +31,7 @@ Trang có hai cách xem: **Cây phân cấp** để thao tác nhanh và **Sơ đ
 
 Một phòng ban chưa có chính sách phân loại riêng sẽ **kế thừa** chính sách đang bật của công ty con cấp trên. Console hiển thị nhãn "Kế thừa · tên chính sách" cho các phòng ban này. Khi phòng ban có chính sách riêng, chính sách riêng **thay thế hoàn toàn** chính sách của công ty con, không gộp với nhau.
 
-:::warning Đơn vị chưa có chính sách
+:::warning[Đơn vị chưa có chính sách]
 
 Đơn vị không có chính sách riêng và cũng không kế thừa được từ cấp trên thì các máy trạm thuộc đơn vị đó sẽ không được phân loại. Console cảnh báo những đơn vị này ở trang Chính sách phân loại.
 

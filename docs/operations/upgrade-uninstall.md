@@ -26,7 +26,7 @@ Thực hiện sao lưu như mục trên.
 
 Giải nén gói `dlp-stack-deploy.zip` của phiên bản mới **đè lên thư mục cài đặt hiện tại**, ví dụ `C:\nextdlp`. Giữ nguyên file `.env` và thư mục `certs` trong thư mục đó: chúng chứa cấu hình bảo mật và chứng chỉ của server. Dữ liệu và mật khẩu được giữ nguyên sau khi nâng cấp.
 
-:::warning Giữ nguyên tên thư mục
+:::warning[Giữ nguyên tên thư mục]
 
 Docker gắn dữ liệu của hệ thống với tên thư mục cài đặt. Nếu giải nén bản mới sang một thư mục có tên khác, server mới sẽ khởi động với cơ sở dữ liệu trống và bạn sẽ không thấy dữ liệu cũ.
 
@@ -72,7 +72,7 @@ Thư mục `C:\ProgramData\DlpExtension` chứa dữ liệu cục bộ của age
 
 Vào **Thiết bị & Agent › Máy trạm**, chọn máy và bấm **Thu hồi**. Tài khoản Console gắn với máy cũng bị xoá theo. Lịch sử phân loại của máy vẫn được giữ trong Kiểm kê và Nhật ký.
 
-:::info Nhãn trong file vẫn còn
+:::info[Nhãn trong file vẫn còn]
 
 Gỡ agent không xoá các nhãn đã ghi vào thuộc tính của file. DLP vẫn đọc được các nhãn này cho đến khi file được sửa bởi một công cụ xoá thuộc tính.
 
@@ -93,7 +93,7 @@ docker compose -f docker-compose.deploy.yml down -v
 docker image rm dlp-server:local dlp-dashboard:local
 ```
 
-:::danger Không thể khôi phục
+:::danger[Không thể khôi phục]
 
 Tuỳ chọn `-v` xoá toàn bộ cơ sở dữ liệu gồm cấu hình, nhãn và nhật ký. Hãy sao lưu trước khi thực hiện.
 

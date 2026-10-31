@@ -31,7 +31,7 @@ Báo cáo và tệp xuất chỉ bao gồm dữ liệu trong phạm vi đơn v�
 
 Các tệp xuất về sự kiện gồm thời gian, máy, IP, đơn vị, chủ sở hữu tệp, đường dẫn, mức bảo mật, loại tài liệu, quy tắc đã khớp và đoạn nội dung khớp đã được che bớt. Toàn bộ nội dung tệp không bao giờ được xuất.
 
-:::info Phạm vi báo cáo
+:::info[Phạm vi báo cáo]
 
 Báo cáo dựa trên kiểm kê và nhãn phân loại của NextDLP. Các sự kiện vi phạm do DLP ghi nhận, như email bị chặn, nằm trong báo cáo của hệ thống DLP.
 

@@ -26,7 +26,7 @@ Phía trên danh sách là các ô thống kê tổng số máy, số máy đang
 
 **Thu hồi** ngắt máy khỏi hệ thống: agent ngừng báo cáo và tài khoản Console gắn với máy bị xoá. Hãy thu hồi máy khi máy bị thanh lý hoặc đã gỡ agent.
 
-:::tip Máy mất kết nối?
+:::tip[Máy mất kết nối?]
 
 Kiểm tra dịch vụ Windows `nextdlp` trên máy đó bằng lệnh `Get-Service nextdlp` và khởi động lại nếu đang dừng. Xem thêm [Xử lý sự cố](../operations/troubleshooting.md).
 
