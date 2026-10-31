@@ -23,20 +23,20 @@ Content is in Vietnamese.
 
 ## Release notes
 
-Each version has its own page in `docs/releases/`, named after the version (`1.1.0.md`), newest
-with the lowest `sidebar_position`. Versions follow MAJOR.MINOR.PATCH (see `docs/releases/index.md`).
-For a new release:
+Each version gets a release announcement in `blog/` (served at `/releases`, with RSS and Atom
+feeds), in the style of a project news post: greeting, `{/* truncate */}`, an inline table of
+contents, then `## Tính năng mới và thay đổi chính` (with `###` topics), `## Sửa lỗi đáng chú ý`,
+`## Lưu ý khi nâng cấp`, `## Kế hoạch tiếp theo`, `## Lời kết`. Versions follow
+MAJOR.MINOR.PATCH (see `docs/releases/index.md`). For a new release:
 
-1. Copy the latest page to `docs/releases/<version>.md`, set `title: NextDLP <version>` and
-   `sidebar_label: <version> (sắp phát hành)` until it ships.
-2. Start with the table (Ngày phát hành, Trạng thái, Nâng cấp từ), then themed `##` sections,
-   then `## Lưu ý khi nâng cấp` and `## Đọc tiếp`.
-3. Add a row to the table in `docs/releases/index.md`; on release day set the date, drop
-   "(sắp phát hành)" from the label and mark the previous version as no longer current.
-4. Point "phiên bản <version>" links in other pages at the new page; move fixed items out of
-   `known-issues.md`.
+1. While it is in progress, add `blog/<date>-nextdlp-<version>.mdx` with `slug: nextdlp-<version>`
+   and the title "Sắp ra mắt NextDLP <version>", plus the "Chưa phát hành" note.
+2. On release day, keep the slug (links stay valid), rename the file and set the date to the release
+   date, change the title to "NextDLP <version> phát hành" and remove the note.
+3. Update the version table in `docs/releases/index.md` and move fixed items out of
+   `docs/releases/known-issues.md`.
 
-When a page is renamed, add a redirect in `docusaurus.config.ts` so links already sent keep working.
+When a page moves, add a redirect in `docusaurus.config.ts` so links already sent keep working.
 
 ## Deploy
 

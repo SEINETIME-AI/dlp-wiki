@@ -12,7 +12,7 @@ Trang này liệt kê những hạn chế đã biết của phiên bản hiện 
 
 Với gói cài đặt 1.0.0, sau khi máy chủ hoặc Docker khởi động lại, các dịch vụ NextDLP không tự chạy. Agent vẫn tự kết nối lại khi server hoạt động trở lại.
 
-**Cách xử lý:** mở PowerShell trong thư mục cài đặt và chạy `docker compose -f docker-compose.deploy.yml up -d`. Đã khắc phục trong [phiên bản 1.1.0](./1.1.0.md).
+**Cách xử lý:** mở PowerShell trong thư mục cài đặt và chạy `docker compose -f docker-compose.deploy.yml up -d`. Đã khắc phục trong [phiên bản 1.1.0](/releases/nextdlp-1.1.0).
 
 ### Cổng tra nhãn cho DLP chưa được mở
 

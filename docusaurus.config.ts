@@ -40,7 +40,21 @@ const config: Config = {
         docs: {
           sidebarPath: './sidebars.ts',
         },
-        blog: false,
+        // Release announcements, one post per version, with RSS/Atom.
+        blog: {
+          routeBasePath: 'releases',
+          blogTitle: 'Phát hành',
+          blogDescription: 'Thông báo phát hành và ghi chú từng phiên bản NextDLP.',
+          blogSidebarTitle: 'Tin mới nhất',
+          blogSidebarCount: 'ALL',
+          showReadingTime: false,
+          feedOptions: {
+            type: ['rss', 'atom'],
+            title: 'NextDLP – Phát hành',
+            description: 'Thông báo phát hành NextDLP',
+            copyright: `© ${new Date().getFullYear()} NextDLP`,
+          },
+        },
         theme: {
           customCss: './src/css/custom.css',
         },
@@ -54,8 +68,8 @@ const config: Config = {
       '@docusaurus/plugin-client-redirects',
       {
         redirects: [
-          {from: '/docs/releases/next', to: '/docs/releases/1.1.0'},
-          {from: '/docs/releases/v1', to: '/docs/releases/1.0.0'},
+          {from: ['/docs/releases/next', '/docs/releases/1.1.0'], to: '/releases/nextdlp-1.1.0'},
+          {from: ['/docs/releases/v1', '/docs/releases/1.0.0'], to: '/releases/nextdlp-1.0.0'},
           {from: '/docs/releases/v2-roadmap', to: '/docs/releases/roadmap'},
         ],
       },
@@ -77,7 +91,7 @@ const config: Config = {
         {to: '/docs/getting-started/install', label: 'Hướng dẫn', position: 'left'},
         {to: '/docs/integrations/dlp', label: 'Tích hợp DLP', position: 'left'},
         {to: '/docs/integrations/api', label: 'API', position: 'left'},
-        {to: '/docs/releases/', label: 'Phát hành', position: 'right'},
+        {to: '/releases', label: 'Phát hành', position: 'right'},
       ],
     },
     footer: {
@@ -94,9 +108,11 @@ const config: Config = {
         {
           title: 'Phát hành',
           items: [
-            {label: 'Ghi chú phát hành', to: '/docs/releases/'},
+            {label: 'Thông báo phát hành', to: '/releases'},
+            {label: 'Các phiên bản', to: '/docs/releases/'},
             {label: 'Lộ trình phát triển', to: '/docs/releases/roadmap'},
             {label: 'Lỗi đã biết', to: '/docs/releases/known-issues'},
+            {label: 'Nhận tin qua RSS', href: 'pathname:///releases/rss.xml'},
           ],
         },
       ],

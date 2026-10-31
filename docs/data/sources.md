@@ -35,7 +35,7 @@ Hãy khai báo ít nhất một đuôi file hoặc thư mục cần quét. Khôn
 
 ## Kích thước tối đa và Mức quét
 
-Từ [phiên bản 1.1.0](../releases/1.1.0.md), trường **Kích thước tối đa** chỉ còn các mức cố định 100 MB, 250 MB, 500 MB, 1 GB và 2 GB; lựa chọn "Tùy chỉnh" của phiên bản trước đã được bỏ. Nếu một nguồn đã lưu một giá trị khác từ trước, giá trị đó vẫn được giữ và hiển thị kèm chữ **(đã đặt trước)** cho đến khi bạn chọn một mức mới, nên việc mở nguồn ra sửa các trường khác không làm thay đổi ngưỡng của bạn.
+Từ [phiên bản 1.1.0](/releases/nextdlp-1.1.0), trường **Kích thước tối đa** chỉ còn các mức cố định 100 MB, 250 MB, 500 MB, 1 GB và 2 GB; lựa chọn "Tùy chỉnh" của phiên bản trước đã được bỏ. Nếu một nguồn đã lưu một giá trị khác từ trước, giá trị đó vẫn được giữ và hiển thị kèm chữ **(đã đặt trước)** cho đến khi bạn chọn một mức mới, nên việc mở nguồn ra sửa các trường khác không làm thay đổi ngưỡng của bạn.
 
 {/* TODO screenshot: hộp thoại sửa nguồn dữ liệu, danh sách "Kích thước tối đa" có một giá trị "(đã đặt trước)" */}
 

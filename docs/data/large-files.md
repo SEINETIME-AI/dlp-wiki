@@ -8,7 +8,7 @@ import {Cards, Card} from '@site/src/components/FeatureCards';
 
 :::note[Phiên bản 1.1.0]
 
-Các tính năng trên trang này có từ phiên bản 1.1.0 của NextDLP, hiện sắp phát hành. Xem [ghi chú phát hành 1.1.0](../releases/1.1.0.md).
+Các tính năng trên trang này có từ phiên bản 1.1.0 của NextDLP, hiện sắp phát hành. Xem [ghi chú phát hành 1.1.0](/releases/nextdlp-1.1.0).
 
 :::
 

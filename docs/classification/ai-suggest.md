@@ -108,7 +108,7 @@ Sau khi áp dụng và lưu, hãy kiểm tra chính sách trên vài tài liệu
 
 **Tải tệp mẫu lên thì báo lỗi 413 hoặc không có phản hồi.** Ở bản 1.0.0, tệp Word, Excel, PowerPoint và PDF lớn hơn 1 MB bị máy chủ web chặn trước khi tới server. Hãy dùng một tệp nhỏ hơn, ví dụ chỉ giữ những trang chứa dấu hiệu, hoặc mô tả bằng chữ. Phiên bản 1.1.0 nâng giới hạn này lên 12 MB.
 
-**Thông báo "model response missing conditions".** Ở phiên bản 1.0.0, mô hình đôi khi trả về chính sách không có điều kiện nào, nhất là với mô tả ngắn hoặc mô tả chung chung. Hãy viết lại theo một trong các mẫu câu ở trên rồi thử lại. Lỗi này đã được khắc phục trong [phiên bản 1.1.0](../releases/1.1.0.md).
+**Thông báo "model response missing conditions".** Ở phiên bản 1.0.0, mô hình đôi khi trả về chính sách không có điều kiện nào, nhất là với mô tả ngắn hoặc mô tả chung chung. Hãy viết lại theo một trong các mẫu câu ở trên rồi thử lại. Lỗi này đã được khắc phục trong [phiên bản 1.1.0](/releases/nextdlp-1.1.0).
 
 **Kết quả mỗi lần chạy một khác.** Mô hình có yếu tố ngẫu nhiên nhỏ. Mô tả càng cụ thể thì kết quả càng ổn định: các mẫu câu trên trang này cho cùng một kết quả qua nhiều lần chạy, còn mô tả chung chung như "tạo chính sách cho phòng nhân sự" cho mỗi lần một bộ điều kiện khác nhau.
 

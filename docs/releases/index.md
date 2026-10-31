@@ -1,18 +1,18 @@
 ---
 sidebar_position: 0
-title: Ghi chú phát hành
-sidebar_label: Tổng quan
+title: Các phiên bản
+sidebar_label: Các phiên bản
 description: Danh sách các phiên bản NextDLP, cách đánh số phiên bản và nơi đọc thay đổi của từng bản cập nhật.
 ---
 
-Mỗi bản cập nhật của NextDLP có một trang ghi chú riêng trong mục này, cho biết có gì mới, những gì đã được sửa và cần lưu ý gì khi nâng cấp. Phiên bản mới nhất luôn nằm trên cùng.
+Mỗi phiên bản NextDLP có một bài thông báo phát hành tại mục [Phát hành](/releases), cho biết có gì mới, những gì đã được sửa và cần lưu ý gì khi nâng cấp. Để nhận tin khi có phiên bản mới, thêm nguồn tin [RSS](pathname:///releases/rss.xml) vào trình đọc tin hoặc Outlook. Bảng dưới đây tóm tắt các phiên bản, mới nhất ở trên cùng.
 
 ## Các phiên bản
 
 | Phiên bản | Ngày phát hành | Trạng thái | Nội dung chính |
 |---|---|---|---|
-| [1.1.0](./1.1.0.md) | Chưa phát hành | Sắp phát hành | Xử lý tệp lớn và tệp nén, Mức quét, agent chạy nền, Console dùng HTTPS |
-| [1.0.0](./1.0.0.md) | 20/10/2026 | Bản hiện hành | Phiên bản đầu tiên, đi cùng bản dùng thử |
+| [1.1.0](/releases/nextdlp-1.1.0) | Chưa phát hành | Sắp phát hành | Xử lý tệp lớn và tệp nén, Mức quét, agent chạy nền, Console dùng HTTPS |
+| [1.0.0](/releases/nextdlp-1.0.0) | 20/10/2026 | Bản hiện hành | Phiên bản đầu tiên, đi cùng bản dùng thử |
 
 Những hạn chế còn tồn tại của bản hiện hành được liệt kê tại [Lỗi đã biết](./known-issues.md). Các hướng phát triển sau đó có tại [Lộ trình phát triển](./roadmap.md).
 
@@ -33,4 +33,4 @@ Mỗi gói cài đặt gồm server, Console và bộ cài agent của cùng m�
 
 ## Nâng cấp
 
-Để chuyển lên phiên bản mới, làm theo [Nâng cấp & gỡ cài đặt](../operations/upgrade-uninstall.md), rồi đọc mục **Lưu ý khi nâng cấp** trong trang ghi chú của phiên bản đó trước khi cài lại agent trên máy trạm.
+Để chuyển lên phiên bản mới, làm theo [Nâng cấp & gỡ cài đặt](../operations/upgrade-uninstall.md), rồi đọc mục **Lưu ý khi nâng cấp** trong bài thông báo của phiên bản đó trước khi cài lại agent trên máy trạm.
