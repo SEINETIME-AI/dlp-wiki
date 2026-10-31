@@ -69,8 +69,11 @@ const config: Config = {
       '@docusaurus/plugin-client-redirects',
       {
         redirects: [
-          {from: ['/docs/releases/v1', '/docs/releases/1.0.0'], to: '/releases/nextdlp-1.0.0'},
-          {from: ['/docs/releases/next', '/docs/releases/1.1.0'], to: '/releases/nextdlp-1.1.0'},
+          {
+            from: ['/docs/releases/v1', '/docs/releases/1.0.0', '/docs/releases/next', '/docs/releases/1.1.0',
+              '/releases/nextdlp-1.1.0'],
+            to: '/releases/nextdlp-1.0.0',
+          },
           {from: '/docs/releases/v2-roadmap', to: '/docs/releases/roadmap'},
         ],
       },

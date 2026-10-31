@@ -11,8 +11,7 @@ Mỗi phiên bản NextDLP có một bài thông báo phát hành tại mục [P
 
 | Phiên bản | Ngày phát hành | Trạng thái | Nội dung chính |
 |---|---|---|---|
-| [1.1.0](/releases/nextdlp-1.1.0) | 31/10/2026 | Bản hiện hành | Tệp chưa phân tích đầy đủ được gắn Chờ rà soát; mức Chuẩn mở hai tầng tệp nén |
-| [1.0.0](/releases/nextdlp-1.0.0) | 31/10/2026 | Bản trước | Phiên bản chính thức đầu tiên: phân loại trọn vòng đời, tệp lớn và tệp nén, Mức quét, agent chạy nền, Console dùng HTTPS |
+| [1.0.0](/releases/nextdlp-1.0.0) | 31/10/2026 | Bản hiện hành | Phiên bản chính thức đầu tiên: phân loại trọn vòng đời, tệp lớn và tệp nén, Mức quét, tệp chưa đọc hết được gắn Chờ rà soát, agent chạy nền, Console dùng HTTPS |
 
 Những hạn chế còn tồn tại của bản hiện hành được liệt kê tại [Lỗi đã biết](./known-issues.md). Các hướng phát triển sau đó có tại [Lộ trình phát triển](./roadmap.md).
 

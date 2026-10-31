@@ -67,7 +67,9 @@ Gói cài đặt server `dlp-stack-deploy-1.0.0.zip` có tại trang [Cài đặ
 
 **Không tệp nào bị bỏ qua trong im lặng.** Tệp lớn hơn Mức quét được đọc một phần hoặc đánh giá theo thông tin tệp; video, ảnh đĩa và bản sao lưu được nhận diện ngay và đánh giá theo thông tin tệp; tệp lớn hơn Kích thước tối đa của nguồn dữ liệu vẫn xuất hiện trong Kiểm kê dữ liệu kèm cảnh báo. Xem [Tệp lớn & mức phân tích](/docs/data/large-files).
 
-**Tệp nén được đọc bên trong.** Agent mở zip, rar, 7z, tar, gz và phân loại từng tài liệu bên trong; tệp nén nhận mức cao nhất của các tệp bên trong, và phần giải thích liệt kê riêng từng tệp cùng nhãn và lý do. Tệp nén có tỷ lệ nén bất thường bị từ chối để bảo vệ máy.
+**Tệp nén được đọc bên trong.** Agent mở zip, rar, 7z, tar, gz và phân loại từng tài liệu bên trong, tối đa hai tầng tệp nén lồng nhau ở mức Chuẩn; tệp nén nhận mức cao nhất của các tệp bên trong, và phần giải thích liệt kê riêng từng tệp cùng nhãn và lý do. Tệp nén có tỷ lệ nén bất thường bị từ chối để bảo vệ máy.
+
+**Tệp chưa đọc hết được gắn Chờ rà soát.** Chính sách Agent có cấu hình **Tệp chưa phân tích đầy đủ thì gắn ít nhất**, mặc định **Chờ rà soát**. Tệp nén lồng quá sâu hoặc có mật khẩu, tài liệu có mật khẩu, tệp lớn hơn Mức quét hay bản scan vượt số trang OCR không còn mang nhãn thấp: chúng được gắn Chờ rà soát để DLP xử lý và quản trị viên rà soát. Nhãn từ phần đã đọc cao hơn thì được giữ; ví dụ, tệp nén chứa bảng lương Tối mật cùng một tệp nén có mật khẩu vẫn là Tối mật. Xem [Tệp chưa đọc hết](/docs/endpoints/agent-policy#tệp-chưa-đọc-hết).
 
 ### Máy người dùng vẫn mượt
 
@@ -87,13 +89,17 @@ Agent chạy ở chế độ nền của Windows, nhường CPU, ổ đĩa và b
 
 **Tra cứu nhãn qua gRPC** cho DLP với dịch vụ `LabelLookupService`, và **REST API** cho mọi thao tác quản trị. Xem [Kết nối DLP](/docs/integrations/dlp).
 
+## Lưu ý khi triển khai
+
+**Thêm rule cho nhãn Chờ rà soát trong DLP**, ví dụ chặn gửi ra ngoài hoặc cảnh báo người dùng. Tài liệu có mật khẩu, tệp nén không đọc hết được và PDF lớn hơn 20 MB (chỉ được đọc lớp chữ, không OCR) sẽ mang nhãn này. Nếu đơn vị chưa sẵn sàng rà soát, mở Chính sách Agent và chọn **Không áp dụng**.
+
 ## Hạn chế đã biết
 
 Các hạn chế của phiên bản này và cách xử lý tạm thời được liệt kê tại [Lỗi đã biết](/docs/releases/known-issues).
 
 ## Kế hoạch tiếp theo
 
-Các bản sau sẽ tập trung vào việc giữ nhãn khi tệp được đổi tên hoặc di chuyển, bảo vệ nhãn đã duyệt khi tệp được sửa, mở sẵn dịch vụ tra nhãn cho DLP trong gói cài đặt, và cải thiện nhận diện dấu mộc. Xem [Lộ trình phát triển](/docs/releases/roadmap).
+Các bản sau sẽ tập trung vào việc phân biệt chính xác trang scan với trang có chữ trong PDF lớn để giảm số tài liệu phải rà soát, cải thiện phân tích ngữ nghĩa cho tài liệu rất dài, giảm bộ nhớ của agent trên máy cấu hình thấp, giữ nhãn khi tệp được đổi tên hoặc di chuyển, bảo vệ nhãn đã duyệt khi tệp được sửa, mở sẵn dịch vụ tra nhãn cho DLP trong gói cài đặt, và cải thiện nhận diện dấu mộc. Xem [Lộ trình phát triển](/docs/releases/roadmap).
 
 ## Lời kết
 
