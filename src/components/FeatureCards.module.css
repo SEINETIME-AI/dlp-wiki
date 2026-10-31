@@ -1,0 +1,39 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin: 1rem 0 1.5rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 12px;
+  background: var(--ifm-color-emphasis-100);
+}
+
+.tag {
+  align-self: flex-start;
+  padding: 0.05rem 0.5rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--ifm-color-primary);
+  border: 1px solid var(--ifm-color-primary-lightest);
+}
+
+.title {
+  font-size: 1.05rem;
+}
+
+.body {
+  font-size: 0.92rem;
+  color: var(--ifm-color-emphasis-800);
+}
+
+.body > p:last-child {
+  margin-bottom: 0;
+}
