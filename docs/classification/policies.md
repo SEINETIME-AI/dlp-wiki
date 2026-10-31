@@ -66,4 +66,4 @@ Tab **JSON** trong trình soạn chính sách cho phép xuất toàn bộ chính
 
 ## Gợi ý điều kiện bằng AI
 
-Quản trị hệ thống có thể dùng tab **Gợi ý AI** để mô tả chính sách bằng lời hoặc tải lên một tài liệu mẫu; hệ thống đề xuất các điều kiện để bạn sửa rồi bấm **Áp dụng vào điều kiện**. Gợi ý được tạo bởi mô hình chạy trên server của bạn, tài liệu mẫu không rời khỏi hệ thống. Khi mô hình chưa sẵn sàng, hệ thống vẫn tạo điều kiện từ văn bản trích xuất bằng phương pháp heuristic. Luôn rà soát điều kiện đề xuất trước khi lưu.
+Quản trị hệ thống có thể dùng tab **Gợi ý AI** để mô tả chính sách bằng lời hoặc tải lên một tài liệu mẫu; hệ thống đề xuất các điều kiện để bạn sửa rồi bấm **Áp dụng vào điều kiện**. Gợi ý được tạo bởi mô hình chạy trên server của bạn, tài liệu mẫu không rời khỏi hệ thống. Khi mô hình chưa sẵn sàng, hệ thống vẫn tạo điều kiện từ văn bản trích xuất bằng phương pháp heuristic. Luôn rà soát điều kiện đề xuất trước khi lưu. Xem [Viết mô tả cho Gợi ý AI](./ai-suggest.md) để biết cách viết mô tả và chọn tài liệu mẫu cho kết quả tốt nhất.

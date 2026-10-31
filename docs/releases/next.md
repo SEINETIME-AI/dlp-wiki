@@ -42,7 +42,7 @@ Trọng tâm của bản này là xử lý tệp lớn và tệp phức tạp: m
 
 **Phân tích ngữ nghĩa cho tài liệu dài.** Tài liệu quá dài được phân tích ngữ nghĩa trên các đoạn mẫu trải đều từ đầu đến cuối, thay vì bỏ qua kỹ thuật này. Từ khoá, mẫu nhận diện và từ điển vẫn kiểm tra toàn bộ nội dung.
 
-**Gợi ý điều kiện bằng AI gọn hơn.** Các điều kiện trùng nhau được gộp thành một với mức bảo mật cao nhất, và gợi ý từ tệp mẫu không còn bị ngắt giữa chừng do chờ quá lâu.
+**Gợi ý điều kiện bằng AI gọn hơn và đáng tin hơn.** Các điều kiện trùng nhau được gộp thành một với mức bảo mật cao nhất, và gợi ý từ tệp mẫu không còn bị ngắt giữa chừng do chờ quá lâu. Mô tả bằng chữ không còn gặp lỗi "model response missing conditions": trong thử nghiệm, tỷ lệ mô tả nhận được điều kiện tăng từ 6/18 lên 18/18. Tệp mẫu Word, Excel, PowerPoint và PDF được nhận đến 12 MB, thay vì 1 MB. Xem [Viết mô tả cho Gợi ý AI](../classification/ai-suggest.md) để có kết quả tốt ngay từ lần đầu.
 
 ## Triển khai và vận hành
 
