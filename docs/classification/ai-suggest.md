@@ -42,8 +42,8 @@ Các mẫu dưới đây cho kết quả đúng và ổn định qua nhiều l�
   <Card title="Con dấu" tag="Văn bản có đóng dấu">
     Chọn nhãn đích, rồi viết: <em>Văn bản có con dấu đỏ thì gắn nhãn.</em> Kết quả là điều kiện nhận diện con dấu, kèm một điều kiện từ khóa "dấu đỏ", "con dấu đỏ".
   </Card>
-  <Card title="Cần hai dấu hiệu cùng lúc" tag="Giảm báo nhầm">
-    Viết: <em>Chỉ gắn khi tài liệu có ĐỒNG THỜI cụm từ "bảng lương" VÀ số CCCD 12 chữ số.</em> Mô hình nhỏ thường tách thành hai điều kiện riêng. Hãy kiểm tra kết quả, và nếu cần, gộp lại thành một điều kiện Hybrid với tổ hợp <strong>Tất cả</strong> ở tab Điều kiện phân loại.
+  <Card title="Cần hai dấu hiệu cùng lúc" tag="Làm bằng tay">
+    Gợi ý AI hiện <strong>chưa tạo đúng</strong> điều kiện "cùng lúc": dù mô tả ghi rõ ĐỒNG THỜI, mô hình vẫn đặt các dấu hiệu vào một điều kiện Từ khóa, nghĩa là khớp <em>một trong hai</em> là đủ. Hãy dùng Gợi ý AI để lấy từng dấu hiệu, rồi ở tab Điều kiện phân loại tạo một điều kiện <strong>Hybrid</strong> với tổ hợp <strong>Tất cả điều kiện</strong>.
   </Card>
 </Cards>
 
@@ -55,6 +55,7 @@ Các mẫu dưới đây cho kết quả đúng và ổn định qua nhiều l�
 | Gắn khi tài liệu có MỘT trong các cụm từ: "hóa đơn GTGT"; "tờ khai thuế". | chào bạn, công ty mình có nhiều loại giấy tờ lắm, kế toán thì có hóa đơn, nhân sự thì có hợp đồng... | Câu dài trộn nhiều phòng ban khiến mọi điều kiện bị gắn chung một nhãn, ở ví dụ thử nghiệm là Pháp chế cho cả hóa đơn lẫn lương thưởng. |
 | Mỗi lần một mức bảo mật: Báo cáo tài chính có cụm từ "tuyệt mật" thì gắn mức secret, loại finance. | Nếu có chữ "tuyệt mật" thì secret, nếu có chữ "nội bộ" thì internal. | Khi một câu có nhiều mức, mô hình thường gán cùng một mức cho tất cả. Trong thử nghiệm, "tuyệt mật" bị gắn mức Nội bộ. |
 | Dùng các mã nhãn có trong bộ nhãn, ví dụ confidential, hr, finance; hoặc chọn nhãn đích ở hai ô phía trên. | Gắn Mật, loại tài chính | Tên gọi tự do dễ bị hiểu sai mức. Trong thử nghiệm, "Mật" bị gán thành mức cao nhất là secret. |
+| Không ghi số lượng điều kiện. Để mô tả quyết định số điều kiện. | Gộp lại thành 1 condition thôi nhé; Tạo 5 điều kiện | Khi mô tả có con số kèm "điều kiện" hay "condition", hệ thống hiểu là yêu cầu một bộ điều kiện đủ mọi kỹ thuật. Trong thử nghiệm, "gộp thành 1 condition" cho ra 7 điều kiện gồm cả con dấu và từ điển. |
 | Dùng ml với các mô tả: "..." | Phân tích đầy đủ bằng mọi kỹ thuật, dùng ngữ nghĩa và từ điển | Các từ như "đầy đủ", "ngữ nghĩa", "từ điển", "hybrid", "kỹ thuật" được hiểu là yêu cầu phủ mọi kỹ thuật, nên hệ thống thêm cả điều kiện mẫu không liên quan, ví dụ từ điển nhân sự vào một chính sách về M&A. |
 
 ### Khi cần nhiều mức bảo mật
