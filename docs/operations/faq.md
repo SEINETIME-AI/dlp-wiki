@@ -22,7 +22,11 @@ Có. OCR và nhận diện dấu mộc chạy ngay trên máy trạm. AssistOCR 
 
 ### Agent có làm chậm máy không?
 
-Agent chủ yếu dùng tài nguyên khi phân loại file mới hoặc file vừa sửa, và tốn nhiều hơn với file lớn hoặc bản scan cần OCR. Bạn giới hạn kích thước file được quét trong [Chính sách Agent](../endpoints/agent-policy.md) và [Nguồn dữ liệu](../data/sources.md).
+Agent quét ở chế độ nền của Windows, nên Word, Excel và các ứng dụng khác của người dùng luôn được ưu tiên. Agent chừa lại ít nhất một lõi CPU, chỉ đọc một tệp lớn mỗi lúc và tạm dừng khi Windows báo sắp hết bộ nhớ. Với máy cấu hình yếu, chọn Mức quét **Nhẹ** trong [Chính sách Agent](../endpoints/agent-policy.md#hiệu-năng--tài-nguyên-máy).
+
+### Agent có bỏ qua file quá lớn không?
+
+Không. Mọi file trong phạm vi quét đều xuất hiện trong Kiểm kê dữ liệu. File quá lớn, bản scan quá dài hay video được gắn nhãn theo phần đã đọc hoặc theo thông tin của tệp, kèm cảnh báo "chưa được phân tích đầy đủ". Xem [Tệp lớn & mức phân tích](../data/large-files.md).
 
 ### Có cần đặt lịch quét không?
 

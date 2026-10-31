@@ -39,7 +39,9 @@ Khi một file khớp nhiều điều kiện, agent chọn **mức bảo mật c
 | Loại tài liệu | Nhóm nghiệp vụ của tài liệu, có thể phân cấp cha con, ví dụ Tài chính › Báo cáo quý. |
 | Chưa gắn nhãn | Tài liệu đã được quét nhưng không khớp điều kiện mức bảo mật nào, hoặc không đọc được nội dung. |
 | Chính sách phân loại | Tập điều kiện quyết định file được gắn nhãn gì, áp dụng theo đơn vị. |
-| Chính sách Agent | Cấu hình vận hành của agent như chu kỳ báo trạng thái, kích thước file tối đa và thời gian lưu offline. |
+| Chính sách Agent | Cấu hình vận hành của agent như chu kỳ báo trạng thái, mức quét và thời gian lưu offline. |
+| Mức quét | Mức Nhẹ, Chuẩn hoặc Sâu trong Chính sách Agent, quyết định agent đọc tài liệu kỹ đến đâu. |
+| Mức phân tích | Cho biết nhãn của một tài liệu dựa trên toàn bộ nội dung hay chỉ một phần. Tài liệu chưa đọc hết được gắn cờ "chưa phân tích đầy đủ". |
 | Bộ cài Agent | Gói cài đặt gắn sẵn đơn vị và chính sách. Máy cài từ gói này tự đăng ký với server. |
 | Nguồn dữ liệu | Thư mục cục bộ hoặc thư mục chia sẻ SMB/NAS mà agent giám sát. |
 | Enroll | Quá trình một máy trạm đăng ký với server sau khi cài agent. |

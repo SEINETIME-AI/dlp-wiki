@@ -25,6 +25,10 @@ Bấm vào một sự kiện để mở **Chi tiết sự kiện**. Phần đầ
 
 ![Chi tiết sự kiện và phần giải thích](/img/console/events-detail.png)
 
+Nếu agent chưa đọc hết nội dung của file, phần giải thích mở đầu bằng cảnh báo **Tài liệu chưa được phân tích đầy đủ** kèm lý do, hoặc **Chỉ kiểm tra thông tin của tệp, chưa đọc nội dung** khi agent không mở nội dung. Nhãn của những file này chỉ dựa trên phần đã đọc; xem [Tệp lớn & mức phân tích](../data/large-files.md) để biết cách xử lý.
+
+Với tệp nén như zip hay rar, phần giải thích liệt kê riêng từng tệp bên trong cùng nhãn và lý do của nó, tệp mật nhất đứng đầu, và cho biết mức của tệp nén được lấy từ tệp nào. Các tệp không đọc được, ví dụ có mật khẩu, được liệt kê theo tên cùng lý do.
+
 Nếu bạn đặt **Tên điều kiện** khi soạn chính sách, tên đó hiển thị ở đây thay cho mã quy tắc.
 
 Khi nhiều file có cùng nội dung, agent tái sử dụng kết quả phân loại trước đó. Những sự kiện này ghi chú rằng kết quả được lấy lại; hãy mở sự kiện phân loại đầu tiên của nội dung đó để xem lý do chi tiết.

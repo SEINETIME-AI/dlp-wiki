@@ -18,7 +18,7 @@ Server không bắt buộc phải có internet. Với máy chủ không có inte
 
 Agent chạy trên **Windows 64-bit** dưới dạng dịch vụ Windows tên `nextdlp`. Người cài cần có **quyền quản trị** trên máy.
 
-Agent tiêu tốn tài nguyên chủ yếu khi phân loại file lớn hoặc chạy OCR trên bản scan. Bạn có thể giới hạn kích thước file được quét bằng [Chính sách Agent](../endpoints/agent-policy.md) hoặc trong cấu hình [Nguồn dữ liệu](../data/sources.md).
+Agent chạy ở chế độ nền của Windows và nhường tài nguyên cho ứng dụng của người dùng. Nó tốn tài nguyên nhiều nhất khi phân loại file lớn hoặc đọc chữ trên bản scan. Bạn chọn mức đọc tài liệu cho từng loại máy bằng **Mức quét** trong [Chính sách Agent](../endpoints/agent-policy.md), và giới hạn dung lượng theo thư mục trong [Nguồn dữ liệu](../data/sources.md).
 
 ## Trình duyệt
 
@@ -26,17 +26,22 @@ Console là ứng dụng web, dùng tốt trên phiên bản mới của Microso
 
 ## Cổng mạng
 
-Server mở các cổng dưới đây. Chỉ cổng 80, 9090 và 9091 cần truy cập được từ mạng nội bộ; cơ sở dữ liệu và bộ nhớ đệm chỉ dùng bên trong máy chủ.
+Server mở các cổng dưới đây. Chỉ cổng 80, 443, 9090 và 9091 cần truy cập được từ mạng nội bộ; cơ sở dữ liệu và bộ nhớ đệm chỉ dùng bên trong máy chủ. Từ bản tiếp theo, Console chạy qua HTTPS ở cổng 443 và cổng 80 chỉ còn chuyển hướng sang HTTPS; với gói cài đặt V1, Console chạy ở cổng 80.
 
 | Cổng | Dịch vụ | Ai cần truy cập |
 |---|---|---|
-| 80 | Console và `/api` | Quản trị viên, người dùng Console, máy trạm |
+| 80 | Chuyển hướng sang HTTPS (V1: Console và `/api`) | Quản trị viên, người dùng Console |
+| 443 | Console và `/api` qua HTTPS | Quản trị viên, người dùng Console |
 | 9090 | HTTP API | Hệ thống tích hợp |
 | 9091 | gRPC cho agent | Máy trạm |
 | 5432, 6379 | PostgreSQL và Redis | Chỉ nội bộ máy chủ |
 
 :::warning Lưu ý
 
-Máy trạm phải kết nối được tới server qua cổng **80** và **9091**. Hãy mở hai cổng này trên tường lửa của máy chủ trước khi cài agent.
+Máy trạm và người dùng Console phải kết nối được tới server qua cổng **443** và **9091** (với gói V1 là **80** và **9091**). Hãy mở các cổng này trên tường lửa của máy chủ trước khi cài agent, ví dụ bằng lệnh PowerShell quyền quản trị:
+
+```powershell
+New-NetFirewallRule -DisplayName "NextDLP" -Direction Inbound -Protocol TCP -LocalPort 443,9091 -Action Allow
+```
 
 :::

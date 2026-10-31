@@ -10,7 +10,8 @@ Phần lớn sự cố khi triển khai NextDLP thuộc một trong ba nhóm: se
 
 | Triệu chứng | Nguyên nhân thường gặp | Cách xử lý |
 |---|---|---|
-| Không mở được Console sau khi khởi động lại máy chủ | Các dịch vụ không tự chạy lại sau khi máy chủ hoặc Docker khởi động lại. | Mở PowerShell trong thư mục cài đặt và chạy `docker compose -f docker-compose.deploy.yml up -d`. |
+| Không mở được Console sau khi khởi động lại máy chủ | Docker chưa khởi động cùng Windows, hoặc gói V1 không tự chạy lại dịch vụ. | Bật tự khởi động của Docker (Docker Desktop: *Start Docker Desktop when you sign in*). Với gói V1, mở PowerShell trong thư mục cài đặt và chạy `docker compose -f docker-compose.deploy.yml up -d`. |
+| Trình duyệt cảnh báo chứng chỉ khi mở Console | Server dùng chứng chỉ riêng do script cài đặt tạo. | Chọn **Advanced** rồi **Continue**. |
 | Script cài đặt báo không được phép chạy | Chính sách thực thi PowerShell chặn script. | Chạy `powershell -ExecutionPolicy Bypass -File .\docker\load-and-start.ps1`. |
 | Một dịch vụ không ở trạng thái `healthy` | Dịch vụ khởi động lỗi hoặc thiếu tài nguyên. | Xem log bằng `docker compose -f docker-compose.deploy.yml logs <tên-dịch-vụ>`. |
 | Cổng 80 đã bị chiếm | Máy chủ có web server khác như IIS. | Dừng dịch vụ đang dùng cổng 80 rồi khởi động lại NextDLP. |
@@ -30,7 +31,9 @@ Phần lớn sự cố khi triển khai NextDLP thuộc một trong ba nhóm: se
 |---|---|---|
 | Không có tài liệu nào trong Kiểm kê | Đơn vị của máy chưa có nguồn dữ liệu, hoặc chính sách chưa được kích hoạt. | Kiểm tra [Nguồn dữ liệu](../data/sources.md) và công tắc Kích hoạt của [Chính sách phân loại](../classification/policies.md). |
 | Máy ở trạng thái Chờ đồng bộ policy lâu | Agent chưa tải phiên bản chính sách mới. | Đợi vài phút khi máy trực tuyến; nếu vẫn vậy, khởi động lại dịch vụ `nextdlp`. |
-| Một file cụ thể không được phân loại | File nằm ngoài nguồn dữ liệu, đuôi file không nằm trong danh sách quét, hoặc vượt kích thước tối đa. | Kiểm tra cấu hình nguồn dữ liệu và tham số File tối đa của chính sách Agent. |
+| Một file cụ thể không xuất hiện trong Kiểm kê | File nằm ngoài nguồn dữ liệu, hoặc đuôi file hay thư mục của nó bị loại trừ. | Kiểm tra Include / Exclude của nguồn dữ liệu. |
+| File có cảnh báo "chưa được phân tích đầy đủ" | File lớn hơn Mức quét hoặc Kích thước tối đa của nguồn, bản scan quá dài, hoặc file không phải tài liệu. | Xem lý do trong chi tiết tài liệu và làm theo [Tệp lớn & mức phân tích](../data/large-files.md). |
+| Người dùng phản ánh máy chậm khi agent quét | Máy cấu hình thấp đang quét nhiều tài liệu lần đầu. | Chọn Mức quét **Nhẹ** trong chính sách Agent của nhóm máy đó. |
 | File ở trạng thái Chưa gắn nhãn | Không điều kiện mức bảo mật nào khớp, hoặc file đặt mật khẩu, hỏng hay không có lớp văn bản. | Mở sự kiện trong Nhật ký phân loại để xem lý do. |
 | File bị gắn nhãn khác mong đợi | Một điều kiện khác cũng khớp, và agent chọn mức mật nhất. | Mở sự kiện trong Nhật ký phân loại để xem điều kiện nào đã khớp, rồi dùng **Xem chính sách hiệu lực** để rà soát. |
 | AssistOCR báo lỗi trạng thái | Sai URL hoặc lỗi mạng nội bộ. | Kiểm tra URL tại Hệ thống › Nhà cung cấp phân loại. |

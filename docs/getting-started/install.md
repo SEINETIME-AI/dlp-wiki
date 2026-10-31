@@ -24,11 +24,14 @@ Giải nén gói vào một thư mục cố định, ví dụ `C:\nextdlp`. Hãy
 
 ### Bước 2. Khởi động server
 
-Mở PowerShell trong thư mục vừa giải nén và chạy:
+Mở PowerShell **với quyền quản trị** trong thư mục vừa giải nén và chạy:
 
 ```powershell
+Get-ChildItem -Recurse *.ps1 | Unblock-File
 .\docker\load-and-start.ps1
 ```
+
+Lệnh đầu tiên gỡ đánh dấu "tải từ internet" của Windows trên các script, để PowerShell cho phép chạy chúng.
 
 Với bản offline đầy đủ trên máy chủ không có internet, thêm tuỳ chọn `-SkipPull`:
 
@@ -54,13 +57,13 @@ docker compose -f docker-compose.deploy.yml ps
 
 ### Bước 4. Đăng nhập Console
 
-Mở trình duyệt tới `http://10.0.0.5` và đăng nhập bằng tài khoản quản trị mặc định **admin / admin**.
+Mở trình duyệt tới `https://10.0.0.5`. Lần đầu truy cập, trình duyệt cảnh báo về chứng chỉ vì server dùng chứng chỉ riêng do script cài đặt tạo ra; chọn **Advanced** rồi **Continue** để vào Console. Đăng nhập bằng tài khoản quản trị mặc định **admin / admin**.
 
 ![Màn hình đăng nhập Console](/img/console/login.png)
 
 :::danger Bắt buộc
 
-Đổi mật khẩu admin ngay sau lần đăng nhập đầu tiên: bấm vào tên tài khoản ở góc trên bên phải và chọn **Đổi mật khẩu**. Mật khẩu mới cần tối thiểu 12 ký tự.
+Console yêu cầu đặt mật khẩu mới ngay ở lần đăng nhập đầu tiên. Với gói cài đặt V1 (Console ở địa chỉ `http://`), hãy tự đổi mật khẩu admin ngay sau lần đăng nhập đầu tiên: bấm vào tên tài khoản ở góc trên bên phải và chọn **Đổi mật khẩu**. Mật khẩu mới cần tối thiểu 12 ký tự.
 
 :::
 

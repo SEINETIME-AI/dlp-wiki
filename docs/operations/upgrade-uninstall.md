@@ -24,7 +24,7 @@ Thực hiện sao lưu như mục trên.
 
 ### Bước 2. Giải nén bản mới vào đúng thư mục cũ
 
-Giải nén gói `dlp-stack-deploy.zip` của phiên bản mới **đè lên thư mục cài đặt hiện tại**, ví dụ `C:\nextdlp`.
+Giải nén gói `dlp-stack-deploy.zip` của phiên bản mới **đè lên thư mục cài đặt hiện tại**, ví dụ `C:\nextdlp`. Giữ nguyên file `.env` và thư mục `certs` trong thư mục đó: chúng chứa cấu hình bảo mật và chứng chỉ của server. Dữ liệu và mật khẩu được giữ nguyên sau khi nâng cấp.
 
 :::warning Giữ nguyên tên thư mục
 

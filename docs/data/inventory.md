@@ -8,11 +8,11 @@ Kiểm kê dữ liệu là danh mục mọi tài liệu mà agent đã quét, c�
 
 ## Tra cứu tài liệu
 
-Tab **Kiểm kê** liệt kê tài liệu kèm định dạng, nhãn bảo mật, loại tài liệu, máy nguồn và nguồn dữ liệu. Bạn có thể tìm theo tên hoặc đường dẫn, lọc theo nguồn và nhãn, hoặc chỉ xem tài liệu **Nhạy cảm**.
+Tab **Kiểm kê** liệt kê tài liệu kèm định dạng, nhãn bảo mật, loại tài liệu, máy nguồn và nguồn dữ liệu. Bạn có thể tìm theo tên hoặc đường dẫn, lọc theo nguồn và nhãn, hoặc chỉ xem tài liệu **Nhạy cảm**. Bộ lọc **Mức phân tích → Chưa phân tích đầy đủ** chỉ giữ lại những tài liệu mà agent chưa đọc hết nội dung, ví dụ tệp rất lớn, bản scan dài hoặc tệp có mật khẩu; xem [Tệp lớn & mức phân tích](./large-files.md).
 
 ![Trang Kiểm kê dữ liệu](/img/console/documents.png)
 
-Bấm vào một tài liệu để mở **Chi tiết tài liệu**, gồm nhãn hiện tại, trạng thái và lịch sử nhãn.
+Bấm vào một tài liệu để mở **Chi tiết tài liệu**, gồm nhãn hiện tại, trạng thái, lịch sử nhãn và phần **Vì sao tài liệu có nhãn này?**. Nếu tài liệu chưa được phân tích đầy đủ, phần này hiển thị cảnh báo kèm lý do và, khi biết, dung lượng đã đọc trên tổng dung lượng của tệp.
 
 ![Chi tiết tài liệu với nút Cập nhật nhãn](/img/console/documents-detail.png)
 
@@ -36,3 +36,7 @@ Cách đổi nhãn phụ thuộc vào vai trò của bạn.
 Tab **Yêu cầu đổi nhãn** có hai phần. **Yêu cầu đang nhận** dành cho người duyệt, mặc định hiện các yêu cầu đang chờ trong phạm vi đơn vị của bạn; mỗi yêu cầu hiển thị tài liệu, nhãn hiện tại, nhãn đề xuất và lý do, kèm nút **Phê duyệt** và **Từ chối**. **Yêu cầu của tôi** cho người gửi theo dõi trạng thái các yêu cầu mình đã gửi: Chờ duyệt, Đã duyệt hoặc Từ chối.
 
 Sau khi được duyệt, nhãn mới được áp dụng trên server và agent của máy chứa file sẽ đồng bộ ở lần kết nối kế tiếp.
+
+## Đọc tiếp
+
+Để biết vì sao một tài liệu được gắn nhãn như vậy, xem [Nhật ký phân loại](../classification/events.md). Để xử lý những tài liệu chưa được đọc hết, xem [Tệp lớn & mức phân tích](./large-files.md).
