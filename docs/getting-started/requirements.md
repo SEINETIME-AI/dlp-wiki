@@ -26,11 +26,11 @@ Console là ứng dụng web, dùng tốt trên phiên bản mới của Microso
 
 ## Cổng mạng
 
-Server mở các cổng dưới đây. Chỉ cổng 80, 443, 9090 và 9091 cần truy cập được từ mạng nội bộ; cơ sở dữ liệu và bộ nhớ đệm chỉ dùng bên trong máy chủ. Từ bản tiếp theo, Console chạy qua HTTPS ở cổng 443 và cổng 80 chỉ còn chuyển hướng sang HTTPS; với gói cài đặt V1, Console chạy ở cổng 80.
+Server mở các cổng dưới đây. Chỉ cổng 80, 443, 9090 và 9091 cần truy cập được từ mạng nội bộ; cơ sở dữ liệu và bộ nhớ đệm chỉ dùng bên trong máy chủ. Từ phiên bản 1.1.0, Console chạy qua HTTPS ở cổng 443 và cổng 80 chỉ còn chuyển hướng sang HTTPS; với gói cài đặt 1.0.0, Console chạy ở cổng 80.
 
 | Cổng | Dịch vụ | Ai cần truy cập |
 |---|---|---|
-| 80 | Chuyển hướng sang HTTPS (V1: Console và `/api`) | Quản trị viên, người dùng Console |
+| 80 | Chuyển hướng sang HTTPS (1.0.0: Console và `/api`) | Quản trị viên, người dùng Console |
 | 443 | Console và `/api` qua HTTPS | Quản trị viên, người dùng Console |
 | 9090 | HTTP API | Hệ thống tích hợp |
 | 9091 | gRPC cho agent | Máy trạm |
@@ -38,7 +38,7 @@ Server mở các cổng dưới đây. Chỉ cổng 80, 443, 9090 và 9091 cần
 
 :::warning[Lưu ý]
 
-Máy trạm và người dùng Console phải kết nối được tới server qua cổng **443** và **9091** (với gói V1 là **80** và **9091**). Hãy mở các cổng này trên tường lửa của máy chủ trước khi cài agent, ví dụ bằng lệnh PowerShell quyền quản trị:
+Máy trạm và người dùng Console phải kết nối được tới server qua cổng **443** và **9091** (với gói 1.0.0 là **80** và **9091**). Hãy mở các cổng này trên tường lửa của máy chủ trước khi cài agent, ví dụ bằng lệnh PowerShell quyền quản trị:
 
 ```powershell
 New-NetFirewallRule -DisplayName "NextDLP" -Direction Inbound -Protocol TCP -LocalPort 443,9091 -Action Allow

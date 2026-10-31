@@ -41,9 +41,9 @@ const starts = [
     text: 'Cho DLP hiện có tra cứu nhãn qua gRPC và thiết lập bảng nhãn sang hành động.',
   },
   {
-    to: '/docs/releases/v1',
+    to: '/docs/releases/',
     title: 'Phát hành',
-    text: 'Tính năng bản V1, dự kiến cho V2 và các lỗi đã biết.',
+    text: 'Ghi chú từng phiên bản, lộ trình phát triển và các lỗi đã biết.',
   },
 ];
 

@@ -10,7 +10,7 @@ Phần lớn sự cố khi triển khai NextDLP thuộc một trong ba nhóm: se
 
 | Triệu chứng | Nguyên nhân thường gặp | Cách xử lý |
 |---|---|---|
-| Không mở được Console sau khi khởi động lại máy chủ | Docker chưa khởi động cùng Windows, hoặc gói V1 không tự chạy lại dịch vụ. | Bật tự khởi động của Docker (Docker Desktop: *Start Docker Desktop when you sign in*). Với gói V1, mở PowerShell trong thư mục cài đặt và chạy `docker compose -f docker-compose.deploy.yml up -d`. |
+| Không mở được Console sau khi khởi động lại máy chủ | Docker chưa khởi động cùng Windows, hoặc gói 1.0.0 không tự chạy lại dịch vụ. | Bật tự khởi động của Docker (Docker Desktop: *Start Docker Desktop when you sign in*). Với gói 1.0.0, mở PowerShell trong thư mục cài đặt và chạy `docker compose -f docker-compose.deploy.yml up -d`. |
 | Trình duyệt cảnh báo chứng chỉ khi mở Console | Server dùng chứng chỉ riêng do script cài đặt tạo. | Chọn **Advanced** rồi **Continue**. |
 | Script cài đặt báo không được phép chạy | Chính sách thực thi PowerShell chặn script. | Chạy `powershell -ExecutionPolicy Bypass -File .\docker\load-and-start.ps1`. |
 | Một dịch vụ không ở trạng thái `healthy` | Dịch vụ khởi động lỗi hoặc thiếu tài nguyên. | Xem log bằng `docker compose -f docker-compose.deploy.yml logs <tên-dịch-vụ>`. |

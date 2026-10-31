@@ -63,7 +63,7 @@ Mở trình duyệt tới `https://10.0.0.5`. Lần đầu truy cập, trình du
 
 :::danger[Bắt buộc]
 
-Console yêu cầu đặt mật khẩu mới ngay ở lần đăng nhập đầu tiên. Với gói cài đặt V1 (Console ở địa chỉ `http://`), hãy tự đổi mật khẩu admin ngay sau lần đăng nhập đầu tiên: bấm vào tên tài khoản ở góc trên bên phải và chọn **Đổi mật khẩu**. Mật khẩu mới cần tối thiểu 12 ký tự.
+Console yêu cầu đặt mật khẩu mới ngay ở lần đăng nhập đầu tiên. Với gói cài đặt 1.0.0 (Console ở địa chỉ `http://`), hãy tự đổi mật khẩu admin ngay sau lần đăng nhập đầu tiên: bấm vào tên tài khoản ở góc trên bên phải và chọn **Đổi mật khẩu**. Mật khẩu mới cần tối thiểu 12 ký tự.
 
 :::
 

@@ -48,6 +48,20 @@ const config: Config = {
     ],
   ],
 
+  // Release pages moved to version numbers; links already sent out keep working.
+  plugins: [
+    [
+      '@docusaurus/plugin-client-redirects',
+      {
+        redirects: [
+          {from: '/docs/releases/next', to: '/docs/releases/1.1.0'},
+          {from: '/docs/releases/v1', to: '/docs/releases/1.0.0'},
+          {from: '/docs/releases/v2-roadmap', to: '/docs/releases/roadmap'},
+        ],
+      },
+    ],
+  ],
+
   themeConfig: {
     colorMode: {
       respectPrefersColorScheme: true,
@@ -63,7 +77,7 @@ const config: Config = {
         {to: '/docs/getting-started/install', label: 'Hướng dẫn', position: 'left'},
         {to: '/docs/integrations/dlp', label: 'Tích hợp DLP', position: 'left'},
         {to: '/docs/integrations/api', label: 'API', position: 'left'},
-        {to: '/docs/releases/v1', label: 'Phát hành', position: 'right'},
+        {to: '/docs/releases/', label: 'Phát hành', position: 'right'},
       ],
     },
     footer: {
@@ -80,8 +94,8 @@ const config: Config = {
         {
           title: 'Phát hành',
           items: [
-            {label: 'Phiên bản V1', to: '/docs/releases/v1'},
-            {label: 'Dự kiến V2', to: '/docs/releases/v2-roadmap'},
+            {label: 'Ghi chú phát hành', to: '/docs/releases/'},
+            {label: 'Lộ trình phát triển', to: '/docs/releases/roadmap'},
             {label: 'Lỗi đã biết', to: '/docs/releases/known-issues'},
           ],
         },

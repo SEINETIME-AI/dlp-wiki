@@ -1,10 +1,10 @@
 ---
-sidebar_position: 3
-title: Dự kiến V2
-description: Những tính năng đang được phát triển cho phiên bản tiếp theo.
+sidebar_position: 4
+title: Lộ trình phát triển
+description: Những tính năng đang được phát triển cho các phiên bản sau 1.1.0.
 ---
 
-Trang này liệt kê các hướng phát triển dự kiến cho V2. Nội dung và thứ tự ưu tiên có thể thay đổi theo phản hồi từ bản dùng thử. Chúng tôi sẽ cập nhật trang này khi từng hạng mục được xác nhận. Những hạng mục đã hoàn thành được chuyển sang [Bản tiếp theo](./next.md).
+Trang này liệt kê các hướng phát triển dự kiến cho các phiên bản sau 1.1.0, trong đó các thay đổi lớn sẽ thuộc phiên bản 2.0.0. Nội dung và thứ tự ưu tiên có thể thay đổi theo phản hồi từ bản dùng thử. Chúng tôi sẽ cập nhật trang này khi từng hạng mục được xác nhận. Khi một hạng mục hoàn thành, nó được chuyển sang trang ghi chú của phiên bản chứa nó.
 
 ## Phân loại chính xác hơn
 
