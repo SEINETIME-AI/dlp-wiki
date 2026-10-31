@@ -18,8 +18,6 @@ Server được phân phối dưới dạng một file `dlp-stack-deploy-<phiên
 
 <DownloadCard />
 
-Sau khi tải, bạn có thể đối chiếu mã SHA-256 của file bằng lệnh `Get-FileHash .\dlp-stack-deploy-1.0.0.zip` để chắc chắn file không bị hỏng trong quá trình tải: kết quả phải trùng với mã SHA-256 ghi trên ô tải ở trên.
-
 Giải nén gói vào một thư mục cố định, ví dụ `C:\nextdlp`. Hãy giữ nguyên thư mục này trong suốt thời gian sử dụng, vì Docker gắn dữ liệu của hệ thống với tên thư mục.
 
 ### Bước 2. Khởi động server

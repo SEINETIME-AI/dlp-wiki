@@ -22,10 +22,10 @@ const config: Config = {
     release: {
       version: '1.0.0',
       fileName: 'dlp-stack-deploy-1.0.0.zip',
-      // Google Drive folder dlp-release/1.0.0: anyone with the link can download.
-      url: 'https://drive.google.com/drive/folders/1fw-CHEmFBHYQ9zBwpLBJZHsOfYJPuWo4',
+      // Direct download of dlp-release/1.0.0/dlp-stack-deploy-1.0.0.zip on Google Drive (anyone with the
+      // link); confirm=t skips Drive's "too large to scan" page.
+      url: 'https://drive.usercontent.google.com/download?id=1XCEkteqhe_Az38T9nEMPppjwRFx_3L7L&export=download&confirm=t',
       offlineUrl: '',
-      sha256: '4C266E8CEC6A682D17C6A7DC0D09E3211775CC001A8AB3C25A851EDB0B670758',
     },
   },
 
