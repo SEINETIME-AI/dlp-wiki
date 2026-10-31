@@ -8,12 +8,6 @@ Trang này liệt kê những hạn chế đã biết của phiên bản hiện 
 
 ## Triển khai và vận hành
 
-### Server không tự chạy lại sau khi khởi động lại máy chủ
-
-Với gói cài đặt 1.0.0, sau khi máy chủ hoặc Docker khởi động lại, các dịch vụ NextDLP không tự chạy. Agent vẫn tự kết nối lại khi server hoạt động trở lại.
-
-**Cách xử lý:** mở PowerShell trong thư mục cài đặt và chạy `docker compose -f docker-compose.deploy.yml up -d`. Đã khắc phục trong [phiên bản 1.1.0](/releases/nextdlp-1.1.0).
-
 ### Cổng tra nhãn cho DLP chưa được mở
 
 Dịch vụ `LabelLookupService` chạy bên trong server nhưng gói cài đặt chưa mở cổng của nó ra mạng nội bộ, và chưa có màn hình quản lý DLP client trên Console.
@@ -32,15 +26,9 @@ File Word định dạng cũ `.doc` chưa được hỗ trợ. Với bảng tín
 
 **Cách xử lý:** lưu tài liệu `.doc` sang `.docx`. Với Excel, định dạng ô chứa mã số dưới dạng văn bản.
 
-### File lớn trên 20 MB được phân tích giới hạn
-
-Với gói cài đặt 1.0.0, kỹ thuật phân tích ngữ nghĩa không chạy cho file trên 20 MB, file PDF scan lớn chỉ được đọc lớp văn bản, và file lớn hơn ngưỡng "File tối đa" bị bỏ qua mà không hiện trên Console.
-
-**Cách xử lý:** dùng điều kiện từ khoá, từ điển hoặc Hybrid cho các loại tài liệu thường có dung lượng lớn. Phiên bản 1.1.0 thay cơ chế này bằng Mức quét và cảnh báo "chưa phân tích đầy đủ", xem [Tệp lớn & mức phân tích](../data/large-files.md).
-
 ### Tài liệu chưa phân tích đầy đủ có thể mang nhãn thấp
 
-Từ phiên bản 1.1.0, tài liệu vượt giới hạn của Mức quét được gắn nhãn theo phần đã đọc. PDF và tài liệu Office lớn hơn ngưỡng đọc toàn bộ chỉ được đánh giá theo thông tin tệp, nên nhãn của chúng có thể thấp hơn thực tế.
+Tài liệu vượt giới hạn của Mức quét được gắn nhãn theo phần đã đọc. PDF và tài liệu Office lớn hơn ngưỡng đọc toàn bộ chỉ được đánh giá theo thông tin tệp, nên nhãn của chúng có thể thấp hơn thực tế.
 
 **Cách xử lý:** định kỳ lọc Kiểm kê dữ liệu theo **Mức phân tích → Chưa phân tích đầy đủ** và rà soát, hoặc chọn Mức quét Sâu cho máy chủ tệp.
 

@@ -68,7 +68,7 @@ Bấm biểu tượng ghim cạnh nút **Tạo gợi ý**, hoặc kéo thả t�
 
 <Cards>
   <Card title="Định dạng nhận được">
-    Word, Excel, PowerPoint, PDF, tệp văn bản (.txt, .md) và ảnh (.png, .jpg, .webp). Ảnh và tệp văn bản được đọc ngay trong trình duyệt. Tệp Word, Excel, PowerPoint và PDF tối đa 1 MB ở bản 1.0.0, 12 MB từ phiên bản 1.1.0.
+    Word, Excel, PowerPoint, PDF, tệp văn bản (.txt, .md) và ảnh (.png, .jpg, .webp). Ảnh và tệp văn bản được đọc ngay trong trình duyệt. Tệp Word, Excel, PowerPoint và PDF tối đa 12 MB.
   </Card>
   <Card title="Chỉ phần đầu được dùng">
     Mô hình chỉ đọc khoảng <strong>4.500 ký tự đầu tiên</strong>, tức một đến hai trang. Dấu hiệu nằm ở trang sau sẽ không được nhận ra; trong thử nghiệm, số CCCD ở phụ lục cuối hợp đồng bị bỏ sót hoàn toàn.
@@ -106,9 +106,9 @@ Sau khi áp dụng và lưu, hãy kiểm tra chính sách trên vài tài liệu
 
 **Nút Tạo gợi ý bị tắt hoặc có thông báo Admin LLM chưa sẵn sàng.** Mô hình đang khởi động hoặc đang được tải về lần đầu. Chờ vài phút rồi tải lại trang. Trong lúc đó, tải tài liệu mẫu lên vẫn tạo được điều kiện bằng phương pháp phân tích tín hiệu đơn giản, có ghi "nguồn: heuristic".
 
-**Tải tệp mẫu lên thì báo lỗi 413 hoặc không có phản hồi.** Ở bản 1.0.0, tệp Word, Excel, PowerPoint và PDF lớn hơn 1 MB bị máy chủ web chặn trước khi tới server. Hãy dùng một tệp nhỏ hơn, ví dụ chỉ giữ những trang chứa dấu hiệu, hoặc mô tả bằng chữ. Phiên bản 1.1.0 nâng giới hạn này lên 12 MB.
+**Tải tệp mẫu lên thì báo lỗi 413 hoặc không có phản hồi.** Tệp mẫu lớn hơn 12 MB bị từ chối. Hãy dùng một tệp nhỏ hơn, ví dụ chỉ giữ những trang chứa dấu hiệu, hoặc mô tả bằng chữ.
 
-**Thông báo "model response missing conditions".** Ở phiên bản 1.0.0, mô hình đôi khi trả về chính sách không có điều kiện nào, nhất là với mô tả ngắn hoặc mô tả chung chung. Hãy viết lại theo một trong các mẫu câu ở trên rồi thử lại. Lỗi này đã được khắc phục trong [phiên bản 1.1.0](/releases/nextdlp-1.1.0).
+**Thông báo "model response missing conditions".** Mô hình không đề xuất được điều kiện nào, thường do mô tả quá ngắn hoặc quá chung chung. Hãy viết lại theo một trong các mẫu câu ở trên rồi thử lại.
 
 **Kết quả mỗi lần chạy một khác.** Mô hình có yếu tố ngẫu nhiên nhỏ. Mô tả càng cụ thể thì kết quả càng ổn định: các mẫu câu trên trang này cho cùng một kết quả qua nhiều lần chạy, còn mô tả chung chung như "tạo chính sách cho phòng nhân sự" cho mỗi lần một bộ điều kiện khác nhau.
 

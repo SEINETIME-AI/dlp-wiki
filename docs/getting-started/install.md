@@ -14,11 +14,11 @@ Trong các ví dụ dưới đây, `10.0.0.5` là địa chỉ IP của máy ch�
 
 ### Bước 1. Chuẩn bị gói cài đặt
 
-Server được phân phối dưới dạng một file `dlp-stack-deploy.zip`, chứa sẵn Docker image của Console và API, nên máy chủ không cần đăng nhập registry nào. Gói có hai biến thể. **Bản thường** sẽ tải PostgreSQL, Redis, nginx và Tika từ Docker Hub một lần khi cài. **Bản offline đầy đủ** đã kèm sẵn các image này và dùng cho máy chủ không có internet.
+Server được phân phối dưới dạng một file `dlp-stack-deploy-<phiên bản>.zip`, ví dụ `dlp-stack-deploy-1.0.0.zip`, chứa sẵn Docker image của Console và API, nên máy chủ không cần đăng nhập registry nào. Khi cài, gói tải PostgreSQL, Redis, nginx và Tika từ Docker Hub một lần, nên máy chủ cần có internet ở bước này. Với máy chủ không có internet, hãy liên hệ đội hỗ trợ NextDLP để nhận **bản offline đầy đủ** đã kèm sẵn các image này.
 
 <DownloadCard />
 
-Sau khi tải, bạn có thể đối chiếu mã SHA-256 của file bằng lệnh `Get-FileHash .\dlp-stack-deploy.zip` để chắc chắn file không bị hỏng trong quá trình tải.
+Sau khi tải, bạn có thể đối chiếu mã SHA-256 của file bằng lệnh `Get-FileHash .\dlp-stack-deploy-1.0.0.zip` để chắc chắn file không bị hỏng trong quá trình tải: kết quả phải trùng với mã SHA-256 ghi trên ô tải ở trên.
 
 Giải nén gói vào một thư mục cố định, ví dụ `C:\nextdlp`. Hãy giữ nguyên thư mục này trong suốt thời gian sử dụng, vì Docker gắn dữ liệu của hệ thống với tên thư mục.
 
@@ -63,7 +63,7 @@ Mở trình duyệt tới `https://10.0.0.5`. Lần đầu truy cập, trình du
 
 :::danger[Bắt buộc]
 
-Console yêu cầu đặt mật khẩu mới ngay ở lần đăng nhập đầu tiên. Với gói cài đặt 1.0.0 (Console ở địa chỉ `http://`), hãy tự đổi mật khẩu admin ngay sau lần đăng nhập đầu tiên: bấm vào tên tài khoản ở góc trên bên phải và chọn **Đổi mật khẩu**. Mật khẩu mới cần tối thiểu 12 ký tự.
+Console yêu cầu đặt mật khẩu mới ngay ở lần đăng nhập đầu tiên. Mật khẩu mới cần tối thiểu 12 ký tự. Sau này, bạn đổi mật khẩu bằng cách bấm vào tên tài khoản ở góc trên bên phải và chọn **Đổi mật khẩu**.
 
 :::
 

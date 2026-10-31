@@ -26,7 +26,7 @@ Bấm **Chính sách Agent mới**, đặt tên cho chính sách (ví dụ "Máy
 
 ## Mức quét
 
-Từ [phiên bản 1.1.0](/releases/nextdlp-1.1.0), Mức quét thay cho trường "File tối đa (MB)" của phiên bản 1.0.0. Thay vì tự nhập một con số, bạn chọn một trong ba mức đã được cân chỉnh sẵn. Mỗi mức quy định cùng lúc dung lượng file được đọc toàn bộ, số trang scan được đọc chữ (OCR), thời gian tối đa dành cho một file và giới hạn khi mở tệp nén.
+Thay vì tự nhập một con số dung lượng, bạn chọn một trong ba mức đã được cân chỉnh sẵn. Mỗi mức quy định cùng lúc dung lượng file được đọc toàn bộ, số trang scan được đọc chữ (OCR), thời gian tối đa dành cho một file và giới hạn khi mở tệp nén.
 
 <Cards>
   <Card title="Nhẹ" tag="Máy yếu">

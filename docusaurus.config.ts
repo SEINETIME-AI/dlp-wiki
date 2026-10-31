@@ -20,11 +20,12 @@ const config: Config = {
   // Release package shown by <DownloadCard /> on the install page; url points to the zot artifactory.
   customFields: {
     release: {
-      version: '',
-      fileName: 'dlp-stack-deploy.zip',
-      url: '',
+      version: '1.0.0',
+      fileName: 'dlp-stack-deploy-1.0.0.zip',
+      // Google Drive folder dlp-release/1.0.0: anyone with the link can download.
+      url: 'https://drive.google.com/drive/folders/1fw-CHEmFBHYQ9zBwpLBJZHsOfYJPuWo4',
       offlineUrl: '',
-      sha256: '',
+      sha256: '4C266E8CEC6A682D17C6A7DC0D09E3211775CC001A8AB3C25A851EDB0B670758',
     },
   },
 
@@ -68,8 +69,11 @@ const config: Config = {
       '@docusaurus/plugin-client-redirects',
       {
         redirects: [
-          {from: ['/docs/releases/next', '/docs/releases/1.1.0'], to: '/releases/nextdlp-1.1.0'},
-          {from: ['/docs/releases/v1', '/docs/releases/1.0.0'], to: '/releases/nextdlp-1.0.0'},
+          {
+            from: ['/docs/releases/next', '/docs/releases/1.1.0', '/docs/releases/v1', '/docs/releases/1.0.0',
+              '/releases/nextdlp-1.1.0'],
+            to: '/releases/nextdlp-1.0.0',
+          },
           {from: '/docs/releases/v2-roadmap', to: '/docs/releases/roadmap'},
         ],
       },

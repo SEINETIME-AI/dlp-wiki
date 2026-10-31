@@ -6,12 +6,6 @@ description: Cách agent xử lý tệp lớn, bản scan dài và tệp nén, c
 
 import {Cards, Card} from '@site/src/components/FeatureCards';
 
-:::note[Phiên bản 1.1.0]
-
-Các tính năng trên trang này có từ phiên bản 1.1.0 của NextDLP, hiện sắp phát hành. Xem [ghi chú phát hành 1.1.0](/releases/nextdlp-1.1.0).
-
-:::
-
 Không phải tài liệu nào cũng đọc được trọn vẹn trong thời gian hợp lý: một bản sao lưu vài chục GB, một bộ hồ sơ scan hàng nghìn trang, hay một tệp nén chứa tệp nén khác. NextDLP không bỏ qua những tệp này. Mọi tệp trong phạm vi quét đều được ghi nhận, được gắn nhãn, và Console cho bạn biết rõ nhãn đó dựa trên toàn bộ nội dung hay chỉ một phần.
 
 ## Ba mức phân tích

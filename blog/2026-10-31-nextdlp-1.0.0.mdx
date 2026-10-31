@@ -1,0 +1,102 @@
+---
+slug: nextdlp-1.0.0
+title: NextDLP 1.0.0 phát hành
+authors: [nextdlp]
+tags: [phát hành, 1.0.0]
+description: Phiên bản chính thức đầu tiên của NextDLP, bao phủ trọn vòng đời phân loại tài liệu, xử lý được tệp lớn và tệp nén, và chạy nhẹ trên máy người dùng.
+---
+
+import TOCInline from '@theme/TOCInline';
+import {Cards, Card} from '@site/src/components/FeatureCards';
+
+Kính gửi quý khách hàng và người dùng NextDLP,
+
+Chúng tôi vui mừng giới thiệu **NextDLP 1.0.0**, phiên bản chính thức đầu tiên. Phiên bản này bao phủ trọn vòng đời phân loại tài liệu: dựng hệ thống, triển khai agent theo đơn vị, soạn chính sách, gắn nhãn tự động, rà soát và đổi nhãn, báo cáo và cung cấp nhãn cho DLP. Mọi tệp trong phạm vi quét đều được ghi nhận, kể cả tệp rất lớn, bộ hồ sơ scan hàng trăm trang hay tệp nén lồng nhau, trong khi agent vẫn chạy nhẹ trên máy của người dùng.
+
+{/* truncate */}
+
+<TOCInline toc={toc} maxHeadingLevel={3} />
+
+## Tải về
+
+Gói cài đặt server `dlp-stack-deploy-1.0.0.zip` có tại trang [Cài đặt & kết nối](/docs/getting-started/install), kèm mã SHA-256 để kiểm tra tệp sau khi tải. Bộ cài agent cho từng đơn vị được tạo ngay trong Console sau khi server chạy.
+
+## Tính năng chính
+
+<Cards>
+  <Card title="Năm kỹ thuật nhận diện" tag="Phân loại">
+    Từ khoá và regex, phân tích ngữ nghĩa, từ điển có trọng số, Hybrid kết hợp nhiều tín hiệu, và nhận diện dấu mộc, trong cùng một chính sách.
+  </Card>
+  <Card title="Mức quét" tag="Chính sách Agent">
+    Chọn Nhẹ, Chuẩn hoặc Sâu để quyết định agent đọc tệp lớn, bản scan và tệp nén đến đâu trên từng nhóm máy.
+  </Card>
+  <Card title="Không tệp nào bị bỏ qua" tag="Kiểm kê dữ liệu">
+    Tài liệu chỉ được đọc một phần vẫn được gắn nhãn, kèm cảnh báo và lý do; bộ lọc Mức phân tích liệt kê tất cả chúng.
+  </Card>
+</Cards>
+
+### Triển khai
+
+**Server đóng gói sẵn.** Toàn bộ server chạy bằng Docker từ một gói zip duy nhất. Console và API được phục vụ qua HTTPS ở cổng 443; cổng 80 tự chuyển sang HTTPS. Server tự chạy lại sau khi máy chủ khởi động lại hoặc một dịch vụ gặp sự cố, miễn là Docker được đặt tự khởi động cùng Windows. Lần đăng nhập đầu tiên bắt buộc đặt mật khẩu mới. Xem [Cài đặt & kết nối](/docs/getting-started/install).
+
+**Bộ cài Agent theo đơn vị.** Mỗi đơn vị có bộ cài riêng gắn sẵn chính sách Agent và địa chỉ server. Máy cài từ bộ này tự đăng ký đúng phòng ban, kèm script cài lại cho máy đã có agent. Agent chạy được trên Windows mới cài, không cần cài thêm thư viện. Xem [Bộ cài Agent](/docs/endpoints/packages).
+
+**Quản lý máy trạm.** Theo dõi trạng thái kết nối, chuyển đơn vị, tạo lại khoá và thu hồi máy. Xem [Máy trạm](/docs/endpoints/machines).
+
+### Tổ chức và phân quyền
+
+**Cơ cấu tổ chức ba cấp** gồm Công ty con, Ban chuyên môn và Phòng ban, quản lý trực tiếp trong Console mà không cần AD/LDAP. Phòng ban chưa có chính sách riêng tự kế thừa chính sách của công ty con.
+
+**Ba vai trò** Quản trị hệ thống, Quản lý đơn vị và Người dùng máy trạm, với phạm vi giới hạn theo đơn vị. Mỗi máy enroll tự có một tài khoản Console cho người dùng của máy.
+
+### Phân loại
+
+**Bộ nhãn tuỳ biến.** Thang mức bảo mật sắp xếp bằng kéo thả, loại tài liệu phân cấp không giới hạn. Tài liệu không khớp điều kiện nào ở trạng thái Chưa gắn nhãn thay vì bị mặc định là công khai.
+
+**Năm kỹ thuật nhận diện** trong cùng một chính sách, mỗi chính sách có thể bật hoặc tắt từng kỹ thuật. Tài liệu dài được phân tích ngữ nghĩa trên các đoạn mẫu trải đều từ đầu đến cuối; từ khoá, mẫu nhận diện và từ điển luôn kiểm tra toàn bộ nội dung.
+
+**OCR trên máy trạm** cho ảnh và bản scan, có thể kết hợp AssistOCR tự host. PDF có sẵn lớp chữ chỉ chạy OCR cho những trang scan.
+
+**Ghi nhãn vào file** Office và PDF, để DLP đọc nhãn ngay cả khi không kết nối tới server.
+
+**Thư viện quy tắc nhận diện** với các mẫu RE2 dùng lại được, và **gợi ý điều kiện bằng AI** chạy trên mô hình nội bộ của server. Xem [Viết mô tả cho Gợi ý AI](/docs/classification/ai-suggest) để có kết quả tốt ngay từ lần đầu.
+
+### Tệp lớn và tệp nén
+
+**Mức quét trong Chính sách Agent.** Ba mức Nhẹ, Chuẩn và Sâu đọc đầy đủ tệp đến 50 MB, 250 MB và 2 GB, đọc chữ tối đa 20, 100 và 500 trang scan mỗi tệp, và dành tối đa 10, 30 và 60 phút cho một tệp. Xem [Chính sách Agent](/docs/endpoints/agent-policy#mức-quét).
+
+**Không tệp nào bị bỏ qua trong im lặng.** Tệp lớn hơn Mức quét được đọc một phần hoặc đánh giá theo thông tin tệp; video, ảnh đĩa và bản sao lưu được nhận diện ngay và đánh giá theo thông tin tệp; tệp lớn hơn Kích thước tối đa của nguồn dữ liệu vẫn xuất hiện trong Kiểm kê dữ liệu kèm cảnh báo. Xem [Tệp lớn & mức phân tích](/docs/data/large-files).
+
+**Tệp nén được đọc bên trong.** Agent mở zip, rar, 7z, tar, gz và phân loại từng tài liệu bên trong; tệp nén nhận mức cao nhất của các tệp bên trong, và phần giải thích liệt kê riêng từng tệp cùng nhãn và lý do. Tệp nén có tỷ lệ nén bất thường bị từ chối để bảo vệ máy.
+
+### Máy người dùng vẫn mượt
+
+Agent chạy ở chế độ nền của Windows, nhường CPU, ổ đĩa và bộ nhớ cho ứng dụng của người dùng. Agent dùng tối đa số lõi CPU trừ một (không quá bốn), chỉ đọc một tệp lớn mỗi lúc trong khi tệp nhỏ vẫn được quét song song, và tạm dừng khi Windows báo bộ nhớ sắp cạn. Giới hạn CPU trong Chính sách Agent áp dụng cho riêng agent, nên phần mềm khác như trình diệt virus không làm agent đứng chờ. PDF được xử lý từng trang, tài liệu Office được đọc từng phần, và tệp lớn không đổi không bị đọc lại sau khi khởi động lại máy. Xem [Hiệu năng & tài nguyên máy](/docs/endpoints/agent-policy#hiệu-năng--tài-nguyên-máy).
+
+### Rà soát và báo cáo
+
+**Kiểm kê dữ liệu** cho biết mọi tài liệu đã quét cùng nhãn hiện tại, máy và nguồn chứa nó, và mức độ tài liệu đã được phân tích.
+
+**Quy trình đổi nhãn có duyệt.** Người dùng gửi yêu cầu, Quản lý đơn vị duyệt trong phạm vi của mình.
+
+**Nhật ký phân loại có giải thích** cho biết vì sao từng file được gắn nhãn, và phát hiện khi nhãn trong file bị sửa bằng tay.
+
+**Báo cáo** theo nhãn và theo đơn vị, xuất CSV và PDF, lọc theo khoảng thời gian.
+
+### Tích hợp
+
+**Tra cứu nhãn qua gRPC** cho DLP với dịch vụ `LabelLookupService`, và **REST API** cho mọi thao tác quản trị. Xem [Kết nối DLP](/docs/integrations/dlp).
+
+## Hạn chế đã biết
+
+Các hạn chế của phiên bản này và cách xử lý tạm thời được liệt kê tại [Lỗi đã biết](/docs/releases/known-issues).
+
+## Kế hoạch tiếp theo
+
+Các bản sau sẽ tập trung vào việc giữ nhãn khi tệp được đổi tên hoặc di chuyển, bảo vệ nhãn đã duyệt khi tệp được sửa, mở sẵn dịch vụ tra nhãn cho DLP trong gói cài đặt, và cải thiện nhận diện dấu mộc. Xem [Lộ trình phát triển](/docs/releases/roadmap).
+
+## Lời kết
+
+Cảm ơn các đơn vị đã đồng hành cùng NextDLP trong quá trình phát triển; nhiều tính năng trong bản này đến từ chính những phản hồi đó. Nếu bạn gặp vấn đề hoặc có đề xuất, hãy liên hệ đội hỗ trợ NextDLP.
+
+*Đội ngũ NextDLP*
