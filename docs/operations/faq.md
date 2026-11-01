@@ -22,7 +22,7 @@ Có. OCR và nhận diện dấu mộc chạy ngay trên máy trạm. AssistOCR 
 
 ### Agent có làm chậm máy không?
 
-Agent quét ở chế độ nền của Windows, nên Word, Excel và các ứng dụng khác của người dùng luôn được ưu tiên. Agent chừa lại ít nhất một lõi CPU, chỉ đọc một tệp lớn mỗi lúc và tạm dừng khi Windows báo sắp hết bộ nhớ. Với máy cấu hình yếu, chọn Mức quét **Nhẹ** trong [Chính sách Agent](../endpoints/agent-policy.md#hiệu-năng--tài-nguyên-máy).
+Agent quét ở chế độ nền của Windows, nên Word, Excel và các ứng dụng khác của người dùng luôn được ưu tiên. Agent chừa lại ít nhất một luồng CPU, tự giới hạn ở 20% tổng CPU của máy, chỉ đọc một tệp lớn mỗi lúc và tạm dừng khi Windows báo sắp hết bộ nhớ. Với máy cấu hình yếu, chọn Mức quét **Nhẹ** trong [Chính sách Agent](../endpoints/agent-policy.md#hiệu-năng--tài-nguyên-máy).
 
 ### Agent có bỏ qua file quá lớn không?
 

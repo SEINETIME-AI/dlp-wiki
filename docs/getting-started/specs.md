@@ -106,10 +106,11 @@ Phần lớn giới hạn đi theo **Mức quét** bạn chọn trong [Chính s�
 | Hạng mục | Thông số |
 |---|---|
 | Hệ điều hành | Windows 64-bit, chạy dưới dạng dịch vụ `nextdlp` |
-| Dung lượng cài đặt | Khoảng 700 MB: chương trình khoảng 180 MB, mô hình và dữ liệu OCR khoảng 500 MB |
+| Dung lượng cài đặt | Khoảng 700 MB. `C:\Program Files\DlpExtension` khoảng 190 MB: chương trình agent và các thư viện đọc PDF, Office, ảnh. `C:\ProgramData\DlpExtension` khoảng 500 MB: mô hình phân tích ngữ nghĩa (460 MB), mô hình dò dấu mộc (12 MB) và dữ liệu OCR tiếng Việt, tiếng Anh (30 MB). Dữ liệu nội bộ và nhật ký của agent cần thêm một ít, tăng theo số tệp được theo dõi. |
 | Bộ nhớ | Khuyến nghị máy có từ 8 GB RAM. Máy ít bộ nhớ nên dùng Mức quét Nhẹ. |
-| Số luồng xử lý | Số lõi CPU trừ một, tối thiểu 1 và tối đa 4 |
+| Số tệp xử lý cùng lúc | Số luồng CPU của máy trừ một, tối thiểu 1 và tối đa 4. Ví dụ máy 2 luồng xử lý 1 tệp mỗi lúc, máy 8 luồng xử lý 4 tệp. Tệp trên 20 MB được xử lý từng tệp một. |
 | Ưu tiên | Chạy ở chế độ nền của Windows, nhường CPU, ổ đĩa và bộ nhớ cho ứng dụng của người dùng |
-| Giới hạn CPU | Theo Chính sách Agent; tính trên phần CPU của riêng agent |
+| Giới hạn CPU | Agent tự giới hạn ở 20% tổng CPU của máy. Chỉ tính phần CPU của riêng agent, nên phần mềm khác đang chạy không làm agent dừng. Vượt mức thì agent tạm ngừng nhận tệp mới cho tới khi giảm xuống. |
 | Khi máy thiếu bộ nhớ | Agent tạm dừng giữa các tệp và giữa các đoạn của một tệp cho tới khi Windows báo bộ nhớ đủ trở lại |
+| Kết nối mạng | Agent kết nối tới server qua cổng 9091 (gRPC), chỉ cần chiều từ máy trạm tới server. Khi mất mạng, agent vẫn phân loại theo chính sách đã lưu; sự kiện chưa gửi được giữ trên máy và gửi bù khi có mạng lại. |
 

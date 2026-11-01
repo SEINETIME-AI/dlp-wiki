@@ -90,7 +90,10 @@ Agent được thiết kế để làm việc ở chế độ nền và nhườn
     Việc quét chạy ở mức ưu tiên thấp về CPU, ổ đĩa và bộ nhớ. Khi người dùng mở Word, Excel hay trình duyệt, Windows dành tài nguyên cho các ứng dụng đó trước.
   </Card>
   <Card title="Số luồng quét vừa sức máy">
-    Agent dùng tối đa số lõi CPU trừ một, và không quá bốn luồng. Máy hai lõi chỉ quét một tệp mỗi lúc, luôn chừa lại một lõi cho người dùng.
+    Agent quét cùng lúc tối đa số luồng CPU của máy trừ một, và không quá bốn tệp. Máy hai luồng chỉ quét một tệp mỗi lúc, luôn chừa lại phần còn lại cho người dùng.
+  </Card>
+  <Card title="Giới hạn CPU của agent">
+    Agent tự giới hạn ở 20% tổng CPU của máy, chỉ tính phần CPU của riêng agent. Khi vượt mức, agent tạm ngừng nhận tệp mới cho tới khi giảm xuống.
   </Card>
   <Card title="Mỗi lúc một tệp lớn">
     Tệp lớn được đọc lần lượt từng tệp một. Trong lúc đó các tệp nhỏ vẫn được quét song song, không phải xếp hàng chờ sau tệp lớn.
