@@ -1,14 +1,14 @@
 ---
 sidebar_position: 3
 title: Giấy phép
-description: Nhận file giấy phép từ Seinetime và kích hoạt trên Console.
+description: Nhận file giấy phép và kích hoạt trên Console.
 ---
 
-Giấy phép (license) cho biết tổ chức của bạn được dùng NextDLP trên bao nhiêu máy trạm và tới ngày nào. Seinetime gửi giấy phép dưới dạng một file `.lic`, và Quản trị hệ thống tải file này lên Console để kích hoạt.
+Giấy phép (license) cho biết tổ chức của bạn được dùng NextDLP trên bao nhiêu máy trạm và tới ngày nào. Giấy phép là một file `.lic`, và Quản trị hệ thống tải file này lên Console để kích hoạt.
 
 ## Bước 1. Nhận file giấy phép
 
-Seinetime gửi file `.lic` qua email hoặc kênh hỗ trợ khi bạn mua, gia hạn hoặc dùng thử NextDLP. Hãy lưu nguyên file ở nơi an toàn và không mở hay sửa file bằng trình soạn thảo, vì file đã bị sửa sẽ không kích hoạt được.
+Đội hỗ trợ NextDLP gửi file `.lic` qua email hoặc kênh hỗ trợ khi bạn mua, gia hạn hoặc dùng thử NextDLP. Hãy lưu nguyên file ở nơi an toàn và không mở hay sửa file bằng trình soạn thảo, vì file đã bị sửa sẽ không kích hoạt được.
 
 ## Bước 2. Tải file lên Console
 
@@ -24,8 +24,8 @@ Nếu file không hợp lệ, Console giữ nguyên giấy phép đang dùng và
 
 | Thông báo | Cách xử lý |
 |---|---|
-| File không phải license hợp lệ hoặc đã bị sửa. | Tải lại file gốc từ email. Nếu vẫn lỗi, liên hệ Seinetime. |
-| File license này đã hết hạn. | Liên hệ Seinetime để nhận file mới. |
-| File này cũ hơn license đang dùng nên không được kích hoạt. | Dùng file mới nhất Seinetime đã gửi. |
+| File không phải license hợp lệ hoặc đã bị sửa. | Tải lại file gốc từ email. Nếu vẫn lỗi, liên hệ đội hỗ trợ NextDLP. |
+| File license này đã hết hạn. | Liên hệ đội hỗ trợ NextDLP để nhận file mới. |
+| File này cũ hơn license đang dùng. | Dùng file mới nhất bạn nhận được. |
 
 Khi gia hạn hoặc nâng số máy, bạn làm lại đúng các bước trên với file mới.
