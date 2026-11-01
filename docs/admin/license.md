@@ -38,7 +38,7 @@ Khi đã dùng hết số máy, máy mới cài agent sẽ không kết nối đ
 
 ![Máy đang chờ chỗ trống](/img/console/system-license-waiting.png)
 
-Agent trên máy đang chờ tự thử kết nối lại. Khi có chỗ trống, do bạn thu hồi một máy không còn dùng hoặc kích hoạt giấy phép có nhiều máy hơn, máy đó tự kết nối trong khoảng nửa phút mà không cần cài lại.
+Agent trên máy đang chờ tự thử kết nối lại. Khi có chỗ trống, do bạn thu hồi một máy không còn dùng hoặc kích hoạt giấy phép có nhiều máy hơn, máy đó tự kết nối ở lần thử kế tiếp, theo chu kỳ heartbeat của agent (mặc định 30 giây), mà không cần cài lại.
 
 Kích hoạt một giấy phép có ít máy hơn số máy đang dùng không làm máy nào ngừng hoạt động. Chỉ các máy cài thêm sau đó mới phải chờ chỗ trống.
 
@@ -63,4 +63,4 @@ Khi hết ân hạn, NextDLP dừng cho tới khi có giấy phép mới. Agent 
 
 ## Gia hạn và nâng gói
 
-Gia hạn, nâng số máy hay chuyển từ dùng thử sang chính thức đều làm cùng một cách: nhận file `.lic` mới rồi kích hoạt như các bước ở đầu trang. Giấy phép mới có hiệu lực ngay, kể cả khi giấy phép đang bị khóa. Các máy đã cài giữ nguyên, và agent phân loại tiếp các tệp đang chờ trong khoảng nửa phút sau khi kích hoạt.
+Gia hạn, nâng số máy hay chuyển từ dùng thử sang chính thức đều làm cùng một cách: nhận file `.lic` mới rồi kích hoạt như các bước ở đầu trang. Giấy phép mới có hiệu lực ngay, kể cả khi giấy phép đang bị khóa. Các máy đã cài giữ nguyên, và agent phân loại tiếp các tệp đang chờ ngay ở lần heartbeat kế tiếp sau khi kích hoạt.
