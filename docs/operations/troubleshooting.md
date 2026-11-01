@@ -24,6 +24,7 @@ Phần lớn sự cố khi triển khai NextDLP thuộc một trong ba nhóm: se
 | Cài xong nhưng máy không xuất hiện trên Console | Tường lửa chặn cổng 9091 giữa máy trạm và máy chủ. | Mở cổng 9091 trên máy chủ. Kiểm tra bằng `Test-NetConnection 10.0.0.5 -Port 9091` từ máy trạm. |
 | Máy báo Mất kết nối | Dịch vụ agent đã dừng. | Chạy `Get-Service nextdlp` trên máy; nếu dừng, chạy `Start-Service nextdlp`. |
 | Máy báo Mất kết nối sau khi đổi IP máy chủ | Agent vẫn kết nối về IP cũ. | Tạo lại bộ cài với IP mới và cài lại agent. |
+| Cài xong nhưng máy không xuất hiện trên Console, log agent ghi `license endpoint limit reached` | Giấy phép chưa kích hoạt hoặc đã dùng hết số máy. | Kiểm tra **Hệ thống › Giấy phép & phiên bản**. Thu hồi máy không còn dùng, hoặc liên hệ Seinetime để nâng gói. Xem [Giấy phép](../admin/license.md). |
 
 ## Agent chạy nhưng không phân loại
 
