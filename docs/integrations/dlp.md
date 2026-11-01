@@ -62,7 +62,7 @@ Dùng `Lookup` cho từng file và `LookupBatch` khi cần tra số lượng l�
 
 :::warning[Cổng dịch vụ tra nhãn]
 
-Dịch vụ tra nhãn chạy trên một cổng riêng của server, và trong gói cài đặt hiện tại cổng này chưa được mở ra ngoài. Hãy liên hệ đội hỗ trợ NextDLP để được hướng dẫn mở cổng khi tích hợp. Xem [Lỗi đã biết](../releases/known-issues.md).
+Dịch vụ tra nhãn chạy trên một cổng riêng của server, và trong gói cài đặt hiện tại cổng này chưa được mở ra ngoài. Hãy liên hệ đội hỗ trợ NextDLP để được hướng dẫn mở cổng khi tích hợp.
 
 :::
 

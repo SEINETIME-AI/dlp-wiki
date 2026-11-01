@@ -115,7 +115,6 @@ const config: Config = {
             {label: 'Thông báo phát hành', to: '/releases'},
             {label: 'Các phiên bản', to: '/docs/releases/'},
             {label: 'Lộ trình phát triển', to: '/docs/releases/roadmap'},
-            {label: 'Lỗi đã biết', to: '/docs/releases/known-issues'},
             {label: 'Nhận tin qua RSS', href: 'pathname:///releases/rss.xml'},
           ],
         },

@@ -13,7 +13,7 @@ Mỗi phiên bản NextDLP có một bài thông báo phát hành tại mục [P
 |---|---|---|---|
 | [1.0.0](/releases/nextdlp-1.0.0) | 31/10/2026 | Bản hiện hành | Phiên bản chính thức đầu tiên: phân loại trọn vòng đời, tệp lớn và tệp nén, Mức quét, tệp chưa đọc hết được gắn Chờ rà soát, agent chạy nền, Console dùng HTTPS |
 
-Những hạn chế còn tồn tại của bản hiện hành được liệt kê tại [Lỗi đã biết](./known-issues.md). Các hướng phát triển sau đó có tại [Lộ trình phát triển](./roadmap.md).
+Các hướng phát triển tiếp theo có tại [Lộ trình phát triển](./roadmap.md).
 
 ## Cách đánh số phiên bản
 
