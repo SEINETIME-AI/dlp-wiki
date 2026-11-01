@@ -46,4 +46,4 @@ New-NetFirewallRule -DisplayName "NextDLP" -Direction Inbound -Protocol TCP -Loc
 
 :::
 
-Thông số chi tiết về mô hình, định dạng tệp, giới hạn xử lý và hiệu năng đo được có tại [Thông số kỹ thuật](./specs.md).
+Thông số chi tiết về mô hình, định dạng tệp và giới hạn xử lý có tại [Thông số kỹ thuật](./specs.md).

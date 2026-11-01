@@ -1,12 +1,12 @@
 ---
 sidebar_position: 6
 title: Thông số kỹ thuật
-description: Các mô hình AI NextDLP sử dụng, chính sách mô hình, định dạng tệp hỗ trợ, giới hạn xử lý và hiệu năng đo được của phiên bản 1.0.0.
+description: Các mô hình AI NextDLP sử dụng, chính sách mô hình, định dạng tệp hỗ trợ, giới hạn xử lý và tài nguyên máy trạm của phiên bản 1.0.0.
 ---
 
 import {Cards, Card} from '@site/src/components/FeatureCards';
 
-Trang này tổng hợp các thông số của **NextDLP 1.0.0**: mô hình AI nào chạy ở đâu, agent đọc được những định dạng nào, đọc đến đâu và dùng bao nhiêu tài nguyên. Các con số được đo trên bản phát hành này; chúng tôi sẽ tiếp tục tối ưu ở các bản sau và cập nhật trang này cùng mỗi [bản phát hành](/releases).
+Trang này tổng hợp các thông số của **NextDLP 1.0.0**: mô hình AI nào chạy ở đâu, agent đọc được những định dạng nào, đọc đến đâu và cần tài nguyên gì. Chúng tôi sẽ tiếp tục tối ưu ở các bản sau và cập nhật trang này cùng mỗi [bản phát hành](/releases).
 
 ## Mô hình AI
 
@@ -81,24 +81,11 @@ Tệp vượt giới hạn không bị bỏ qua: chúng vẫn được gắn nh�
 |---|---|
 | Hệ điều hành | Windows 64-bit, chạy dưới dạng dịch vụ `nextdlp` |
 | Dung lượng cài đặt | Khoảng 700 MB: chương trình khoảng 180 MB, mô hình và dữ liệu OCR khoảng 500 MB |
-| Bộ nhớ | Đỉnh khoảng 2,1 GB khi đang phân loại tệp lớn; khuyến nghị máy có từ 8 GB RAM. Máy ít bộ nhớ nên dùng Mức quét Nhẹ. |
+| Bộ nhớ | Khuyến nghị máy có từ 8 GB RAM. Máy ít bộ nhớ nên dùng Mức quét Nhẹ. |
 | Số luồng xử lý | Số lõi CPU trừ một, tối thiểu 1 và tối đa 4 |
 | Ưu tiên | Chạy ở chế độ nền của Windows, nhường CPU, ổ đĩa và bộ nhớ cho ứng dụng của người dùng |
 | Giới hạn CPU | Theo Chính sách Agent; tính trên phần CPU của riêng agent |
 | Khi máy thiếu bộ nhớ | Agent tạm dừng giữa các tệp và giữa các đoạn của một tệp cho tới khi Windows báo bộ nhớ đủ trở lại |
-
-## Hiệu năng đo được
-
-Đo trên bản 1.0.0, máy thử nghiệm laptop AMD Ryzen 5 5600H (6 lõi), 32 GB RAM, SSD, Mức quét Chuẩn, chính sách có cả quy tắc ngữ nghĩa. Kết quả trên máy của bạn sẽ khác tuỳ cấu hình và tải.
-
-| Kịch bản | Kết quả |
-|---|---|
-| Tệp nhỏ khi đang có tệp lớn chạy cùng (20 tệp nhỏ, 2 tệp lớn) | Có nhãn sau khoảng 0,9 giây (trung vị), 1,04 giây với 95% số tệp |
-| Tệp 200 MB và tệp 50 GB lần lượt | Bộ nhớ đỉnh khoảng 2,1 GB, không tăng theo kích thước tệp |
-| Tệp lớn hơn Mức quét (thử với tệp 50 GB) | Vẫn có nhãn từ phần đầu và cuối tệp, được đánh dấu "đọc một phần" và gắn Chờ rà soát, không bị bỏ qua |
-| Khởi động lại máy | Không đọc lại tệp nào đã phân loại và không đổi |
-| Bộ kiểm thử phân loại tự động | 48/48 kịch bản đạt: định dạng, OCR, dấu mộc, từ điển, ngữ nghĩa, Hybrid, tệp lớn, tệp nén |
-| Gợi ý AI từ tệp mẫu | Khoảng 1 phút mỗi lần trên CPU server |
 
 ## Sắp tối ưu
 
