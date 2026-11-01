@@ -14,7 +14,7 @@ Trong các ví dụ dưới đây, `10.0.0.5` là địa chỉ IP của máy ch�
 
 ### Bước 1. Chuẩn bị gói cài đặt
 
-Server được phân phối dưới dạng một file `dlp-stack-deploy-<phiên bản>.zip`, ví dụ `dlp-stack-deploy-1.0.0.zip`, chứa sẵn Docker image của Console và API, nên máy chủ không cần đăng nhập registry nào. Khi cài, gói tải PostgreSQL, Redis, nginx và Tika từ Docker Hub một lần, nên máy chủ cần có internet ở bước này. Với máy chủ không có internet, hãy liên hệ đội hỗ trợ NextDLP để nhận **bản offline đầy đủ** đã kèm sẵn các image này.
+Server được phân phối dưới dạng một file `dlp-stack-deploy-<phiên bản>.zip`, ví dụ `dlp-stack-deploy-1.0.0.zip`. Khi cài lần đầu, gói tự tải thêm các thành phần còn lại của hệ thống từ internet, nên máy chủ cần có internet ở bước này và việc tải có thể mất một lúc. Với máy chủ không có internet, hãy liên hệ đội hỗ trợ NextDLP để nhận **bản offline đầy đủ**.
 
 <DownloadCard />
 
@@ -53,7 +53,17 @@ Chạy lệnh sau và đảm bảo mọi dịch vụ ở trạng thái `running`
 docker compose -f docker-compose.deploy.yml ps
 ```
 
-### Bước 4. Đăng nhập Console
+### Bước 4. Mở cổng trên tường lửa
+
+Máy trạm và người dùng Console kết nối tới server qua cổng **443** (Console) và **9091** (agent). Trên máy chủ, mở PowerShell với quyền quản trị và chạy:
+
+```powershell
+New-NetFirewallRule -DisplayName "NextDLP" -Direction Inbound -Protocol TCP -LocalPort 443,9091 -Action Allow
+```
+
+Nếu tổ chức dùng tường lửa riêng giữa các mạng, hãy mở thêm hai cổng này trên đó. Danh sách đầy đủ các cổng có tại [Yêu cầu hệ thống](./requirements.md#cổng-mạng).
+
+### Bước 5. Đăng nhập Console
 
 Mở trình duyệt tới `https://10.0.0.5`. Lần đầu truy cập, trình duyệt cảnh báo về chứng chỉ vì server dùng chứng chỉ riêng do script cài đặt tạo ra; chọn **Advanced** rồi **Continue** để vào Console. Đăng nhập bằng tài khoản quản trị mặc định **admin / admin**.
 
@@ -67,15 +77,23 @@ Console yêu cầu đặt mật khẩu mới ngay ở lần đăng nhập đầu
 
 ## Phần 2. Chuẩn bị Console
 
-Trước khi tạo bộ cài, Console cần có ít nhất một đơn vị và một chính sách Agent.
+Trước khi tạo bộ cài, Console cần có giấy phép đã kích hoạt, ít nhất một đơn vị và một chính sách Agent.
 
-### Bước 5. Tạo đơn vị
+### Bước 6. Kích hoạt giấy phép
+
+Sau khi đăng nhập, mọi trang đều hiện banner *"Chưa kích hoạt license nên chưa cài được agent"*. Khi chưa kích hoạt giấy phép, máy trạm cài agent sẽ không kết nối được về server.
+
+Vào **Báo cáo & quản trị › Hệ thống › Giấy phép & phiên bản**, bấm **Kích hoạt license** rồi chọn file `.lic` nhận từ đội hỗ trợ NextDLP. Console hiện **Đã kích hoạt license** cùng số máy và ngày hết hạn của giấy phép. Xem [Giấy phép](../admin/license.md).
+
+![Mục Giấy phép & phiên bản](/img/console/system-license.png)
+
+### Bước 7. Tạo đơn vị
 
 Vào **Tổ chức › Cơ cấu tổ chức** và tạo một **Công ty con** (rồi thêm **Phòng ban** bên dưới) hoặc một **Ban chuyên môn**. Bộ cài luôn được gắn với một đơn vị lá: phòng ban của công ty con, hoặc chính ban chuyên môn. Xem [Cơ cấu tổ chức](../organization/org.md).
 
 ![Trang Cơ cấu tổ chức](/img/console/organization.png)
 
-### Bước 6. Tạo chính sách Agent
+### Bước 8. Tạo chính sách Agent
 
 Vào **Thiết bị & Agent › Chính sách Agent** và bấm **Chính sách Agent mới**. Giữ các giá trị mặc định là đủ cho lần đầu. Xem [Chính sách Agent](../endpoints/agent-policy.md).
 
@@ -83,7 +101,7 @@ Vào **Thiết bị & Agent › Chính sách Agent** và bấm **Chính sách Ag
 
 ## Phần 3. Cài agent lên máy trạm
 
-### Bước 7. Tạo bộ cài cho đơn vị
+### Bước 9. Tạo bộ cài cho đơn vị
 
 Vào **Thiết bị & Agent › Bộ cài Agent** và bấm **Tạo bộ cài mới**. Chọn Công ty con hoặc Ban chuyên môn, chọn phòng ban sẽ triển khai, chọn chính sách Agent vừa tạo, rồi nhập IP máy chủ vào ô **Agent server**.
 
@@ -95,7 +113,7 @@ Nếu để trống, agent sẽ kết nối về `localhost`, tức là chỉ ho
 
 :::
 
-### Bước 8. Tải và cài bộ cài
+### Bước 10. Tải và cài bộ cài
 
 Khi bộ cài chuyển sang trạng thái **Sẵn sàng**, bấm **Tải bộ cài** để nhận một file zip. Chép file này sang máy trạm, giải nén, rồi chạy file `.msi` và chấp nhận hộp thoại quyền quản trị.
 
@@ -110,7 +128,7 @@ Start-Service nextdlp
 
 Vì bộ cài là file MSI chuẩn, bạn có thể dùng cùng lệnh này với công cụ phân phối phần mềm của tổ chức để cài hàng loạt.
 
-### Bước 9. Kiểm tra kết nối
+### Bước 11. Kiểm tra kết nối
 
 Trong vòng một phút, máy trạm xuất hiện tại **Thiết bị & Agent › Máy trạm** với trạng thái **Trực tuyến**, và số máy đã đăng ký của bộ cài tăng thêm một. Hệ thống cũng tự tạo một tài khoản Console cho máy này, xem [Người dùng & phân quyền](../organization/users.md).
 
