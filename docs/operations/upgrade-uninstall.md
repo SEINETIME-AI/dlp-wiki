@@ -40,8 +40,6 @@ Docker gắn dữ liệu của hệ thống với tên thư mục cài đặt. N
 
 Server tự cập nhật cấu trúc cơ sở dữ liệu khi khởi động. Đăng nhập Console và kiểm tra phiên bản tại **Hệ thống › Giấy phép & phiên bản**.
 
-Nếu hệ thống đang dùng một bản NextDLP chưa có giấy phép, bản mới sẽ chạy ở trạng thái **Chuyển tiếp** trong 30 ngày, không giới hạn số máy. Hãy kích hoạt file giấy phép Seinetime gửi trong thời gian này, theo hướng dẫn tại [Giấy phép](../admin/license.md).
-
 ### Bước 4. Cập nhật agent nếu cần
 
 Nếu ghi chú phát hành yêu cầu cập nhật agent, hãy **Tạo lại** bộ cài của từng đơn vị trên Console, tải bộ cài mới và cài lại agent như mục dưới đây.
