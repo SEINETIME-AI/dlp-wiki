@@ -14,10 +14,10 @@ NextDLP dùng bốn mô hình, mỗi mô hình một việc. Ba mô hình đầu
 
 <Cards>
   <Card title="Phân tích ngữ nghĩa" tag="Máy trạm">
-    <strong>paraphrase-multilingual-MiniLM-L12-v2</strong> (Sentence-Transformers), chạy bằng ONNX Runtime trên CPU. Đa ngôn ngữ, gồm tiếng Việt; biểu diễn mỗi đoạn văn bằng vector 384 chiều và so với mô tả loại tài liệu do quản trị viên viết.
+    <strong>paraphrase-multilingual-MiniLM-L12-v2</strong> (Sentence-Transformers), chạy bằng ONNX Runtime trên CPU. Đa ngôn ngữ, gồm tiếng Việt; so nội dung tài liệu với mô tả loại tài liệu do quản trị viên viết.
   </Card>
   <Card title="Đọc chữ (OCR)" tag="Máy trạm">
-    <strong>Tesseract</strong> với dữ liệu tiếng Việt và tiếng Anh. Đọc chữ trên ảnh và trên trang scan của PDF; trang PDF được dựng ở 150 DPI trước khi đọc.
+    <strong>Tesseract</strong> với dữ liệu tiếng Việt và tiếng Anh. Đọc chữ trên ảnh và trên trang scan của PDF.
   </Card>
   <Card title="Dấu mộc và chữ ký" tag="Máy trạm">
     <strong>YOLOv8n</strong> do NextDLP huấn luyện riêng, nhận diện hai loại đối tượng: dấu mộc và chữ ký. Chạy trên mọi ảnh và trang scan, kể cả khi đã đạt giới hạn số trang OCR.
@@ -68,7 +68,7 @@ Các giới hạn sau áp dụng cho mọi mức:
 
 | Hạng mục | Giới hạn |
 |---|---|
-| Tệp lớn | Tệp trên 20 MB được đọc tuần tự theo từng đoạn 5 MB, nên bộ nhớ không tăng theo kích thước tệp. Mỗi máy đọc một tệp lớn tại một thời điểm; tệp nhỏ vẫn được xử lý song song. |
+| Tệp lớn | Tệp trên 20 MB được đọc theo từng phần, nên bộ nhớ không tăng theo kích thước tệp. Mỗi máy đọc một tệp lớn tại một thời điểm; tệp nhỏ vẫn được xử lý song song. |
 | Tệp nén | Tối đa 1.000 tệp bên trong; tài liệu bên trong lớn hơn 20 MB không được đọc. Tệp nén có tỷ lệ nén bất thường bị từ chối để bảo vệ máy. |
 | Phân tích ngữ nghĩa | Văn bản đến 256 KB được phân tích toàn bộ. Văn bản dài hơn được phân tích trên 8 đoạn mẫu trải đều từ đầu đến cuối; từ khoá, biểu thức và từ điển vẫn kiểm tra toàn bộ nội dung. |
 | Gợi ý AI từ tệp mẫu | Mô hình đọc khoảng 4.500 ký tự đầu của tệp mẫu (một đến hai trang); tệp tải lên tối đa 10 MB. |
@@ -95,9 +95,8 @@ Tệp vượt giới hạn không bị bỏ qua: chúng vẫn được gắn nh�
 |---|---|
 | Tệp nhỏ khi đang có tệp lớn chạy cùng (20 tệp nhỏ, 2 tệp lớn) | Có nhãn sau khoảng 0,9 giây (trung vị), 1,04 giây với 95% số tệp |
 | Tệp 200 MB và tệp 50 GB lần lượt | Bộ nhớ đỉnh khoảng 2,1 GB, không tăng theo kích thước tệp |
-| Tệp 50 GB | Có nhãn sau khoảng 70 giây, từ 250 MB đầu và cuối tệp, đánh dấu "đọc một phần" |
+| Tệp lớn hơn Mức quét (thử với tệp 50 GB) | Vẫn có nhãn từ phần đầu và cuối tệp, được đánh dấu "đọc một phần" và gắn Chờ rà soát, không bị bỏ qua |
 | Khởi động lại máy | Không đọc lại tệp nào đã phân loại và không đổi |
-| Phân tích ngữ nghĩa | Khoảng 0,13 giây cho mỗi KB văn bản trên một lõi; vì vậy văn bản dài được phân tích trên đoạn mẫu |
 | Bộ kiểm thử phân loại tự động | 48/48 kịch bản đạt: định dạng, OCR, dấu mộc, từ điển, ngữ nghĩa, Hybrid, tệp lớn, tệp nén |
 | Gợi ý AI từ tệp mẫu | Khoảng 1 phút mỗi lần trên CPU server |
 
