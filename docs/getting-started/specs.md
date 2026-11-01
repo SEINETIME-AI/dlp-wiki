@@ -14,16 +14,16 @@ NextDLP dùng bốn mô hình, mỗi mô hình một việc. Ba mô hình đầu
 
 <Cards>
   <Card title="Phân tích ngữ nghĩa" tag="Máy trạm">
-    <strong>paraphrase-multilingual-MiniLM-L12-v2</strong> (Sentence-Transformers), chạy bằng ONNX Runtime trên CPU. Đa ngôn ngữ, gồm tiếng Việt; so nội dung tài liệu với mô tả loại tài liệu do quản trị viên viết.
+    Mô hình ngôn ngữ đa ngữ, hỗ trợ tiếng Việt, chạy bằng CPU của máy trạm. So nội dung tài liệu với mô tả loại tài liệu do quản trị viên viết.
   </Card>
   <Card title="Đọc chữ (OCR)" tag="Máy trạm">
-    <strong>Tesseract</strong> với dữ liệu tiếng Việt và tiếng Anh. Đọc chữ trên ảnh và trên trang scan của PDF.
+    Bộ nhận dạng chữ cho tiếng Việt và tiếng Anh. Đọc chữ trên ảnh và trên trang scan của PDF.
   </Card>
   <Card title="Dấu mộc và chữ ký" tag="Máy trạm">
-    <strong>YOLOv8n</strong> do NextDLP huấn luyện riêng, nhận diện hai loại đối tượng: dấu mộc và chữ ký. Chạy trên mọi ảnh và mọi trang PDF, kể cả trang có chữ (để bắt dấu mộc dạng hình vẽ) và kể cả khi đã hết số trang OCR. Ảnh nhỏ hơn 150×150 điểm ảnh, như logo hay biểu tượng, được bỏ qua.
+    Mô hình thị giác máy tính do NextDLP huấn luyện riêng, nhận diện hai loại đối tượng: dấu mộc và chữ ký. Chạy trên mọi ảnh và mọi trang PDF, kể cả trang có chữ (để bắt dấu mộc dạng hình vẽ) và kể cả khi đã hết số trang OCR. Ảnh nhỏ hơn 150×150 điểm ảnh, như logo hay biểu tượng, được bỏ qua.
   </Card>
   <Card title="Gợi ý AI" tag="Server">
-    <strong>Qwen2.5 1.5B</strong> chạy qua Ollama trên server, bằng CPU. Chỉ dùng cho tab Gợi ý AI khi soạn chính sách; không tham gia phân loại tệp trên máy trạm.
+    Mô hình ngôn ngữ cỡ nhỏ chạy trên server, bằng CPU. Chỉ dùng cho tab Gợi ý AI khi soạn chính sách; không tham gia phân loại tệp trên máy trạm.
   </Card>
 </Cards>
 
