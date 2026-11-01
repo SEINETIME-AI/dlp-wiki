@@ -18,7 +18,7 @@ Server không bắt buộc phải có internet. Với máy chủ không có inte
 
 Agent chạy trên **Windows 64-bit** dưới dạng dịch vụ Windows tên `nextdlp`. Người cài cần có **quyền quản trị** trên máy.
 
-Agent chạy ở chế độ nền của Windows và nhường tài nguyên cho ứng dụng của người dùng. Nó tốn tài nguyên nhiều nhất khi phân loại file lớn hoặc đọc chữ trên bản scan. Bạn chọn mức đọc tài liệu cho từng loại máy bằng **Mức quét** trong [Chính sách Agent](../endpoints/agent-policy.md), và giới hạn dung lượng theo thư mục trong [Nguồn dữ liệu](../data/sources.md).
+Khuyến nghị máy trạm có từ **8 GB RAM** và khoảng **700 MB** dung lượng trống cho chương trình và các mô hình. Agent chạy ở chế độ nền của Windows và nhường tài nguyên cho ứng dụng của người dùng. Nó tốn tài nguyên nhiều nhất khi phân loại file lớn hoặc đọc chữ trên bản scan. Bạn chọn mức đọc tài liệu cho từng loại máy bằng **Mức quét** trong [Chính sách Agent](../endpoints/agent-policy.md), và giới hạn dung lượng theo thư mục trong [Nguồn dữ liệu](../data/sources.md).
 
 ## Trình duyệt
 
@@ -45,3 +45,5 @@ New-NetFirewallRule -DisplayName "NextDLP" -Direction Inbound -Protocol TCP -Loc
 ```
 
 :::
+
+Thông số chi tiết về mô hình, định dạng tệp, giới hạn xử lý và hiệu năng đo được có tại [Thông số kỹ thuật](./specs.md).

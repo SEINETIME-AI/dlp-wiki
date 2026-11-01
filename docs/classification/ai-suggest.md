@@ -68,7 +68,7 @@ Bấm biểu tượng ghim cạnh nút **Tạo gợi ý**, hoặc kéo thả t�
 
 <Cards>
   <Card title="Định dạng nhận được">
-    Word, Excel, PowerPoint, PDF, tệp văn bản (.txt, .md) và ảnh (.png, .jpg, .webp). Ảnh và tệp văn bản được đọc ngay trong trình duyệt. Tệp Word, Excel, PowerPoint và PDF tối đa 12 MB.
+    Word, Excel, PowerPoint, PDF, tệp văn bản (.txt, .md) và ảnh (.png, .jpg, .webp). Ảnh và tệp văn bản được đọc ngay trong trình duyệt. Tệp Word, Excel, PowerPoint và PDF tối đa 10 MB.
   </Card>
   <Card title="Chỉ phần đầu được dùng">
     Mô hình chỉ đọc khoảng <strong>4.500 ký tự đầu tiên</strong>, tức một đến hai trang. Dấu hiệu nằm ở trang sau sẽ không được nhận ra; trong thử nghiệm, số CCCD ở phụ lục cuối hợp đồng bị bỏ sót hoàn toàn.
