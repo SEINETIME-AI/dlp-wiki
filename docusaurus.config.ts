@@ -22,9 +22,8 @@ const config: Config = {
     release: {
       version: '1.0.0',
       fileName: 'dlp-stack-deploy-1.0.0.zip',
-      // Direct download of dlp-release/1.0.0/dlp-stack-deploy-1.0.0.zip on Google Drive (anyone with the
-      // link); confirm=t skips Drive's "too large to scan" page.
-      url: 'https://drive.usercontent.google.com/download?id=1XCEkteqhe_Az38T9nEMPppjwRFx_3L7L&export=download&confirm=t',
+      // No public download until releases are licensed; the card then asks readers to contact support.
+      url: '',
       offlineUrl: '',
     },
   },
