@@ -1,5 +1,7 @@
 ---
 sidebar_position: 2
+# Hidden until tested on a real deployment; remove to publish again.
+draft: true
 title: REST API
 description: REST API cho phép tự động hoá các tác vụ quản trị như quản lý máy trạm, chính sách và xuất báo cáo.
 ---

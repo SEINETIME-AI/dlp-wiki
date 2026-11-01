@@ -13,8 +13,6 @@ Mỗi phiên bản NextDLP có một bài thông báo phát hành tại mục [P
 |---|---|---|---|
 | [1.0.0](/releases/nextdlp-1.0.0) | 31/10/2026 | Bản hiện hành | Phiên bản chính thức đầu tiên: phân loại trọn vòng đời, tệp lớn và tệp nén, Mức quét, tệp chưa đọc hết được gắn Chờ rà soát, agent chạy nền, Console dùng HTTPS |
 
-Các hướng phát triển tiếp theo có tại [Lộ trình phát triển](./roadmap.md).
-
 ## Cách đánh số phiên bản
 
 NextDLP đánh số phiên bản theo dạng **MAJOR.MINOR.PATCH**, giống phần lớn phần mềm doanh nghiệp.
@@ -32,4 +30,4 @@ Mỗi gói cài đặt gồm server, Console và bộ cài agent của cùng m�
 
 ## Nâng cấp
 
-Để chuyển lên phiên bản mới, làm theo [Nâng cấp & gỡ cài đặt](../operations/upgrade-uninstall.md), rồi đọc mục **Lưu ý khi nâng cấp** trong bài thông báo của phiên bản đó trước khi cài lại agent trên máy trạm.
+Trước khi chuyển lên phiên bản mới, hãy đọc mục **Lưu ý khi nâng cấp** trong bài thông báo của phiên bản đó và liên hệ đội hỗ trợ NextDLP để được hướng dẫn.

@@ -87,6 +87,3 @@ Tệp vượt giới hạn không bị bỏ qua: chúng vẫn được gắn nh�
 | Giới hạn CPU | Theo Chính sách Agent; tính trên phần CPU của riêng agent |
 | Khi máy thiếu bộ nhớ | Agent tạm dừng giữa các tệp và giữa các đoạn của một tệp cho tới khi Windows báo bộ nhớ đủ trở lại |
 
-## Sắp tối ưu
-
-Các bản tiếp theo sẽ tập trung vào: giảm bộ nhớ của agent trên máy cấu hình thấp, phân tích ngữ nghĩa nhanh hơn và chính xác hơn cho tài liệu rất dài, phân biệt chính xác trang scan với trang có chữ trong PDF lớn, và nâng chất lượng Gợi ý AI. Xem [Lộ trình phát triển](../releases/roadmap.md).

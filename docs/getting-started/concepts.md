@@ -22,7 +22,7 @@ Agent ghi nhãn vào thuộc tính của file (với tài liệu Office và PDF)
 
 ### 4. Thực thi
 
-Khi file được gửi hoặc sao chép, DLP của tổ chức tra cứu nhãn từ server NextDLP và áp dụng hành động tương ứng. Xem [Kết nối DLP](../integrations/dlp.md).
+Khi file được gửi hoặc sao chép, DLP của tổ chức tra cứu nhãn từ server NextDLP và áp dụng hành động tương ứng.
 
 ## Mô hình hai tầng nhãn
 

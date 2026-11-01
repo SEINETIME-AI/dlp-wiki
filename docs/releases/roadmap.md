@@ -1,5 +1,7 @@
 ---
 sidebar_position: 4
+# Hidden for now; remove to publish again.
+draft: true
 title: Lộ trình phát triển
 description: Những tính năng đang được phát triển cho các phiên bản sau 1.0.0.
 ---

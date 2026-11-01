@@ -73,7 +73,7 @@ const config: Config = {
               '/releases/nextdlp-1.1.0'],
             to: '/releases/nextdlp-1.0.0',
           },
-          {from: '/docs/releases/v2-roadmap', to: '/docs/releases/roadmap'},
+          {from: '/docs/releases/v2-roadmap', to: '/docs/releases/'},
         ],
       },
     ],
@@ -92,8 +92,6 @@ const config: Config = {
       items: [
         {to: '/docs/getting-started/intro', label: 'Giới thiệu', position: 'left'},
         {to: '/docs/getting-started/install', label: 'Hướng dẫn', position: 'left'},
-        {to: '/docs/integrations/dlp', label: 'Tích hợp DLP', position: 'left'},
-        {to: '/docs/integrations/api', label: 'API', position: 'left'},
         {to: '/releases', label: 'Phát hành', position: 'right'},
       ],
     },
@@ -104,7 +102,6 @@ const config: Config = {
           title: 'Tài liệu',
           items: [
             {label: 'Cài đặt & kết nối', to: '/docs/getting-started/install'},
-            {label: 'Nâng cấp & gỡ cài đặt', to: '/docs/operations/upgrade-uninstall'},
             {label: 'Câu hỏi thường gặp', to: '/docs/operations/faq'},
           ],
         },
@@ -113,7 +110,6 @@ const config: Config = {
           items: [
             {label: 'Thông báo phát hành', to: '/releases'},
             {label: 'Các phiên bản', to: '/docs/releases/'},
-            {label: 'Lộ trình phát triển', to: '/docs/releases/roadmap'},
             {label: 'Nhận tin qua RSS', href: 'pathname:///releases/rss.xml'},
           ],
         },

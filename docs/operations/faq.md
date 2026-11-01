@@ -6,7 +6,7 @@ description: Giải đáp nhanh cho những câu hỏi được quan tâm nhiề
 
 ### NextDLP có thay thế DLP hiện tại không?
 
-Không. NextDLP gắn nhãn cho tài liệu, còn DLP của bạn dựa vào nhãn đó để chặn hoặc cho phép. Xem [Kết nối DLP](../integrations/dlp.md).
+Không. NextDLP gắn nhãn cho tài liệu, còn DLP của bạn dựa vào nhãn đó để chặn hoặc cho phép.
 
 ### Dữ liệu có rời khỏi hệ thống của tôi không?
 

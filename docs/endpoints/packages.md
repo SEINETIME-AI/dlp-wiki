@@ -47,7 +47,7 @@ Mỗi dòng có các thao tác **Tải bộ cài**, **Tạo lại**, **Thu hồi
 
 **Tải bộ cài** trả về một file zip gồm ba thành phần. File `.msi` dùng để cài lần đầu. Script `Reinstall-NextDLP.ps1` dùng để cài lại hoặc thay bộ cài trên máy đã có agent; script tự gỡ bản cũ, cài bản trong thư mục và khởi động dịch vụ. File `README-INSTALL.txt` tóm tắt hai cách cài này.
 
-Cách cài chi tiết có tại [Cài đặt & kết nối](../getting-started/install.md#phần-3-cài-agent-lên-máy-trạm). Cách cài lại và gỡ agent có tại [Nâng cấp & gỡ cài đặt](../operations/upgrade-uninstall.md).
+Cách cài chi tiết có tại [Cài đặt & kết nối](../getting-started/install.md#phần-3-cài-agent-lên-máy-trạm).
 
 ## Sau khi cài
 

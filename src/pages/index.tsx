@@ -36,14 +36,9 @@ const starts = [
     text: 'Soạn chính sách phân loại, quản lý kiểm kê dữ liệu, duyệt yêu cầu đổi nhãn và xem báo cáo.',
   },
   {
-    to: '/docs/integrations/dlp',
-    title: 'Kết nối DLP',
-    text: 'Cho DLP hiện có tra cứu nhãn qua gRPC và thiết lập bảng nhãn sang hành động.',
-  },
-  {
     to: '/releases',
     title: 'Phát hành',
-    text: 'Thông báo phát hành từng phiên bản, lộ trình phát triển và các lỗi đã biết.',
+    text: 'Thông báo phát hành và nội dung của từng phiên bản.',
   },
 ];
 

@@ -1,5 +1,7 @@
 ---
 sidebar_position: 2
+# Hidden until tested on a real deployment; remove to publish again.
+draft: true
 title: Nâng cấp & gỡ cài đặt
 description: Quy trình sao lưu, nâng cấp server, cài lại agent và gỡ hệ thống một cách an toàn.
 ---

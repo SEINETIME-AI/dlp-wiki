@@ -1,5 +1,7 @@
 ---
 sidebar_position: 1
+# Hidden until tested on a real deployment; remove to publish again.
+draft: true
 title: Kết nối DLP
 description: DLP đọc nhãn mà NextDLP ghi vào file, hoặc tra cứu nhãn qua dịch vụ gRPC LabelLookupService, rồi áp dụng hành động theo quy định của tổ chức.
 ---
