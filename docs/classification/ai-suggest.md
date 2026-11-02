@@ -56,7 +56,7 @@ Các mẫu dưới đây cho kết quả đúng và ổn định qua nhiều l�
 | Mỗi lần một mức bảo mật: Báo cáo tài chính có cụm từ "tuyệt mật" thì gắn mức secret, loại finance. | Nếu có chữ "tuyệt mật" thì secret, nếu có chữ "nội bộ" thì internal. | Khi một câu có nhiều mức, mô hình thường gán cùng một mức cho tất cả. Trong thử nghiệm, "tuyệt mật" bị gắn mức Nội bộ. |
 | Dùng các mã nhãn có trong bộ nhãn, ví dụ confidential, hr, finance; hoặc chọn nhãn đích ở hai ô phía trên. | Gắn Mật, loại tài chính | Tên gọi tự do dễ bị hiểu sai mức. Trong thử nghiệm, "Mật" bị gán thành mức cao nhất là secret. |
 | Không ghi số lượng điều kiện. Để mô tả quyết định số điều kiện. | Gộp lại thành 1 condition thôi nhé; Tạo 5 điều kiện | Khi mô tả có con số kèm "điều kiện" hay "condition", hệ thống hiểu là yêu cầu một bộ điều kiện đủ mọi kỹ thuật. Trong thử nghiệm, "gộp thành 1 condition" cho ra 7 điều kiện gồm cả con dấu và từ điển. |
-| Dùng ml với các mô tả: "..." | Phân tích đầy đủ bằng mọi kỹ thuật, dùng ngữ nghĩa và từ điển | Các từ như "đầy đủ", "ngữ nghĩa", "từ điển", "hybrid", "kỹ thuật" được hiểu là yêu cầu phủ mọi kỹ thuật, nên hệ thống thêm cả điều kiện mẫu không liên quan, ví dụ từ điển nhân sự vào một chính sách về M&A. |
+| Dùng ml với các mô tả: "..." | Phân tích đầy đủ bằng mọi kỹ thuật, dùng ngữ nghĩa và từ điển | Các từ như "đầy đủ", "ngữ nghĩa", "semantic", "từ điển", "dictionary", "hybrid", "kỹ thuật", "nhiều mức" được hiểu là yêu cầu phủ mọi kỹ thuật, nên hệ thống thêm cả điều kiện mẫu không liên quan, ví dụ từ điển nhân sự vào một chính sách về M&A. Lưu ý "nhiều mức" cũng nằm trong danh sách này, nên câu "nhiều mức bảo mật" cho ra nhiều điều kiện hơn bạn chờ đợi. |
 
 ### Khi cần nhiều mức bảo mật
 
@@ -68,10 +68,10 @@ Bấm biểu tượng ghim cạnh nút **Tạo gợi ý**, hoặc kéo thả t�
 
 <Cards>
   <Card title="Định dạng nhận được">
-    Word, Excel, PowerPoint, PDF, tệp văn bản (.txt, .md) và ảnh (.png, .jpg, .webp). Ảnh và tệp văn bản được đọc ngay trong trình duyệt. Tệp Word, Excel, PowerPoint và PDF tối đa 10 MB.
+    Word (.doc, .docx), Excel (.xls, .xlsx), PDF, tệp văn bản (.txt, .md) và ảnh (.png, .jpg, .webp, .gif). PowerPoint chưa được hỗ trợ: hãy sao chép chữ sang tệp .txt. Ảnh và tệp văn bản được đọc ngay trong trình duyệt. Tệp Word, Excel và PDF tối đa 10 MB.
   </Card>
   <Card title="Chỉ phần đầu được dùng">
-    Mô hình chỉ đọc khoảng <strong>4.500 ký tự đầu tiên</strong>, tức một đến hai trang. Dấu hiệu nằm ở trang sau sẽ không được nhận ra; trong thử nghiệm, số CCCD ở phụ lục cuối hợp đồng bị bỏ sót hoàn toàn.
+    Mô hình chỉ đọc <strong>4.500 ký tự đầu tiên</strong>, khoảng một trang rưỡi A4. Dấu hiệu nằm ở trang sau sẽ không được nhận ra; trong thử nghiệm, số CCCD ở phụ lục cuối hợp đồng bị bỏ sót hoàn toàn.
   </Card>
   <Card title="Thời gian">
     Một tài liệu mẫu cần khoảng 1 đến 1,5 phút, lâu hơn mô tả bằng chữ vì phải trích chữ và phân tích văn bản dài hơn. Hãy chờ đến khi bảng Điều kiện đề xuất hiện ra.
