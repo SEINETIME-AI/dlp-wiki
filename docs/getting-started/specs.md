@@ -56,13 +56,15 @@ Nhãn được ghi ngược vào tệp Office (.docx, .xlsx, .pptx) và PDF dư�
 
 ### Agent đọc một tệp như thế nào
 
-Cách agent đọc một tệp phụ thuộc vào kích thước của tệp đó.
+Cách agent đọc một tệp phụ thuộc vào kích thước và định dạng của tệp đó. "Ngưỡng đọc toàn bộ" là dòng **Đọc toàn bộ tệp đến** trong bảng [Giới hạn theo Mức quét](#giới-hạn-theo-mức-quét) bên dưới (50 MB, 250 MB hoặc 2 GB).
 
 | Kích thước tệp | Agent làm gì |
 |---|---|
-| Đến 20 MB | Đọc toàn bộ nội dung. Ảnh và trang scan trong PDF được OCR, tới giới hạn số trang của Mức quét, và được dò dấu mộc. |
-| Trên 20 MB, chưa vượt giới hạn của Mức quét | Tệp văn bản và PDF được đọc theo từng phần, nên bộ nhớ không tăng theo kích thước tệp. **PDF lớn chỉ được đọc lớp chữ và dò dấu mộc, không được OCR**, nên tệp được đánh dấu đọc chưa hết. Mỗi máy đọc một tệp lớn tại một thời điểm; tệp nhỏ vẫn được xử lý song song. |
-| Vượt giới hạn của Mức quét | Tệp văn bản và PDF chỉ được đọc phần đầu và phần cuối, tổng cộng bằng giới hạn đó. Tệp Office và các định dạng khác chỉ được đánh giá theo thông tin tệp. Tệp được đánh dấu đọc chưa hết. |
+| 20 MB trở xuống | Mọi định dạng được đọc toàn bộ nội dung. Ảnh và trang scan trong PDF được OCR tới giới hạn số trang của Mức quét, và được dò dấu mộc. |
+| Trên 20 MB, chưa vượt ngưỡng đọc toàn bộ | **Tệp văn bản:** đọc hết nội dung, theo từng phần nên bộ nhớ không tăng theo kích thước tệp.<br/>**PDF:** chữ có sẵn trong tệp (PDF xuất từ Word, Excel…) được đọc hết; trang scan được dò dấu mộc nhưng **không được đọc chữ (OCR)**. Vì vậy mọi PDF trên 20 MB đều được đánh dấu đọc chưa hết, kể cả PDF không có trang scan.<br/>**Office, ảnh:** đọc toàn bộ nội dung và OCR như tệp từ 20 MB trở xuống.<br/>Mỗi máy chỉ đọc một tệp trên 20 MB tại một thời điểm; các tệp lớn khác chờ đến lượt, còn tệp nhỏ vẫn được xử lý song song. |
+| Vượt ngưỡng đọc toàn bộ | **Tệp văn bản:** chỉ đọc phần đầu và phần cuối, tổng cộng bằng ngưỡng đó.<br/>**PDF, Office, ảnh và định dạng khác:** không đọc nội dung, chỉ đánh giá theo thông tin tệp (tên, đường dẫn, kích thước, ngày tháng).<br/>Tệp được đánh dấu đọc chưa hết. |
+
+**Tệp nén** không áp dụng bảng trên theo kích thước của chính tệp nén. Agent mở tệp nén và phân loại từng tài liệu bên trong (mỗi tài liệu tối đa 20 MB), trong giới hạn dung lượng giải nén và số tầng lồng nhau của Mức quét. Xem [Tệp lớn & mức phân tích](../data/large-files.md#xem-từng-tệp-bên-trong-tệp-nén).
 
 Tệp đọc chưa hết không bị bỏ qua: tệp vẫn được gắn nhãn từ phần đã đọc, Console ghi rõ phần nào chưa đọc và vì sao, và mặc định tệp được gắn ít nhất **Chờ rà soát**. Xem [Tệp lớn & mức phân tích](../data/large-files.md).
 
