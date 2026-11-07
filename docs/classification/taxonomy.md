@@ -37,3 +37,24 @@ Mỗi loại có tên, màu và trạng thái **Đang dùng** hoặc **Ngừng d
 Chuyển nhãn sang trạng thái **Ngừng dùng** thay vì xoá, để giữ nguyên lịch sử phân loại của các tài liệu đã gắn nhãn đó.
 
 :::
+
+## Phân loại theo nhiều chiều
+
+Bộ nhãn có hai tầng cố định: mỗi tài liệu có **một** mức bảo mật và **nhiều** loại tài liệu. Khi tổ chức cần phân loại theo nhiều chiều cùng lúc, như phòng ban sở hữu, chủ đề nghiệp vụ hay quy định áp dụng, hãy dùng mỗi nhánh gốc của cây Loại tài liệu cho một chiều.
+
+```text
+Phòng ban
+├─ Tài chính
+├─ Nhân sự
+└─ Kỹ thuật
+Chủ đề nghiệp vụ
+├─ Hồ sơ mời thầu
+├─ Báo cáo tài chính
+└─ Sơ đồ, bản vẽ kỹ thuật
+Quy định
+└─ Dữ liệu cá nhân
+```
+
+Mỗi loại được gắn bởi điều kiện riêng trong [Chính sách phân loại](./policies.md), và một tài liệu nhận tất cả loại có điều kiện khớp. Ví dụ, một báo cáo tài chính kèm danh sách lương có thể được gắn cùng lúc Tài chính, Báo cáo tài chính và Dữ liệu cá nhân, với mức bảo mật Mật. Vì nhãn ghi vào file gồm cả các loại cha, DLP có thể đặt quy tắc cho cả một nhánh, ví dụ mọi tài liệu thuộc nhánh Quy định.
+
+Với chủ đề không có từ khoá đặc trưng, như văn bản chỉ đạo hay tài liệu kỹ thuật chuyên ngành, hãy mô tả chủ đề bằng câu văn trong điều kiện Ngữ nghĩa (ML); xem [Kỹ thuật nhận diện](./policies.md#kỹ-thuật-nhận-diện).

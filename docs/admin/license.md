@@ -4,7 +4,7 @@ title: Giấy phép
 description: Nhận và kích hoạt file giấy phép, số máy được dùng, thời hạn, ân hạn và gia hạn.
 ---
 
-Giấy phép (license) cho biết tổ chức của bạn được dùng NextDLP trên bao nhiêu máy trạm và tới ngày nào. Giấy phép là một file `.lic`, và Quản trị hệ thống tải file này lên Console để kích hoạt.
+Giấy phép (license) cho biết tổ chức của bạn được dùng NextDLP trên bao nhiêu máy trạm và tới ngày nào, hoặc không giới hạn thời gian với giấy phép vĩnh viễn. Giấy phép là một file `.lic`, và Quản trị hệ thống tải file này lên Console để kích hoạt.
 
 Với bản cài mới, hãy kích hoạt giấy phép trước khi cài agent. Khi chưa có giấy phép, Console vẫn đăng nhập và cấu hình được, nhưng chưa máy trạm nào kết nối được về server.
 
@@ -44,7 +44,16 @@ Kích hoạt một giấy phép có ít máy hơn số máy đang dùng không l
 
 ## Thời hạn và ân hạn
 
-Mục Giấy phép & phiên bản cho biết trạng thái giấy phép, ngày hết hạn và số ngày còn lại.
+NextDLP có hai loại giấy phép theo thời hạn.
+
+| Loại | Thời hạn |
+|---|---|
+| Vĩnh viễn | Không có ngày hết hạn. Mục Giấy phép & phiên bản hiển thị **Vĩnh viễn** ở dòng ngày hết hạn, giấy phép luôn ở trạng thái Còn hạn và không bao giờ bị khóa vì thời gian. |
+| Có thời hạn | Có ngày hết hạn và thời gian ân hạn như mô tả bên dưới. Giấy phép dùng thử luôn thuộc loại này. |
+
+Thời hạn hỗ trợ kỹ thuật và cập nhật phiên bản được quy định trong hợp đồng, không ghi trong file giấy phép. Vì vậy khi hết thời hạn hỗ trợ, NextDLP dùng giấy phép vĩnh viễn vẫn hoạt động bình thường.
+
+Với giấy phép có thời hạn, mục Giấy phép & phiên bản cho biết trạng thái giấy phép, ngày hết hạn và số ngày còn lại.
 
 | Trạng thái | Khi nào | NextDLP hoạt động |
 |---|---|---|

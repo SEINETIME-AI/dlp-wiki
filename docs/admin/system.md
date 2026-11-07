@@ -18,7 +18,6 @@ Trang **Báo cáo & quản trị › Hệ thống** tập trung các cấu hình
 | Bảo mật đăng nhập | Độ dài mật khẩu tối thiểu, số lần nhập sai trước khi khoá tài khoản. |
 | Lưu trữ và sao lưu | Thời gian lưu sự kiện phân loại và kiểm kê tài liệu, lịch sao lưu, số bản giữ lại. |
 | Nhà cung cấp phân loại | Kết nối tới AssistOCR tự host và kiểm tra trạng thái. |
-| Nhật ký quản trị | Lịch sử thao tác trên Console như đăng nhập, sửa chính sách, quản lý người dùng. Chỉ đọc. |
 | Giấy phép & phiên bản | Trạng thái giấy phép, số máy đã dùng, kích hoạt giấy phép mới và phiên bản đang chạy. Xem [Giấy phép](./license.md). |
 
 ## Cấu hình AssistOCR

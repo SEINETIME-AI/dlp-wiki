@@ -18,7 +18,7 @@ Agent đọc nội dung file, chạy OCR với ảnh và bản scan, rồi áp d
 
 ### 3. Ghi nhãn và báo cáo
 
-Agent ghi nhãn vào thuộc tính của file (với tài liệu Office và PDF), đồng thời gửi kết quả về server. Kết quả hiển thị tại **Kiểm kê dữ liệu** và **Nhật ký phân loại**, kèm giải thích vì sao file được gắn nhãn như vậy.
+Agent ghi nhãn vào thuộc tính của file (với tài liệu Office và PDF, xem [Nhãn ghi trong tệp](../classification/file-labels.md)), đồng thời gửi kết quả về server. Kết quả hiển thị tại **Kiểm kê dữ liệu** và **Nhật ký phân loại**, kèm giải thích vì sao file được gắn nhãn như vậy.
 
 ### 4. Thực thi
 

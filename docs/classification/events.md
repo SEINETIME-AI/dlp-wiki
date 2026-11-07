@@ -42,3 +42,19 @@ Bấm **Xuất CSV** hoặc **Xuất PDF** để tải nhật ký trong khoảng
 Nhật ký phân loại là bất biến và chỉ được ghi thêm, để bảo đảm giá trị kiểm toán. Để điều chỉnh nhãn của một tài liệu, hãy dùng [Kiểm kê dữ liệu & đổi nhãn](../data/inventory.md).
 
 :::
+
+## Kiểm toán hoạt động gắn nhãn
+
+Mỗi lần nhãn của một tài liệu được gắn hoặc thay đổi đều để lại dấu vết ở một trong các nơi dưới đây. Kết hợp chúng để trả lời câu hỏi "nhãn của tài liệu này do đâu mà có, đổi khi nào và vì sao".
+
+| Hoạt động | Nơi tra cứu | Ghi nhận |
+|---|---|---|
+| Agent tự gắn nhãn | Nhật ký phân loại, sự kiện **Phân loại** | Thời gian, máy, đường dẫn, nhãn, điều kiện đã khớp và phiên bản chính sách. |
+| Nhãn trong tệp bị sửa tay | Nhật ký phân loại, sự kiện **Can thiệp nhãn** và **Gắn lại nhãn** | Máy, đường dẫn và nhãn agent đã khôi phục. Xem [Nhãn ghi trong tệp](./file-labels.md#bảo-vệ-nhãn-khỏi-sửa-tay). |
+| Người dùng máy trạm đề nghị đổi nhãn | **Kiểm kê dữ liệu › Yêu cầu đổi nhãn** | Người gửi, nhãn hiện tại, nhãn đề xuất, lý do và trạng thái Chờ duyệt, Đã duyệt hoặc Từ chối. |
+| Quản trị viên hoặc Quản lý đổi nhãn trực tiếp | **Kiểm kê dữ liệu**, trạng thái **Admin ghi đè** | Những tài liệu đang mang nhãn được điều chỉnh bằng tay. |
+| Nhãn bị hạ mức bảo mật | **Báo cáo › Xuất CSV hạ cấp nhãn** | Mức cũ, mức mới, thời điểm, nguồn thay đổi và lý do. |
+
+Sự kiện phân loại được giữ trong khoảng thời gian cấu hình tại **Hệ thống › Lưu trữ và sao lưu**. Nếu quy chế yêu cầu lưu hồ sơ kiểm toán lâu hơn khoảng này, hãy xuất nhật ký định kỳ bằng **Xuất CSV** hoặc **Xuất PDF**.
+
+Console hiện chưa có nhật ký riêng cho thao tác quản trị, như sửa chính sách hay quản lý tài khoản. Với chính sách, mỗi sự kiện phân loại ghi phiên bản chính sách mà agent đã dùng, nên bạn biết nhãn được quyết định theo bản nào.

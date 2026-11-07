@@ -50,7 +50,7 @@ Ngoài các mô hình, phần lớn quyết định phân loại đến từ cá
 | Tệp nén | .zip, .rar, .7z, .tar, .gz, .tgz, .bz2, .tbz2, .xz, .txz, .zst | Từng tài liệu bên trong, kể cả tệp nén lồng nhau |
 | Định dạng khác | Video, ảnh đĩa, bản sao lưu, Office đời cũ (.doc, .xls, .ppt)... | Thông tin tệp (tên, đường dẫn, kích thước, ngày tháng) |
 
-Nhãn được ghi ngược vào tệp Office (.docx, .xlsx, .pptx) và PDF dưới dạng thuộc tính tài liệu, để hệ thống DLP đọc được ngay cả khi không kết nối tới server.
+Nhãn được ghi ngược vào tệp Office (.docx, .xlsx, .pptx) và PDF dưới dạng thuộc tính tài liệu, để hệ thống DLP đọc được ngay cả khi không kết nối tới server. Xem [Nhãn ghi trong tệp](../classification/file-labels.md).
 
 ## Giới hạn xử lý
 

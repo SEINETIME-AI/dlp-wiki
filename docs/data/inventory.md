@@ -12,7 +12,7 @@ Tab **Kiểm kê** liệt kê tài liệu kèm định dạng, nhãn bảo mật
 
 ![Trang Kiểm kê dữ liệu](/img/console/documents.png)
 
-Bấm vào một tài liệu để mở **Chi tiết tài liệu**, gồm nhãn hiện tại, trạng thái, lịch sử nhãn và phần **Vì sao tài liệu có nhãn này?**. Nếu tài liệu chưa được phân tích đầy đủ, phần này hiển thị cảnh báo kèm lý do và, khi biết, dung lượng đã đọc trên tổng dung lượng của tệp.
+Bấm vào một tài liệu để mở **Chi tiết tài liệu**, gồm đường dẫn, nhãn hiện tại, trạng thái, máy nguồn và phần **Vì sao tài liệu có nhãn này?**. Nếu tài liệu chưa được phân tích đầy đủ, phần này hiển thị cảnh báo kèm lý do và, khi biết, dung lượng đã đọc trên tổng dung lượng của tệp.
 
 ![Chi tiết tài liệu với nút Cập nhật nhãn](/img/console/documents-detail.png)
 
