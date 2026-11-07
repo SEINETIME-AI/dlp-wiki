@@ -49,3 +49,7 @@ Khi một file khớp nhiều điều kiện, agent chọn **mức bảo mật c
 ## Chính sách phân loại và Chính sách Agent khác nhau thế nào
 
 Hai khái niệm này dễ nhầm. **Chính sách phân loại** quyết định *file được gắn nhãn gì*, và được áp dụng theo đơn vị. **Chính sách Agent** quyết định *agent chạy ra sao trên máy*, và đi theo bộ cài mà máy đã dùng để cài đặt.
+
+## Đọc tiếp
+
+Để biết các thành phần kết nối qua cổng nào và dữ liệu nào rời khỏi máy trạm, xem [Luồng dữ liệu & bảo mật](./data-flow.md).

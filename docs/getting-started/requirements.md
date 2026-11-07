@@ -26,7 +26,7 @@ Console là ứng dụng web, dùng tốt trên phiên bản mới của Microso
 
 ## Cổng mạng
 
-Server mở các cổng dưới đây. Chỉ cổng 80, 443, 9090 và 9091 cần truy cập được từ mạng nội bộ; cơ sở dữ liệu và bộ nhớ đệm chỉ dùng bên trong máy chủ. Console chạy qua HTTPS ở cổng 443, và cổng 80 chỉ chuyển hướng sang HTTPS.
+Server mở các cổng dưới đây. Chỉ cổng 80, 443, 9090, 9091 và, khi cài gói GPU, 9092 cần truy cập được từ mạng nội bộ; cơ sở dữ liệu và bộ nhớ đệm chỉ dùng bên trong máy chủ. Console chạy qua HTTPS ở cổng 443, và cổng 80 chỉ chuyển hướng sang HTTPS. Cổng nào được mã hoá và dữ liệu nào đi qua từng cổng có tại [Luồng dữ liệu & bảo mật](./data-flow.md).
 
 | Cổng | Dịch vụ | Ai cần truy cập |
 |---|---|---|
@@ -34,6 +34,7 @@ Server mở các cổng dưới đây. Chỉ cổng 80, 443, 9090 và 9091 cần
 | 443 | Console và `/api` qua HTTPS | Quản trị viên, người dùng Console |
 | 9090 | HTTP API | Hệ thống tích hợp |
 | 9091 | gRPC cho agent | Máy trạm |
+| 9092 | Tải bản scan lên kho tạm của gói GPU AssistOCR (chỉ khi cài gói GPU) | Máy trạm |
 | 5432, 6379 | PostgreSQL và Redis | Chỉ nội bộ máy chủ |
 
 :::warning[Lưu ý]
@@ -43,6 +44,8 @@ Máy trạm và người dùng Console phải kết nối được tới server 
 ```powershell
 New-NetFirewallRule -DisplayName "NextDLP" -Direction Inbound -Protocol TCP -LocalPort 443,9091 -Action Allow
 ```
+
+Khi cài gói GPU AssistOCR, mở thêm cổng **9092** cho máy trạm.
 
 :::
 
