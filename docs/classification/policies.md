@@ -44,13 +44,33 @@ Mục **Kỹ thuật phân loại** cho phép bật hoặc tắt từng kỹ thu
 
 Tính năng này hữu ích khi bạn muốn so sánh kết quả giữa các kỹ thuật, hoặc khi quy chế của tổ chức chỉ chấp nhận phân loại theo một phương pháp nhất định.
 
+## Ngưỡng trước khi gắn nhãn
+
+Mỗi kỹ thuật có một ngưỡng quyết định khi nào điều kiện đủ mạnh để agent tự gắn nhãn. Ngưỡng giúp tránh gắn nhãn chỉ vì một từ xuất hiện tình cờ, ví dụ một số căn cước duy nhất trong thư mời họp không nên làm cả tài liệu thành Mật.
+
+| Kỹ thuật | Ngưỡng | Cách hoạt động |
+|---|---|---|
+| Từ khóa / Regex | **Số lần ≥** của từng bộ khớp | Giá trị phải xuất hiện ít nhất bấy nhiêu lần trong tài liệu. Để trống nghĩa là 1 lần. Agent đếm tối đa 1.000 lần, nên ngưỡng lớn hơn 1.000 không bao giờ đạt. |
+| Từ điển có trọng số | **Ngưỡng kích hoạt** | Tổng trọng số các từ xuất hiện phải đạt ngưỡng. Để trống nghĩa là 1,0. Mỗi từ chỉ được tính một lần dù xuất hiện nhiều lần, nên ngưỡng đo **số từ khác nhau**, không đo tần suất. |
+| Ngữ nghĩa (ML) | **Ngưỡng tương đồng** | Từ 0 đến 1, mặc định 0,7. Ngưỡng càng cao thì nội dung càng phải gần với câu mô tả. |
+| Hybrid | **Ít nhất N điều kiện** | Cần ít nhất N điều kiện con khớp. Chọn **Tất cả điều kiện** khi mọi tín hiệu đều bắt buộc. |
+| Dấu mộc | Ngưỡng độ tin cậy | Con dấu phải được nhận diện với độ tin cậy từ ngưỡng này trở lên. |
+
+Ví dụ, để chỉ gắn Mật cho danh sách nhân sự chứ không phải mọi văn bản có nhắc tới một người, đặt **Số lần ≥** là 5 cho bộ khớp regex số căn cước. Một tài liệu có 4 số căn cước sẽ không khớp điều kiện này.
+
+{/* TODO screenshot: hộp thoại Thêm điều kiện, kỹ thuật Từ khóa / Regex, một bộ khớp regex với ô "Số lần ≥" đặt 5 */}
+
+Trong Hybrid, mỗi điều kiện con dùng ngưỡng của kỹ thuật tương ứng, rồi tổ hợp Tất cả, Bất kỳ hoặc Ít nhất N quyết định cả điều kiện có khớp hay không.
+
 ## Chế độ OCR
 
 | Chế độ | Cách chạy |
 |---|---|
-| OCR cục bộ | Trích xuất văn bản và nhận diện dấu mộc chạy hoàn toàn trên máy trạm. |
-| OCR hybrid | Chạy cục bộ trước, chỉ dùng AssistOCR khi ảnh hoặc bản scan không đọc được. |
-| OCR máy chủ | AssistOCR chạy trước; nếu máy chủ OCR lỗi thì quay về xử lý cục bộ. |
+| OCR cục bộ | Trích xuất văn bản và nhận diện dấu mộc chạy hoàn toàn trên máy trạm. Không có nội dung nào được gửi lên server. |
+| OCR hybrid | Ảnh được gửi cho AssistOCR. PDF được đọc trên máy trước; PDF có trang scan, gần như không có chữ hoặc còn trang scan chưa đọc được gửi tiếp cho AssistOCR. |
+| OCR máy chủ | Mọi ảnh và trang scan trong PDF được gửi cho AssistOCR thay vì đọc chữ trên máy trạm. |
+
+Ở cả ba chế độ, chữ trong tài liệu Office và tệp văn bản luôn được đọc trên máy trạm. Ở chế độ hybrid và máy chủ, khi máy trạm thiếu bộ nhớ hoặc đang chạm giới hạn CPU, bản scan cũng được gửi thẳng cho AssistOCR; nếu AssistOCR không trả lời, tệp được đọc trên máy ở lượt sau. Xem [Khi máy trạm nhờ AssistOCR](../getting-started/specs.md#khi-máy-trạm-nhờ-assistocr).
 
 Chế độ hybrid và máy chủ cần cấu hình AssistOCR tại **Hệ thống › Nhà cung cấp phân loại**. Nếu không dùng AssistOCR, hãy chọn OCR cục bộ.
 

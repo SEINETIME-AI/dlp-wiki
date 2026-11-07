@@ -22,7 +22,7 @@ Có. OCR và nhận diện dấu mộc chạy ngay trên máy trạm. AssistOCR 
 
 ### Agent có làm chậm máy không?
 
-Agent quét ở chế độ nền của Windows, nên Word, Excel và các ứng dụng khác của người dùng luôn được ưu tiên. Agent chừa lại ít nhất một luồng CPU, tự giới hạn ở 20% tổng CPU của máy, chỉ đọc một tệp lớn mỗi lúc và tạm dừng khi Windows báo sắp hết bộ nhớ. Với máy cấu hình yếu, chọn Mức quét **Nhẹ** trong [Chính sách Agent](../endpoints/agent-policy.md#hiệu-năng--tài-nguyên-máy).
+Agent quét ở chế độ nền của Windows, nên Word, Excel và các ứng dụng khác của người dùng luôn được ưu tiên. Agent chừa lại ít nhất một luồng CPU, chỉ dùng tối đa 20% phần CPU và 20% phần bộ nhớ mà máy đang để trống, và tạm dừng khi Windows báo sắp hết bộ nhớ. Khi người dùng đang dùng nhiều CPU, agent tự chậm lại tương ứng. Với máy cấu hình yếu, chọn Mức quét **Nhẹ** trong [Chính sách Agent](../endpoints/agent-policy.md#hiệu-năng--tài-nguyên-máy).
 
 ### Agent có bỏ qua file quá lớn không?
 
@@ -43,6 +43,26 @@ Mở sự kiện của file trong [Nhật ký phân loại](../classification/ev
 ### Người dùng có tự sửa nhãn được không?
 
 Không trực tiếp. Người dùng máy trạm gửi yêu cầu đổi nhãn trong Kiểm kê dữ liệu; Quản lý đơn vị hoặc Quản trị viên duyệt thì nhãn mới có hiệu lực. Xem [Kiểm kê dữ liệu & đổi nhãn](../data/inventory.md).
+
+### Có đổi nhãn nhiều tài liệu hoặc cả thư mục cùng lúc được không?
+
+Chưa. Đổi nhãn bằng tay được thực hiện cho từng tài liệu trong Kiểm kê dữ liệu. Để gắn nhãn hàng loạt, hãy tạo điều kiện trong chính sách phân loại: agent tự phân loại lại mọi tệp trong [Nguồn dữ liệu](../data/sources.md) khi chính sách thay đổi.
+
+### Có add-in cho Word, Excel và PowerPoint không?
+
+Không. Agent ghi nhãn vào thuộc tính của tệp Office và PDF, và người dùng xem nhãn ngay trong ứng dụng tại **File › Info › Properties › Advanced Properties**, tab **Custom**. Việc đổi nhãn được thực hiện trên Console. Xem [Nhãn ghi trong tệp](../classification/file-labels.md).
+
+### NextDLP có gắn nhãn email không?
+
+Không. NextDLP phân loại tệp trên máy trạm và thư mục chia sẻ, không phân loại nội dung email. Khi một tệp Office hoặc PDF đã có nhãn được đính kèm vào email, nhãn đi cùng tệp đính kèm và hệ thống DLP đọc được nhãn đó.
+
+### NextDLP có phân loại bản vẽ kỹ thuật và sơ đồ không?
+
+Có, với bản vẽ và sơ đồ ở dạng PDF hoặc ảnh. Agent đọc chữ bằng OCR, dò dấu mộc, rồi phân loại theo từ khoá như ký hiệu bản vẽ, tên công trình, hoặc theo mô tả ngữ nghĩa. Tệp bản vẽ gốc như AutoCAD (`.dwg`, `.dxf`) hay Visio (`.vsdx`) chưa được đọc nội dung; agent chỉ đánh giá chúng theo thông tin tệp như tên, đường dẫn, kích thước và ngày tháng. Xem [Thông số kỹ thuật](../getting-started/specs.md#định-dạng-tệp).
+
+### Từ khoá có bắt được khi gõ sai hoặc viết không dấu không?
+
+Không. Từ khoá không phân biệt chữ hoa, chữ thường nhưng phải khớp đúng từng chữ, kể cả dấu tiếng Việt. Hãy thêm các biến thể thường gặp vào danh sách từ khoá, hoặc dùng biểu thức chính quy. Để nhận ra nội dung cùng ý nhưng diễn đạt khác, dùng kỹ thuật Ngữ nghĩa (ML). Xem [Nhận diện thông tin riêng của tổ chức](../classification/rules.md#nhận-diện-thông-tin-riêng-của-tổ-chức).
 
 ### Sửa chính sách có cần cài lại agent không?
 
