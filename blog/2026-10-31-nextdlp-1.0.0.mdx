@@ -91,7 +91,8 @@ Mô hình AI đang dùng, chính sách mô hình, định dạng tệp hỗ tr�
 
 ## Lưu ý khi triển khai
 
-**Thêm rule cho nhãn Chờ rà soát trong DLP**, ví dụ chặn gửi ra ngoài hoặc cảnh báo người dùng. Tài liệu có mật khẩu, tệp nén không đọc hết được và PDF lớn hơn 20 MB (chỉ được đọc lớp chữ, không OCR) sẽ mang nhãn này. Nếu đơn vị chưa sẵn sàng rà soát, mở Chính sách Agent và chọn **Không áp dụng**.
+Nhãn Chờ rà soát được gắn tự động. Khi agent không đọc hết một tài liệu, ví dụ tệp có mật khẩu, tệp nén không đọc hết được, hay PDF lớn hơn 20 MB chỉ được đọc lớp chữ, NextDLP tự gắn nhãn Chờ rà soát để quản trị viên xem lại. NextDLP chỉ gắn nhãn; muốn chặn gửi ra ngoài hay cảnh báo người dùng với các tài liệu này, hãy thêm rule cho nhãn Chờ rà soát trong hệ thống DLP của bạn. Nếu đơn vị chưa sẵn sàng rà soát, mở Chính sách Agent và chọn Không áp dụng để tắt việc gắn nhãn này.
+
 
 ## Kế hoạch tiếp theo
 
