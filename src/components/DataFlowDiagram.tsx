@@ -5,22 +5,19 @@ import styles from './DataFlowDiagram.module.css';
 type ConnectionProps = {
   protocol: string;
   port: string;
-  /** True when the link is TLS-encrypted. */
-  encrypted: boolean;
   note?: string;
   /** On a narrow screen the arrow points up instead of down. */
   upward?: boolean;
 };
 
-/** One labelled arrow between two zones, with its encryption badge. */
-function Connection({protocol, port, encrypted, note, upward}: ConnectionProps): ReactNode {
+/** One labelled arrow between two zones. */
+function Connection({protocol, port, note, upward}: ConnectionProps): ReactNode {
   return (
     <div className={`${styles.connection} ${upward ? styles.upward : ''}`}>
       <div className={styles.connectionLabel}>
         <span>
           <strong>{protocol}</strong> · cổng {port}
         </span>
-        <span className={encrypted ? styles.secure : styles.plain}>{encrypted ? 'TLS' : 'Chưa mã hoá'}</span>
       </div>
       {note && <div className={styles.connectionNote}>{note}</div>}
       <div className={styles.arrow} aria-hidden="true" />
@@ -40,7 +37,7 @@ function Node({title, children}: NodeProps): ReactNode {
   );
 }
 
-/** The components of a NextDLP deployment, the ports between them and which links are encrypted. */
+/** The components of a NextDLP deployment and the ports between them. */
 export function DataFlowDiagram(): ReactNode {
   return (
     <figure className={styles.diagram} aria-label="Sơ đồ thành phần và cổng kết nối của NextDLP">
@@ -50,8 +47,8 @@ export function DataFlowDiagram(): ReactNode {
       </div>
 
       <div className={`${styles.links} ${styles.endpointLinks}`}>
-        <Connection protocol="gRPC" port="9091" encrypted={false} />
-        <Connection protocol="HTTP" port="9092" encrypted={false} note="Chỉ khi cài gói GPU" />
+        <Connection protocol="gRPC" port="9091" />
+        <Connection protocol="HTTP" port="9092" note="Chỉ khi cài gói GPU" />
       </div>
 
       <div className={`${styles.zone} ${styles.browser}`}>
@@ -60,7 +57,7 @@ export function DataFlowDiagram(): ReactNode {
       </div>
 
       <div className={`${styles.links} ${styles.browserLinks}`}>
-        <Connection protocol="HTTPS" port="443" encrypted upward />
+        <Connection protocol="HTTPS" port="443" upward />
       </div>
 
       <div className={`${styles.zone} ${styles.server}`}>

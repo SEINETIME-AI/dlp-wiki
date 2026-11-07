@@ -120,34 +120,6 @@
   color: var(--ifm-color-emphasis-700);
 }
 
-.secure,
-.plain {
-  padding: 0 0.4rem;
-  border: 1px solid;
-  border-radius: 999px;
-  font-size: 0.7rem;
-  font-weight: 600;
-  white-space: nowrap;
-}
-
-.secure {
-  color: var(--ifm-color-success-darkest);
-  border-color: var(--ifm-color-success);
-}
-
-.plain {
-  color: var(--ifm-color-warning-darkest);
-  border-color: var(--ifm-color-warning);
-}
-
-[data-theme='dark'] .secure {
-  color: var(--ifm-color-success-lightest);
-}
-
-[data-theme='dark'] .plain {
-  color: var(--ifm-color-warning-lightest);
-}
-
 /* A horizontal arrow pointing right, at the server. */
 .arrow {
   position: relative;

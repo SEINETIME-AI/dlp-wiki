@@ -22,24 +22,30 @@ Mọi thành phần đều chạy trong mạng nội bộ của tổ chức. Nex
 | Mô hình Gợi ý AI | Cùng máy chủ, chạy bằng CPU | Đề xuất điều kiện khi quản trị viên soạn chính sách. Không tham gia phân loại tệp. |
 | Gói GPU AssistOCR (tuỳ chọn) | Máy chủ có GPU, cài cùng server | Đọc ảnh và bản scan, đọc tài liệu mẫu cho Gợi ý AI, chấm lại luật ngữ nghĩa. Xem [AssistOCR](../admin/system.md#assistocr). |
 
-## Cổng và mã hoá
+## Cổng kết nối
 
-Agent luôn chủ động kết nối từ máy trạm tới server; server không mở kết nối vào máy trạm.
+Agent luôn chủ động kết nối từ máy trạm tới server; server không mở kết nối vào máy trạm. Mỗi máy trạm xác thực với server bằng khoá API riêng, và mỗi lần tải bản scan dùng một đường dẫn ký sẵn cho đúng tệp đó.
 
-| Cổng | Dùng cho | Chiều kết nối | Mã hoá |
-|---|---|---|---|
-| 443 | Console và `/api` | Trình duyệt → server | HTTPS, TLS 1.2 hoặc 1.3 |
-| 80 | Chuyển hướng sang cổng 443 | Trình duyệt → server | Không có dữ liệu |
-| 9090 | API cho hệ thống tích hợp | Hệ thống tích hợp → server | HTTPS |
-| 9091 | Agent gửi kết quả và nhận chính sách | Máy trạm → server | Chưa mã hoá TLS |
-| 9092 | Agent tải bản scan lên kho tạm của gói GPU | Máy trạm → server | Chưa mã hoá TLS |
-| 5432, 6379 và các cổng của gói GPU | Cơ sở dữ liệu, bộ nhớ đệm, gói GPU | Chỉ bên trong máy chủ | Không mở ra mạng |
+| Cổng | Dùng cho | Chiều kết nối |
+|---|---|---|
+| 443 | Console và `/api` qua HTTPS | Trình duyệt → server |
+| 80 | Chuyển hướng sang cổng 443 | Trình duyệt → server |
+| 9090 | API cho hệ thống tích hợp | Hệ thống tích hợp → server |
+| 9091 | Agent gửi kết quả và nhận chính sách | Máy trạm → server |
+| 9092 | Agent tải bản scan lên kho tạm của gói GPU (chỉ khi cài gói GPU) | Máy trạm → server |
+| 5432, 6379 và các cổng của gói GPU | Cơ sở dữ liệu, bộ nhớ đệm, gói GPU | Chỉ bên trong máy chủ, không mở ra mạng |
 
-:::warning[Kênh của agent chưa mã hoá TLS]
+## Khuyến nghị bảo vệ kết nối
 
-Cổng 9091 và 9092 hiện chạy không mã hoá TLS. Mỗi máy trạm xác thực với server bằng khoá API riêng, và mỗi lần tải bản scan dùng một đường dẫn ký sẵn cho đúng tệp đó. Hãy chỉ cho phép hai cổng này từ dải mạng của máy trạm, bằng tường lửa của máy chủ hoặc VLAN.
+Các biện pháp dưới đây giúp giới hạn ai có thể tới được server và dữ liệu đi trên mạng nội bộ:
 
-:::
+- **Giới hạn nguồn kết nối theo từng cổng.** Trên tường lửa của máy chủ, chỉ cho phép dải mạng của máy trạm vào cổng 9091 và 9092, máy của quản trị viên vào cổng 443, và hệ thống tích hợp vào cổng 9090.
+- **Đặt máy chủ NextDLP trong vùng mạng riêng**, ví dụ một VLAN dành cho máy chủ, tách khỏi mạng của người dùng và khách.
+- **Mã hoá lưu lượng ở tầng mạng.** Nếu tổ chức dùng Active Directory, áp dụng chính sách IPsec qua Group Policy cho lưu lượng giữa máy trạm và máy chủ NextDLP. Agent không cần thay đổi gì.
+- **Chống giả mạo trong mạng LAN**, như bật Dynamic ARP Inspection và port security trên switch.
+- **Giữ nội dung trên máy trạm cho đơn vị nhạy cảm cao.** Dùng chế độ OCR cục bộ trong chính sách phân loại của các đơn vị này, để bản scan và đoạn văn bản không rời máy trạm.
+- **Dùng tài khoản riêng, chỉ có quyền đọc** cho các thư mục chia sẻ SMB/NAS mà NextDLP quét.
+- **Thu hồi khoá khi cần.** Khi máy bị thanh lý hoặc nghi lộ khoá, dùng **Tạo lại khóa** hoặc **Thu hồi** tại [Máy trạm](../endpoints/machines.md).
 
 ## Dữ liệu nào rời máy trạm
 

@@ -26,7 +26,7 @@ Console là ứng dụng web, dùng tốt trên phiên bản mới của Microso
 
 ## Cổng mạng
 
-Server mở các cổng dưới đây. Chỉ cổng 80, 443, 9090, 9091 và, khi cài gói GPU, 9092 cần truy cập được từ mạng nội bộ; cơ sở dữ liệu và bộ nhớ đệm chỉ dùng bên trong máy chủ. Console chạy qua HTTPS ở cổng 443, và cổng 80 chỉ chuyển hướng sang HTTPS. Cổng nào được mã hoá và dữ liệu nào đi qua từng cổng có tại [Luồng dữ liệu & bảo mật](./data-flow.md).
+Server mở các cổng dưới đây. Chỉ cổng 80, 443, 9090, 9091 và, khi cài gói GPU, 9092 cần truy cập được từ mạng nội bộ; cơ sở dữ liệu và bộ nhớ đệm chỉ dùng bên trong máy chủ. Console chạy qua HTTPS ở cổng 443, và cổng 80 chỉ chuyển hướng sang HTTPS. Dữ liệu đi qua từng cổng và các khuyến nghị bảo vệ kết nối có tại [Luồng dữ liệu & bảo mật](./data-flow.md).
 
 | Cổng | Dịch vụ | Ai cần truy cập |
 |---|---|---|
