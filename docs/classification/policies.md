@@ -66,9 +66,11 @@ Trong Hybrid, mỗi điều kiện con dùng ngưỡng của kỹ thuật tươn
 
 | Chế độ | Cách chạy |
 |---|---|
-| OCR cục bộ | Trích xuất văn bản và nhận diện dấu mộc chạy hoàn toàn trên máy trạm. |
-| OCR hybrid | Chạy cục bộ trước, chỉ dùng AssistOCR khi ảnh hoặc bản scan không đọc được. |
-| OCR máy chủ | AssistOCR chạy trước; nếu máy chủ OCR lỗi thì quay về xử lý cục bộ. |
+| OCR cục bộ | Trích xuất văn bản và nhận diện dấu mộc chạy hoàn toàn trên máy trạm. Không có nội dung nào được gửi lên server. |
+| OCR hybrid | Ảnh được gửi cho AssistOCR. PDF được đọc trên máy trước; PDF có trang scan, gần như không có chữ hoặc còn trang scan chưa đọc được gửi tiếp cho AssistOCR. |
+| OCR máy chủ | Mọi ảnh và trang scan trong PDF được gửi cho AssistOCR thay vì đọc chữ trên máy trạm. |
+
+Ở cả ba chế độ, chữ trong tài liệu Office và tệp văn bản luôn được đọc trên máy trạm. Ở chế độ hybrid và máy chủ, khi máy trạm thiếu bộ nhớ hoặc đang chạm giới hạn CPU, bản scan cũng được gửi thẳng cho AssistOCR; nếu AssistOCR không trả lời, tệp được đọc trên máy ở lượt sau. Xem [Khi máy trạm nhờ AssistOCR](../getting-started/specs.md#khi-máy-trạm-nhờ-assistocr).
 
 Chế độ hybrid và máy chủ cần cấu hình AssistOCR tại **Hệ thống › Nhà cung cấp phân loại**. Nếu không dùng AssistOCR, hãy chọn OCR cục bộ.
 

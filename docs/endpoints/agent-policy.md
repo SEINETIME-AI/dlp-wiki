@@ -90,16 +90,16 @@ Agent được thiết kế để làm việc ở chế độ nền và nhườn
     Việc quét chạy ở mức ưu tiên thấp về CPU, ổ đĩa và bộ nhớ. Khi người dùng mở Word, Excel hay trình duyệt, Windows dành tài nguyên cho các ứng dụng đó trước.
   </Card>
   <Card title="Số luồng quét vừa sức máy">
-    Agent quét cùng lúc tối đa số luồng CPU của máy trừ một, và không quá bốn tệp. Máy hai luồng chỉ quét một tệp mỗi lúc, luôn chừa lại phần còn lại cho người dùng.
+    Agent quét cùng lúc tối đa số luồng CPU của máy trừ một, và không quá hai, ba hoặc bốn tệp tùy máy có dưới 12 GB, dưới 24 GB hay từ 24 GB RAM. Máy hai luồng chỉ quét một tệp mỗi lúc, luôn chừa lại phần còn lại cho người dùng.
   </Card>
   <Card title="Giới hạn CPU của agent">
-    Agent tự giới hạn ở 20% tổng CPU của máy, chỉ tính phần CPU của riêng agent. Khi vượt mức, agent tạm ngừng nhận tệp mới, và tệp lớn đang đọc cũng nghỉ giữa các đoạn, cho tới khi CPU giảm xuống.
+    Agent dùng tối đa 20% phần CPU mà các chương trình khác để trống, nên khi người dùng đang bận, agent tự chậm lại. Khi vượt mức, agent tạm dừng trước tệp tiếp theo và giữa các trang, các ảnh, các đoạn của tệp đang đọc, cho tới khi CPU giảm xuống.
   </Card>
-  <Card title="Mỗi lúc một tệp lớn">
-    Tệp lớn được đọc lần lượt từng tệp một. Trong lúc đó các tệp nhỏ vẫn được quét song song, không phải xếp hàng chờ sau tệp lớn.
+  <Card title="Ngân sách bộ nhớ">
+    Agent dùng tối đa 20% phần bộ nhớ đang trống của máy. Mỗi tệp giữ chỗ trước khi đọc; tệp chưa đủ chỗ chờ tới lượt, còn tệp văn bản lớn được đọc theo từng đoạn. Tệp lớn không chiếm hết các luồng, nên tệp nhỏ không phải xếp hàng chờ sau tệp lớn.
   </Card>
   <Card title="Tạm dừng khi máy thiếu bộ nhớ">
-    Khi Windows báo bộ nhớ sắp cạn, agent không nhận thêm tệp mới và tạm dừng giữa chừng tệp đang đọc, rồi tiếp tục khi máy đã thoáng.
+    Khi Windows báo bộ nhớ sắp cạn, agent không nhận thêm tệp mới và tạm dừng giữa chừng tệp đang đọc, rồi tiếp tục khi máy đã thoáng. Khi máy rảnh, agent trả lại bộ nhớ của các mô hình.
   </Card>
   <Card title="Không đọc lại tệp lớn chưa đổi">
     Sau khi máy hoặc dịch vụ khởi động lại, agent nhận ra tệp lớn không thay đổi và dùng lại kết quả cũ thay vì đọc lại từ đầu.
