@@ -37,6 +37,8 @@ Phần lớn sự cố khi triển khai NextDLP thuộc một trong ba nhóm: se
 | File ở trạng thái Chưa gắn nhãn | Không điều kiện mức bảo mật nào khớp, hoặc file đặt mật khẩu, hỏng hay không có lớp văn bản. | Mở sự kiện trong Nhật ký phân loại để xem lý do. |
 | File bị gắn nhãn khác mong đợi | Một điều kiện khác cũng khớp, và agent chọn mức mật nhất. | Mở sự kiện trong Nhật ký phân loại để xem điều kiện nào đã khớp, rồi dùng **Xem chính sách hiệu lực** để rà soát. |
 | AssistOCR báo lỗi trạng thái | Sai URL hoặc lỗi mạng nội bộ. | Kiểm tra URL tại Hệ thống › Nhà cung cấp phân loại. |
+| File có dấu mộc nhưng điều kiện "Chỉ áp dụng khi là dấu mộc của các công ty này" không khớp | Agent không đọc được tên công ty trên dấu (dấu nhạt, đóng đè lên chữ, con dấu cơ quan nhà nước) và khối ký tên quanh dấu cũng không ghi đúng từ khoá; hoặc từ khoá chỉ gồm từ chung như "Công ty", "TNHH" nên bị bỏ qua. | Mở sự kiện: phần dấu mộc cho biết chữ đã đọc được trên dấu và tên công ty tìm thấy trên dấu hay quanh dấu. Dùng tên riêng của công ty làm từ khoá, đúng như in trên trang. Xem [Công ty trên dấu mộc](../classification/policies.md#công-ty-trên-dấu-mộc). |
+| Không file nào có dấu mộc được nhận diện, kể cả mẫu rõ nét | Mô hình nhận diện dấu mộc trên máy không đúng bản phát hành. | Xem dòng `yolo: loaded model` trong log của agent (`C:\ProgramData\DlpExtension\logs`): kích thước và ngày huấn luyện phải khớp bản trong bộ cài. Cài lại agent từ bộ cài để thay mô hình. |
 
 ## Khi cần liên hệ hỗ trợ
 

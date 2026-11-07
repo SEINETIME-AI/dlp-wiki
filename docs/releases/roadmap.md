@@ -12,7 +12,9 @@ Trang này liệt kê các hướng phát triển dự kiến cho các phiên b�
 
 **Mở rộng định dạng.** Hỗ trợ định dạng Word cũ `.doc` và đọc đầy đủ các ô số trong bảng tính Excel.
 
-**Cải thiện nhận diện dấu mộc** với dấu hình chữ nhật và giảm báo động nhầm với tiêu đề hoặc logo màu đỏ.
+**Nhận diện con dấu theo hình (dấu mẫu).** Quản trị viên tải lên ảnh mẫu con dấu của từng đơn vị; agent so con dấu tìm thấy với dấu mẫu bằng đặc trưng ảnh thay vì đọc chữ trên vòng dấu, nên dấu mực nhạt, dấu đóng đè chữ, con dấu quốc huy và dấu chữ nước ngoài được xử lý như nhau. Đọc chữ trên dấu và khối ký tên quanh dấu (có từ 1.1.0) vẫn là tín hiệu phụ.
+
+**Cải thiện nhận diện dấu mộc** với dấu hình chữ nhật, con dấu cơ quan nhà nước, và giảm báo động nhầm với tiêu đề, logo hoặc khối chữ ký số màu đỏ. Console cảnh báo khi từ khoá dấu mộc chỉ gồm từ chung hoặc ngưỡng đặt quá thấp để đọc chữ.
 
 ## Nhãn bền vững hơn
 

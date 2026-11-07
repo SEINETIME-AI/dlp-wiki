@@ -1,0 +1,61 @@
+---
+slug: nextdlp-1.1.0
+title: Sắp ra mắt NextDLP 1.1.0
+authors: [nextdlp]
+tags: [phát hành, 1.1.0]
+description: Điều kiện dấu mộc nhận ra con dấu của đúng đơn vị, đọc được dấu trên bộ hồ sơ scan lớn, và các sửa lỗi quanh nhận diện dấu mộc.
+---
+
+import TOCInline from '@theme/TOCInline';
+
+Kính gửi quý khách hàng và người dùng NextDLP,
+
+NextDLP 1.1.0 tập trung vào nhận diện dấu mộc: điều kiện Dấu mộc có thể nêu tên đơn vị trên con dấu và chỉ gắn nhãn khi đúng là dấu của đơn vị đó, bộ hồ sơ scan lớn vẫn được đọc dấu, và phần giải thích cho biết vì sao một con dấu khớp hay không. Bài này ghi cả những gì bản này chưa làm được, để quý vị cân nhắc khi đặt điều kiện.
+
+{/* truncate */}
+
+:::note Chưa phát hành
+Phiên bản 1.1.0 đang được kiểm thử. Nội dung dưới đây có thể thay đổi cho đến ngày phát hành.
+:::
+
+<TOCInline toc={toc} maxHeadingLevel={3} />
+
+## Tính năng mới và thay đổi chính
+
+### Công ty trên dấu mộc
+
+Điều kiện Dấu mộc có thêm mục **Công ty trên dấu mộc**: nêu tên từng đơn vị kèm từ khoá in trên con dấu, và tuỳ chọn **Chỉ áp dụng khi là dấu mộc của các công ty này**. Agent đọc chữ trên vòng dấu, so với từ khoá không phân biệt dấu tiếng Việt, hoa thường và chấp nhận vài lỗi đọc. Khi vòng dấu không đọc được, thường gặp với dấu in nhạt, dấu đóng đè chữ ký hoặc con dấu quốc huy, agent tìm tên đơn vị trong khối ký tên ngay quanh con dấu. Xem [Công ty trên dấu mộc](/docs/classification/policies#công-ty-trên-dấu-mộc).
+
+### Giải thích rõ hơn
+
+Chi tiết sự kiện cho biết chữ agent đã đọc được trên từng con dấu, tên đơn vị được tìm thấy **trên dấu** hay **quanh dấu**, và phân biệt "không có đơn vị nào khớp" với "chưa đọc được chữ trên dấu". Agent cũng ghi vào log kích thước và ngày huấn luyện của mô hình nhận diện dấu mộc khi khởi động, để đội hỗ trợ nhận ra ngay một mô hình cài sai.
+
+## Sửa lỗi đáng chú ý
+
+- **PDF scan lớn hơn 20 MB không khớp điều kiện dấu mộc có tên đơn vị.** Trên đường xử lý tệp lớn, agent chỉ dò con dấu mà không đọc chữ trên dấu, nên điều kiện "chỉ áp dụng" không bao giờ khớp. Nay chữ trên dấu và khối ký tên quanh dấu được đọc cả trên tệp lớn; phần còn lại của tệp vẫn không OCR, như trước.
+- **Vòng chữ trên dấu đọc ra ký tự vô nghĩa.** Khung nhận diện thường rộng hơn con dấu về một phía, vòng chữ được trải ra quanh tâm khung thay vì tâm con dấu nên bị lượn sóng. Nay vòng chữ được trải quanh đúng tâm con dấu; trên bộ mẫu thử, dấu doanh nghiệp đọc đúng tên, con dấu Thủ tướng Chính phủ mực nhạt đọc được "THỦ TƯỚNG".
+- **Ngưỡng đọc chữ trên dấu** không còn cao hơn ngưỡng của điều kiện: con dấu đủ ngưỡng để khớp thì luôn được đọc.
+- **Dấu của đơn vị khác không còn bị khớp nhầm** khi trang nhắc tới đơn vị được nêu, ví dụ với tư cách bên nhận: chỉ con dấu không đọc được chữ mới dựa vào khối ký tên quanh nó.
+
+## Hạn chế đã biết
+
+- **Nhận diện theo chữ, không theo hình.** Agent biết con dấu của ai bằng cách đọc chữ trên vòng dấu. Dấu quá nhạt, đóng đè chữ đậm, scan dưới 150 DPI hoặc chữ không phải tiếng Việt và tiếng Anh có thể không đọc được. Khi đó agent dựa vào khối ký tên quanh dấu; nếu khối ký tên chỉ ghi chức danh và tên người, điều kiện có tên đơn vị sẽ không khớp.
+- **Con dấu của cơ quan nhà nước** đọc được không đều giữa các trang; một số trang chỉ nhận ra con dấu ở mức tin cậy thấp. Khối chữ ký số màu đỏ trên trang đầu văn bản điện tử có thể bị nhận là con dấu.
+- **Từ khoá chỉ gồm từ chung** như "Công ty", "TNHH", "Cổ phần" bị bỏ qua, điều kiện sẽ không bao giờ khớp. Console chưa cảnh báo điểm này khi nhập.
+- **Mỗi chính sách một điều kiện dấu mộc**, và khi nhiều chính sách cùng áp dụng cho một máy, chỉ điều kiện có ngưỡng cao nhất được dùng.
+
+## Lưu ý khi nâng cấp
+
+- Nâng cấp server, Console và agent cùng lúc: điều kiện Công ty trên dấu mộc cần cả ba cùng phiên bản 1.1.0.
+- Mô hình nhận diện dấu mộc đi kèm bộ cài agent. Sau khi nâng cấp, dòng `yolo: loaded model` trong log của agent phải ghi ngày huấn luyện 2026-09-07; nếu khác, cài lại agent từ bộ cài.
+- Chính sách đã có điều kiện Dấu mộc hoạt động như cũ: không nêu tên đơn vị thì mọi con dấu vẫn khớp.
+
+## Kế hoạch tiếp theo
+
+Phiên bản sau hướng tới **nhận diện con dấu theo hình**: quản trị viên tải lên ảnh mẫu con dấu của từng đơn vị, agent so con dấu tìm thấy với dấu mẫu thay vì đọc chữ. Cách này xử lý như nhau dấu mực nhạt, dấu đóng đè chữ, con dấu quốc huy và dấu chữ nước ngoài, và trả lời trực tiếp câu hỏi "dấu của ai". Cùng với đó là huấn luyện lại mô hình với con dấu cơ quan nhà nước và các khối chữ đỏ không phải dấu, và cảnh báo trên Console khi từ khoá dấu mộc không dùng được. Chi tiết sẽ có trên trang Lộ trình phát triển khi trang này được mở lại.
+
+## Lời kết
+
+Cảm ơn các đơn vị đã gửi mẫu văn bản thật để kiểm thử; chính những mẫu đó cho thấy các giới hạn ghi ở trên. Nếu quý vị có con dấu mà agent chưa đọc được, hãy gửi mẫu cho đội hỗ trợ NextDLP để đưa vào bộ kiểm thử của phiên bản sau.
+
+*Đội ngũ NextDLP*

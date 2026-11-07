@@ -21,7 +21,7 @@ Bạn có thể lọc theo khoảng thời gian, máy, đơn vị và nhãn. Khi
 
 ## Đọc giải thích của một sự kiện
 
-Bấm vào một sự kiện để mở **Chi tiết sự kiện**. Phần đầu cho biết thông tin máy trạm, đường dẫn, chủ sở hữu file và nhãn cuối cùng. Phần giải thích chia theo từng khía cạnh: các quy tắc bảo mật đã chạy và quy tắc nào khớp, quyết định mức bảo mật cuối cùng, loại tài liệu, điểm phân tích ngữ nghĩa, kết quả nhận diện dấu mộc, lý do không đọc được nội dung nếu có, và phiên bản chính sách mà agent đã dùng.
+Bấm vào một sự kiện để mở **Chi tiết sự kiện**. Phần đầu cho biết thông tin máy trạm, đường dẫn, chủ sở hữu file và nhãn cuối cùng. Phần giải thích chia theo từng khía cạnh: các quy tắc bảo mật đã chạy và quy tắc nào khớp, quyết định mức bảo mật cuối cùng, loại tài liệu, điểm phân tích ngữ nghĩa, kết quả nhận diện dấu mộc (độ tin cậy, chữ đọc được trên dấu, và tên công ty tìm thấy trên dấu hay quanh dấu nếu điều kiện nêu tên công ty), lý do không đọc được nội dung nếu có, và phiên bản chính sách mà agent đã dùng.
 
 ![Chi tiết sự kiện và phần giải thích](/img/console/events-detail.png)
 

@@ -45,7 +45,7 @@ Lý do trong ngoặc của cảnh báo cho biết agent dừng ở đâu. Một 
 | Lý do hiển thị trên Console | Điều đã xảy ra | Bạn có thể làm gì |
 |---|---|---|
 | vượt giới hạn dung lượng của agent | Tệp lớn hơn ngưỡng đọc toàn bộ của Mức quét. Tệp văn bản được đọc phần đầu và phần cuối; PDF và tài liệu Office chỉ được kiểm tra thông tin tệp. | Chọn Mức quét cao hơn cho máy chứa tệp, ví dụ Sâu cho máy chủ tệp. |
-| chưa đọc các trang scan | Bản scan có nhiều trang hơn số trang OCR của Mức quét. Các trang sau chỉ được kiểm tra dấu mộc, chưa được đọc chữ. | Chọn Mức quét cao hơn, hoặc tách bộ hồ sơ thành nhiều tệp nhỏ. |
+| chưa đọc các trang scan | Bản scan có nhiều trang hơn số trang OCR của Mức quét, hoặc PDF scan lớn hơn 20 MB. Các trang sau chỉ được kiểm tra dấu mộc, chưa được đọc chữ; chữ trên con dấu và khối ký tên quanh nó vẫn được đọc nếu điều kiện dấu mộc nêu tên công ty. | Chọn Mức quét cao hơn, hoặc tách bộ hồ sơ thành nhiều tệp nhỏ. |
 | quá thời gian cho phép | Tệp cần nhiều thời gian hơn mức cho phép của Mức quét. Nhãn dựa trên phần đã đọc xong. | Chọn Mức quét cao hơn cho máy chứa tệp. |
 | quá dài cho mô hình ngữ nghĩa | Tài liệu quá dài để phân tích ngữ nghĩa toàn văn, nên agent phân tích ngữ nghĩa trên các đoạn mẫu trải đều tài liệu. Từ khoá, mẫu nhận diện và từ điển vẫn được kiểm tra trên toàn bộ nội dung. | Thường không cần làm gì. Với loại tài liệu dài, nên kết hợp điều kiện từ khoá hoặc Hybrid. |
 | nội dung bị mã hóa | Tệp hoặc tệp con trong tệp nén có mật khẩu, nên không đọc được nội dung. | Kiểm tra với chủ sở hữu tệp. Tệp có mật khẩu là đối tượng cần rà soát trong DLP. |
@@ -83,7 +83,7 @@ Những cải tiến dưới đây giúp agent đọc được nhiều hơn tron
     Agent lấy chữ trực tiếp từ PDF và chỉ chạy OCR cho những trang gần như không có chữ, tức là trang scan. Trên một máy tính văn phòng thông thường, một báo cáo PDF gần 100 trang trộn chữ và trang scan giảm từ hơn 5 phút xuống khoảng 1 phút.
   </Card>
   <Card title="Bản scan và dấu mộc">
-    Các trang scan được đọc chữ đến giới hạn số trang của Mức quét. Dấu mộc vẫn được kiểm tra trên mọi trang, kể cả khi đã vượt giới hạn đó. Mỗi trang được xử lý xong mới sang trang kế tiếp, nên bộ nhớ không tăng theo số trang.
+    Các trang scan được đọc chữ đến giới hạn số trang của Mức quét. Dấu mộc vẫn được kiểm tra trên mọi trang, kể cả khi đã vượt giới hạn đó, và nếu điều kiện dấu mộc nêu tên công ty thì chữ trên con dấu cùng khối ký tên quanh nó vẫn được đọc. Mỗi trang được xử lý xong mới sang trang kế tiếp, nên bộ nhớ không tăng theo số trang.
   </Card>
   <Card title="Word, Excel, PowerPoint">
     Tài liệu Office được giải nén và đọc từng phần nhỏ thay vì nạp cả tệp vào bộ nhớ, nên tài liệu rất lớn không làm máy bị đầy bộ nhớ.
