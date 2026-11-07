@@ -53,8 +53,11 @@ Mỗi lần nhãn của một tài liệu được gắn hoặc thay đổi đ�
 | Nhãn trong tệp bị sửa tay | Nhật ký phân loại, sự kiện **Can thiệp nhãn** và **Gắn lại nhãn** | Máy, đường dẫn và nhãn agent đã khôi phục. Xem [Nhãn ghi trong tệp](./file-labels.md#bảo-vệ-nhãn-khỏi-sửa-tay). |
 | Người dùng máy trạm đề nghị đổi nhãn | **Kiểm kê dữ liệu › Yêu cầu đổi nhãn** | Người gửi, nhãn hiện tại, nhãn đề xuất, lý do và trạng thái Chờ duyệt, Đã duyệt hoặc Từ chối. |
 | Quản trị viên hoặc Quản lý đổi nhãn trực tiếp | **Kiểm kê dữ liệu**, trạng thái **Admin ghi đè** | Những tài liệu đang mang nhãn được điều chỉnh bằng tay. |
-| Nhãn bị hạ mức bảo mật | **Báo cáo › Xuất CSV hạ cấp nhãn** | Mức cũ, mức mới, thời điểm, nguồn thay đổi và lý do. |
+| Nhãn bị hạ mức bảo mật khi phân loại lại hoặc khi rà soát | **Báo cáo › Xuất CSV hạ cấp nhãn** | Mức cũ, mức mới, thời điểm, nguồn thay đổi và lý do. |
 
-Sự kiện phân loại được giữ trong khoảng thời gian cấu hình tại **Hệ thống › Lưu trữ và sao lưu**. Nếu quy chế yêu cầu lưu hồ sơ kiểm toán lâu hơn khoảng này, hãy xuất nhật ký định kỳ bằng **Xuất CSV** hoặc **Xuất PDF**.
+Server hiện giữ toàn bộ sự kiện phân loại: thời gian lưu tại **Hệ thống › Lưu trữ và sao lưu** chưa được áp dụng. Để lưu hồ sơ kiểm toán ngoài hệ thống, hãy xuất nhật ký định kỳ bằng **Xuất CSV** hoặc **Xuất PDF**.
 
-Console hiện chưa có nhật ký riêng cho thao tác quản trị, như sửa chính sách hay quản lý tài khoản. Với chính sách, mỗi sự kiện phân loại ghi phiên bản chính sách mà agent đã dùng, nên bạn biết nhãn được quyết định theo bản nào.
+Những giới hạn hiện có của dấu vết kiểm toán:
+
+- Khi nhãn được đổi trực tiếp tại Kiểm kê dữ liệu, Console chưa ghi lại tài khoản nào đã đổi, và lần đổi đó chưa có trong **Xuất CSV hạ cấp nhãn**.
+- Console chưa có nhật ký riêng cho thao tác quản trị, như sửa chính sách hay quản lý tài khoản. Với chính sách, mỗi sự kiện phân loại ghi phiên bản chính sách mà agent đã dùng, nên bạn biết nhãn được quyết định theo bản nào.

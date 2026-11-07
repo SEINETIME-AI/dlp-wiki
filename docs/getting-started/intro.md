@@ -35,7 +35,7 @@ NextDLP không thay thế DLP. Việc thực thi như chặn email hay chặn sa
 | Console | Giao diện web để quản trị cơ cấu tổ chức, chính sách, máy trạm, kiểm kê và báo cáo. |
 | Server | Cung cấp API, lưu nhãn, đóng gói bộ cài và đồng bộ chính sách xuống agent. Chạy bằng Docker. |
 | Agent Windows | Theo dõi thư mục, trích xuất nội dung, áp dụng chính sách phân loại, ghi nhãn vào file và gửi kết quả về server. |
-| AssistOCR (tùy chọn) | Dịch vụ OCR tự host, hỗ trợ ảnh và bản scan khó đọc. |
+| AssistOCR (tùy chọn) | Gói GPU tự host: đọc ảnh và bản scan khó đọc, đọc tài liệu mẫu cho Gợi ý AI, và chấm lại các luật ngữ nghĩa khó. |
 
 ## Đọc tiếp
 

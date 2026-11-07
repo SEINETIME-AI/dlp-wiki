@@ -85,7 +85,7 @@ Trong Hybrid, mỗi điều kiện con dùng ngưỡng của kỹ thuật tươn
 
 Ở cả ba chế độ, chữ trong tài liệu Office và tệp văn bản luôn được đọc trên máy trạm. Ở chế độ hybrid và máy chủ, khi máy trạm thiếu bộ nhớ hoặc đang chạm giới hạn CPU, bản scan cũng được gửi thẳng cho AssistOCR; nếu AssistOCR không trả lời, tệp được đọc trên máy ở lượt sau. Xem [Khi máy trạm nhờ AssistOCR](../getting-started/specs.md#khi-máy-trạm-nhờ-assistocr).
 
-Chế độ hybrid và máy chủ cần cấu hình AssistOCR tại **Hệ thống › Nhà cung cấp phân loại**. Nếu không dùng AssistOCR, hãy chọn OCR cục bộ.
+Chế độ hybrid và máy chủ cần gói GPU AssistOCR đang chạy; trạng thái của gói hiển thị tại **Hệ thống › Nhà cung cấp phân loại** (xem [AssistOCR](../admin/system.md#assistocr)). Nếu không dùng AssistOCR, hãy chọn OCR cục bộ.
 
 ## Phiên bản và đồng bộ
 
