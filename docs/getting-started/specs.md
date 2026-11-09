@@ -93,6 +93,7 @@ Thời gian agent tạm dừng vì giới hạn CPU hoặc vì máy thiếu bộ
 | Tệp Office bất thường | Tệp .docx, .xlsx, .pptx có một phần bên trong phình lớn gấp hơn 100 lần khi giải nén (zip bomb) sẽ dừng đọc để bảo vệ máy. |
 | Phân tích ngữ nghĩa | Văn bản được chia thành các đoạn khoảng 128 token, hai đoạn liền nhau chung 32 token. Mỗi tài liệu được đánh giá tối đa 128 đoạn, khoảng 16.000 token, rải đều từ đầu đến cuối; văn bản trên 256 KB được lấy mẫu từ 8 phần trải đều trước khi chia đoạn. Điểm của một loại tài liệu là trung bình của 3 đoạn khớp nhất, nên một đoạn lạc đề không làm điều kiện khớp. Với tài liệu dài hơn mức này, Console ghi rõ phân tích ngữ nghĩa chỉ dựa trên mẫu; từ khóa, biểu thức và từ điển vẫn kiểm tra toàn bộ nội dung đã đọc. |
 | Gợi ý AI từ tệp mẫu | Mô hình đọc khoảng 4.500 ký tự đầu của tệp mẫu (một đến hai trang); tệp tải lên tối đa 10 MB. |
+| Bản vẽ AutoCAD | Bước chuyển đổi một tệp .dwg tối đa 120 giây; quá giờ hoặc tệp hỏng thì tệp ở trạng thái Chưa gắn nhãn kèm lý do lỗi đọc. Bản vẽ giữ chỗ trong hạn mức bộ nhớ gấp 30 lần dung lượng tệp (các định dạng khác 4 lần), nên bản vẽ rất lớn có thể chờ tới lượt khi máy bận. |
 
 ### Ví dụ với Mức quét Chuẩn
 
