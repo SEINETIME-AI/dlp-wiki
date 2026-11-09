@@ -69,6 +69,8 @@ Chúng tôi vui mừng giới thiệu **NextDLP 1.0.0**, phiên bản chính th�
 
 **Tệp nén được đọc bên trong.** Agent mở zip, rar, 7z, tar, gz và phân loại từng tài liệu bên trong, tối đa hai tầng tệp nén lồng nhau ở mức Chuẩn; tệp nén nhận mức cao nhất của các tệp bên trong, và phần giải thích liệt kê riêng từng tệp cùng nhãn và lý do. Tệp nén có tỷ lệ nén bất thường bị từ chối để bảo vệ máy.
 
+**Bản vẽ AutoCAD được đọc.** Agent đọc chữ trong tệp `.dwg` và `.dxf`: tiêu đề, khung tên, ghi chú, thuộc tính của block và bảng, nên bản vẽ được phân loại bằng chính các điều kiện từ khóa, biểu thức chính quy và từ điển đang dùng cho tài liệu khác. Chữ viết bằng font tiếng Việt cũ (TCVN3, VNI), rất phổ biến trong hồ sơ kỹ thuật, được chuyển sang Unicode trước khi so khớp. Nhãn của bản vẽ lưu trên server và trong Kiểm kê, không ghi vào tệp. Xem [Thông số kỹ thuật](/docs/getting-started/specs#định-dạng-tệp).
+
 **Tệp chưa đọc hết được gắn Chờ rà soát.** Chính sách Agent có cấu hình **Tệp chưa phân tích đầy đủ thì gắn ít nhất**, mặc định **Chờ rà soát**. Tệp nén lồng quá sâu hoặc có mật khẩu, tài liệu có mật khẩu, tệp lớn hơn Mức quét hay bản scan vượt số trang OCR được gắn Chờ rà soát để DLP xử lý và quản trị viên rà soát. Nhãn từ phần đã đọc cao hơn thì được giữ; ví dụ, tệp nén chứa bảng lương Tối mật cùng một tệp nén có mật khẩu vẫn là Tối mật. Xem [Tệp chưa đọc hết](/docs/endpoints/agent-policy#tệp-chưa-đọc-hết).
 
 ### Máy người dùng vẫn mượt
