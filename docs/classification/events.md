@@ -27,7 +27,7 @@ Bấm vào một sự kiện để mở **Chi tiết sự kiện**. Phần đầ
 
 Nếu agent chưa đọc hết nội dung của tệp, phần giải thích mở đầu bằng cảnh báo **Tài liệu chưa được phân tích đầy đủ** kèm lý do, hoặc **Chỉ kiểm tra thông tin của tệp, chưa đọc nội dung** khi agent không mở nội dung. Nhãn của những tệp này chỉ dựa trên phần đã đọc; xem [Tệp lớn & mức phân tích](../data/large-files.md) để biết cách xử lý.
 
-Với tệp nén như zip hay rar, phần giải thích liệt kê riêng từng tệp bên trong cùng nhãn và lý do của nó, tệp mật nhất đứng đầu, và cho biết mức của tệp nén được lấy từ tệp nào. Các tệp không đọc được, ví dụ có mật khẩu, được liệt kê theo tên cùng lý do. Ảnh và trang scan nằm trong tệp nén không được OCR, nên xuất hiện ở đây với lý do "Ảnh hoặc định dạng không đọc được"; xem [Xem từng tệp bên trong tệp nén](../data/large-files.md#xem-từng-tệp-bên-trong-tệp-nén).
+Với tệp nén như zip hay rar, phần giải thích liệt kê riêng từng tệp bên trong cùng nhãn và lý do của nó, tệp mật nhất đứng đầu, và cho biết mức của tệp nén được lấy từ tệp nào. Các tệp không đọc được, ví dụ có mật khẩu, được liệt kê theo tên cùng lý do. Ảnh và PDF scan nằm trong tệp nén không được OCR, nên xuất hiện ở đây với lý do "Ảnh hoặc định dạng không đọc được"; xem [Xem từng tệp bên trong tệp nén](../data/large-files.md#xem-từng-tệp-bên-trong-tệp-nén).
 
 Nếu bạn đặt **Tên điều kiện** khi soạn chính sách, tên đó hiển thị ở đây thay cho mã quy tắc.
 

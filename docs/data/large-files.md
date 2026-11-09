@@ -103,7 +103,9 @@ Các cơ chế dưới đây giúp agent đọc được nhiều hơn trong cùn
 
 Khi mở chi tiết của một tệp nén, phần giải thích cho biết mức của tệp nén được lấy từ tệp nào bên trong, số tệp đã phân loại, số tệp có mật khẩu và số tệp bị bỏ qua. Bên dưới là danh sách các tệp đã phân loại, tệp mật nhất đứng đầu, mỗi tệp kèm nhãn và lý do riêng. Những tệp không đọc được được liệt kê theo tên cùng lý do như "Có mật khẩu", "Quá lớn" hoặc "Tệp nén lồng quá sâu".
 
-Bên trong tệp nén, agent chỉ đọc **lớp chữ** của từng tệp: tài liệu Office, PDF có chữ và tệp văn bản. Ảnh và trang scan nằm trong tệp nén **không được OCR hay dò dấu mộc**, nên được liệt kê là "Ảnh hoặc định dạng không đọc được"; cùng tệp ảnh đó nằm ngoài tệp nén thì được đọc bình thường. Tệp có mật khẩu cũng không được đọc. Nhãn của tệp nén lấy từ các tệp đã đọc được; vì còn tệp chưa đọc, tệp nén nhận ít nhất mức **Tệp chưa phân tích đầy đủ thì gắn ít nhất** của Chính sách Agent, mặc định Chờ rà soát. Muốn quét ảnh hay bản scan, hãy để chúng ngoài tệp nén.
+Bên trong tệp nén, agent chỉ đọc **lớp chữ** của từng tệp: tài liệu Office, tệp văn bản và PDF có chữ (xuất từ Word, Excel). **Không OCR và không dò dấu mộc** cho tệp con: ảnh và PDF scan trong tệp nén được liệt kê là "Ảnh hoặc định dạng không đọc được", trong khi cùng tệp đó nằm ngoài tệp nén thì được đọc bình thường. Tệp có mật khẩu cũng không được đọc. Nhãn của tệp nén lấy từ các tệp đã đọc được; vì còn tệp chưa đọc, tệp nén nhận ít nhất mức **Tệp chưa phân tích đầy đủ thì gắn ít nhất** của Chính sách Agent, mặc định Chờ rà soát.
+
+Một giới hạn cần biết: PDF trong tệp nén **vừa có trang chữ vừa có trang scan** chỉ được đọc các trang chữ; các trang scan bị bỏ qua và hiện chưa được tính là "chưa đọc hết", nên tệp nén đó không tự nhận Chờ rà soát. Với hồ sơ scan hoặc ảnh, hãy để chúng ngoài tệp nén để được OCR và dò dấu mộc đầy đủ.
 
 Mỗi Mức quét quy định tổng dung lượng giải nén và số tầng lồng nhau được mở: mức Nhẹ mở một tầng tệp nén bên trong, mức Chuẩn và Sâu mở hai tầng. Mỗi tệp nén được đọc tối đa 1.000 tệp bên trong, mỗi tệp tối đa 20 MB. Xem bảng giới hạn tại [Chính sách Agent](../endpoints/agent-policy.md#mức-quét).
 
