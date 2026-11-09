@@ -22,7 +22,7 @@ Viết những gì xuất hiện **bên trong tài liệu**: cụm từ đặc t
 
 ### Bước 3. Bấm Tạo gợi ý và rà soát từng dòng
 
-Một mô tả thường có kết quả sau 5 đến 25 giây. Đọc từng điều kiện trong bảng **Điều kiện đề xuất**, sửa bằng biểu tượng bút chì và xóa dòng thừa bằng biểu tượng thùng rác. Phần rà soát ở cuối trang liệt kê những lỗi hay gặp nhất.
+Một mô tả thường có kết quả sau vài chục giây. Đọc từng điều kiện trong bảng **Điều kiện đề xuất**, sửa bằng biểu tượng bút chì và xóa dòng thừa bằng biểu tượng thùng rác. Phần rà soát ở cuối trang liệt kê những lỗi hay gặp nhất.
 
 ### Bước 4. Áp dụng, rồi kiểm tra ở tab Điều kiện phân loại
 
