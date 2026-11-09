@@ -61,13 +61,13 @@ Trong mọi trường hợp đó, tài liệu vẫn có nhãn và vẫn xuất h
 
 ### Tệp chưa đọc hết
 
-Phần chưa đọc có thể chứa dữ liệu nhạy cảm mà phần đã đọc không có. Vì vậy mỗi Chính sách Agent có một ngưỡng **Tệp chưa phân tích đầy đủ thì gắn ít nhất**, áp dụng khi agent không đọc hết nội dung của tệp: tệp nén lồng quá sâu, có mật khẩu, quá nhiều tệp hoặc quá dung lượng; tài liệu có mật khẩu; tệp lớn hơn Mức quét; bản scan vượt số trang OCR; tệp chạy quá thời gian.
+Có những lúc agent chỉ đọc được một phần tệp: tệp lớn hơn ngưỡng của Mức quét, bản scan dài hơn số trang OCR, tệp chạy quá thời gian, tài liệu đặt mật khẩu, hay tệp nén lồng quá sâu, có mật khẩu, quá nhiều tệp hoặc quá dung lượng. Phần chưa đọc có thể chứa dữ liệu nhạy cảm mà phần đã đọc không có.
 
-Nếu nhãn từ phần đã đọc **bằng hoặc cao hơn** ngưỡng, nhãn đó được giữ. Nếu thấp hơn hoặc chưa có nhãn, tệp được gắn mức ngưỡng. Ngưỡng không bao giờ hạ nhãn xuống. **Chờ rà soát** không phải một mức trên thang mật, nhưng khi so sánh được tính ngang với Mật: tệp đọc một phần mà phần đã đọc là Tối mật vẫn giữ Tối mật.
+Vì vậy Chính sách Agent có ngưỡng **Tệp chưa phân tích đầy đủ thì gắn ít nhất**. Cách áp dụng đơn giản: so nhãn lấy từ phần đã đọc với ngưỡng, **lấy mức cao hơn**. Tệp đọc dở mà phần đã đọc đã là Tối mật thì vẫn Tối mật; tệp đọc dở mà chưa thấy gì thì nhận mức ngưỡng. Ngưỡng không bao giờ hạ nhãn xuống.
 
-Mặc định là **Chờ rà soát**, vì hệ thống không biết bên trong có gì. DLP có thể chặn hoặc cảnh báo theo nhãn này, còn quản trị viên lọc Kiểm kê dữ liệu theo **Chờ rà soát**, xem lý do trong chi tiết tài liệu rồi **Cập nhật nhãn**. Chọn **Không áp dụng** để giữ nhãn từ phần đã đọc, hoặc một mức bảo mật cụ thể như Mật.
+Mặc định ngưỡng là **Chờ rà soát**. Đây không phải một mức trên thang mật mà là trạng thái "cần người xem", khi so sánh được tính ngang với Mật. DLP có thể chặn hoặc cảnh báo theo nhãn này; quản trị viên lọc Kiểm kê dữ liệu theo Chờ rà soát, xem lý do trong chi tiết tài liệu rồi **Cập nhật nhãn**. Nếu đơn vị chưa có người rà soát, chọn **Không áp dụng** để giữ nguyên nhãn từ phần đã đọc; hoặc chọn một mức cụ thể như Mật nếu muốn DLP chặn thẳng.
 
-Ngưỡng không áp dụng cho tệp không phải tài liệu (video, ảnh đĩa, bản sao lưu) và tệp lớn hơn Kích thước tối đa mà bạn đặt cho nguồn dữ liệu, để danh sách rà soát không bị ngập.
+Ngưỡng này không áp dụng cho hai loại tệp agent cố ý không đọc: tệp không phải tài liệu (video, ảnh đĩa, bản sao lưu) và tệp lớn hơn **Kích thước tối đa** bạn đặt cho nguồn dữ liệu. Chúng ở trạng thái Chưa gắn nhãn, để danh sách rà soát không bị ngập bởi những tệp bạn đã chủ động loại.
 
 ### Chọn mức nào
 
