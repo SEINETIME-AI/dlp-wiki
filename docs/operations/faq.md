@@ -18,31 +18,31 @@ Không. Cơ cấu tổ chức và tài khoản được quản lý trực tiếp
 
 ### NextDLP đọc được tài liệu scan không?
 
-Có. OCR và nhận diện dấu mộc chạy ngay trên máy trạm. AssistOCR tự host là tuỳ chọn cho ảnh và bản scan khó đọc.
+Có. OCR và nhận diện dấu mộc chạy ngay trên máy trạm. AssistOCR tự host là tùy chọn cho ảnh và bản scan khó đọc.
 
 ### Agent có làm chậm máy không?
 
 Agent quét ở chế độ nền của Windows, nên Word, Excel và các ứng dụng khác của người dùng luôn được ưu tiên. Agent chừa lại ít nhất một luồng CPU, chỉ dùng tối đa 20% phần CPU và 20% phần bộ nhớ mà máy đang để trống, và tạm dừng khi Windows báo sắp hết bộ nhớ. Khi người dùng đang dùng nhiều CPU, agent tự chậm lại tương ứng. Với máy cấu hình yếu, chọn Mức quét **Nhẹ** trong [Chính sách Agent](../endpoints/agent-policy.md#hiệu-năng--tài-nguyên-máy).
 
-### Agent có bỏ qua file quá lớn không?
+### Agent có bỏ qua tệp quá lớn không?
 
-Không. Mọi file trong phạm vi quét đều xuất hiện trong Kiểm kê dữ liệu. File quá lớn, bản scan quá dài hay video được gắn nhãn theo phần đã đọc hoặc theo thông tin của tệp, kèm cảnh báo "chưa được phân tích đầy đủ". Xem [Tệp lớn & mức phân tích](../data/large-files.md).
+Không. Mọi tệp trong phạm vi quét đều xuất hiện trong Kiểm kê dữ liệu. Tệp quá lớn, bản scan quá dài hay video được gắn nhãn theo phần đã đọc hoặc theo thông tin của tệp, kèm cảnh báo "chưa được phân tích đầy đủ". Xem [Tệp lớn & mức phân tích](../data/large-files.md).
 
 ### Có cần đặt lịch quét không?
 
-Không. Agent theo dõi thư mục liên tục và tự phân loại file mới hoặc file vừa thay đổi.
+Không. Agent theo dõi thư mục liên tục và tự phân loại tệp mới hoặc tệp vừa thay đổi.
 
 ### Vì sao một tài liệu ở trạng thái "Chưa gắn nhãn"?
 
-Vì không có điều kiện mức bảo mật nào khớp với nội dung của nó, hoặc vì agent không đọc được nội dung, ví dụ file đặt mật khẩu. NextDLP không tự coi tài liệu đó là công khai. Mở sự kiện trong [Nhật ký phân loại](../classification/events.md) để xem lý do.
+Vì không có điều kiện mức bảo mật nào khớp với nội dung của nó, hoặc vì agent không đọc được nội dung, ví dụ tệp hỏng. Tệp đặt mật khẩu mặc định được gắn Chờ rà soát. NextDLP không tự coi tài liệu đó là công khai. Mở sự kiện trong [Nhật ký phân loại](../classification/events.md) để xem lý do.
 
-### Vì sao file này bị gắn nhãn Mật?
+### Vì sao tệp này bị gắn nhãn Mật?
 
-Mở sự kiện của file trong [Nhật ký phân loại](../classification/events.md). Phần giải thích cho biết điều kiện nào đã khớp và vì sao mức bảo mật được quyết định như vậy.
+Mở sự kiện của tệp trong [Nhật ký phân loại](../classification/events.md). Phần giải thích cho biết điều kiện nào đã khớp và vì sao mức bảo mật được quyết định như vậy.
 
 ### Người dùng có tự sửa nhãn được không?
 
-Không trực tiếp. Người dùng máy trạm gửi yêu cầu đổi nhãn trong Kiểm kê dữ liệu; Quản lý đơn vị hoặc Quản trị viên duyệt thì nhãn mới có hiệu lực. Xem [Kiểm kê dữ liệu & đổi nhãn](../data/inventory.md).
+Không trực tiếp. Người dùng máy trạm gửi yêu cầu đổi nhãn trong Kiểm kê dữ liệu; Quản lý đơn vị hoặc Quản trị hệ thống duyệt thì nhãn mới có hiệu lực. Xem [Kiểm kê dữ liệu & đổi nhãn](../data/inventory.md).
 
 ### Có đổi nhãn nhiều tài liệu hoặc cả thư mục cùng lúc được không?
 
@@ -58,11 +58,11 @@ Không. NextDLP phân loại tệp trên máy trạm và thư mục chia sẻ, k
 
 ### NextDLP có phân loại bản vẽ kỹ thuật và sơ đồ không?
 
-Có, với bản vẽ và sơ đồ ở dạng PDF hoặc ảnh. Agent đọc chữ bằng OCR, dò dấu mộc, rồi phân loại theo từ khoá như ký hiệu bản vẽ, tên công trình, hoặc theo mô tả ngữ nghĩa. Tệp bản vẽ gốc như AutoCAD (`.dwg`, `.dxf`) hay Visio (`.vsdx`) chưa được đọc nội dung; agent chỉ đánh giá chúng theo thông tin tệp như tên, đường dẫn, kích thước và ngày tháng. Xem [Thông số kỹ thuật](../getting-started/specs.md#định-dạng-tệp).
+Có, với bản vẽ và sơ đồ ở dạng PDF hoặc ảnh. Agent đọc chữ bằng OCR, dò dấu mộc, rồi phân loại theo từ khóa như ký hiệu bản vẽ, tên công trình, hoặc theo mô tả ngữ nghĩa. Tệp bản vẽ gốc như AutoCAD (`.dwg`, `.dxf`) hay Visio (`.vsdx`) chưa được đọc nội dung; agent chỉ đánh giá chúng theo thông tin tệp như tên, đường dẫn, kích thước và ngày tháng. Xem [Thông số kỹ thuật](../getting-started/specs.md#định-dạng-tệp).
 
-### Từ khoá có bắt được khi gõ sai hoặc viết không dấu không?
+### Từ khóa có bắt được khi gõ sai hoặc viết không dấu không?
 
-Không. Từ khoá không phân biệt chữ hoa, chữ thường nhưng phải khớp đúng từng chữ, kể cả dấu tiếng Việt. Hãy thêm các biến thể thường gặp vào danh sách từ khoá, hoặc dùng biểu thức chính quy. Để nhận ra nội dung cùng ý nhưng diễn đạt khác, dùng kỹ thuật Ngữ nghĩa (ML). Xem [Nhận diện thông tin riêng của tổ chức](../classification/rules.md#nhận-diện-thông-tin-riêng-của-tổ-chức).
+Không. Từ khóa không phân biệt chữ hoa, chữ thường nhưng phải khớp đúng từng chữ, kể cả dấu tiếng Việt. Hãy thêm các biến thể thường gặp vào danh sách từ khóa, hoặc dùng biểu thức chính quy. Để nhận ra nội dung cùng ý nhưng diễn đạt khác, dùng kỹ thuật Ngữ nghĩa (ML). Xem [Nhận diện thông tin riêng của tổ chức](../classification/rules.md#nhận-diện-thông-tin-riêng-của-tổ-chức).
 
 ### Sửa chính sách có cần cài lại agent không?
 

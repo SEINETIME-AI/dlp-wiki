@@ -14,7 +14,7 @@ Trong các ví dụ dưới đây, `10.0.0.5` là địa chỉ IP của máy ch�
 
 ### Bước 1. Chuẩn bị gói cài đặt
 
-Server được phân phối dưới dạng một file `dlp-stack-deploy-<phiên bản>.zip`, ví dụ `dlp-stack-deploy-1.0.0.zip`. Khi cài lần đầu, gói tự tải thêm các thành phần còn lại của hệ thống từ internet, nên máy chủ cần có internet ở bước này và việc tải có thể mất một lúc. Với máy chủ không có internet, hãy liên hệ đội hỗ trợ NextDLP để nhận **bản offline đầy đủ**.
+Server được phân phối dưới dạng một tệp `dlp-stack-deploy-<phiên bản>.zip`, ví dụ `dlp-stack-deploy-1.0.0.zip`. Khi cài lần đầu, gói tự tải thêm các thành phần còn lại của hệ thống từ internet, nên máy chủ cần có internet ở bước này và việc tải có thể mất một lúc. Với máy chủ không có internet, hãy liên hệ đội hỗ trợ NextDLP để nhận **bản offline đầy đủ**.
 
 <DownloadCard />
 
@@ -31,7 +31,7 @@ Get-ChildItem -Recurse *.ps1 | Unblock-File
 
 Lệnh đầu tiên gỡ đánh dấu "tải từ internet" của Windows trên các script, để PowerShell cho phép chạy chúng.
 
-Với bản offline đầy đủ trên máy chủ không có internet, thêm tuỳ chọn `-SkipPull`:
+Với bản offline đầy đủ trên máy chủ không có internet, thêm tùy chọn `-SkipPull`:
 
 ```powershell
 .\docker\load-and-start.ps1 -SkipPull
@@ -83,13 +83,13 @@ Trước khi tạo bộ cài, Console cần có giấy phép đã kích hoạt, 
 
 Sau khi đăng nhập, mọi trang đều hiện banner *"Chưa kích hoạt license nên chưa cài được agent"*. Khi chưa kích hoạt giấy phép, máy trạm cài agent sẽ không kết nối được về server.
 
-Vào **Báo cáo & quản trị › Hệ thống › Giấy phép & phiên bản**, bấm **Kích hoạt license** rồi chọn file `.lic` nhận từ đội hỗ trợ NextDLP. Console hiện **Đã kích hoạt license** cùng số máy và ngày hết hạn của giấy phép. Xem [Giấy phép](../admin/license.md).
+Vào **Báo cáo & quản trị › Hệ thống › Giấy phép & phiên bản**, bấm **Kích hoạt license** rồi chọn tệp `.lic` nhận từ đội hỗ trợ NextDLP. Console hiện **Đã kích hoạt license** cùng số máy và ngày hết hạn của giấy phép. Xem [Giấy phép](../admin/license.md).
 
 ![Mục Giấy phép & phiên bản](/img/console/system-license.png)
 
 ### Bước 7. Tạo đơn vị
 
-Vào **Tổ chức › Cơ cấu tổ chức** và tạo một **Công ty con** (rồi thêm **Phòng ban** bên dưới) hoặc một **Ban chuyên môn**. Bộ cài luôn được gắn với một đơn vị lá: phòng ban của công ty con, hoặc chính ban chuyên môn. Xem [Cơ cấu tổ chức](../organization/org.md).
+Vào **Tổ chức › Cơ cấu tổ chức** và tạo một **Công ty con** (rồi thêm **Phòng ban** bên dưới) hoặc một **Ban chuyên môn**. Bộ cài luôn gắn với đơn vị cấp thấp nhất: phòng ban của công ty con, hoặc chính ban chuyên môn. Xem [Cơ cấu tổ chức](../organization/org.md).
 
 ![Trang Cơ cấu tổ chức](/img/console/organization.png)
 
@@ -103,7 +103,7 @@ Vào **Thiết bị & Agent › Chính sách Agent** và bấm **Chính sách Ag
 
 ### Bước 9. Tạo bộ cài cho đơn vị
 
-Vào **Thiết bị & Agent › Bộ cài Agent** và bấm **Tạo bộ cài mới**. Chọn Công ty con hoặc Ban chuyên môn, chọn phòng ban sẽ triển khai, chọn chính sách Agent vừa tạo, rồi nhập IP máy chủ vào ô **Agent server**.
+Vào **Thiết bị & Agent › Bộ cài Agent** và bấm **Tạo bộ cài mới**. Chọn Công ty con hoặc Ban chuyên môn, chọn phòng ban triển khai, chọn chính sách Agent vừa tạo, rồi nhập IP máy chủ vào ô **Agent server**.
 
 ![Hộp thoại Tạo bộ cài Agent, ô Agent server điền IP máy chủ](/img/console/agent-deployment-create.png)
 
@@ -115,7 +115,7 @@ Nếu để trống, agent sẽ kết nối về `localhost`, tức là chỉ ho
 
 ### Bước 10. Tải và cài bộ cài
 
-Khi bộ cài chuyển sang trạng thái **Sẵn sàng**, bấm **Tải bộ cài** để nhận một file zip. Chép file này sang máy trạm, giải nén, rồi chạy file `.msi` và chấp nhận hộp thoại quyền quản trị.
+Khi bộ cài chuyển sang trạng thái **Sẵn sàng**, bấm **Tải bộ cài** để nhận một tệp zip. Chép tệp này sang máy trạm, giải nén, rồi chạy tệp `.msi` và chấp nhận hộp thoại quyền quản trị.
 
 ![Danh sách bộ cài ở trạng thái Sẵn sàng](/img/console/agent-deployment.png)
 
@@ -126,7 +126,7 @@ msiexec /i .\<tên-file>.msi /qn
 Start-Service nextdlp
 ```
 
-Vì bộ cài là file MSI chuẩn, bạn có thể dùng cùng lệnh này với công cụ phân phối phần mềm của tổ chức để cài hàng loạt.
+Vì bộ cài là tệp MSI chuẩn, bạn có thể dùng cùng lệnh này với công cụ phân phối phần mềm của tổ chức để cài hàng loạt.
 
 ### Bước 11. Kiểm tra kết nối
 

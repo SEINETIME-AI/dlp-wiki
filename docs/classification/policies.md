@@ -20,7 +20,7 @@ Công tắc **Kích hoạt** mặc định tắt để bạn rà soát trước 
 
 ## Kỹ thuật nhận diện
 
-Mỗi điều kiện dùng một trong các kỹ thuật dưới đây. Agent đánh giá đồng thời mọi điều kiện trên cùng một bộ tín hiệu của file.
+Mỗi điều kiện dùng một trong các kỹ thuật dưới đây. Agent đánh giá đồng thời mọi điều kiện trên cùng một bộ tín hiệu của tệp.
 
 | Kỹ thuật | Cách hoạt động | Phù hợp khi |
 |---|---|---|
@@ -28,26 +28,32 @@ Mỗi điều kiện dùng một trong các kỹ thuật dưới đây. Agent đ
 | Ngữ nghĩa (ML) | So khớp ý nghĩa nội dung với các câu mô tả mẫu, kể cả khi diễn đạt khác. | Nhận diện loại tài liệu theo chủ đề, ví dụ hợp đồng lao động. |
 | Từ điển có trọng số | Cộng trọng số các thuật ngữ xuất hiện rồi so với ngưỡng. | Một từ đơn lẻ chưa đủ kết luận nhưng nhiều từ cùng xuất hiện thì đủ. |
 | Hybrid | Kết hợp nhiều điều kiện con theo quy tắc "Tất cả", "Bất kỳ" hoặc "Ít nhất N". | Cần nhiều tín hiệu cùng lúc, ví dụ vừa có số căn cước vừa có cụm "hợp đồng lao động". |
-| Dấu mộc | Nhận diện con dấu đỏ trên bản scan và hình ảnh, với ngưỡng độ tin cậy. Có thể nêu tên công ty trên dấu để chỉ bắt dấu của đúng công ty đó (xem [Công ty trên dấu mộc](#công-ty-trên-dấu-mộc)). | Hồ sơ giấy đã số hoá, công văn có đóng dấu. Mỗi chính sách có tối đa một điều kiện dấu mộc. |
+| Dấu mộc | Nhận diện con dấu đỏ trên bản scan và hình ảnh, với ngưỡng độ tin cậy. Có thể nêu tên công ty trên dấu để chỉ bắt dấu của đúng công ty đó (xem [Công ty trên dấu mộc](#công-ty-trên-dấu-mộc)). | Hồ sơ giấy đã số hóa, công văn có đóng dấu. Mỗi chính sách có tối đa một điều kiện dấu mộc. |
 
 Trong một điều kiện Từ khóa / Regex, các bộ khớp có quan hệ **HOẶC**: khớp một giá trị là đủ. Để bắt buộc nhiều tín hiệu cùng xuất hiện, hãy dùng **Hybrid** với tổ hợp **Tất cả điều kiện**.
 
-Mỗi điều kiện có thể đặt một **Tên điều kiện** dễ hiểu, ví dụ "CCCD trong hồ sơ nhân sự". Tên này hiển thị trong Nhật ký phân loại và báo cáo thay cho mã quy tắc, giúp người xem hiểu ngay vì sao file bị gắn nhãn.
+Mỗi điều kiện có thể đặt một **Tên điều kiện** dễ hiểu, ví dụ "CCCD trong hồ sơ nhân sự". Tên này hiển thị trong Nhật ký phân loại và báo cáo thay cho mã quy tắc, giúp người xem hiểu ngay vì sao tệp bị gắn nhãn.
 
 ![Hộp thoại Thêm điều kiện phân loại](/img/console/policies-condition.png)
 
 ## Công ty trên dấu mộc
 
-Mặc định điều kiện Dấu mộc khớp với mọi con dấu đủ ngưỡng. Mục **Công ty trên dấu mộc** cho phép nêu tên từng công ty kèm **Từ khoá trên dấu** (3–60 ký tự, nhấn Enter sau mỗi từ khoá), ví dụ công ty "Seinetime" với từ khoá `SEINETIME`. Agent đọc chữ trên vòng dấu bằng OCR và so với từ khoá, không phân biệt dấu tiếng Việt và hoa thường, chấp nhận một vài ký tự OCR đọc sai. Hãy dùng tên riêng của công ty: các từ chung như "Công ty", "TNHH", "Cổ phần", "Chi nhánh" có trên mọi con dấu nên bị bỏ qua.
+:::note[Có từ phiên bản 1.1.0]
+
+Mục này mô tả tính năng của phiên bản 1.1.0, hiện chưa phát hành.
+
+:::
+
+Mặc định điều kiện Dấu mộc khớp với mọi con dấu đủ ngưỡng. Mục **Công ty trên dấu mộc** cho phép nêu tên từng công ty kèm **Từ khóa trên dấu** (3–60 ký tự, nhấn Enter sau mỗi từ khóa), ví dụ công ty "Seinetime" với từ khóa `SEINETIME`. Agent đọc chữ trên vòng dấu bằng OCR và so với từ khóa, không phân biệt dấu tiếng Việt và hoa thường, chấp nhận một vài ký tự OCR đọc sai. Hãy dùng tên riêng của công ty: các từ chung như "Công ty", "TNHH", "Cổ phần", "Chi nhánh" có trên mọi con dấu nên bị bỏ qua.
 
 Bật **Chỉ áp dụng khi là dấu mộc của các công ty này** để điều kiện chỉ khớp khi nhận ra đúng công ty; tắt thì mọi con dấu vẫn khớp và tên công ty, nếu đọc được, chỉ hiển thị trong giải thích của sự kiện.
 
-Khi chữ trên dấu không đọc được, thường gặp với con dấu in nhạt hoặc đóng đè lên chữ và chữ ký, agent tìm tên công ty trong phần chữ ngay quanh con dấu, tức khối ký tên mà con dấu đóng lên (chức danh, tên đơn vị, tên người ký), và lần này đòi khớp chính xác từ khoá. Tên ở xa con dấu như tiêu đề hay dòng "Kính gửi" không được tính. Phần giải thích của sự kiện ghi rõ tên công ty được tìm thấy **trên dấu** hay **quanh dấu**. Con dấu đọc được rõ nhưng ghi tên đơn vị khác thì không khớp, kể cả khi quanh đó có nhắc tới công ty được nêu.
+Khi chữ trên dấu không đọc được, thường gặp với con dấu in nhạt hoặc đóng đè lên chữ và chữ ký, agent tìm tên công ty trong phần chữ ngay quanh con dấu, tức khối ký tên mà con dấu đóng lên (chức danh, tên đơn vị, tên người ký), và lần này yêu cầu khớp chính xác từ khóa. Tên ở xa con dấu như tiêu đề hay dòng "Kính gửi" không được tính. Phần giải thích của sự kiện ghi rõ tên công ty được tìm thấy **trên dấu** hay **quanh dấu**. Con dấu đọc được rõ nhưng ghi tên đơn vị khác thì không khớp, kể cả khi quanh đó có nhắc tới công ty được nêu.
 
 Hai điểm cần biết khi dùng:
 
 - Chữ trên dấu chỉ được đọc với con dấu đạt độ tin cậy từ 0,60 trở lên, hoặc từ ngưỡng của điều kiện nếu bạn đặt thấp hơn. Mỗi tài liệu đọc tối đa 6 con dấu.
-- Con dấu của cơ quan nhà nước (quốc huy, mực đỏ nhạt) thường không đọc được chữ trên vòng dấu; với loại này agent dựa vào tên cơ quan trong khối ký tên như mô tả ở trên, ví dụ "KT. THỦ TƯỚNG" ngay trên con dấu. Nếu khối ký tên không ghi tên cơ quan, hãy kết hợp thêm điều kiện từ khoá bằng Hybrid.
+- Con dấu của cơ quan nhà nước (quốc huy, mực đỏ nhạt) thường không đọc được chữ trên vòng dấu; với loại này agent dựa vào tên cơ quan trong khối ký tên như mô tả ở trên, ví dụ "KT. THỦ TƯỚNG" ngay trên con dấu. Nếu khối ký tên không ghi tên cơ quan, hãy kết hợp thêm điều kiện từ khóa bằng Hybrid.
 
 ## Chọn kỹ thuật cho cả chính sách
 
@@ -59,7 +65,7 @@ Tính năng này hữu ích khi bạn muốn so sánh kết quả giữa các k�
 
 ## Ngưỡng trước khi gắn nhãn
 
-Mỗi kỹ thuật có một ngưỡng quyết định khi nào điều kiện đủ mạnh để agent tự gắn nhãn. Ngưỡng giúp tránh gắn nhãn chỉ vì một từ xuất hiện tình cờ, ví dụ một số căn cước duy nhất trong thư mời họp không nên làm cả tài liệu thành Mật.
+Mỗi kỹ thuật có một ngưỡng quyết định khi nào điều kiện đủ mạnh để agent tự gắn nhãn. Ngưỡng giúp tránh gắn nhãn chỉ vì một từ xuất hiện tình cờ, ví dụ một số căn cước duy nhất trong thư mời họp không nên khiến cả tài liệu bị gắn Mật.
 
 | Kỹ thuật | Ngưỡng | Cách hoạt động |
 |---|---|---|
@@ -79,7 +85,7 @@ Trong Hybrid, mỗi điều kiện con dùng ngưỡng của kỹ thuật tươn
 
 | Chế độ | Cách chạy |
 |---|---|
-| OCR cục bộ | Trích xuất văn bản và nhận diện dấu mộc chạy hoàn toàn trên máy trạm. Không có nội dung nào được gửi lên server. |
+| OCR cục bộ | Trích xuất văn bản và nhận diện dấu mộc chạy hoàn toàn trên máy trạm. Toàn văn và bản scan không rời máy; chỉ kết quả phân loại và bằng chứng khớp được gửi về server (xem [Luồng dữ liệu & bảo mật](../getting-started/data-flow.md#dữ-liệu-nào-rời-máy-trạm)). |
 | OCR hybrid | Ảnh được gửi cho AssistOCR. PDF được đọc trên máy trước; PDF có trang scan, gần như không có chữ hoặc còn trang scan chưa đọc được gửi tiếp cho AssistOCR. |
 | OCR máy chủ | Mọi ảnh và trang scan trong PDF được gửi cho AssistOCR thay vì đọc chữ trên máy trạm. |
 

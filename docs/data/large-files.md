@@ -45,9 +45,9 @@ Lý do trong ngoặc của cảnh báo cho biết agent dừng ở đâu. Một 
 | Lý do hiển thị trên Console | Điều đã xảy ra | Bạn có thể làm gì |
 |---|---|---|
 | vượt giới hạn dung lượng của agent | Tệp lớn hơn ngưỡng đọc toàn bộ của Mức quét. Tệp văn bản được đọc phần đầu và phần cuối; PDF và tài liệu Office chỉ được kiểm tra thông tin tệp. | Chọn Mức quét cao hơn cho máy chứa tệp, ví dụ Sâu cho máy chủ tệp. |
-| chưa đọc các trang scan | Bản scan có nhiều trang hơn số trang OCR của Mức quét, hoặc PDF scan lớn hơn 20 MB. Các trang sau chỉ được kiểm tra dấu mộc, chưa được đọc chữ; chữ trên con dấu và khối ký tên quanh nó vẫn được đọc nếu điều kiện dấu mộc nêu tên công ty. | Chọn Mức quét cao hơn, hoặc tách bộ hồ sơ thành nhiều tệp nhỏ. |
+| chưa đọc các trang scan | Bản scan có nhiều trang hơn số trang OCR của Mức quét, hoặc PDF scan quá lớn so với bộ nhớ còn trống (xem [Thông số kỹ thuật](../getting-started/specs.md#agent-đọc-một-tệp-như-thế-nào)). Các trang sau chỉ được kiểm tra dấu mộc, chưa được đọc chữ; chữ trên con dấu và khối ký tên quanh nó vẫn được đọc nếu điều kiện dấu mộc nêu tên công ty. | Chọn Mức quét cao hơn, hoặc tách bộ hồ sơ thành nhiều tệp nhỏ. |
 | quá thời gian cho phép | Tệp cần nhiều thời gian hơn mức cho phép của Mức quét. Nhãn dựa trên phần đã đọc xong. | Chọn Mức quét cao hơn cho máy chứa tệp. |
-| quá dài cho mô hình ngữ nghĩa | Tài liệu quá dài để phân tích ngữ nghĩa toàn văn, nên agent phân tích ngữ nghĩa trên các đoạn mẫu trải đều tài liệu. Từ khoá, mẫu nhận diện và từ điển vẫn được kiểm tra trên toàn bộ nội dung. | Thường không cần làm gì. Với loại tài liệu dài, nên kết hợp điều kiện từ khoá hoặc Hybrid. |
+| quá dài cho mô hình ngữ nghĩa | Tài liệu quá dài để phân tích ngữ nghĩa toàn văn, nên agent phân tích ngữ nghĩa trên các đoạn mẫu trải đều tài liệu. Từ khóa, mẫu nhận diện và từ điển vẫn được kiểm tra trên toàn bộ nội dung. | Thường không cần làm gì. Với loại tài liệu dài, nên kết hợp điều kiện từ khóa hoặc Hybrid. |
 | nội dung bị mã hóa | Tệp hoặc tệp con trong tệp nén có mật khẩu, nên không đọc được nội dung. | Kiểm tra với chủ sở hữu tệp. Tệp có mật khẩu là đối tượng cần rà soát trong DLP. |
 | tệp nén lồng quá sâu | Tệp nén chứa tệp nén khác nhiều tầng hơn mức cho phép. Các tầng sâu hơn không được mở. | Rà soát bằng tay. Lồng nhiều tầng thường là dấu hiệu dữ liệu đang bị giấu. |
 | tỷ lệ nén bất thường | Tệp nén có kích thước giải nén lớn bất thường so với kích thước thật (kiểu "zip bomb"). Agent từ chối giải nén để bảo vệ máy. | Rà soát nguồn gốc tệp; đây không phải tài liệu làm việc thông thường. |
@@ -76,7 +76,7 @@ Với loại tệp không bao giờ chứa tài liệu làm việc, như tệp c
 
 ## Agent xử lý tệp lớn và phức tạp như thế nào
 
-Những cải tiến dưới đây giúp agent đọc được nhiều hơn trong cùng thời gian, mà không chiếm nhiều bộ nhớ của máy.
+Các cơ chế dưới đây giúp agent đọc được nhiều hơn trong cùng thời gian mà không chiếm nhiều bộ nhớ của máy.
 
 <Cards>
   <Card title="PDF có sẵn lớp chữ">

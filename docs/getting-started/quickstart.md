@@ -16,7 +16,7 @@ Vào **Phân loại › Mức bảo mật & loại tài liệu**. Ở tab **Mứ
 
 ### Bước 2. Khai báo nguồn dữ liệu
 
-Vào **Dữ liệu › Nguồn dữ liệu** và bấm **Thêm nguồn dữ liệu**. Đặt tên dễ nhận biết như "Hồ sơ phòng Nhân sự", chọn loại thư mục cục bộ, chọn phòng ban của máy trạm làm owner, nhập đường dẫn `C:\HoSo` và thêm các đuôi file cần quét như `.docx`, `.xlsx`, `.pdf`. Bấm **Tạo nguồn**.
+Vào **Dữ liệu › Nguồn dữ liệu** và bấm **Thêm nguồn dữ liệu**. Đặt tên dễ nhận biết như "Hồ sơ phòng Nhân sự", chọn loại thư mục cục bộ, chọn phòng ban của máy trạm ở ô **Owner / Phòng ban**, nhập đường dẫn `C:\HoSo` và thêm các đuôi tệp cần quét như `.docx`, `.xlsx`, `.pdf`. Bấm **Tạo nguồn**.
 
 ![Hộp thoại Thêm nguồn dữ liệu](/img/console/data-sources-create.png)
 
@@ -38,13 +38,13 @@ Quay lại tab **Thông tin chung** và bật công tắc **Kích hoạt**; côn
 
 ### Bước 5. Kiểm tra kết quả
 
-Trên máy trạm, lưu một file Word có cụm "bảng lương" vào `C:\HoSo`. Sau khoảng một phút, mở **Dữ liệu › Kiểm kê dữ liệu**: file xuất hiện với nhãn vừa cấu hình. Mở **Giám sát › Nhật ký phân loại** để xem sự kiện phân loại và lý do file được gắn nhãn.
+Trên máy trạm, lưu một tệp Word có cụm "bảng lương" vào `C:\HoSo`. Sau khoảng một phút, mở **Dữ liệu › Kiểm kê dữ liệu**: tệp xuất hiện với nhãn vừa cấu hình. Mở **Giám sát › Nhật ký phân loại** để xem sự kiện phân loại và lý do tệp được gắn nhãn.
 
 ![Chi tiết sự kiện giải thích vì sao file được gắn nhãn](/img/console/events-detail.png)
 
-:::tip[Không thấy file?]
+:::tip[Không thấy tệp?]
 
-Hãy kiểm tra ba điều: máy trạm đang **Trực tuyến**, đuôi file nằm trong danh sách đuôi cần quét của nguồn dữ liệu, và chính sách đã được **Kích hoạt** cho đúng đơn vị của máy.
+Hãy kiểm tra ba điều: máy trạm đang **Trực tuyến**, đuôi tệp nằm trong danh sách đuôi cần quét của nguồn dữ liệu, và chính sách đã được **Kích hoạt** cho đúng đơn vị của máy.
 
 :::
 

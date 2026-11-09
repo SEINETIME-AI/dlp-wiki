@@ -37,6 +37,6 @@ Một phòng ban chưa có chính sách phân loại riêng sẽ **kế thừa**
 
 :::
 
-## Chuyển và xoá đơn vị
+## Chuyển và xóa đơn vị
 
-Một phòng ban có thể được chuyển sang công ty con khác bằng thao tác **Chuyển phòng ban**. Để xoá đơn vị, bạn cần nhập lại mã đơn vị để xác nhận. Hệ thống không cho xoá khi đơn vị vẫn còn phòng ban trực thuộc, máy trạm, chính sách, mẫu regex, người dùng được phân quyền, bộ cài hoặc nguồn dữ liệu, và sẽ liệt kê cụ thể những mục cần chuyển hoặc xoá trước.
+Một phòng ban có thể được chuyển sang công ty con khác bằng thao tác **Chuyển phòng ban**. Để xóa đơn vị, bạn cần nhập lại mã đơn vị để xác nhận. Hệ thống không cho xóa khi đơn vị vẫn còn phòng ban trực thuộc, máy trạm, chính sách, mẫu regex, người dùng được phân quyền, bộ cài hoặc nguồn dữ liệu, và sẽ liệt kê cụ thể những mục cần chuyển hoặc xóa trước.

@@ -9,18 +9,18 @@ import styles from './index.module.css';
 const steps = [
   {
     tag: '01 · AGENT',
-    title: 'Agent đọc file trên máy trạm',
-    text: 'Agent Windows theo dõi thư mục, trích xuất nội dung và ngữ cảnh nghiệp vụ của file mới hoặc vừa thay đổi.',
+    title: 'Agent đọc tệp trên máy trạm',
+    text: 'Agent Windows theo dõi thư mục, đọc nội dung của tệp mới hoặc vừa thay đổi.',
   },
   {
     tag: '02 · PHÂN LOẠI',
     title: 'Gắn nhãn theo chính sách',
-    text: 'Từ khoá, mẫu dữ liệu, ML, OCR và nhận diện dấu mộc xác định mức bảo mật và loại tài liệu. Nhãn được lưu trên server.',
+    text: 'Từ khóa, mẫu dữ liệu, ML, OCR và nhận diện dấu mộc xác định mức bảo mật và loại tài liệu. Nhãn được lưu trên server và ghi vào tệp Office, PDF.',
   },
   {
     tag: '03 · DLP',
-    title: 'DLP tra nhãn và thực thi',
-    text: 'Khi file được gửi hoặc sao chép, DLP của bạn tra cứu nhãn qua API rồi cho phép, chặn hoặc cách ly.',
+    title: 'DLP đọc nhãn và thực thi',
+    text: 'Khi tệp được gửi hoặc sao chép, DLP của bạn đọc nhãn trong tệp rồi cho phép, chặn hoặc cách ly.',
   },
 ];
 
@@ -53,9 +53,8 @@ export default function Home(): ReactNode {
             {siteConfig.tagline}
           </Heading>
           <p className={styles.lead}>
-            NextDLP đọc nội dung và ngữ cảnh nghiệp vụ của từng file như phòng ban, đường dẫn và người
-            sở hữu, gắn nhãn mức bảo mật và loại tài liệu, rồi cung cấp nhãn đó cho hệ thống DLP bạn
-            đang dùng. Toàn bộ chạy on-premises.
+            NextDLP đọc nội dung từng tệp, gắn mức bảo mật và loại tài liệu, rồi cung cấp nhãn cho hệ thống DLP bạn
+            đang dùng. Toàn bộ chạy trong hạ tầng của bạn.
           </p>
           <Link className="button button--primary button--lg" to="/docs/getting-started/install">
             Bắt đầu nhanh

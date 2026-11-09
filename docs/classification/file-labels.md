@@ -10,7 +10,7 @@ Sau khi phân loại, agent ghi nhãn vào chính tệp tài liệu, bên cạnh
 
 | Định dạng | Nơi ghi nhãn |
 |---|---|
-| Word, Excel, PowerPoint (`.docx`, `.xlsx`, `.pptx`) | Thuộc tính tuỳ chỉnh (Custom properties) của tài liệu. |
+| Word, Excel, PowerPoint (`.docx`, `.xlsx`, `.pptx`) | Thuộc tính tùy chỉnh (Custom properties) của tài liệu. |
 | PDF (`.pdf`) | Thuộc tính tài liệu của tệp PDF. |
 
 Các định dạng khác, như Office đời cũ (`.doc`, `.xls`, `.ppt`), ảnh, tệp văn bản và tệp nén, không có chỗ ghi nhãn. Nhãn của chúng chỉ nằm trên server và hiển thị tại [Kiểm kê dữ liệu](../data/inventory.md).
@@ -63,7 +63,7 @@ Agent không ghi nhãn vào những tệp sau, kể cả khi chúng thuộc đ�
 
 | Trường hợp | Lý do |
 |---|---|
-| Tệp đặt mật khẩu hoặc mã hoá | Agent không mở được tệp. |
+| Tệp đặt mật khẩu hoặc mã hóa | Agent không mở được tệp. |
 | Tệp có chữ ký số | Ghi thêm thuộc tính sẽ làm mất hiệu lực chữ ký. |
 | Tệp hỏng | Agent không đọc được cấu trúc tệp. |
 
@@ -71,4 +71,4 @@ Nhãn của các tệp này vẫn được lưu trên server và hiển thị tr
 
 ## Bảo vệ nhãn khỏi sửa tay
 
-Thuộc tính trong tệp không được ký số, nên người có quyền sửa tệp có thể sửa hoặc xoá chúng. Với tệp nằm trong nguồn dữ liệu, agent so nhãn trong tệp với nhãn đã phân loại. Khi phát hiện khác biệt, agent ghi lại nhãn đúng vào tệp và ghi hai sự kiện **Can thiệp nhãn** và **Gắn lại nhãn** vào [Nhật ký phân loại](./events.md). Tệp đã ra khỏi nguồn dữ liệu, ví dụ đã chép sang USB, không còn được agent theo dõi.
+Thuộc tính trong tệp không được ký số, nên người có quyền sửa tệp có thể sửa hoặc xóa chúng. Với tệp nằm trong nguồn dữ liệu, agent so nhãn trong tệp với nhãn đã phân loại. Khi phát hiện khác biệt, agent ghi lại nhãn đúng vào tệp và ghi hai sự kiện **Can thiệp nhãn** và **Gắn lại nhãn** vào [Nhật ký phân loại](./events.md). Tệp đã ra khỏi nguồn dữ liệu, ví dụ đã chép sang USB, không còn được agent theo dõi.

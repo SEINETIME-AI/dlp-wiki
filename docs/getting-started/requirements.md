@@ -12,13 +12,13 @@ Server NextDLP chạy dưới dạng các container Docker. Máy chủ cần có
 
 Máy chủ nên có **địa chỉ IP cố định** trong mạng nội bộ, vì mọi agent sẽ kết nối về địa chỉ này. Nếu IP máy chủ thay đổi, bạn phải tạo lại bộ cài cho các máy trạm.
 
-Server không bắt buộc phải có internet. Với máy chủ không có internet, hãy dùng bản offline đầy đủ của gói cài đặt (xem [Cài đặt & kết nối](./install.md)).
+Gói cài đặt thường cần internet khi cài lần đầu. Với máy chủ không có internet, hãy dùng bản offline đầy đủ của gói cài đặt (xem [Cài đặt & kết nối](./install.md)).
 
 ## Máy trạm
 
 Agent chạy trên **Windows 64-bit** dưới dạng dịch vụ Windows tên `nextdlp`. Người cài cần có **quyền quản trị** trên máy.
 
-Khuyến nghị máy trạm có từ **8 GB RAM** và khoảng **450 MB** dung lượng trống cho chương trình và các mô hình. Agent chạy ở chế độ nền của Windows và nhường tài nguyên cho ứng dụng của người dùng. Nó tốn tài nguyên nhiều nhất khi phân loại file lớn hoặc đọc chữ trên bản scan. Bạn chọn mức đọc tài liệu cho từng loại máy bằng **Mức quét** trong [Chính sách Agent](../endpoints/agent-policy.md), và giới hạn dung lượng theo thư mục trong [Nguồn dữ liệu](../data/sources.md).
+Khuyến nghị máy trạm có từ **8 GB RAM** và khoảng **450 MB** dung lượng trống cho chương trình và các mô hình. Agent chạy ở chế độ nền của Windows và nhường tài nguyên cho ứng dụng của người dùng. Nó tốn tài nguyên nhiều nhất khi phân loại tệp lớn hoặc đọc chữ trên bản scan. Bạn chọn mức đọc tài liệu cho từng loại máy bằng **Mức quét** trong [Chính sách Agent](../endpoints/agent-policy.md), và giới hạn dung lượng theo thư mục trong [Nguồn dữ liệu](../data/sources.md).
 
 ## Trình duyệt
 

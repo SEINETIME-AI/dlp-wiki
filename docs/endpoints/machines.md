@@ -22,9 +22,9 @@ Phía trên danh sách là các ô thống kê tổng số máy, số máy đang
 
 **Chuyển đơn vị** đổi phòng ban của máy sau khi đã đăng ký, ví dụ khi nhân viên chuyển công tác. Máy sẽ dùng chính sách phân loại của đơn vị mới. Lưu ý rằng chính sách Agent vẫn đi theo bộ cài cũ; nếu cần cấu hình vận hành của đơn vị mới, hãy cài lại bằng bộ cài của đơn vị đó.
 
-**Tạo lại khóa** cấp khóa API mới cho agent và vô hiệu hoá khoá cũ ngay lập tức. Khoá mới chỉ hiển thị một lần, nên hãy sao chép ngay.
+**Tạo lại khóa** cấp khóa API mới cho agent và vô hiệu hóa khóa cũ ngay lập tức. Khóa mới chỉ hiển thị một lần, nên hãy sao chép ngay.
 
-**Thu hồi** ngắt máy khỏi hệ thống: agent ngừng báo cáo và tài khoản Console gắn với máy bị xoá. Hãy thu hồi máy khi máy bị thanh lý hoặc đã gỡ agent.
+**Thu hồi** ngắt máy khỏi hệ thống: agent ngừng báo cáo và tài khoản Console gắn với máy bị xóa. Hãy thu hồi máy khi máy bị thanh lý hoặc đã gỡ agent.
 
 :::tip[Máy mất kết nối?]
 

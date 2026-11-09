@@ -15,8 +15,8 @@ Trang **Báo cáo & quản trị › Hệ thống** tập trung các cấu hình
 | Thông tin chung | Tên tổ chức (hiển thị là cấp Tổng công ty trong Cơ cấu tổ chức), múi giờ và ngôn ngữ giao diện. |
 | Cấu hình Agent mặc định | Heartbeat, ngưỡng offline và kênh phát hành. Thiết lập theo nhóm máy nằm ở Chính sách Agent. |
 | Thông báo vận hành | Bật hoặc tắt thông báo về trạng thái gói cài, máy mất kết nối, đồng bộ chính sách, yêu cầu đổi nhãn và popup tệp mới được phân loại. |
-| Bảo mật đăng nhập | Độ dài mật khẩu tối thiểu, số lần nhập sai trước khi khoá tài khoản. |
-| Lưu trữ và sao lưu | Thời gian lưu sự kiện phân loại và kiểm kê tài liệu, lịch sao lưu, số bản giữ lại. Hiện các giá trị này mới được lưu lại: server chưa tự xoá dữ liệu cũ và chưa tự sao lưu, nên hãy sao lưu cơ sở dữ liệu theo quy trình của tổ chức. |
+| Bảo mật đăng nhập | Độ dài mật khẩu tối thiểu, số lần nhập sai trước khi khóa tài khoản. |
+| Lưu trữ và sao lưu | Thời gian lưu sự kiện phân loại và kiểm kê tài liệu, lịch sao lưu, số bản giữ lại. Hiện các giá trị này mới được lưu lại: server chưa tự xóa dữ liệu cũ và chưa tự sao lưu, nên hãy sao lưu cơ sở dữ liệu theo quy trình của tổ chức. |
 | Nhà cung cấp phân loại | Trạng thái của gói GPU AssistOCR và quota tài liệu gửi lên mỗi ngày. Xem [AssistOCR](#assistocr). |
 | Giấy phép & phiên bản | Trạng thái giấy phép, số máy đã dùng, kích hoạt giấy phép mới và phiên bản đang chạy. Xem [Giấy phép](./license.md). |
 
@@ -26,7 +26,7 @@ AssistOCR là gói GPU tự cài trong mạng nội bộ, và là tùy chọn. G
 
 - đọc ảnh, bản scan và chữ trên dấu mộc cho agent ở chế độ OCR hybrid hoặc máy chủ, tốt hơn OCR trên máy trạm với bản scan chất lượng thấp;
 - đọc tài liệu mẫu khi quản trị viên dùng Gợi ý AI;
-- chấm lại các luật ngữ nghĩa có điểm sát ngưỡng, và chấm thay cho máy trạm không nạp được mô hình ngữ nghĩa.
+- đánh giá lại các điều kiện ngữ nghĩa có điểm sát ngưỡng, và đánh giá thay cho máy trạm không nạp được mô hình ngữ nghĩa.
 
 Địa chỉ của AssistOCR được đặt khi cài server cùng gói GPU, không nhập trên Console. Mục **Nhà cung cấp phân loại** cho biết tình trạng của gói:
 

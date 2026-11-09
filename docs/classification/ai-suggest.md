@@ -6,7 +6,7 @@ description: Cách viết mô tả và chọn tài liệu mẫu để tab Gợi 
 
 import {Cards, Card} from '@site/src/components/FeatureCards';
 
-Tab **Gợi ý AI** trong trình soạn chính sách biến một đoạn mô tả, hoặc một tài liệu mẫu, thành các điều kiện phân loại để bạn rà soát rồi áp dụng. Gợi ý được tạo bởi một mô hình ngôn ngữ nhỏ chạy ngay trên server của bạn, nên tài liệu mẫu không rời khỏi hệ thống. Đổi lại, mô hình này làm tốt nhất khi được giao một việc rõ ràng: nói đúng nhãn cần gắn và đúng những dấu hiệu cần tìm. Trang này tổng hợp cách viết đã được thử trên nhiều tình huống thực tế để bạn có kết quả tốt ngay từ lần đầu.
+Tab **Gợi ý AI** trong trình soạn chính sách biến một đoạn mô tả, hoặc một tài liệu mẫu, thành các điều kiện phân loại để bạn rà soát rồi áp dụng. Gợi ý được tạo bởi một mô hình ngôn ngữ nhỏ chạy ngay trên server của bạn, nên tài liệu mẫu không rời khỏi hệ thống. Đổi lại, mô hình này làm tốt nhất khi được giao một việc rõ ràng: nói đúng nhãn cần gắn và đúng những dấu hiệu cần tìm. Trang này tổng hợp cách viết giúp bạn có kết quả tốt ngay từ lần đầu.
 
 ![Tab Gợi ý AI với nhãn đích đã chọn, mô tả theo mẫu và ba điều kiện đề xuất](/img/console/policies-ai-suggest.png)
 
@@ -28,9 +28,9 @@ Một mô tả thường có kết quả sau 5 đến 25 giây. Đọc từng đ
 
 Bấm **Áp dụng vào điều kiện**. Lưu ý thao tác này **thay thế toàn bộ** điều kiện đang có trong chính sách bằng các điều kiện đề xuất, không cộng thêm vào. Hãy dùng Gợi ý AI khi bắt đầu một chính sách mới, rồi bổ sung bằng tay ở tab Điều kiện phân loại.
 
-## Mẫu câu đã được kiểm chứng
+## Mẫu câu nên dùng
 
-Các mẫu dưới đây cho kết quả đúng và ổn định qua nhiều lần chạy. Thay phần trong ngoặc kép bằng nội dung của tổ chức bạn.
+Các mẫu dưới đây cho kết quả ổn định. Thay phần trong ngoặc kép bằng nội dung của tổ chức bạn.
 
 <Cards>
   <Card title="Từ khóa và số định danh" tag="Dùng nhiều nhất">
@@ -43,7 +43,7 @@ Các mẫu dưới đây cho kết quả đúng và ổn định qua nhiều l�
     Chọn nhãn đích, rồi viết: <em>Văn bản có con dấu đỏ thì gắn nhãn.</em> Kết quả là điều kiện nhận diện con dấu, kèm một điều kiện từ khóa "dấu đỏ", "con dấu đỏ".
   </Card>
   <Card title="Cần hai dấu hiệu cùng lúc" tag="Làm bằng tay">
-    Gợi ý AI hiện <strong>chưa tạo đúng</strong> điều kiện "cùng lúc": dù mô tả ghi rõ ĐỒNG THỜI, mô hình vẫn đặt các dấu hiệu vào một điều kiện Từ khóa, nghĩa là khớp <em>một trong hai</em> là đủ. Hãy dùng Gợi ý AI để lấy từng dấu hiệu, rồi ở tab Điều kiện phân loại tạo một điều kiện <strong>Hybrid</strong> với tổ hợp <strong>Tất cả điều kiện</strong>.
+    Gợi ý AI hiện chỉ tạo điều kiện khớp <em>một trong các</em> dấu hiệu. Để yêu cầu nhiều dấu hiệu cùng xuất hiện, hãy dùng Gợi ý AI để lấy từng dấu hiệu, rồi ở tab Điều kiện phân loại tạo một điều kiện <strong>Hybrid</strong> với tổ hợp <strong>Tất cả điều kiện</strong>.
   </Card>
 </Cards>
 
@@ -52,11 +52,11 @@ Các mẫu dưới đây cho kết quả đúng và ổn định qua nhiều l�
 | Nên viết | Không nên viết | Vì sao |
 |---|---|---|
 | Hồ sơ nhân sự gắn mức confidential, loại hr. Nhận biết khi có cụm từ "hợp đồng lao động", "bảng lương", hoặc số CCCD 12 chữ số. | tài liệu mật | Mô tả hai chữ không có dấu hiệu nào để tìm. Mô hình trả về đúng một từ khóa "tài liệu mật" và tự đoán loại tài liệu. |
-| Gắn khi tài liệu có MỘT trong các cụm từ: "hóa đơn GTGT"; "tờ khai thuế". | chào bạn, công ty mình có nhiều loại giấy tờ lắm, kế toán thì có hóa đơn, nhân sự thì có hợp đồng... | Câu dài trộn nhiều phòng ban khiến mọi điều kiện bị gắn chung một nhãn, ở ví dụ thử nghiệm là Pháp chế cho cả hóa đơn lẫn lương thưởng. |
-| Mỗi lần một mức bảo mật: Báo cáo tài chính có cụm từ "tuyệt mật" thì gắn mức secret, loại finance. | Nếu có chữ "tuyệt mật" thì secret, nếu có chữ "nội bộ" thì internal. | Khi một câu có nhiều mức, mô hình thường gán cùng một mức cho tất cả. Trong thử nghiệm, "tuyệt mật" bị gắn mức Nội bộ. |
-| Dùng các mã nhãn có trong bộ nhãn, ví dụ confidential, hr, finance; hoặc chọn nhãn đích ở hai ô phía trên. | Gắn Mật, loại tài chính | Tên gọi tự do dễ bị hiểu sai mức. Trong thử nghiệm, "Mật" bị gán thành mức cao nhất là secret. |
-| Không ghi số lượng điều kiện. Để mô tả quyết định số điều kiện. | Gộp lại thành 1 condition thôi nhé; Tạo 5 điều kiện | Khi mô tả có con số kèm "điều kiện" hay "condition", hệ thống hiểu là yêu cầu một bộ điều kiện đủ mọi kỹ thuật. Trong thử nghiệm, "gộp thành 1 condition" cho ra 7 điều kiện gồm cả con dấu và từ điển. |
-| Dùng ml với các mô tả: "..." | Phân tích đầy đủ bằng mọi kỹ thuật, dùng ngữ nghĩa và từ điển | Các từ như "đầy đủ", "ngữ nghĩa", "semantic", "từ điển", "dictionary", "hybrid", "kỹ thuật", "nhiều mức" được hiểu là yêu cầu phủ mọi kỹ thuật, nên hệ thống thêm cả điều kiện mẫu không liên quan, ví dụ từ điển nhân sự vào một chính sách về M&A. Lưu ý "nhiều mức" cũng nằm trong danh sách này, nên câu "nhiều mức bảo mật" cho ra nhiều điều kiện hơn bạn chờ đợi. |
+| Gắn khi tài liệu có MỘT trong các cụm từ: "hóa đơn GTGT"; "tờ khai thuế". | chào bạn, công ty mình có nhiều loại giấy tờ lắm, kế toán thì có hóa đơn, nhân sự thì có hợp đồng... | Câu dài trộn nhiều phòng ban khiến mọi điều kiện dễ bị gắn chung một nhãn. |
+| Mỗi lần một mức bảo mật: Báo cáo tài chính có cụm từ "tuyệt mật" thì gắn mức secret, loại finance. | Nếu có chữ "tuyệt mật" thì secret, nếu có chữ "nội bộ" thì internal. | Khi một câu có nhiều mức, mô hình thường gán cùng một mức cho tất cả. |
+| Dùng các mã nhãn có trong bộ nhãn, ví dụ confidential, hr, finance; hoặc chọn nhãn đích ở hai ô phía trên. | Gắn Mật, loại tài chính | Tên gọi tự do dễ bị hiểu sai mức. |
+| Không ghi số lượng điều kiện. Để mô tả quyết định số điều kiện. | Gộp lại thành 1 condition thôi nhé; Tạo 5 điều kiện | Khi mô tả có con số kèm "điều kiện" hay "condition", hệ thống hiểu là yêu cầu một bộ điều kiện đủ mọi kỹ thuật. |
+| Dùng ml với các mô tả: "..." | Phân tích đầy đủ bằng mọi kỹ thuật, dùng ngữ nghĩa và từ điển | Các từ như "đầy đủ", "ngữ nghĩa", "semantic", "từ điển", "dictionary", "hybrid", "kỹ thuật", "nhiều mức" được hiểu là yêu cầu phủ mọi kỹ thuật, nên hệ thống thêm cả điều kiện mẫu không liên quan. Lưu ý "nhiều mức" cũng nằm trong danh sách này, nên câu "nhiều mức bảo mật" cho ra nhiều điều kiện hơn bạn chờ đợi. |
 
 ### Khi cần nhiều mức bảo mật
 
@@ -71,7 +71,7 @@ Bấm biểu tượng ghim cạnh nút **Tạo gợi ý**, hoặc kéo thả t�
     Word (.doc, .docx), Excel (.xls, .xlsx), PDF, tệp văn bản (.txt, .md) và ảnh (.png, .jpg, .webp, .gif). PowerPoint chưa được hỗ trợ: hãy sao chép chữ sang tệp .txt. Ảnh và tệp văn bản được đọc ngay trong trình duyệt. Tệp Word, Excel và PDF tối đa 10 MB.
   </Card>
   <Card title="Chỉ phần đầu được dùng">
-    Mô hình chỉ đọc <strong>4.500 ký tự đầu tiên</strong>, khoảng một trang rưỡi A4. Dấu hiệu nằm ở trang sau sẽ không được nhận ra; trong thử nghiệm, số CCCD ở phụ lục cuối hợp đồng bị bỏ sót hoàn toàn.
+    Mô hình chỉ đọc <strong>4.500 ký tự đầu tiên</strong>, khoảng một trang rưỡi A4. Dấu hiệu nằm ở trang sau sẽ không được nhận ra.
   </Card>
   <Card title="Thời gian">
     Một tài liệu mẫu cần khoảng 1 đến 1,5 phút, lâu hơn mô tả bằng chữ vì phải trích chữ và phân tích văn bản dài hơn. Hãy chờ đến khi bảng Điều kiện đề xuất hiện ra.
@@ -86,7 +86,7 @@ Bấm biểu tượng ghim cạnh nút **Tạo gợi ý**, hoặc kéo thả t�
 
 **Không dùng mẫu quá ngắn.** Với tài liệu chỉ có một câu, mô hình có xu hướng chép nguyên câu đó thành từ khóa. Một từ khóa dài cả câu gần như không bao giờ khớp với tài liệu khác.
 
-**Kèm lời dặn để giữ đúng trọng tâm.** Khi chỉ có tệp mẫu, mô hình ưu tiên các dữ liệu cá nhân như số CCCD, mã số thuế, số điện thoại, và thường bỏ qua những cụm từ đặc trưng của loại tài liệu. Hãy viết thêm vào khung mô tả, ví dụ: <em>Học từ báo cáo mẫu. Dùng các cụm từ đặc trưng: "báo cáo tài chính"; "bảng cân đối kế toán"; "lưu chuyển tiền tệ". Không thêm regex dữ liệu cá nhân.</em> Với lời dặn này, điều kiện đề xuất chứa đúng các cụm từ của báo cáo tài chính.
+**Kèm lời dặn để giữ đúng trọng tâm.** Khi chỉ có tệp mẫu, mô hình ưu tiên các dữ liệu cá nhân như số CCCD, mã số thuế, số điện thoại, và thường bỏ qua những cụm từ đặc trưng của loại tài liệu. Hãy viết thêm vào khung mô tả, ví dụ: <em>Học từ báo cáo mẫu. Dùng các cụm từ đặc trưng: "báo cáo tài chính"; "bảng cân đối kế toán"; "lưu chuyển tiền tệ". Không thêm regex dữ liệu cá nhân.</em>
 
 ## Rà soát trước khi áp dụng
 
@@ -106,7 +106,7 @@ Sau khi áp dụng và lưu, hãy kiểm tra chính sách trên vài tài liệu
 
 **Nút Tạo gợi ý bị tắt hoặc có thông báo Admin LLM chưa sẵn sàng.** Mô hình đang khởi động hoặc đang được tải về lần đầu. Chờ vài phút rồi tải lại trang. Trong lúc đó, tải tài liệu mẫu lên vẫn tạo được điều kiện bằng phương pháp phân tích tín hiệu đơn giản, có ghi "nguồn: heuristic".
 
-**Tải tệp mẫu lên thì báo lỗi 413 hoặc không có phản hồi.** Tệp mẫu lớn hơn 12 MB bị từ chối. Hãy dùng một tệp nhỏ hơn, ví dụ chỉ giữ những trang chứa dấu hiệu, hoặc mô tả bằng chữ.
+**Tải tệp mẫu lên thì báo lỗi 413 hoặc không có phản hồi.** Tệp mẫu vượt giới hạn dung lượng bị từ chối. Hãy dùng một tệp nhỏ hơn, ví dụ chỉ giữ những trang chứa dấu hiệu, hoặc mô tả bằng chữ.
 
 **Thông báo "model response missing conditions".** Mô hình không đề xuất được điều kiện nào, thường do mô tả quá ngắn hoặc quá chung chung. Hãy viết lại theo một trong các mẫu câu ở trên rồi thử lại.
 

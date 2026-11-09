@@ -8,7 +8,7 @@ import {Cards, Card} from '@site/src/components/FeatureCards';
 
 Chính sách Agent là mẫu cấu hình vận hành của agent: bao lâu báo trạng thái một lần, đọc tài liệu kỹ đến đâu, giữ dữ liệu bao lâu khi mất mạng. Bạn tạo chính sách tại **Thiết bị & Agent › Chính sách Agent** (trang có dòng tiêu đề nhỏ "Cấu hình máy"), rồi chọn nó khi tạo [Bộ cài Agent](./packages.md).
 
-Chính sách Agent khác với chính sách phân loại. Nó không quyết định file được gắn nhãn gì, mà chỉ quyết định agent chạy ra sao trên máy.
+Chính sách Agent khác với chính sách phân loại. Nó không quyết định tệp được gắn nhãn gì, mà chỉ quyết định agent chạy ra sao trên máy.
 
 ![Trang Chính sách Agent](/img/console/agent-policies.png)
 
@@ -27,7 +27,7 @@ Bấm **Chính sách Agent mới**, đặt tên cho chính sách (ví dụ "Máy
 
 ## Mức quét
 
-Thay vì tự nhập một con số dung lượng, bạn chọn một trong ba mức đã được cân chỉnh sẵn. Mỗi mức quy định cùng lúc dung lượng file được đọc toàn bộ, số trang scan được đọc chữ (OCR), thời gian tối đa dành cho một file và giới hạn khi mở tệp nén.
+Thay vì tự nhập một con số dung lượng, bạn chọn một trong ba mức đã được cân chỉnh sẵn. Mỗi mức quy định cùng lúc dung lượng tệp được đọc toàn bộ, số trang scan được đọc chữ (OCR), thời gian tối đa dành cho một tệp và giới hạn khi mở tệp nén.
 
 <Cards>
   <Card title="Nhẹ" tag="Máy yếu">
@@ -55,7 +55,7 @@ Bảng dưới đây tóm tắt đầy đủ giới hạn của từng mức đ�
 
 ### Khi tài liệu vượt giới hạn
 
-Không có tài liệu nào bị bỏ qua trong im lặng. Một tệp văn bản (như `.txt`, `.csv`, `.log`, `.json`, `.xml`) lớn hơn ngưỡng đọc toàn bộ vẫn được đọc phần đầu và phần cuối, rồi gắn nhãn theo những gì đã đọc. Các định dạng khác như PDF, Word hay Excel lớn hơn ngưỡng này chưa được đọc nội dung, mà được đánh giá theo thông tin của tệp. Một bản scan dài hơn số trang OCR vẫn được kiểm tra dấu mộc trên mọi trang, chỉ phần chữ của các trang còn lại là chưa được đọc. Một tệp chạy quá thời gian cho phép được kết luận dựa trên phần đã đọc xong.
+Mọi tài liệu trong phạm vi quét đều được ghi nhận. Một tệp văn bản (như `.txt`, `.csv`, `.log`, `.json`, `.xml`) lớn hơn ngưỡng đọc toàn bộ vẫn được đọc phần đầu và phần cuối, rồi gắn nhãn theo những gì đã đọc. Các định dạng khác như PDF, Word hay Excel lớn hơn ngưỡng này chưa được đọc nội dung, mà được đánh giá theo thông tin của tệp. Một bản scan dài hơn số trang OCR vẫn được kiểm tra dấu mộc trên mọi trang, chỉ phần chữ của các trang còn lại là chưa được đọc. Một tệp chạy quá thời gian cho phép được kết luận dựa trên phần đã đọc xong.
 
 Trong mọi trường hợp đó, tài liệu vẫn có nhãn và vẫn xuất hiện trong Kiểm kê dữ liệu, nhưng kèm cảnh báo **Tài liệu chưa được phân tích đầy đủ** cùng lý do. Xem [Tệp lớn & mức phân tích](../data/large-files.md) để biết cách đọc cảnh báo và xử lý.
 
@@ -63,7 +63,7 @@ Trong mọi trường hợp đó, tài liệu vẫn có nhãn và vẫn xuất h
 
 Phần chưa đọc có thể chứa dữ liệu nhạy cảm mà phần đã đọc không có. Vì vậy mỗi Chính sách Agent có một ngưỡng **Tệp chưa phân tích đầy đủ thì gắn ít nhất**, áp dụng khi agent không đọc hết nội dung của tệp: tệp nén lồng quá sâu, có mật khẩu, quá nhiều tệp hoặc quá dung lượng; tài liệu có mật khẩu; tệp lớn hơn Mức quét; bản scan vượt số trang OCR; tệp chạy quá thời gian.
 
-Nếu nhãn từ phần đã đọc **bằng hoặc cao hơn** ngưỡng, nhãn đó được giữ. Nếu thấp hơn hoặc chưa có nhãn, tệp được gắn mức ngưỡng. Ngưỡng không bao giờ hạ nhãn xuống. Mức **Chờ rà soát** được xếp ngang với Mật: tệp đọc một phần mà phần đã đọc là Tối mật vẫn giữ Tối mật.
+Nếu nhãn từ phần đã đọc **bằng hoặc cao hơn** ngưỡng, nhãn đó được giữ. Nếu thấp hơn hoặc chưa có nhãn, tệp được gắn mức ngưỡng. Ngưỡng không bao giờ hạ nhãn xuống. **Chờ rà soát** không phải một mức trên thang mật, nhưng khi so sánh được tính ngang với Mật: tệp đọc một phần mà phần đã đọc là Tối mật vẫn giữ Tối mật.
 
 Mặc định là **Chờ rà soát**, vì hệ thống không biết bên trong có gì. DLP có thể chặn hoặc cảnh báo theo nhãn này, còn quản trị viên lọc Kiểm kê dữ liệu theo **Chờ rà soát**, xem lý do trong chi tiết tài liệu rồi **Cập nhật nhãn**. Chọn **Không áp dụng** để giữ nhãn từ phần đã đọc, hoặc một mức bảo mật cụ thể như Mật.
 
@@ -74,12 +74,6 @@ Ngưỡng không áp dụng cho tệp không phải tài liệu (video, ảnh đ
 **Chuẩn** là lựa chọn đúng cho hầu hết máy trạm, nên đây là mức mặc định. Chỉ chuyển sang **Nhẹ** khi người dùng phản ánh máy chậm hoặc máy có cấu hình thấp, chấp nhận rằng nhiều tệp lớn sẽ chỉ được phân tích một phần. Dùng **Sâu** cho máy chủ tệp và cho máy được chọn làm **Máy quét** của thư mục chia sẻ, nơi có nhiều tệp lớn và không có người ngồi làm việc trực tiếp.
 
 Mức quét chỉ quyết định agent đọc kỹ đến đâu đối với những tệp đã nằm trong phạm vi quét. Việc một tệp có được đọc nội dung hay không còn phụ thuộc vào **Kích thước tối đa** của [Nguồn dữ liệu](../data/sources.md#kích-thước-tối-đa-và-mức-quét).
-
-:::info[Chính sách tạo từ phiên bản trước]
-
-Các chính sách Agent đã lưu trước khi có Mức quét được hiểu là **Chuẩn**. Giá trị "File tối đa" cũ không còn được áp dụng. Nếu trước đây bạn đã hạ ngưỡng này cho máy yếu, hãy mở lại chính sách và chọn **Nhẹ**.
-
-:::
 
 ## Hiệu năng & tài nguyên máy
 
@@ -95,11 +89,11 @@ Agent được thiết kế để làm việc ở chế độ nền và nhườn
   <Card title="Giới hạn CPU của agent">
     Agent dùng tối đa 20% phần CPU mà các chương trình khác để trống, nên khi người dùng đang bận, agent tự chậm lại. Khi vượt mức, agent tạm dừng trước tệp tiếp theo và giữa các trang, các ảnh, các đoạn của tệp đang đọc, cho tới khi CPU giảm xuống.
   </Card>
-  <Card title="Ngân sách bộ nhớ">
+  <Card title="Hạn mức bộ nhớ">
     Agent dùng tối đa 20% phần bộ nhớ đang trống của máy. Mỗi tệp giữ chỗ trước khi đọc; tệp chưa đủ chỗ chờ tới lượt, còn tệp văn bản lớn được đọc theo từng đoạn. Tệp lớn không chiếm hết các luồng, nên tệp nhỏ không phải xếp hàng chờ sau tệp lớn.
   </Card>
   <Card title="Tạm dừng khi máy thiếu bộ nhớ">
-    Khi Windows báo bộ nhớ sắp cạn, agent không nhận thêm tệp mới và tạm dừng giữa chừng tệp đang đọc, rồi tiếp tục khi máy đã thoáng. Khi máy rảnh, agent trả lại bộ nhớ của các mô hình.
+    Khi Windows báo bộ nhớ sắp cạn, agent không nhận thêm tệp mới và tạm dừng giữa chừng tệp đang đọc, rồi tiếp tục khi máy có lại bộ nhớ trống. Khi máy rảnh, agent trả lại bộ nhớ của các mô hình.
   </Card>
   <Card title="Không đọc lại tệp lớn chưa đổi">
     Sau khi máy hoặc dịch vụ khởi động lại, agent nhận ra tệp lớn không thay đổi và dùng lại kết quả cũ thay vì đọc lại từ đầu.
