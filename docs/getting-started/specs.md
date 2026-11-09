@@ -48,6 +48,7 @@ Ngoài các mô hình, phần lớn quyết định phân loại đến từ cá
 | PDF | .pdf | Lớp chữ; trang scan được đọc bằng OCR và dò dấu mộc |
 | Ảnh | PNG, JPEG, BMP, TIFF, GIF | OCR và dò dấu mộc |
 | Tệp nén | .zip, .rar, .7z, .tar, .gz, .tgz, .bz2, .tbz2, .xz, .txz, .zst | Từng tài liệu bên trong, kể cả tệp nén lồng nhau |
+| Bản vẽ AutoCAD (có từ 1.1.0) | .dwg, .dxf | Chữ trong bản vẽ: tiêu đề, khung tên, ghi chú, thuộc tính của block và bảng. Chữ dùng font tiếng Việt cũ (TCVN3, VNI) được chuyển sang Unicode. Nhãn không ghi vào tệp. |
 | Định dạng khác | Video, ảnh đĩa, bản sao lưu, Office đời cũ (.doc, .xls, .ppt)... | Thông tin tệp (tên, đường dẫn, kích thước, ngày tháng) |
 
 Nhãn được ghi ngược vào tệp Office (.docx, .xlsx, .pptx) và PDF dưới dạng thuộc tính tài liệu, để hệ thống DLP đọc được ngay cả khi không kết nối tới server. Xem [Nhãn ghi trong tệp](../classification/file-labels.md).

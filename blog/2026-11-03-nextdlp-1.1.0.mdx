@@ -28,6 +28,10 @@ Phiên bản 1.1.0 đang được kiểm thử. Nội dung dưới đây có th�
 
 Điều kiện Dấu mộc có thêm mục **Công ty trên dấu mộc**: nêu tên từng đơn vị kèm từ khoá in trên con dấu, và tuỳ chọn **Chỉ áp dụng khi là dấu mộc của các công ty này**. Agent đọc chữ trên vòng dấu, so với từ khoá không phân biệt dấu tiếng Việt, hoa thường và chấp nhận vài lỗi đọc. Khi vòng dấu không đọc được, thường gặp với dấu in nhạt, dấu đóng đè chữ ký hoặc con dấu quốc huy, agent tìm tên đơn vị trong khối ký tên ngay quanh con dấu. Xem [Công ty trên dấu mộc](/docs/classification/policies#công-ty-trên-dấu-mộc).
 
+### Bản vẽ AutoCAD
+
+Agent đọc chữ trong tệp `.dwg` và `.dxf`: tiêu đề, khung tên, ghi chú, thuộc tính của block và bảng, nên bản vẽ được phân loại bằng chính các điều kiện từ khóa, biểu thức chính quy và từ điển đang dùng cho tài liệu khác. Chữ viết bằng font tiếng Việt cũ (TCVN3, VNI), rất phổ biến trong hồ sơ kỹ thuật, được chuyển sang Unicode trước khi so khớp. Nhãn của bản vẽ lưu trên server và trong Kiểm kê, không ghi vào tệp. Xem [Thông số kỹ thuật](/docs/getting-started/specs#định-dạng-tệp).
+
 ### Giải thích rõ hơn
 
 Chi tiết sự kiện cho biết chữ agent đã đọc được trên từng con dấu, tên đơn vị được tìm thấy **trên dấu** hay **quanh dấu**, và phân biệt "không có đơn vị nào khớp" với "chưa đọc được chữ trên dấu". Agent cũng ghi vào log kích thước và ngày huấn luyện của mô hình nhận diện dấu mộc khi khởi động, để đội hỗ trợ nhận ra ngay một mô hình cài sai.
