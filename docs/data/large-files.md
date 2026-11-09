@@ -80,7 +80,7 @@ Các cơ chế dưới đây giúp agent đọc được nhiều hơn trong cùn
 
 <Cards>
   <Card title="PDF có sẵn lớp chữ">
-    Agent lấy chữ trực tiếp từ PDF và chỉ chạy OCR cho những trang gần như không có chữ, tức là trang scan. Trên một máy tính văn phòng thông thường, một báo cáo PDF gần 100 trang trộn chữ và trang scan giảm từ hơn 5 phút xuống khoảng 1 phút.
+    Agent lấy chữ trực tiếp từ PDF và chỉ chạy OCR cho những trang gần như không có chữ, tức là trang scan. Với báo cáo dài trộn trang chữ và trang scan, thời gian đọc vì vậy giảm nhiều lần so với OCR toàn bộ.
   </Card>
   <Card title="Bản scan và dấu mộc">
     Các trang scan được đọc chữ đến giới hạn số trang của Mức quét. Dấu mộc vẫn được kiểm tra trên mọi trang, kể cả khi đã vượt giới hạn đó, và nếu điều kiện dấu mộc nêu tên công ty thì chữ trên con dấu cùng khối ký tên quanh nó vẫn được đọc. Mỗi trang được xử lý xong mới sang trang kế tiếp, nên bộ nhớ không tăng theo số trang.

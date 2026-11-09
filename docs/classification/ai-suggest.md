@@ -74,7 +74,7 @@ Bấm biểu tượng ghim cạnh nút **Tạo gợi ý**, hoặc kéo thả t�
     Mô hình chỉ đọc <strong>4.500 ký tự đầu tiên</strong>, khoảng một trang rưỡi A4. Dấu hiệu nằm ở trang sau sẽ không được nhận ra.
   </Card>
   <Card title="Thời gian">
-    Một tài liệu mẫu cần khoảng 1 đến 1,5 phút, lâu hơn mô tả bằng chữ vì phải trích chữ và phân tích văn bản dài hơn. Hãy chờ đến khi bảng Điều kiện đề xuất hiện ra.
+    Một tài liệu mẫu cần lâu hơn mô tả bằng chữ, thường trên một phút, vì phải trích chữ và phân tích văn bản dài hơn. Hãy chờ đến khi bảng Điều kiện đề xuất hiện ra.
   </Card>
 </Cards>
 
