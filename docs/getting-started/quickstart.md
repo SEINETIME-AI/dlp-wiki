@@ -32,9 +32,9 @@ Chuyển sang tab **Điều kiện phân loại** và bấm **Thêm điều ki�
 
 ![Hộp thoại Thêm điều kiện phân loại](/img/console/policies-condition.png)
 
-### Bước 4. Bật và lưu chính sách
+### Bước 4. Lưu chính sách
 
-Quay lại tab **Thông tin chung** và bật công tắc **Kích hoạt**; công tắc này mặc định tắt để bạn rà soát trước. Bấm **Tạo chính sách**. Server đẩy chính sách xuống agent, và trang Máy trạm có thể hiện trạng thái **Chờ đồng bộ policy** trong ít phút trước khi agent nhận bản mới.
+Bấm **Tạo chính sách**. Công tắc **Kích hoạt** mặc định đã bật, nên chính sách có hiệu lực ngay. Server đẩy chính sách xuống agent, và trang Máy trạm có thể hiện trạng thái **Chờ đồng bộ policy** trong ít phút trước khi agent nhận bản mới.
 
 ### Bước 5. Kiểm tra kết quả
 

@@ -70,7 +70,7 @@ Nhật ký phân loại và các tệp xuất trên Console không bao giờ ch�
 |---|---|
 | Chính sách phân loại, chính sách Agent, nguồn dữ liệu | Agent kiểm tra định kỳ và tải về khi có phiên bản mới. |
 | Mật khẩu thư mục chia sẻ SMB/NAS | Được mã hóa trên server; trên máy trạm, agent lưu nó bằng cơ chế mã hóa DPAPI của Windows. |
-| Nhãn do Quản trị viên hoặc Quản lý điều chỉnh | Agent ghi nhãn vào tệp; xem [Nhãn ghi trong tệp](../classification/file-labels.md). |
+| Nhãn do Quản trị hệ thống hoặc Quản lý đơn vị điều chỉnh | Agent ghi nhãn vào tệp; xem [Nhãn ghi trong tệp](../classification/file-labels.md). |
 
 ## Dữ liệu lưu trên máy trạm
 

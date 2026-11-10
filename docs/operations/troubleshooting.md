@@ -12,7 +12,6 @@ Phần lớn sự cố khi triển khai NextDLP thuộc một trong ba nhóm: se
 |---|---|---|
 | Không mở được Console sau khi khởi động lại máy chủ | Docker chưa khởi động cùng Windows. | Bật tự khởi động của Docker (Docker Desktop: *Start Docker Desktop when you sign in*). Nếu dịch vụ vẫn chưa chạy, mở PowerShell trong thư mục cài đặt và chạy `docker compose -f docker-compose.deploy.yml up -d`. |
 | Trình duyệt cảnh báo chứng chỉ khi mở Console | Server dùng chứng chỉ riêng do script cài đặt tạo. | Chọn **Advanced** rồi **Continue**. |
-| Script cài đặt báo không được phép chạy | Chính sách thực thi PowerShell chặn script. | Chạy `powershell -ExecutionPolicy Bypass -File .\docker\load-and-start.ps1`. |
 | Một dịch vụ không ở trạng thái `healthy` | Dịch vụ khởi động lỗi hoặc thiếu tài nguyên. | Xem log bằng `docker compose -f docker-compose.deploy.yml logs <tên-dịch-vụ>`. |
 | Cổng 80 đã bị chiếm | Máy chủ có web server khác như IIS. | Dừng dịch vụ đang dùng cổng 80 rồi khởi động lại NextDLP. |
 
@@ -38,7 +37,7 @@ Phần lớn sự cố khi triển khai NextDLP thuộc một trong ba nhóm: se
 | Tệp bị gắn nhãn khác mong đợi | Một điều kiện khác cũng khớp, và agent chọn mức mật nhất. | Mở sự kiện trong Nhật ký phân loại để xem điều kiện nào đã khớp, rồi dùng **Xem chính sách hiệu lực** để rà soát. |
 | AssistOCR ở trạng thái Chưa sẵn sàng | Gói GPU chưa cài, chưa chạy hoặc model đang tải. | Kiểm tra các dịch vụ của gói GPU trên máy chủ đã cài gói; lần khởi động đầu, model cần vài phút để tải. Trạng thái tại Hệ thống › Nhà cung cấp phân loại tự chuyển sang Hoạt động khi gói trả lời. Trong lúc đó agent vẫn đọc tệp bằng OCR trên máy. |
 | Tệp có dấu mộc nhưng điều kiện "Chỉ áp dụng khi là dấu mộc của các công ty này" không khớp | Agent không đọc được tên công ty trên dấu (dấu nhạt, đóng đè lên chữ, con dấu cơ quan nhà nước) và khối ký tên quanh dấu cũng không ghi đúng từ khóa; hoặc từ khóa chỉ gồm từ chung như "Công ty", "TNHH" nên bị bỏ qua. | Mở sự kiện: phần dấu mộc cho biết chữ đã đọc được trên dấu và tên công ty tìm thấy trên dấu hay quanh dấu. Dùng tên riêng của công ty làm từ khóa, đúng như in trên trang. Xem [Công ty trên dấu mộc](../classification/policies.md#công-ty-trên-dấu-mộc). |
-| Không tệp nào có dấu mộc được nhận diện, kể cả mẫu rõ nét | Mô hình nhận diện dấu mộc trên máy không đúng bản phát hành. | Xem dòng `yolo: loaded model` trong log của agent (`C:\ProgramData\DlpExtension\logs`): kích thước và ngày huấn luyện phải khớp bản trong bộ cài. Cài lại agent từ bộ cài để thay mô hình. |
+| Không tệp nào có dấu mộc được nhận diện, kể cả mẫu rõ nét | Mô hình nhận diện dấu mộc trên máy không đúng bản phát hành. | Xem log của agent tại `C:\ProgramData\DlpExtension\logs`: dòng nạp mô hình dấu mộc phải ghi kích thước và ngày huấn luyện khớp bản trong bộ cài. Cài lại agent từ bộ cài để thay mô hình. |
 
 ## Khi cần liên hệ hỗ trợ
 

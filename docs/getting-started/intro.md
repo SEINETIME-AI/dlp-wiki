@@ -28,6 +28,10 @@ NextDLP không thay thế DLP. Việc thực thi như chặn email hay chặn sa
 
 ![Trang Tổng quan của Console](/img/console/dashboard.png)
 
+## Tìm kiếm nhanh
+
+Trên hầu hết trang Console có một ô tìm kiếm ở thanh trên. Gõ tên máy, đơn vị, chính sách phân loại, chính sách Agent hoặc tài liệu; kết quả hiện ngay bên dưới và bấm vào sẽ mở đúng trang. Phím tắt **Ctrl+K** (hoặc **Cmd+K** trên macOS) đưa con trỏ vào ô tìm kiếm.
+
 ## Thành phần hệ thống
 
 | Thành phần | Vai trò |

@@ -16,7 +16,7 @@ Bấm **Chính sách mới**. Trình soạn chính sách có bốn tab: **Thông
 
 ![Tab Thông tin chung](/img/console/policies-create.png)
 
-Công tắc **Kích hoạt** mặc định tắt để bạn rà soát trước khi áp dụng; chính sách chỉ có hiệu lực khi công tắc bật. Đơn vị áp dụng không thể thay đổi khi chính sách đang bật.
+Công tắc **Kích hoạt** mặc định bật, nên chính sách có hiệu lực ngay khi tạo. Tắt công tắc nếu bạn muốn lưu bản chưa áp dụng. Đơn vị áp dụng không thể thay đổi khi chính sách đang bật.
 
 ## Kỹ thuật nhận diện
 
@@ -38,22 +38,18 @@ Mỗi điều kiện có thể đặt một **Tên điều kiện** dễ hiểu,
 
 ## Công ty trên dấu mộc
 
-:::note[Có từ phiên bản 1.1.0]
+Mặc định điều kiện Dấu mộc khớp với mọi con dấu đủ ngưỡng. Khi bạn cần chỉ gắn nhãn cho công văn đóng dấu của đúng đơn vị — ví dụ chỉ dấu của công ty mình, không phải dấu của đối tác trên cùng trang — dùng mục **Công ty trên dấu mộc**.
 
-Mục này mô tả tính năng của phiên bản 1.1.0, hiện chưa phát hành.
+Bạn nêu tên từng công ty kèm **Từ khóa trên dấu** (3–60 ký tự, nhấn Enter sau mỗi từ khóa), ví dụ công ty "Seinetime" với từ khóa `SEINETIME`. Agent đọc chữ trên vòng dấu và so với từ khóa, không phân biệt dấu tiếng Việt và hoa thường, chấp nhận vài ký tự đọc sai. Hãy dùng tên riêng: các từ chung như "Công ty", "TNHH", "Cổ phần", "Chi nhánh" có trên hầu hết con dấu nên bị bỏ qua.
 
-:::
+Bật **Chỉ áp dụng khi là dấu mộc của các công ty này** để điều kiện chỉ khớp khi nhận ra đúng công ty; tắt thì mọi con dấu vẫn khớp và tên công ty (nếu đọc được) chỉ hiện trong giải thích sự kiện.
 
-Mặc định điều kiện Dấu mộc khớp với mọi con dấu đủ ngưỡng. Mục **Công ty trên dấu mộc** cho phép nêu tên từng công ty kèm **Từ khóa trên dấu** (3–60 ký tự, nhấn Enter sau mỗi từ khóa), ví dụ công ty "Seinetime" với từ khóa `SEINETIME`. Agent đọc chữ trên vòng dấu bằng OCR và so với từ khóa, không phân biệt dấu tiếng Việt và hoa thường, chấp nhận một vài ký tự OCR đọc sai. Hãy dùng tên riêng của công ty: các từ chung như "Công ty", "TNHH", "Cổ phần", "Chi nhánh" có trên mọi con dấu nên bị bỏ qua.
+Khi chữ trên dấu không đọc được — dấu in nhạt hoặc đóng đè chữ ký — agent tìm tên công ty trong phần chữ ngay quanh con dấu (khối ký tên: chức danh, tên đơn vị, tên người ký). Tên ở xa như tiêu đề hay dòng "Kính gửi" không được tính. Phần giải thích sự kiện ghi rõ tên tìm thấy **trên dấu** hay **quanh dấu**. Con dấu đọc rõ nhưng ghi đơn vị khác thì không khớp.
 
-Bật **Chỉ áp dụng khi là dấu mộc của các công ty này** để điều kiện chỉ khớp khi nhận ra đúng công ty; tắt thì mọi con dấu vẫn khớp và tên công ty, nếu đọc được, chỉ hiển thị trong giải thích của sự kiện.
+Hai điểm cần biết:
 
-Khi chữ trên dấu không đọc được, thường gặp với con dấu in nhạt hoặc đóng đè lên chữ và chữ ký, agent tìm tên công ty trong phần chữ ngay quanh con dấu, tức khối ký tên mà con dấu đóng lên (chức danh, tên đơn vị, tên người ký), và lần này yêu cầu khớp chính xác từ khóa. Tên ở xa con dấu như tiêu đề hay dòng "Kính gửi" không được tính. Phần giải thích của sự kiện ghi rõ tên công ty được tìm thấy **trên dấu** hay **quanh dấu**. Con dấu đọc được rõ nhưng ghi tên đơn vị khác thì không khớp, kể cả khi quanh đó có nhắc tới công ty được nêu.
-
-Hai điểm cần biết khi dùng:
-
-- Chữ trên dấu chỉ được đọc với con dấu đạt độ tin cậy từ 0,60 trở lên, hoặc từ ngưỡng của điều kiện nếu bạn đặt thấp hơn. Mỗi tài liệu đọc tối đa 6 con dấu.
-- Con dấu của cơ quan nhà nước (quốc huy, mực đỏ nhạt) thường không đọc được chữ trên vòng dấu; với loại này agent dựa vào tên cơ quan trong khối ký tên như mô tả ở trên, ví dụ "KT. THỦ TƯỚNG" ngay trên con dấu. Nếu khối ký tên không ghi tên cơ quan, hãy kết hợp thêm điều kiện từ khóa bằng Hybrid.
+- Chỉ những con dấu đạt độ tin cậy từ 0,60 trở lên (hoặc từ ngưỡng điều kiện nếu bạn đặt thấp hơn) mới được đọc chữ. Mỗi tài liệu đọc tối đa 6 con dấu.
+- Con dấu cơ quan nhà nước (quốc huy, mực đỏ nhạt) thường khó đọc chữ trên vòng dấu; khi đó agent dựa vào tên trong khối ký tên, ví dụ "KT. THỦ TƯỚNG" ngay trên con dấu. Nếu khối ký tên không ghi tên cơ quan, hãy kết hợp thêm điều kiện từ khóa bằng Hybrid.
 
 ## Chọn kỹ thuật cho cả chính sách
 

@@ -47,7 +47,7 @@ Một bản sao nằm trong [Nguồn dữ liệu](../data/sources.md) được a
 
 :::warning[Nhãn điều chỉnh bằng tay chưa được giữ cố định]
 
-Nhãn do Quản trị viên hoặc Quản lý điều chỉnh bằng tay được ghi vào tệp như mọi nhãn khác. Khi nội dung tệp thay đổi, hoặc khi điều kiện của chính sách phân loại thay đổi, agent phân loại lại tệp theo chính sách và nhãn đã điều chỉnh có thể bị thay. Hãy kiểm tra lại các tài liệu ở trạng thái **Admin ghi đè** sau khi sửa chính sách.
+Nhãn do Quản trị hệ thống hoặc Quản lý đơn vị điều chỉnh bằng tay được ghi vào tệp như mọi nhãn khác. Khi nội dung tệp thay đổi, hoặc khi điều kiện của chính sách phân loại thay đổi, agent phân loại lại tệp theo chính sách và nhãn đã điều chỉnh có thể bị thay. Hãy kiểm tra lại các tài liệu ở trạng thái **Admin ghi đè** sau khi sửa chính sách.
 
 :::
 

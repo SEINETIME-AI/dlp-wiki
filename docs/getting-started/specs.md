@@ -37,7 +37,7 @@ Ngoài các mô hình, phần lớn quyết định phân loại đến từ cá
 
 **Phiên bản mô hình cố định theo bản phát hành.** Mỗi bản NextDLP đi kèm đúng một bộ mô hình đã được kiểm thử cùng các quy tắc phân loại. Khi mô hình thay đổi, thay đổi đó được ghi trong ghi chú phát hành, và bạn nhận nó bằng cách nâng cấp như mọi thành phần khác.
 
-**Quản trị viên quyết định điều kiện.** Gợi ý AI chỉ tạo bản nháp để quản trị viên xem và sửa; không điều kiện nào có hiệu lực cho tới khi quản trị viên lưu chính sách. Trên máy trạm, agent tự gắn nhãn theo các điều kiện đã lưu, và mỗi nhãn đều kèm giải thích quy tắc hay mô hình nào đã quyết định.
+**Quản trị hệ thống quyết định điều kiện.** Gợi ý AI chỉ tạo bản nháp để bạn xem và sửa; không điều kiện nào có hiệu lực cho tới khi chính sách được lưu. Trên máy trạm, agent tự gắn nhãn theo các điều kiện đã lưu, và mỗi nhãn đều kèm giải thích quy tắc hay mô hình nào đã quyết định.
 
 ## Định dạng tệp
 
@@ -48,7 +48,7 @@ Ngoài các mô hình, phần lớn quyết định phân loại đến từ cá
 | PDF | .pdf | Lớp chữ; trang scan được đọc bằng OCR và dò dấu mộc |
 | Ảnh | PNG, JPEG, BMP, TIFF, GIF | OCR và dò dấu mộc |
 | Tệp nén | .zip, .rar, .7z, .tar, .gz, .tgz, .bz2, .tbz2, .xz, .txz, .zst | Từng tài liệu bên trong, kể cả tệp nén lồng nhau |
-| Bản vẽ AutoCAD | .dwg, .dxf | Chữ trong bản vẽ: tiêu đề, khung tên, ghi chú, thuộc tính của block và bảng. Chữ dùng font tiếng Việt cũ (TCVN3, VNI) được chuyển sang Unicode. Nhãn không ghi vào tệp. |
+| Bản vẽ AutoCAD | .dwg, .dxf | Chữ trong bản vẽ: tiêu đề, khung tên, ghi chú, bảng và thông tin gắn với đối tượng trong bản vẽ. Font tiếng Việt cũ (TCVN3, VNI) vẫn đọc được. Nhãn không ghi vào tệp. |
 | Định dạng khác | Video, ảnh đĩa, bản sao lưu, Office đời cũ (.doc, .xls, .ppt)... | Thông tin tệp (tên, đường dẫn, kích thước, ngày tháng) |
 
 Nhãn được ghi ngược vào tệp Office (.docx, .xlsx, .pptx) và PDF dưới dạng thuộc tính tài liệu, để hệ thống DLP đọc được ngay cả khi không kết nối tới server. Xem [Nhãn ghi trong tệp](../classification/file-labels.md).

@@ -30,8 +30,8 @@ Server mở các cổng dưới đây. Chỉ cổng 80, 443, 9090, 9091 và, khi
 
 | Cổng | Dịch vụ | Ai cần truy cập |
 |---|---|---|
-| 80 | Chuyển hướng sang HTTPS | Quản trị viên, người dùng Console |
-| 443 | Console và `/api` qua HTTPS | Quản trị viên, người dùng Console |
+| 80 | Chuyển hướng sang HTTPS | Quản trị hệ thống, người dùng Console |
+| 443 | Console và `/api` qua HTTPS | Quản trị hệ thống, người dùng Console |
 | 9090 | HTTP API | Hệ thống tích hợp |
 | 9091 | gRPC cho agent | Máy trạm |
 | 9092 | Tải bản scan lên kho tạm của gói GPU AssistOCR (chỉ khi cài gói GPU) | Máy trạm |

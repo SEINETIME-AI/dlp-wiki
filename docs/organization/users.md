@@ -16,7 +16,7 @@ Mỗi người dùng Console có một vai trò và một phạm vi đơn vị. 
 | Quản lý đơn vị | Quản trị hệ thống tạo | Các đơn vị được gán. Duyệt yêu cầu đổi nhãn, đổi nhãn trực tiếp trong phạm vi của mình. |
 | Người dùng máy trạm | Tự tạo khi máy đăng ký | Tài liệu trên máy của mình. Xem nhãn và gửi yêu cầu đổi nhãn. |
 
-## Thêm quản trị viên hoặc quản lý
+## Thêm Quản trị hệ thống hoặc Quản lý đơn vị
 
 Bấm **Thêm quản trị / quản lý**, nhập thông tin, chọn vai trò và chọn **Phạm vi đơn vị** bằng các ô đánh dấu. Một quản lý có thể phụ trách nhiều công ty con, ban hoặc phòng ban. Mật khẩu tối thiểu 12 ký tự, và bạn có thể yêu cầu người dùng đổi mật khẩu ở lần đăng nhập đầu.
 
@@ -24,7 +24,7 @@ Bấm **Thêm quản trị / quản lý**, nhập thông tin, chọn vai trò v�
 
 Người dùng máy trạm không được tạo tay. Khi một máy đăng ký, hệ thống tự tạo một tài khoản Console với **tên đăng nhập là hostname của máy**, mỗi tài khoản gắn với đúng một máy. Người dùng phải đổi mật khẩu ở lần đăng nhập đầu tiên. Khi máy bị thu hồi, tài khoản cũng bị xóa.
 
-Quản trị viên không tạo mới được tài khoản loại này, nhưng có thể đổi phạm vi, khóa tài khoản hoặc đặt lại mật khẩu.
+Quản trị hệ thống không tạo mới được tài khoản loại này, nhưng có thể đổi phạm vi, khóa tài khoản hoặc đặt lại mật khẩu.
 
 ## Các thao tác trên tài khoản
 

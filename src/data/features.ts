@@ -153,7 +153,7 @@ const phase1: Phase = {
         {
           title: 'Nhiều kỹ thuật trong một chính sách',
           detail:
-            'Từ khóa, biểu thức chính quy (mẫu ký tự, ví dụ dãy 12 chữ số của CCCD), từ điển có trọng số, ngữ nghĩa và dấu mộc được dùng cùng nhau. Mỗi loại tài liệu chọn kỹ thuật phù hợp với nó.',
+            'Từ khóa, mẫu ký tự (ví dụ dãy 12 chữ số của CCCD), từ điển có trọng số, ngữ nghĩa và dấu mộc được dùng cùng nhau. Mỗi loại tài liệu chọn kỹ thuật phù hợp với nó.',
           status: 'available',
           link: '/docs/classification/policies#kỹ-thuật-nhận-diện',
         },
@@ -346,6 +346,7 @@ const phase1: Phase = {
           title: 'Tìm kiếm nhanh',
           detail: 'Một ô tìm kiếm chung cho máy trạm, đơn vị, chính sách và tài liệu.',
           status: 'available',
+          link: '/docs/getting-started/intro#tìm-kiếm-nhanh',
         },
       ],
     },
@@ -374,6 +375,7 @@ const phase1: Phase = {
           detail:
             'Người dùng thông thường không dừng, gỡ hay sửa được dịch vụ agent; chỉ người có quyền quản trị máy mới làm được. Dịch vụ tự khởi động lại khi dừng bất thường hoặc bị treo.',
           status: 'available',
+          link: '/docs/endpoints/machines#agent-tự-bảo-vệ-và-tự-khởi-động-lại',
         },
         {
           title: 'Bộ cài theo đơn vị',

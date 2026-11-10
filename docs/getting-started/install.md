@@ -31,19 +31,22 @@ Get-ChildItem -Recurse *.ps1 | Unblock-File
 
 Lệnh đầu tiên gỡ đánh dấu "tải từ internet" của Windows trên các script, để PowerShell cho phép chạy chúng.
 
-Với bản offline đầy đủ trên máy chủ không có internet, thêm tùy chọn `-SkipPull`:
+**Máy chủ có GPU (tùy chọn).** Nếu gói cài kèm gói GPU AssistOCR và máy chủ có card NVIDIA phù hợp, khởi động kèm GPU để đọc ảnh và bản scan khó trên máy chủ:
+
+```powershell
+.\docker\load-and-start.ps1 -Gpu -GpuPreset 16gb
+```
+
+Đổi `16gb` thành `24gb` hoặc `32gb` nếu card có bộ nhớ lớn hơn. Trạng thái gói GPU sau này xem tại **Hệ thống › Nhà cung cấp phân loại**; chi tiết tại [AssistOCR](../admin/system.md#assistocr).
+
+Với bản offline đầy đủ trên máy chủ không có internet, thêm tùy chọn `-SkipPull` (kèm hoặc không kèm GPU):
 
 ```powershell
 .\docker\load-and-start.ps1 -SkipPull
+.\docker\load-and-start.ps1 -Gpu -GpuPreset 16gb -SkipPull
 ```
 
 Script nạp các image, khởi động toàn bộ dịch vụ và in ra địa chỉ truy cập khi xong.
-
-:::tip[Script bị chặn?]
-
-Nếu PowerShell báo không cho phép chạy script, hãy chạy lại bằng lệnh `powershell -ExecutionPolicy Bypass -File .\docker\load-and-start.ps1`.
-
-:::
 
 ### Bước 3. Kiểm tra dịch vụ
 
@@ -61,7 +64,13 @@ Máy trạm và người dùng Console kết nối tới server qua cổng **443
 New-NetFirewallRule -DisplayName "NextDLP" -Direction Inbound -Protocol TCP -LocalPort 443,9091 -Action Allow
 ```
 
-Nếu tổ chức dùng tường lửa riêng giữa các mạng, hãy mở thêm hai cổng này trên đó. Danh sách đầy đủ các cổng có tại [Yêu cầu hệ thống](./requirements.md#cổng-mạng).
+Nếu đã bật gói GPU, mở thêm cổng **9092** để máy trạm gửi bản scan lên máy chủ:
+
+```powershell
+New-NetFirewallRule -DisplayName "NextDLP GPU" -Direction Inbound -Protocol TCP -LocalPort 9092 -Action Allow
+```
+
+Nếu tổ chức dùng tường lửa riêng giữa các mạng, hãy mở thêm các cổng này trên đó. Danh sách đầy đủ các cổng có tại [Yêu cầu hệ thống](./requirements.md#cổng-mạng).
 
 ### Bước 5. Đăng nhập Console
 
