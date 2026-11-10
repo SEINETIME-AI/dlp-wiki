@@ -74,6 +74,8 @@ const config: Config = {
             to: '/releases/nextdlp-1.0.0',
           },
           {from: '/docs/releases/v2-roadmap', to: '/docs/releases/'},
+          // The roadmap page became the Tính năng page.
+          {from: '/docs/releases/roadmap', to: '/features'},
         ],
       },
     ],
@@ -92,6 +94,7 @@ const config: Config = {
       items: [
         {to: '/docs/getting-started/intro', label: 'Giới thiệu', position: 'left'},
         {to: '/docs/getting-started/install', label: 'Hướng dẫn', position: 'left'},
+        {to: '/features', label: 'Tính năng', position: 'left'},
         {to: '/releases', label: 'Phát hành', position: 'right'},
       ],
     },
@@ -103,6 +106,7 @@ const config: Config = {
           items: [
             {label: 'Cài đặt & kết nối', to: '/docs/getting-started/install'},
             {label: 'Câu hỏi thường gặp', to: '/docs/operations/faq'},
+            {label: 'Tính năng & lộ trình', to: '/features'},
           ],
         },
         {

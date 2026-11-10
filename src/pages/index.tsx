@@ -36,6 +36,11 @@ const starts = [
     text: 'Soạn chính sách phân loại, quản lý kiểm kê dữ liệu, duyệt yêu cầu đổi nhãn và xem báo cáo.',
   },
   {
+    to: '/features',
+    title: 'Tính năng',
+    text: 'Những gì bản 1.0 làm được, theo từng nhóm, và lộ trình các giai đoạn tiếp theo.',
+  },
+  {
     to: '/releases',
     title: 'Phát hành',
     text: 'Thông báo phát hành và nội dung của từng phiên bản.',

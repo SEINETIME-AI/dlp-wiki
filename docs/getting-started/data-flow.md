@@ -43,7 +43,6 @@ Các biện pháp dưới đây giúp giới hạn ai có thể tới được s
 - **Đặt máy chủ NextDLP trong vùng mạng riêng**, ví dụ một VLAN dành cho máy chủ, tách khỏi mạng của người dùng và khách.
 - **Mã hóa lưu lượng ở tầng mạng.** Nếu tổ chức dùng Active Directory, áp dụng chính sách IPsec qua Group Policy cho lưu lượng giữa máy trạm và máy chủ NextDLP. Agent không cần thay đổi gì.
 - **Chống giả mạo trong mạng LAN**, như bật Dynamic ARP Inspection và port security trên switch.
-- **Giữ nội dung trên máy trạm cho đơn vị nhạy cảm cao.** Dùng chế độ OCR cục bộ trong chính sách phân loại của các đơn vị này, để bản scan và đoạn văn bản không rời máy trạm.
 - **Dùng tài khoản riêng, chỉ có quyền đọc** cho các thư mục chia sẻ SMB/NAS mà NextDLP quét.
 - **Thu hồi khóa khi cần.** Khi máy bị thanh lý hoặc nghi lộ khóa, dùng **Tạo lại khóa** hoặc **Thu hồi** tại [Máy trạm](../endpoints/machines.md).
 

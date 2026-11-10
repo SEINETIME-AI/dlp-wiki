@@ -1,0 +1,714 @@
+/* Tính năng page (/features). Phase colors: 1 green (shipped), 2 blue, 3 purple, as on the roadmap. */
+.page {
+  --p1: #15803d;
+  --p1-soft: rgba(21, 128, 61, 0.09);
+  --p2: var(--ifm-color-primary);
+  --p2-soft: rgba(29, 78, 216, 0.08);
+  --p3: #7c3aed;
+  --p3-soft: rgba(124, 58, 237, 0.09);
+  --amber: #b45309;
+  --amber-soft: rgba(217, 119, 6, 0.12);
+  --card-bg: var(--ifm-background-surface-color);
+  --line: var(--ifm-color-emphasis-300);
+  --muted: var(--ifm-color-emphasis-700);
+}
+
+[data-theme='dark'] .page {
+  --p1: #4ade80;
+  --p1-soft: rgba(74, 222, 128, 0.12);
+  --p2-soft: rgba(107, 147, 255, 0.12);
+  --p3: #a78bfa;
+  --p3-soft: rgba(167, 139, 250, 0.14);
+  --amber: #fbbf24;
+  --amber-soft: rgba(251, 191, 36, 0.14);
+  --line: var(--ifm-color-emphasis-200);
+}
+
+/* ---------- Hero (always dark, like the home page) ---------- */
+
+.hero {
+  padding: 4rem 0 2.5rem;
+  background: var(--nd-ink);
+  color: #fff;
+}
+
+.heroTitle {
+  margin: 0 0 1.75rem;
+  font-size: 2.2rem;
+  line-height: 1.2;
+  color: #fff;
+}
+
+/* ---------- Phase stepper ---------- */
+
+.stepper {
+  margin-bottom: 2rem;
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr 1fr;
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.step {
+  position: relative;
+}
+
+/* Connector from this dot towards the next step: solid out of the shipped phase, dashed after. */
+.step:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 1.95rem;
+  left: 4.1rem;
+  right: -0.25rem;
+  border-top: 2px dashed rgba(255, 255, 255, 0.28);
+}
+
+.step1::after {
+  border-top-style: solid !important;
+  border-top-color: #4ade80 !important;
+}
+
+.stepButton {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  width: 100%;
+  padding: 0.6rem 0.75rem 0.75rem 0.6rem;
+  border: 1px solid transparent;
+  border-radius: 14px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.stepButton:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.stepButton:focus-visible {
+  outline: 2px solid #93b4ff;
+  outline-offset: 2px;
+}
+
+/* Opaque so the connector line runs behind the selected step, not across it. */
+.stepSelected,
+.stepSelected:hover {
+  border-color: rgba(255, 255, 255, 0.18);
+  background: #18233a;
+}
+
+.stepDot {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 2px solid rgba(255, 255, 255, 0.45);
+  border-radius: 50%;
+  background: var(--nd-ink);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.step2 .stepDot {
+  border-color: #6b93ff;
+  color: #9db8ff;
+}
+
+.step3 .stepDot {
+  border-color: #a78bfa;
+  color: #c4b5fd;
+}
+
+.stepDotFilled {
+  border-color: #4ade80;
+  background: #16a34a;
+  box-shadow: 0 0 0 6px rgba(74, 222, 128, 0.18);
+}
+
+.stepText {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  padding-top: 0.1rem;
+}
+
+.stepKicker {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #93a4c0;
+}
+
+.step1 .stepKicker {
+  color: #86efac;
+}
+
+.stepName {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.step1 .stepName {
+  font-size: 1.25rem;
+}
+
+.stepTagline {
+  font-size: 0.85rem;
+  color: #a9b5ca;
+}
+
+/* ---------- Stats strip ---------- */
+
+.stats {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 2.25rem;
+  margin: 0;
+  padding: 1.5rem 0 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  list-style: none;
+  color: #c8d2e3;
+}
+
+.stats li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.stats strong {
+  font-size: 1.6rem;
+  line-height: 1;
+  color: #fff;
+}
+
+.statsCheck {
+  display: grid;
+  place-items: center;
+  width: 1.3rem;
+  height: 1.3rem;
+  border-radius: 50%;
+  background: rgba(74, 222, 128, 0.16);
+  color: #4ade80;
+}
+
+/* ---------- Sections ---------- */
+
+.section {
+  padding-top: 3.5rem;
+  padding-bottom: 3.5rem;
+  scroll-margin-top: calc(var(--ifm-navbar-height) + 1rem);
+}
+
+.sectionHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.sectionHead > div {
+  max-width: 720px;
+}
+
+.sectionTitle {
+  margin: 0.6rem 0 0.4rem;
+  font-size: 1.9rem;
+}
+
+.sectionSub {
+  margin: 0;
+  color: var(--muted);
+}
+
+.phaseBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.2rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.phaseBadge1 {
+  background: var(--p1-soft);
+  color: var(--p1);
+}
+
+.liveDot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: currentColor;
+  box-shadow: 0 0 0 3px var(--p1-soft);
+}
+
+.expandAll {
+  padding: 0.45rem 0.9rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--card-bg);
+  color: var(--ifm-font-color-base);
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.expandAll:hover {
+  border-color: var(--p1);
+  color: var(--p1);
+}
+
+/* ---------- Phase 1 group cards ---------- */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  align-items: start;
+  gap: 1.1rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--line);
+  border-top: 3px solid var(--p1);
+  border-radius: 14px;
+  background: var(--card-bg);
+  box-shadow: 0 1px 2px rgba(14, 23, 38, 0.04);
+  transition: box-shadow 0.15s, border-color 0.15s;
+}
+
+.card:hover,
+.cardOpen {
+  box-shadow: 0 6px 20px rgba(14, 23, 38, 0.08);
+}
+
+.cardHead {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 1.15rem 1.25rem 0;
+}
+
+.iconTile {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 12px;
+  background: var(--p1-soft);
+  color: var(--p1);
+}
+
+.cardTitle {
+  margin: 0;
+  font-size: 1.08rem;
+  line-height: 1.3;
+}
+
+.cardCount {
+  display: block;
+  margin-top: 0.15rem;
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+.cardSummary {
+  margin: 0.75rem 1.25rem 0.5rem;
+  font-size: 0.92rem;
+  color: var(--muted);
+}
+
+.itemList {
+  margin: 0;
+  padding: 0.25rem 1.25rem 0.9rem;
+  list-style: none;
+}
+
+.item {
+  display: flex;
+  gap: 0.6rem;
+  padding: 0.45rem 0;
+}
+
+.item + .item {
+  border-top: 1px dashed var(--line);
+}
+
+.check {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-top: 0.12rem;
+  border-radius: 50%;
+  background: var(--p1-soft);
+  color: var(--p1);
+}
+
+.itemBody {
+  min-width: 0;
+}
+
+.itemTitle {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.itemDetail {
+  margin: 0.25rem 0 0;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.itemLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-top: 0.3rem;
+  font-size: 0.86rem;
+  font-weight: 600;
+}
+
+.toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  margin-top: auto;
+  padding: 0.65rem;
+  border: 0;
+  border-top: 1px solid var(--line);
+  border-radius: 0 0 14px 14px;
+  background: transparent;
+  color: var(--ifm-color-primary);
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.toggle:hover {
+  background: var(--ifm-color-emphasis-100);
+}
+
+.toggle svg {
+  transition: transform 0.2s;
+}
+
+.chevronUp {
+  transform: rotate(180deg);
+}
+
+/* ---------- Outcome box ---------- */
+
+.outcome {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  margin-top: 1.75rem;
+  padding: 1.1rem 1.25rem;
+  border-left: 4px solid var(--accent);
+  border-radius: 12px;
+  background: var(--accent-soft);
+}
+
+.outcome1 {
+  --accent: var(--p1);
+  --accent-soft: var(--p1-soft);
+}
+
+.outcome2 {
+  --accent: var(--p2);
+  --accent-soft: var(--p2-soft);
+}
+
+.outcome3 {
+  --accent: var(--p3);
+  --accent-soft: var(--p3-soft);
+}
+
+.outcomeIcon {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background: var(--card-bg);
+  color: var(--accent);
+}
+
+.outcomeLabel {
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.outcomeText {
+  margin: 0.2rem 0 0;
+}
+
+/* ---------- Roadmap (phases 2 and 3) ---------- */
+
+.roadBand {
+  padding: 3.5rem 0 4.5rem;
+  border-top: 1px solid var(--line);
+  background: var(--ifm-color-emphasis-100);
+  scroll-margin-top: var(--ifm-navbar-height);
+}
+
+.tabs {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1.25rem;
+  padding: 0.3rem;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--card-bg);
+}
+
+.tab {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.5rem 1rem 0.5rem 0.55rem;
+  border: 0;
+  border-radius: 10px;
+  background: transparent;
+  color: var(--muted);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.tab:hover {
+  background: var(--ifm-color-emphasis-100);
+}
+
+.tab2 {
+  --accent: var(--p2);
+  --accent-soft: var(--p2-soft);
+}
+
+.tab3 {
+  --accent: var(--p3);
+  --accent-soft: var(--p3-soft);
+}
+
+.tabActive {
+  background: var(--accent-soft);
+  color: var(--ifm-font-color-base);
+}
+
+.tabActive:hover {
+  background: var(--accent-soft);
+}
+
+.tabNumber {
+  display: grid;
+  place-items: center;
+  width: 1.9rem;
+  height: 1.9rem;
+  border: 2px solid var(--accent);
+  border-radius: 50%;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.tabActive .tabNumber {
+  background: var(--accent);
+  color: #fff;
+}
+
+[data-theme='dark'] .tabActive .tabNumber {
+  color: var(--nd-ink);
+}
+
+.tabName {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.tabSub {
+  display: block;
+  font-weight: 700;
+}
+
+.roadIntro {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.roadTagline {
+  margin: 0;
+  font-weight: 600;
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.25rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.legend > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.roadGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  align-items: start;
+  gap: 1rem;
+}
+
+.roadCard {
+  border: 1px dashed var(--ifm-color-emphasis-400);
+  border-radius: 14px;
+  background: var(--card-bg);
+}
+
+.iconTileMuted {
+  width: 2.4rem;
+  height: 2.4rem;
+  background: var(--ifm-color-emphasis-200);
+  color: var(--ifm-color-emphasis-800);
+}
+
+.roadList {
+  margin: 0;
+  padding: 0.75rem 1.25rem 1rem;
+  list-style: none;
+}
+
+.roadItem {
+  padding: 0.55rem 0;
+}
+
+.roadItem + .roadItem {
+  border-top: 1px dashed var(--line);
+}
+
+.roadItemHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.25rem 0.5rem;
+}
+
+/* ---------- Status chips ---------- */
+
+.chip {
+  flex: none;
+  padding: 0.08rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.chip-available {
+  background: var(--p1-soft);
+  color: var(--p1);
+}
+
+.chip-in-progress {
+  background: var(--amber-soft);
+  color: var(--amber);
+}
+
+.chip-planned {
+  background: var(--ifm-color-emphasis-200);
+  color: var(--ifm-color-emphasis-800);
+}
+
+/* ---------- Narrow screens ---------- */
+
+@media (max-width: 996px) {
+  .steps {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+  }
+
+  .step:not(:last-child)::after {
+    top: 3.45rem;
+    bottom: -0.6rem;
+    left: 1.95rem;
+    right: auto;
+    border-top: 0;
+    border-left: 2px dashed rgba(255, 255, 255, 0.28);
+  }
+
+  .step1::after {
+    border-left-style: solid !important;
+    border-left-color: #4ade80 !important;
+  }
+
+  .heroTitle {
+    font-size: 1.9rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero {
+    padding-top: 2.75rem;
+  }
+
+  .grid,
+  .roadGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .tabs {
+    display: flex;
+  }
+
+  .tab {
+    flex: 1;
+  }
+
+  .stats {
+    gap: 0.5rem 1.5rem;
+  }
+}
