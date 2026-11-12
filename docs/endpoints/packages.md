@@ -47,6 +47,8 @@ Mỗi dòng có các thao tác **Tải bộ cài**, **Tạo lại**, **Thu hồi
 
 **Tải bộ cài** trả về một tệp zip gồm ba thành phần. Tệp `.msi` dùng để cài lần đầu. Script `Reinstall-NextDLP.ps1` dùng để cài lại hoặc thay bộ cài trên máy đã có agent; script tự gỡ bản cũ, cài bản trong thư mục và khởi động dịch vụ. Tệp `README-INSTALL.txt` tóm tắt hai cách cài này.
 
+Khi đã đặt [mật khẩu gỡ agent](./uninstall-password.md), bộ cài tạo hoặc tạo lại từ lúc đó mang sẵn dạng băm một chiều của mật khẩu, nên máy được bảo vệ ngay từ lúc cài; không thể lấy lại mật khẩu từ bộ cài. Script `Reinstall-NextDLP.ps1` gỡ hẳn bản cũ trước khi cài bản mới, và bước gỡ đó cần mật khẩu, nên hãy thêm tham số `-UninstallPassword` với mật khẩu này.
+
 Cách cài chi tiết có tại [Cài đặt & kết nối](../getting-started/install.md#phần-3-cài-agent-lên-máy-trạm).
 
 ## Sau khi cài

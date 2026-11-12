@@ -14,6 +14,8 @@ Nhật ký phân loại ghi lại mọi lần agent phân loại, phát hiện t
 | Xóa/di chuyển | Tệp bị xóa hoặc di chuyển ra khỏi nguồn dữ liệu. |
 | Can thiệp nhãn | Agent phát hiện nhãn ghi trong tệp bị thay đổi bằng tay. |
 | Gắn lại nhãn | Agent khôi phục nhãn đúng sau khi phát hiện can thiệp. |
+| Gỡ agent bị từ chối | Việc gỡ agent trên máy bị từ chối vì thiếu mật khẩu hoặc mật khẩu không đúng. Xem [Mật khẩu gỡ agent](../endpoints/uninstall-password.md#theo-dõi-trên-console). |
+| Agent dừng bất thường | Agent chạy lại sau khi bị buộc tắt, mất điện, gặp sự cố hoặc bị treo. |
 
 Bạn có thể lọc theo khoảng thời gian, máy, đơn vị và nhãn. Khi có tệp mới được phân loại, Console hiện thông báo nhỏ ở góc màn hình; bấm vào để mở sự kiện.
 
