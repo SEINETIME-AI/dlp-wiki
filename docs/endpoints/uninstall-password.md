@@ -22,7 +22,7 @@ Tính năng này chặn được thao tác gỡ và dừng agent thông thườn
     Thành viên nhóm Administrators trên máy chỉ xem và khởi động được dịch vụ agent. Lệnh dừng, khởi động lại, chuyển sang Disabled hay xóa dịch vụ đều bị Windows từ chối với lỗi Access is denied.
   </Card>
   <Card title="Console được báo" tag="Console">
-    Lần gỡ bị từ chối và lần agent dừng bất thường hiện trong Nhật ký phân loại. Máy im lặng quá ngưỡng offline chuyển sang Mất kết nối.
+    Lần gỡ bị từ chối và lần agent dừng bất thường hiện tại máy đó trên trang Máy trạm, và chuông thông báo báo cho Quản trị hệ thống. Máy không đồng bộ quá ngưỡng offline chuyển sang Mất kết nối.
   </Card>
 </Cards>
 
@@ -151,7 +151,7 @@ Mật khẩu vẫn được chuyển cho trình cài đặt của Windows trên 
 |---|---|---|
 | 0 | Agent đã được gỡ. | Thu hồi máy trên Console, xem [Ngừng dùng một máy trạm](#ngừng-dùng-một-máy-trạm). |
 | 3010 | Agent đã được gỡ; Windows cần khởi động lại máy. | Khởi động lại máy khi thuận tiện, rồi thu hồi máy. |
-| 1603 | Việc gỡ bị từ chối hoặc gặp lỗi; Windows đã hoàn tác và agent vẫn chạy. | Xem Nhật ký phân loại có sự kiện **Gỡ agent bị từ chối** của máy này không, và tìm dòng `uninstall refused` trong tệp nhật ký. Nếu đúng là bị từ chối, kiểm tra lại mật khẩu, xem [Khi không gỡ được agent](#khi-không-gỡ-được-agent). |
+| 1603 | Việc gỡ bị từ chối hoặc gặp lỗi; Windows đã hoàn tác và agent vẫn chạy. | Mở máy trên trang **Máy trạm**, xem mục **Sự kiện bảo vệ agent** có **Gỡ agent bị từ chối** không (sự kiện đến sau lần đồng bộ kế tiếp). Trong tệp nhật ký, tìm dòng `uninstall refused`. Nếu đúng là bị từ chối, kiểm tra lại mật khẩu, xem [Khi không gỡ được agent](#khi-không-gỡ-được-agent). |
 | 1605 | Không có sản phẩm nào với mã này trên máy. | Kiểm tra lại mã ở Bước 2. |
 | 1618 | Windows đang chạy một lượt cài đặt khác. | Chờ lượt đó xong, ví dụ cập nhật Windows, rồi chạy lại Bước 3. |
 
@@ -190,18 +190,22 @@ Vào **Thiết bị & Agent › Máy trạm**, chọn máy và bấm **Thu hồi
 
 ## Theo dõi trên Console
 
-Hai loại sự kiện xuất hiện trong **Giám sát › Nhật ký phân loại** và có trong bộ lọc **Loại sự kiện**. Hai sự kiện này gắn với máy, không gắn với tệp, nên cột tài liệu và mức bảo mật để trống.
+Hai loại sự kiện bảo vệ gắn với máy, không gắn với tệp, nên chúng hiện trên trang **Thiết bị & Agent › Máy trạm**, ngay tại máy xảy ra sự kiện, chứ không nằm trong Nhật ký phân loại.
 
 | Loại sự kiện | Khi nào xuất hiện |
 |---|---|
-| Gỡ agent bị từ chối | Việc gỡ agent trên máy bị từ chối vì thiếu mật khẩu hoặc mật khẩu không đúng, hoặc vì agent không kiểm tra được mật khẩu. Sự kiện thường xuất hiện, nhưng chỉ được ghi khi dịch vụ agent đang chạy lúc việc gỡ bị từ chối. |
+| Gỡ agent bị từ chối | Việc gỡ agent trên máy bị từ chối vì thiếu mật khẩu hoặc mật khẩu không đúng, hoặc vì agent không kiểm tra được mật khẩu. Sự kiện chỉ được ghi khi dịch vụ agent đang chạy lúc việc gỡ bị từ chối, và đến Console sau khi máy đồng bộ với server. |
 | Agent dừng bất thường | Agent khởi động lại sau một lần dừng không đúng quy trình: tiến trình bị buộc tắt, máy mất điện, agent gặp sự cố hoặc tự khởi động lại sau khi bị treo. Khi tiến trình agent bị buộc tắt, Windows tự khởi động lại dịch vụ, dịch vụ vẫn bị khóa, và sự kiện xuất hiện ngay sau đó. Tắt hay khởi động lại Windows bình thường không tạo sự kiện này. |
 
-Bấm vào sự kiện để mở **Chi tiết sự kiện**: máy, địa chỉ IP, người đăng nhập, thời điểm xảy ra và thời điểm server nhận. Dòng **Thao tác** hiện giá trị `tamper_protection` cho cả hai loại. Nút **Mở máy trạm** đưa bạn tới máy đó trên trang Máy trạm.
+Máy có sự kiện bảo vệ trong 7 ngày qua được đánh dấu bằng biểu tượng khiên trước tên máy, màu đỏ khi sự kiện gần nhất là **Gỡ agent bị từ chối** và màu cam khi là **Agent dừng bất thường**. Rê chuột vào biểu tượng để xem loại sự kiện và thời điểm. Phía trên danh sách, một dòng cảnh báo cho biết có bao nhiêu máy như vậy; bấm **Xem các máy này** để chỉ hiện những máy đó. Bộ lọc **Sự kiện bảo vệ** với lựa chọn **Có sự kiện trong 7 ngày** cho cùng kết quả.
 
-![Chi tiết sự kiện Gỡ agent bị từ chối trong Nhật ký phân loại](/img/console/events-uninstall-denied.png)
+![Máy trạm với dòng cảnh báo sự kiện bảo vệ và biểu tượng khiên trước tên máy](/img/console/endpoints-protection-flag.png)
 
-Nếu bạn đăng nhập bằng tài khoản Quản trị hệ thống và đang mở Console khi sự kiện đến, chuông thông báo hiện **Gỡ agent bị từ chối** ("Việc gỡ agent trên … bị từ chối vì thiếu mật khẩu hoặc mật khẩu không đúng.") hoặc **Agent dừng bất thường** ("Agent trên … đã dừng bất thường (bị tắt hoặc mất điện) và vừa chạy lại."). Bấm vào thông báo để mở máy tương ứng. Sự kiện xảy ra khi không ai mở Console vẫn nằm trong Nhật ký phân loại.
+Bấm vào tên máy để mở bảng chi tiết của máy. Mục **Sự kiện bảo vệ agent** liệt kê 20 sự kiện gần nhất, mới nhất ở trên, kèm thời điểm xảy ra và ý nghĩa của từng loại. Sau 7 ngày biểu tượng khiên tắt, nhưng sự kiện vẫn nằm trong mục **Sự kiện bảo vệ agent** của máy; khi máy có hơn 20 sự kiện, mục này ghi số sự kiện đang hiện trên tổng số. Địa chỉ trang lúc này trỏ thẳng tới máy đó, nên bạn có thể gửi cho đồng nghiệp để họ mở đúng máy. Quản lý đơn vị thấy các sự kiện này trên những máy thuộc đơn vị mình.
+
+![Bảng chi tiết máy với mục Sự kiện bảo vệ agent](/img/console/endpoint-drawer-protection-events.png)
+
+Nếu bạn đăng nhập bằng tài khoản Quản trị hệ thống và đang mở Console khi sự kiện đến, chuông thông báo hiện **Gỡ agent bị từ chối** ("Việc gỡ agent trên … bị từ chối vì thiếu mật khẩu hoặc mật khẩu không đúng.") hoặc **Agent dừng bất thường** ("Agent trên … đã dừng bất thường (bị tắt hoặc mất điện) và vừa chạy lại."). Bấm vào thông báo để mở bảng chi tiết của máy đó. Sự kiện xảy ra khi không ai mở Console vẫn được ghi lại và hiện trên trang Máy trạm. Quản lý đơn vị không nhận thông báo trên chuông; hãy xem dòng cảnh báo trên trang Máy trạm.
 
 ![Chuông thông báo với Gỡ agent bị từ chối và Agent dừng bất thường](/img/console/notifications-agent-protection.png)
 

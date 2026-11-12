@@ -1,10 +1,10 @@
 ---
 sidebar_position: 4
 title: Nhật ký phân loại
-description: Nhật ký phân loại ghi lại mọi sự kiện từ máy trạm, kèm giải thích vì sao một file được gắn nhãn như vậy.
+description: Nhật ký phân loại ghi lại mọi sự kiện phân loại tệp từ máy trạm, kèm giải thích vì sao một tệp được gắn nhãn như vậy.
 ---
 
-Nhật ký phân loại ghi lại mọi lần agent phân loại, phát hiện thay đổi hoặc gắn lại nhãn cho một tệp. Đây là nơi trả lời câu hỏi thường gặp nhất của người dùng: "vì sao file này bị gắn nhãn Mật?". Nhật ký nằm tại **Giám sát › Nhật ký phân loại**.
+Nhật ký phân loại ghi lại mọi lần agent phân loại, phát hiện thay đổi hoặc gắn lại nhãn cho một tệp. Đây là nơi trả lời câu hỏi thường gặp nhất của người dùng: "vì sao tệp này bị gắn nhãn Mật?". Nhật ký nằm tại **Giám sát › Nhật ký phân loại**.
 
 ## Loại sự kiện
 
@@ -14,8 +14,8 @@ Nhật ký phân loại ghi lại mọi lần agent phân loại, phát hiện t
 | Xóa/di chuyển | Tệp bị xóa hoặc di chuyển ra khỏi nguồn dữ liệu. |
 | Can thiệp nhãn | Agent phát hiện nhãn ghi trong tệp bị thay đổi bằng tay. |
 | Gắn lại nhãn | Agent khôi phục nhãn đúng sau khi phát hiện can thiệp. |
-| Gỡ agent bị từ chối | Việc gỡ agent trên máy bị từ chối vì thiếu mật khẩu hoặc mật khẩu không đúng. Xem [Mật khẩu gỡ agent](../endpoints/uninstall-password.md#theo-dõi-trên-console). |
-| Agent dừng bất thường | Agent chạy lại sau khi bị buộc tắt, mất điện, gặp sự cố hoặc bị treo. |
+
+Sự kiện **Gỡ agent bị từ chối** và **Agent dừng bất thường** gắn với máy chứ không với tệp, nên nằm trên trang [Máy trạm](../endpoints/machines.md#chi-tiết-máy).
 
 Bạn có thể lọc theo khoảng thời gian, máy, đơn vị và nhãn. Khi có tệp mới được phân loại, Console hiện thông báo nhỏ ở góc màn hình; bấm vào để mở sự kiện.
 
