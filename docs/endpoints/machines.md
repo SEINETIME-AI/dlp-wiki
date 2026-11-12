@@ -32,6 +32,6 @@ Agent chạy dưới dạng dịch vụ Windows tên `nextdlp`. Người dùng t
 
 :::tip[Máy mất kết nối?]
 
-Kiểm tra dịch vụ Windows `nextdlp` trên máy đó bằng lệnh `Get-Service nextdlp` và khởi động lại nếu đang dừng. Xem thêm [Xử lý sự cố](../operations/troubleshooting.md).
+Kiểm tra dịch vụ Windows `nextdlp` trên máy đó bằng lệnh `Get-Service nextdlp` và khởi động lại nếu đang dừng. Một máy mất kết nối mà không rõ lý do cũng có thể là dấu hiệu agent đã bị gỡ; xem [Mật khẩu gỡ agent](./uninstall-password.md). Xem thêm [Xử lý sự cố](../operations/troubleshooting.md).
 
 :::
