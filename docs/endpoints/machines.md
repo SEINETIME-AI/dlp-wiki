@@ -18,6 +18,12 @@ Phía trên danh sách là các ô thống kê tổng số máy, số máy đang
 
 ![Trang Máy trạm](/img/console/endpoints.png)
 
+## Chi tiết máy
+
+Bấm vào tên máy để mở bảng chi tiết bên phải: **Địa chỉ IP**, **Người đăng nhập**, **Đơn vị**, **Tác nhân** (phiên bản agent), **HĐH**, **Kết nối gần nhất**, **Fingerprint** và **Windows SID**. Bên dưới là mục **Sự kiện bảo vệ agent**, liệt kê những lần gỡ agent bị từ chối và những lần agent dừng bất thường trên máy đó.
+
+Máy có sự kiện bảo vệ trong 7 ngày qua được đánh dấu bằng biểu tượng khiên trước tên máy, và bộ lọc **Sự kiện bảo vệ** giúp lọc riêng những máy này. Xem [Mật khẩu gỡ agent](./uninstall-password.md#theo-dõi-trên-console).
+
 ## Thao tác quản trị
 
 **Chuyển đơn vị** đổi phòng ban của máy sau khi đã đăng ký, ví dụ khi nhân viên chuyển công tác. Máy sẽ dùng chính sách phân loại của đơn vị mới. Lưu ý rằng chính sách Agent vẫn đi theo bộ cài cũ; nếu cần cấu hình vận hành của đơn vị mới, hãy cài lại bằng bộ cài của đơn vị đó.
@@ -28,7 +34,7 @@ Phía trên danh sách là các ô thống kê tổng số máy, số máy đang
 
 ## Agent tự bảo vệ và tự khởi động lại
 
-Agent chạy dưới dạng dịch vụ Windows tên `nextdlp`. Người dùng thông thường không dừng, gỡ hoặc sửa được dịch vụ; chỉ tài khoản có quyền quản trị trên máy mới làm được. Khi dịch vụ dừng bất thường hoặc một phần xử lý bị treo, Windows tự khởi động lại dịch vụ theo cấu hình trong bộ cài.
+Agent chạy dưới dạng dịch vụ Windows tên `nextdlp`. Người dùng thông thường không dừng, gỡ hoặc sửa được dịch vụ; chỉ tài khoản có quyền quản trị trên máy mới làm được, và khi đã đặt [mật khẩu gỡ agent](./uninstall-password.md) thì tài khoản đó cũng không dừng hay gỡ được agent. Khi dịch vụ dừng bất thường hoặc một phần xử lý bị treo, Windows tự khởi động lại dịch vụ theo cấu hình trong bộ cài.
 
 :::tip[Máy mất kết nối?]
 
