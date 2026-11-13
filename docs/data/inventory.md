@@ -33,7 +33,7 @@ Cách đổi nhãn phụ thuộc vào vai trò của bạn.
 
 ## Duyệt yêu cầu đổi nhãn
 
-Tab **Yêu cầu đổi nhãn** có hai phần. **Yêu cầu đang nhận** dành cho người duyệt, mặc định hiện các yêu cầu đang chờ trong phạm vi đơn vị của bạn; mỗi yêu cầu hiển thị tài liệu, nhãn hiện tại, nhãn đề xuất và lý do, kèm nút **Phê duyệt** và **Từ chối**. **Yêu cầu của tôi** cho người gửi theo dõi trạng thái các yêu cầu mình đã gửi: Chờ duyệt, Đã duyệt hoặc Từ chối.
+Tab **Yêu cầu đổi nhãn** có hai phần. **Yêu cầu đang nhận** dành cho người duyệt, mặc định hiện các yêu cầu đang chờ trong phạm vi đơn vị của bạn; mỗi yêu cầu hiển thị tài liệu, nhãn hiện tại, nhãn đề xuất, lý do và tên người gửi, kèm nút **Phê duyệt** và **Từ chối**. **Yêu cầu của tôi** cho người gửi theo dõi trạng thái các yêu cầu mình đã gửi: Chờ duyệt, Đã duyệt hoặc Từ chối.
 
 Sau khi được duyệt, nhãn mới được áp dụng trên server và agent của máy chứa tệp sẽ đồng bộ ở lần kết nối kế tiếp.
 

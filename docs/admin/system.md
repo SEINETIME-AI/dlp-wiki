@@ -19,13 +19,14 @@ Trang **Báo cáo & quản trị › Hệ thống** tập trung các cấu hình
 | Lưu trữ và sao lưu | Thời gian lưu sự kiện phân loại và kiểm kê tài liệu, lịch sao lưu, số bản giữ lại. Hiện các giá trị này mới được lưu lại: server chưa tự xóa dữ liệu cũ và chưa tự sao lưu, nên hãy sao lưu cơ sở dữ liệu theo quy trình của tổ chức. |
 | Nhà cung cấp phân loại | Trạng thái của gói GPU AssistOCR và quota tài liệu gửi lên mỗi ngày. Xem [AssistOCR](#assistocr). |
 | Giấy phép & phiên bản | Trạng thái giấy phép, số máy đã dùng, kích hoạt giấy phép mới và phiên bản đang chạy. Xem [Giấy phép](./license.md). |
+| Bản ghi vượt phạm vi | Chỉ Quản trị hệ thống thấy khu vực này. Nó liệt kê chính sách Agent dùng chung, nguồn dữ liệu và quy tắc nhận diện mà người tạo hoặc sửa gần nhất không còn quản lý được vì nằm ngoài phạm vi đơn vị của họ. Danh sách chỉ để xem; bạn mở từng mục ở trang tương ứng để chỉnh. |
 
 ## AssistOCR
 
 AssistOCR là gói GPU tự cài trong mạng nội bộ, và là tùy chọn. Gói này:
 
 - đọc ảnh, bản scan và chữ trên dấu mộc cho agent ở chế độ OCR hybrid hoặc máy chủ, tốt hơn OCR trên máy trạm với bản scan chất lượng thấp;
-- đọc tài liệu mẫu khi quản trị viên dùng Gợi ý AI;
+- đọc tài liệu mẫu khi Quản trị hệ thống dùng Gợi ý AI;
 - đánh giá lại các điều kiện ngữ nghĩa có điểm sát ngưỡng, và đánh giá thay cho máy trạm không nạp được mô hình ngữ nghĩa.
 
 Địa chỉ của AssistOCR được đặt khi cài server cùng gói GPU, không nhập trên Console. Mục **Nhà cung cấp phân loại** cho biết tình trạng của gói:
