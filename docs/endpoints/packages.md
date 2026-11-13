@@ -15,7 +15,7 @@ Bấm **Tạo bộ cài mới** và điền các thông tin sau.
 | Công ty con / Ban chuyên môn | Chọn phạm vi cấp 2 trước để lọc danh sách đơn vị. |
 | Phòng ban | Đơn vị lá mà các máy cài từ bộ này sẽ thuộc về. Với Ban chuyên môn, bộ cài gắn thẳng vào ban. |
 | Chính sách Agent | Mẫu cấu hình vận hành của agent, xem [Chính sách Agent](./agent-policy.md). |
-| Quota đăng ký | Số máy tối đa được phép đăng ký bằng bộ cài này. |
+| Quota đăng ký | Số máy tối đa được đăng ký bằng bộ cài này tại một thời điểm. Máy bị thu hồi trả lại chỗ cho máy khác. |
 | Agent server | Địa chỉ IP của máy chủ NextDLP mà agent sẽ kết nối về. |
 
 Chính sách phân loại không cần gắn vào bộ cài: agent tự nhận chính sách đang bật của đơn vị mỗi khi kết nối.
@@ -39,7 +39,11 @@ Sau khi tạo, server đóng gói bộ cài trong nền. Trạng thái của b�
 | Thất bại | Quá trình đóng gói gặp lỗi. Hãy tạo lại bộ cài. |
 | Hết hạn | Bộ cài không còn dùng được để đăng ký máy mới. |
 
-Mỗi dòng có các thao tác **Tải bộ cài**, **Tạo lại**, **Thu hồi** và **Xóa**. Dùng **Tạo lại** khi cần đóng gói lại với cấu hình mới, ví dụ sau khi đổi IP máy chủ.
+Mỗi dòng có các thao tác **Tải bộ cài**, **Tạo lại**, **Thu hồi** và **Xóa**. Quản trị hệ thống thao tác trên mọi bộ cài; Quản lý đơn vị tạo bộ cài và dùng đủ bốn thao tác này với bộ cài của các đơn vị trong phạm vi của mình.
+
+Cột **Máy đang dùng** cho biết bao nhiêu máy đang gắn với bộ cài này so với quota, ví dụ 2/50. Một máy được tính khi đã đăng ký bằng bộ cài và chưa bị thu hồi, kể cả lúc máy đang tắt. Cài lại agent trên cùng một máy không tính thêm, còn thu hồi một máy thì trả lại một chỗ trong quota.
+
+**Tạo lại** cấp cho bộ cài một mã đăng ký mới và đóng gói lại tệp cài đặt với chính sách Agent và [mật khẩu gỡ agent](./uninstall-password.md) đang đặt trên hệ thống. Từ lúc đó tệp cài đặt cũ không đăng ký được máy mới nữa, nên hãy dùng thao tác này khi tệp cài đặt đã bị gửi nhầm ra ngoài hoặc khi muốn các máy cài sau dùng cấu hình mới. Sau khi tạo lại, hãy tải bộ cài về lần nữa và dùng tệp mới cho các máy cài sau. Các máy đã cài vẫn hoạt động bình thường và con số ở cột Máy đang dùng không thay đổi.
 
 ![Danh sách bộ cài Agent](/img/console/agent-deployment.png)
 
@@ -53,4 +57,4 @@ Cách cài chi tiết có tại [Cài đặt & kết nối](../getting-started/i
 
 ## Sau khi cài
 
-Agent tự gửi về hostname, mã thiết bị, hệ điều hành và người dùng đang đăng nhập. Đơn vị của máy lấy từ cấu hình nhúng trong gói; quản trị viên vẫn có thể chuyển máy sang đơn vị khác sau đó tại trang [Máy trạm](./machines.md).
+Agent tự gửi về hostname, mã thiết bị, hệ điều hành và người dùng đang đăng nhập. Đơn vị của máy lấy từ cấu hình nhúng trong gói; Quản trị hệ thống vẫn có thể chuyển máy sang đơn vị khác sau đó tại trang [Máy trạm](./machines.md).

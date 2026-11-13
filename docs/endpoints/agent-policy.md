@@ -16,7 +16,9 @@ Chính sách Agent khác với chính sách phân loại. Nó không quyết đ�
 
 ## Tham số cấu hình
 
-Bấm **Chính sách Agent mới**, đặt tên cho chính sách (ví dụ "Máy văn phòng" hoặc "Máy chủ tệp"), rồi điền các tham số dưới đây. Mỗi thẻ chính sách trên trang hiển thị lại Heartbeat, Mức quét và thời gian Offline đã chọn.
+Bấm **Chính sách Agent mới**, đặt tên cho chính sách (ví dụ "Máy văn phòng" hoặc "Máy chủ tệp"), chọn đơn vị mà chính sách thuộc về ở ô **Công ty con / Ban chuyên môn**, rồi điền các tham số dưới đây. Quản trị hệ thống có thể chọn **Tất cả đơn vị** để chính sách dùng chung cho mọi đơn vị. Quản lý đơn vị chọn một đơn vị trong phạm vi của mình; chính sách dùng chung thì họ chỉ xem, không sửa được. Mỗi thẻ chính sách trên trang hiển thị lại Heartbeat, Mức quét và thời gian Offline đã chọn.
+
+![Hộp thoại tạo Chính sách Agent với ô chọn đơn vị](/img/console/agent-policies-create.png)
 
 | Tham số | Ý nghĩa |
 |---|---|
@@ -65,7 +67,7 @@ Có những lúc agent chỉ đọc được một phần tệp: tệp lớn hơ
 
 Vì vậy Chính sách Agent có ngưỡng **Tệp chưa phân tích đầy đủ thì gắn ít nhất**. Cách áp dụng đơn giản: so nhãn lấy từ phần đã đọc với ngưỡng, **lấy mức cao hơn**. Tệp đọc dở mà phần đã đọc đã là Tối mật thì vẫn Tối mật; tệp đọc dở mà chưa thấy gì thì nhận mức ngưỡng. Ngưỡng không bao giờ hạ nhãn xuống.
 
-Mặc định ngưỡng là **Chờ rà soát**. Đây không phải một mức trên thang mật mà là trạng thái "cần người xem", khi so sánh được tính ngang với Mật. DLP có thể chặn hoặc cảnh báo theo nhãn này; quản trị viên lọc Kiểm kê dữ liệu theo Chờ rà soát, xem lý do trong chi tiết tài liệu rồi **Cập nhật nhãn**. Nếu đơn vị chưa có người rà soát, chọn **Không áp dụng** để giữ nguyên nhãn từ phần đã đọc; hoặc chọn một mức cụ thể như Mật nếu muốn DLP chặn thẳng.
+Mặc định ngưỡng là **Chờ rà soát**. Đây không phải một mức trên thang mật mà là trạng thái "cần người xem", khi so sánh được tính ngang với Mật. DLP có thể chặn hoặc cảnh báo theo nhãn này; Quản trị hệ thống hoặc Quản lý đơn vị lọc Kiểm kê dữ liệu theo Chờ rà soát, xem lý do trong chi tiết tài liệu rồi **Cập nhật nhãn**. Nếu đơn vị chưa có người rà soát, chọn **Không áp dụng** để giữ nguyên nhãn từ phần đã đọc; hoặc chọn một mức cụ thể như Mật nếu muốn DLP chặn thẳng.
 
 Ngưỡng này không áp dụng cho hai loại tệp agent cố ý không đọc: tệp không phải tài liệu (video, ảnh đĩa, bản sao lưu) và tệp lớn hơn **Kích thước tối đa** bạn đặt cho nguồn dữ liệu. Chúng ở trạng thái Chưa gắn nhãn, để danh sách rà soát không bị ngập bởi những tệp bạn đã chủ động loại.
 

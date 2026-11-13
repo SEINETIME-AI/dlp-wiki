@@ -26,6 +26,8 @@ Máy có sự kiện bảo vệ trong 7 ngày qua được đánh dấu bằng b
 
 ## Thao tác quản trị
 
+Các thao tác dưới đây dành cho Quản trị hệ thống; Quản lý đơn vị xem được danh sách máy trong phạm vi của mình nhưng không thấy các nút này. Nếu một thao tác không thực hiện được, Console hiển thị lý do cụ thể do server trả về.
+
 **Chuyển đơn vị** đổi phòng ban của máy sau khi đã đăng ký, ví dụ khi nhân viên chuyển công tác. Máy sẽ dùng chính sách phân loại của đơn vị mới. Lưu ý rằng chính sách Agent vẫn đi theo bộ cài cũ; nếu cần cấu hình vận hành của đơn vị mới, hãy cài lại bằng bộ cài của đơn vị đó.
 
 **Tạo lại khóa** cấp khóa API mới cho agent và vô hiệu hóa khóa cũ ngay lập tức. Khóa mới chỉ hiển thị một lần, nên hãy sao chép ngay.
