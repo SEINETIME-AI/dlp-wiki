@@ -8,6 +8,8 @@ Bộ cài Agent là cách duy nhất để đưa máy trạm vào NextDLP. Mỗi
 
 ## Tạo bộ cài
 
+Mật khẩu gỡ agent phải được đặt trước khi tạo hoặc tạo lại bất kỳ bộ cài nào, để máy được bảo vệ ngay từ lúc cài. Khi chưa có mật khẩu, trang hiện cảnh báo; Quản trị hệ thống đặt mật khẩu ngay tại đó, còn Quản lý đơn vị cần nhờ một Quản trị hệ thống. Xem [Mật khẩu gỡ agent](./uninstall-password.md#đặt-hoặc-đổi-mật-khẩu).
+
 Bấm **Tạo bộ cài mới** và điền các thông tin sau.
 
 | Trường | Ý nghĩa |
@@ -43,7 +45,7 @@ Mỗi dòng có các thao tác **Tải bộ cài**, **Tạo lại**, **Thu hồi
 
 Cột **Máy đang dùng** cho biết bao nhiêu máy đang gắn với bộ cài này so với quota, ví dụ 2/50. Một máy được tính khi đã đăng ký bằng bộ cài và chưa bị thu hồi, kể cả lúc máy đang tắt. Cài lại agent trên cùng một máy không tính thêm, còn thu hồi một máy thì trả lại một chỗ trong quota.
 
-**Tạo lại** cấp cho bộ cài một mã đăng ký mới và đóng gói lại tệp cài đặt với chính sách Agent và [mật khẩu gỡ agent](./uninstall-password.md) đang đặt trên hệ thống. Từ lúc đó tệp cài đặt cũ không đăng ký được máy mới nữa, nên hãy dùng thao tác này khi tệp cài đặt đã bị gửi nhầm ra ngoài hoặc khi muốn các máy cài sau dùng cấu hình mới. Sau khi tạo lại, hãy tải bộ cài về lần nữa và dùng tệp mới cho các máy cài sau. Các máy đã cài vẫn hoạt động bình thường và con số ở cột Máy đang dùng không thay đổi.
+**Tạo lại** cấp cho bộ cài một mã đăng ký mới và đóng gói lại tệp cài đặt với chính sách Agent và [mật khẩu gỡ agent](./uninstall-password.md) hiện hành; nếu mật khẩu cũ đã bị lộ, đây là cách để các tệp cài đặt đã phát ra không còn dùng được. Từ lúc đó tệp cài đặt cũ không đăng ký được máy mới nữa, nên hãy dùng thao tác này khi tệp cài đặt đã bị gửi nhầm ra ngoài hoặc khi muốn các máy cài sau dùng cấu hình mới. Sau khi tạo lại, hãy tải bộ cài về lần nữa và dùng tệp mới cho các máy cài sau. Các máy đã cài vẫn hoạt động bình thường và con số ở cột Máy đang dùng không thay đổi.
 
 ![Danh sách bộ cài Agent](/img/console/agent-deployment.png)
 
@@ -51,7 +53,7 @@ Cột **Máy đang dùng** cho biết bao nhiêu máy đang gắn với bộ cà
 
 **Tải bộ cài** trả về một tệp zip gồm ba thành phần. Tệp `.msi` dùng để cài lần đầu. Script `Reinstall-NextDLP.ps1` dùng để cài lại hoặc thay bộ cài trên máy đã có agent; script tự gỡ bản cũ, cài bản trong thư mục và khởi động dịch vụ. Tệp `README-INSTALL.txt` tóm tắt hai cách cài này.
 
-Khi đã đặt [mật khẩu gỡ agent](./uninstall-password.md), bộ cài tạo hoặc tạo lại từ lúc đó mang sẵn dạng băm một chiều của mật khẩu, nên máy được bảo vệ ngay từ lúc cài; không thể lấy lại mật khẩu từ bộ cài. Script `Reinstall-NextDLP.ps1` gỡ hẳn bản cũ trước khi cài bản mới, và bước gỡ đó cần mật khẩu, nên hãy thêm tham số `-UninstallPassword` với mật khẩu này.
+Mọi bộ cài mang sẵn dạng băm một chiều của [mật khẩu gỡ agent](./uninstall-password.md), nên máy được bảo vệ ngay từ lúc cài; không thể lấy lại mật khẩu từ bộ cài. Nếu sau đó bạn đổi mật khẩu, bộ cài đã tạo vẫn mang mật khẩu cũ và máy cài từ đó chuyển sang mật khẩu mới sau lần đồng bộ đầu tiên. Script `Reinstall-NextDLP.ps1` gỡ hẳn bản cũ trước khi cài bản mới, và bước gỡ đó cần mật khẩu, nên hãy thêm tham số `-UninstallPassword` với mật khẩu này.
 
 Cách cài chi tiết có tại [Cài đặt & kết nối](../getting-started/install.md#phần-3-cài-agent-lên-máy-trạm).
 

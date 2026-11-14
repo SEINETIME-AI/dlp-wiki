@@ -51,20 +51,16 @@ Nếu ghi chú phát hành yêu cầu cập nhật agent, hãy **Tạo lại** b
 Trên máy trạm, giải nén bộ cài mới, mở PowerShell với quyền quản trị trong thư mục đó và chạy:
 
 ```powershell
-.\Reinstall-NextDLP.ps1 -CleanState:$false
+.\Reinstall-NextDLP.ps1 -CleanState:$false -UninstallPassword "<mật khẩu gỡ agent>"
 ```
 
-Script tự gỡ mọi bản NextDLP cũ, cài file `.msi` trong thư mục và khởi động dịch vụ. Tuỳ chọn `-CleanState:$false` giữ lại dữ liệu cục bộ của agent, nên máy giữ nguyên danh tính trên Console và không phải quét lại từ đầu. Bỏ tuỳ chọn này chỉ khi bạn muốn máy đăng ký lại hoàn toàn mới.
+Script tự gỡ mọi bản NextDLP cũ, cài tệp `.msi` trong thư mục và khởi động dịch vụ. Bước gỡ bản cũ cần mật khẩu gỡ agent đã đặt trên Console; thiếu mật khẩu, script dừng ở bước gỡ. Xem [Mật khẩu gỡ agent](../endpoints/uninstall-password.md#cài-lại-và-cập-nhật-agent). Tuỳ chọn `-CleanState:$false` giữ lại dữ liệu cục bộ của agent, nên máy giữ nguyên danh tính trên Console và không phải quét lại từ đầu. Bỏ tuỳ chọn này chỉ khi bạn muốn máy đăng ký lại hoàn toàn mới.
 
 ## Gỡ agent khỏi máy trạm
 
 ### Bước 1. Gỡ chương trình
 
-Trên máy trạm, mở **Settings › Apps › Installed apps**, tìm **NextDLP** và chọn **Uninstall**. Bạn cũng có thể dùng lệnh trong PowerShell quyền quản trị:
-
-```powershell
-Get-Package -Name "NextDLP*" | Uninstall-Package
-```
+Agent được bảo vệ bằng mật khẩu gỡ agent, nên NextDLP không có nút gỡ trong danh sách chương trình của Windows và lệnh gỡ thông thường bị từ chối. Hãy gỡ bằng lệnh kèm mật khẩu, theo các bước ở [Gỡ agent trên máy được bảo vệ](../endpoints/uninstall-password.md#gỡ-agent-trên-máy-được-bảo-vệ).
 
 ### Bước 2. Xoá dữ liệu cục bộ (tuỳ chọn)
 
