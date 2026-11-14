@@ -51,10 +51,10 @@ Nếu ghi chú phát hành yêu cầu cập nhật agent, hãy **Tạo lại** b
 Trên máy trạm, giải nén bộ cài mới, mở PowerShell với quyền quản trị trong thư mục đó và chạy:
 
 ```powershell
-.\Reinstall-NextDLP.ps1 -CleanState:$false
+.\Reinstall-NextDLP.ps1 -CleanState:$false -UninstallPassword "<mật khẩu gỡ agent>"
 ```
 
-Script tự gỡ mọi bản NextDLP cũ, cài file `.msi` trong thư mục và khởi động dịch vụ. Tuỳ chọn `-CleanState:$false` giữ lại dữ liệu cục bộ của agent, nên máy giữ nguyên danh tính trên Console và không phải quét lại từ đầu. Bỏ tuỳ chọn này chỉ khi bạn muốn máy đăng ký lại hoàn toàn mới.
+Script tự gỡ mọi bản NextDLP cũ, cài tệp `.msi` trong thư mục và khởi động dịch vụ. Bước gỡ bản cũ cần mật khẩu gỡ agent đã đặt trên Console; thiếu mật khẩu, script dừng ở bước gỡ. Xem [Mật khẩu gỡ agent](../endpoints/uninstall-password.md#cài-lại-và-cập-nhật-agent). Tuỳ chọn `-CleanState:$false` giữ lại dữ liệu cục bộ của agent, nên máy giữ nguyên danh tính trên Console và không phải quét lại từ đầu. Bỏ tuỳ chọn này chỉ khi bạn muốn máy đăng ký lại hoàn toàn mới.
 
 ## Gỡ agent khỏi máy trạm
 
