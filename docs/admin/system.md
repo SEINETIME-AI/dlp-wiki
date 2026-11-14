@@ -13,7 +13,7 @@ Trang **Báo cáo & quản trị › Hệ thống** tập trung các cấu hình
 | Khu vực | Nội dung |
 |---|---|
 | Thông tin chung | Tên tổ chức (hiển thị là cấp Tổng công ty trong Cơ cấu tổ chức), múi giờ và ngôn ngữ giao diện. |
-| Cấu hình Agent mặc định | Heartbeat, ngưỡng offline, kênh phát hành và mật khẩu gỡ agent, xem [Mật khẩu gỡ agent](../endpoints/uninstall-password.md). Thiết lập theo nhóm máy nằm ở Chính sách Agent. |
+| Cấu hình Agent mặc định | Heartbeat, ngưỡng offline và kênh phát hành. Mật khẩu gỡ agent đặt tại trang Bộ cài Agent, xem [Mật khẩu gỡ agent](../endpoints/uninstall-password.md). Thiết lập theo nhóm máy nằm ở Chính sách Agent. |
 | Thông báo vận hành | Bật hoặc tắt thông báo về trạng thái gói cài, máy mất kết nối, đồng bộ chính sách, yêu cầu đổi nhãn và popup tệp mới được phân loại. |
 | Bảo mật đăng nhập | Độ dài mật khẩu tối thiểu, số lần nhập sai trước khi khóa tài khoản. |
 | Lưu trữ và sao lưu | Thời gian lưu sự kiện phân loại và kiểm kê tài liệu, lịch sao lưu, số bản giữ lại. Hiện các giá trị này mới được lưu lại: server chưa tự xóa dữ liệu cũ và chưa tự sao lưu, nên hãy sao lưu cơ sở dữ liệu theo quy trình của tổ chức. |

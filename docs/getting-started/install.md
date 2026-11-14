@@ -86,7 +86,7 @@ Console yêu cầu đặt mật khẩu mới ngay ở lần đăng nhập đầu
 
 ## Phần 2. Chuẩn bị Console
 
-Trước khi tạo bộ cài, Console cần có giấy phép đã kích hoạt, ít nhất một đơn vị và một chính sách Agent.
+Trước khi tạo bộ cài, Console cần có giấy phép đã kích hoạt, ít nhất một đơn vị, một chính sách Agent và mật khẩu gỡ agent.
 
 ### Bước 6. Kích hoạt giấy phép
 
@@ -110,9 +110,13 @@ Vào **Thiết bị & Agent › Chính sách Agent** và bấm **Chính sách Ag
 
 ## Phần 3. Cài agent lên máy trạm
 
-### Bước 9. Tạo bộ cài cho đơn vị
+### Bước 9. Đặt mật khẩu gỡ agent
 
-Vào **Thiết bị & Agent › Bộ cài Agent** và bấm **Tạo bộ cài mới**. Chọn Công ty con hoặc Ban chuyên môn, chọn phòng ban triển khai, chọn chính sách Agent vừa tạo, rồi nhập IP máy chủ vào ô **Agent server**.
+Vào **Thiết bị & Agent › Bộ cài Agent**. Trang báo chưa đặt mật khẩu gỡ agent; bấm **Đặt mật khẩu gỡ agent**, nhập mật khẩu hai lần rồi bấm **Lưu**. Mật khẩu này được gắn sẵn vào mọi bộ cài và cần khi gỡ agent trên máy trạm, nên hãy cất nó cẩn thận. Xem [Mật khẩu gỡ agent](../endpoints/uninstall-password.md).
+
+### Bước 10. Tạo bộ cài cho đơn vị
+
+Trên cùng trang đó, bấm **Tạo bộ cài mới**. Chọn Công ty con hoặc Ban chuyên môn, chọn phòng ban triển khai, chọn chính sách Agent vừa tạo, rồi nhập IP máy chủ vào ô **Agent server**.
 
 ![Hộp thoại Tạo bộ cài Agent, ô Agent server điền IP máy chủ](/img/console/agent-deployment-create.png)
 
@@ -122,7 +126,7 @@ Nếu để trống, agent sẽ kết nối về `localhost`, tức là chỉ ho
 
 :::
 
-### Bước 10. Tải và cài bộ cài
+### Bước 11. Tải và cài bộ cài
 
 Khi bộ cài chuyển sang trạng thái **Sẵn sàng**, bấm **Tải bộ cài** để nhận một tệp zip. Chép tệp này sang máy trạm, giải nén, rồi chạy tệp `.msi` và chấp nhận hộp thoại quyền quản trị.
 
@@ -137,7 +141,7 @@ Start-Service nextdlp
 
 Vì bộ cài là tệp MSI chuẩn, bạn có thể dùng cùng lệnh này với công cụ phân phối phần mềm của tổ chức để cài hàng loạt.
 
-### Bước 11. Kiểm tra kết nối
+### Bước 12. Kiểm tra kết nối
 
 Trong vòng một phút, máy trạm xuất hiện tại **Thiết bị & Agent › Máy trạm** với trạng thái **Trực tuyến**, và số máy đã đăng ký của bộ cài tăng thêm một. Hệ thống cũng tự tạo một tài khoản Console cho máy này, xem [Người dùng & phân quyền](../organization/users.md).
 

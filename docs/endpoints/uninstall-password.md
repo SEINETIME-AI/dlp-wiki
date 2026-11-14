@@ -26,9 +26,9 @@ Tính năng này chặn được thao tác gỡ và dừng agent thông thườn
   </Card>
 </Cards>
 
-Khi agent được cài từ một bộ cài mới, nút gỡ cài đặt của NextDLP trong **Programs and Features** (Chương trình và Tính năng) bị ẩn, kể cả khi chưa đặt mật khẩu, vì bộ cài không biết trước mật khẩu sẽ được đặt hay xóa về sau. Agent vì vậy luôn được gỡ bằng lệnh, như ở mục [Gỡ agent trên máy được bảo vệ](#gỡ-agent-trên-máy-được-bảo-vệ).
+Nút gỡ cài đặt của NextDLP trong **Programs and Features** (Chương trình và Tính năng) bị ẩn, nên agent luôn được gỡ bằng lệnh, như ở mục [Gỡ agent trên máy được bảo vệ](#gỡ-agent-trên-máy-được-bảo-vệ).
 
-Khi đã đặt mật khẩu, lệnh `sc.exe stop nextdlp` chạy trong PowerShell quyền quản trị bị Windows từ chối với mã 5; `sc.exe config nextdlp start= disabled` và `sc.exe delete nextdlp` cũng nhận cùng kết quả:
+Lệnh `sc.exe stop nextdlp` chạy trong PowerShell quyền quản trị bị Windows từ chối với mã 5; `sc.exe config nextdlp start= disabled` và `sc.exe delete nextdlp` cũng nhận cùng kết quả:
 
 ```text
 [SC] OpenService FAILED 5:
@@ -38,66 +38,63 @@ Access is denied.
 
 ## Khi nào tính năng có hiệu lực
 
-Hệ thống có một mật khẩu gỡ agent duy nhất, áp dụng cho mọi máy trạm; không có mật khẩu riêng theo đơn vị hay theo chính sách Agent. Bảo vệ bật đúng trong khoảng thời gian mật khẩu được đặt: đặt mật khẩu là bật, xóa mật khẩu là tắt. Khi chưa có mật khẩu, lệnh gỡ agent không hỏi mật khẩu và người có quyền quản trị cục bộ dừng được dịch vụ như trước.
+Hệ thống có một mật khẩu gỡ agent duy nhất, áp dụng cho mọi máy trạm; không có mật khẩu riêng theo đơn vị hay theo chính sách Agent. Mật khẩu phải được đặt trước khi tạo bộ cài đầu tiên, nên mọi máy cài từ bộ cài của NextDLP đều được bảo vệ ngay từ lúc cài. Mật khẩu chỉ đổi được, không xóa được: không thể tắt tính năng này từ Console.
 
-Máy trạm nhận thay đổi ở lần đồng bộ kế tiếp với server, nên các máy không đổi trạng thái cùng một lúc. Agent khóa dịch vụ khi khởi động và mỗi khi nhận một mật khẩu khác, và mở khóa khi mật khẩu bị xóa.
+Máy trạm nhận mật khẩu mới ở lần đồng bộ kế tiếp với server, nên các máy không đổi mật khẩu cùng một lúc. Agent khóa dịch vụ khi khởi động và mỗi khi nhận một mật khẩu khác.
 
-Bộ cài chỉ mang dạng băm một chiều của mật khẩu, không mang chính mật khẩu, nên không thể lấy lại mật khẩu từ bộ cài. Mỗi lần đặt hoặc xóa mật khẩu được ghi vào nhật ký kiểm toán của hệ thống, kèm tài khoản đã thực hiện; bản thân mật khẩu không được ghi.
+Bộ cài chỉ mang dạng băm một chiều của mật khẩu, không mang chính mật khẩu, nên không thể lấy lại mật khẩu từ bộ cài. Mỗi lần đặt hoặc đổi mật khẩu được ghi vào nhật ký kiểm toán của hệ thống, kèm tài khoản đã thực hiện; bản thân mật khẩu không được ghi.
 
 ## Đặt hoặc đổi mật khẩu
 
-Chỉ Quản trị hệ thống làm được việc này, vì mật khẩu nằm trên trang **Hệ thống**.
+Mật khẩu được đặt và đổi tại một nơi duy nhất: **Thiết bị & Agent › Bộ cài Agent**. Chỉ Quản trị hệ thống làm được việc này. Quản lý đơn vị thấy dòng cảnh báo yêu cầu nhờ một Quản trị hệ thống đặt mật khẩu và chưa tạo được bộ cài cho đến lúc đó.
 
-### Bước 1. Mở mục Cấu hình Agent mặc định
+![Trang Bộ cài Agent của Quản lý đơn vị khi chưa có mật khẩu, nút Tạo bộ cài mới bị khóa](/img/console/agent-packages-password-manager.png)
 
-Vào **Báo cáo & quản trị › Hệ thống** và chọn **Cấu hình Agent mặc định**. Khối **Mật khẩu gỡ agent** nằm dưới Heartbeat, Ngưỡng offline và Kênh phát hành, kèm nhãn **Chưa đặt** hoặc **Đã đặt**.
+![Trang Bộ cài Agent với cảnh báo chưa đặt mật khẩu gỡ agent](/img/console/agent-packages-password-banner.png)
+
+### Bước 1. Mở hộp thoại đặt mật khẩu
+
+Khi chưa có mật khẩu, trang hiện cảnh báo "Chưa đặt mật khẩu gỡ agent. Cần đặt mật khẩu trước khi tạo bộ cài, để máy được bảo vệ ngay từ lúc cài." Bấm **Đặt mật khẩu gỡ agent** trong cảnh báo. Nếu bạn bấm **Tạo bộ cài mới** hoặc **Tạo lại** khi chưa có mật khẩu, hộp thoại **Đặt mật khẩu gỡ agent** cũng mở trước, rồi Console tiếp tục thao tác bạn đã chọn.
 
 ### Bước 2. Nhập mật khẩu hai lần
 
 Gõ mật khẩu vào ô **Mật khẩu mới** và gõ lại vào ô **Nhập lại mật khẩu**. Mật khẩu cần ít nhất 8 ký tự và không được chỉ gồm khoảng trắng; nút **Lưu** chỉ bật khi hai ô khớp nhau. Bạn sẽ gõ mật khẩu này trong PowerShell trên máy trạm, nên hãy dùng chữ cái không dấu và chữ số. Tránh dấu nháy kép `"`, dấu nháy ngược `` ` ``, các ký tự `$ % ^ & | < >` và khoảng trắng ở đầu hay cuối, vì chúng có nghĩa riêng trong dòng lệnh.
 
+![Hộp thoại Đặt mật khẩu gỡ agent](/img/console/agent-packages-password-dialog.png)
+
 ### Bước 3. Lưu
 
-Bấm **Lưu**. Console báo **Đã lưu mật khẩu gỡ agent.** và nhãn chuyển sang **Đã đặt**. Mật khẩu không hiển thị lại sau khi lưu, nên hãy cất nó ở nơi tổ chức bạn quản lý mật khẩu.
+Bấm **Lưu**. Mật khẩu không hiển thị lại sau khi lưu, nên hãy cất nó ở nơi tổ chức bạn quản lý mật khẩu. Từ đây trang hiện dòng "Mật khẩu gỡ agent: đã đặt" kèm nút **Đổi mật khẩu**.
 
-![Khối Mật khẩu gỡ agent ở trạng thái Đã đặt](/img/console/system-uninstall-password.png)
+![Trang Bộ cài Agent với dòng Mật khẩu gỡ agent: đã đặt và nút Đổi mật khẩu](/img/console/agent-packages-password-set.png)
 
-Đổi mật khẩu cũng làm như trên: nhập mật khẩu mới rồi bấm **Lưu**, không cần biết mật khẩu cũ. Hãy giữ lại mật khẩu cũ cho đến khi mọi máy đã kết nối lại, vì máy chưa đồng bộ vẫn đòi mật khẩu cũ.
+### Đổi mật khẩu
+
+Bấm **Đổi mật khẩu**, nhập mật khẩu mới hai lần rồi bấm **Lưu**; không cần biết mật khẩu cũ. Máy đang kết nối nhận mật khẩu mới ở lần đồng bộ kế tiếp, còn máy đang mất kết nối vẫn dùng mật khẩu cũ cho đến khi kết nối lại, nên hãy giữ lại mật khẩu cũ cho đến lúc đó.
+
+Các bộ cài đã tạo vẫn mang mật khẩu cũ. Máy cài từ đó chuyển sang mật khẩu mới sau lần đồng bộ đầu tiên. Nếu mật khẩu cũ đã bị lộ, hãy **Tạo lại** các bộ cài để tệp cài đặt cũ không còn đăng ký được máy mới; xem [Bộ cài Agent](./packages.md).
 
 ## Triển khai cho toàn bộ máy trạm
 
-Sau khi đặt mật khẩu lần đầu, làm lần lượt các bước sau để mọi máy được bảo vệ.
+Làm lần lượt các bước sau để mọi máy được bảo vệ.
 
-1. **Đặt mật khẩu** trên Console như mục trên.
-2. **Tạo lại bộ cài** của từng đơn vị tại **Thiết bị & Agent › Bộ cài Agent**, để bộ cài mang sẵn mật khẩu. Xem [Bộ cài Agent](./packages.md).
-3. **Triển khai bộ cài mới** cho máy cài mới và cho máy còn chạy agent phiên bản cũ.
-4. **Chờ các máy đồng bộ.** Máy đang chạy agent có tính năng này nhận mật khẩu ở lần đồng bộ kế tiếp.
-5. **Cập nhật agent cũ.** Máy chạy agent phiên bản trước khi có tính năng này không được bảo vệ cho đến khi được cài agent mới.
+1. **Đặt mật khẩu** trên trang Bộ cài Agent như mục trên.
+2. **Tạo bộ cài** của từng đơn vị tại **Thiết bị & Agent › Bộ cài Agent**. Bộ cài nào cũng mang sẵn mật khẩu. Xem [Bộ cài Agent](./packages.md).
+3. **Cài bộ cài** lên máy trạm. Máy được bảo vệ ngay từ lúc cài.
 
-Bảng dưới đây tóm tắt từng tình huống.
+Bảng dưới đây tóm tắt các tình huống cần chú ý khi cài hoặc cài lại.
 
 | Tình huống | Kết quả | Việc cần làm |
 |---|---|---|
-| Cài mới từ bộ cài tạo hoặc tạo lại sau khi đặt mật khẩu | Được bảo vệ ngay từ lúc cài. | Không cần. |
-| Cài mới từ bộ cài tạo trước khi đặt mật khẩu | Chưa được bảo vệ cho đến lần đồng bộ đầu tiên. | **Tạo lại** bộ cài để đóng khoảng trống này. |
-| Máy chạy agent phiên bản cũ, chưa có tính năng | Không được bảo vệ; gỡ không cần mật khẩu. | Cài agent mới bằng `Reinstall-NextDLP.ps1`. |
 | Cài bộ cài có số phiên bản cao hơn đè lên bản đang có | Windows thay bản cũ trong quá trình nâng cấp, không hỏi mật khẩu. | Không cần. |
 | Cài lại bằng `Reinstall-NextDLP.ps1` | Script gỡ hẳn bản cũ trước khi cài, nên cần mật khẩu. | Thêm `-UninstallPassword`. |
 | Máy không kết nối được server | Giữ mật khẩu cuối cùng đã nhận. | Xem [Máy không kết nối được server](#máy-không-kết-nối-được-server). |
 
 Hiện các bộ cài agent mang cùng một số phiên bản, nên cài bộ cài mới đè lên agent đang chạy không phải là nâng cấp theo cách Windows hiểu. Vì vậy, để cập nhật agent, hãy dùng `Reinstall-NextDLP.ps1` kèm mật khẩu. Việc cài đè không cần mật khẩu chỉ áp dụng khi bộ cài mới có số phiên bản cao hơn bản đang cài.
 
-## Xóa mật khẩu
-
-Bấm **Xóa mật khẩu** trong cùng khối. Console hỏi lại: khi xóa, tính năng chống gỡ cài đặt tắt trên mọi máy trạm và bất kỳ ai có quyền quản trị cục bộ cũng gỡ hoặc dừng được agent. Bấm **Xóa mật khẩu** trong hộp thoại để xác nhận; nhãn chuyển về **Chưa đặt**.
-
-Máy đang không kết nối được server vẫn được bảo vệ bằng mật khẩu cũ cho đến khi kết nối lại và đồng bộ.
-
-![Hộp thoại xác nhận Xóa mật khẩu gỡ agent](/img/console/system-uninstall-password-clear.png)
-
 ## Máy không kết nối được server
 
-Một máy mất kết nối, ví dụ laptop đang công tác, giữ mật khẩu cuối cùng nó đã nhận. Mật khẩu mới, hay việc xóa mật khẩu, chỉ đến máy đó khi máy kết nối lại server. Sau khi bạn xóa mật khẩu trên Console, máy này vẫn được bảo vệ cho đến lúc đó.
+Một máy mất kết nối, ví dụ laptop đang công tác, giữ mật khẩu cuối cùng nó đã nhận. Mật khẩu mới chỉ đến máy đó khi máy kết nối lại server. Sau khi bạn đổi mật khẩu trên Console, máy này vẫn dùng mật khẩu cũ cho đến lúc đó.
 
 Không có mã mở khóa riêng cho máy đang mất kết nối. Muốn gỡ agent trên máy như vậy, hãy dùng mật khẩu mà máy nhận lần cuối, hoặc đưa máy về mạng để nó nhận mật khẩu hiện hành.
 
@@ -164,7 +161,7 @@ VerifyUninstall: uninstall refused (verify-uninstall exit 1)
 
 ### Cài lại và cập nhật agent
 
-Script `Reinstall-NextDLP.ps1` trong gói tải về gỡ hẳn bản agent cũ trước khi cài bản mới. Khi đã đặt mật khẩu, bước gỡ đó cần mật khẩu như mọi lần gỡ khác, nên hãy truyền mật khẩu cho script:
+Script `Reinstall-NextDLP.ps1` trong gói tải về gỡ hẳn bản agent cũ trước khi cài bản mới. Bước gỡ đó cần mật khẩu như mọi lần gỡ khác, nên hãy truyền mật khẩu cho script:
 
 ```powershell
 .\Reinstall-NextDLP.ps1 -UninstallPassword "<mật khẩu gỡ agent>"
@@ -174,7 +171,7 @@ Thiếu mật khẩu, script dừng ở bước gỡ với mã 1603 và nhắc b
 
 ## Khi cần dừng dịch vụ agent để hỗ trợ
 
-Khóa dịch vụ áp dụng cho cả bộ phận CNTT: khi đã đặt mật khẩu, `Stop-Service`, `Restart-Service` hay nút Stop trong Services đều bị từ chối, kể cả với tài khoản quản trị cục bộ. Nếu cần dừng agent để xử lý sự cố, hãy xóa mật khẩu trên Console, chờ máy đó đồng bộ, rồi dừng hoặc khởi động lại dịch vụ. Xong việc, đặt lại mật khẩu; máy sẽ khóa lại ở lần đồng bộ kế tiếp. Lưu ý rằng xóa mật khẩu tắt bảo vệ trên mọi máy trạm trong thời gian đó.
+Khóa dịch vụ áp dụng cho cả bộ phận CNTT: `Stop-Service`, `Restart-Service` hay nút Stop trong Services đều bị từ chối, kể cả với tài khoản quản trị cục bộ, và Console không có cách tắt khóa này. Nếu cần dừng agent để xử lý sự cố trên một máy, hãy gỡ agent bằng mật khẩu như mục [Gỡ agent trên máy được bảo vệ](#gỡ-agent-trên-máy-được-bảo-vệ), rồi cài lại bằng `Reinstall-NextDLP.ps1`.
 
 ## Ngừng dùng một máy trạm
 
@@ -211,13 +208,13 @@ Nếu bạn đăng nhập bằng tài khoản Quản trị hệ thống và đan
 
 Vì mất điện hay sự cố cũng tạo sự kiện **Agent dừng bất thường**, một sự kiện đơn lẻ chưa đủ để kết luận có người can thiệp. Hãy chú ý khi sự kiện lặp lại trên cùng một máy, hoặc đi kèm **Gỡ agent bị từ chối**.
 
-Một máy không đồng bộ quá **Ngưỡng offline** (xem tại **Hệ thống › Cấu hình Agent mặc định**, mặc định 300 giây) chuyển sang **Mất kết nối** trên trang [Máy trạm](./machines.md), và chuông hiện **Máy trạm mất kết nối**. Đây cũng là dấu hiệu bạn nhận được khi agent bị gỡ bằng cách vượt qua mật khẩu, hoặc khi máy đơn giản đã tắt hay rời mạng.
+Một máy không đồng bộ quá **Ngưỡng offline** (đặt tại **Hệ thống › Cấu hình Agent mặc định**, mặc định 300 giây) chuyển sang **Mất kết nối** trên trang [Máy trạm](./machines.md), và chuông hiện **Máy trạm mất kết nối**. Đây cũng là dấu hiệu bạn nhận được khi agent bị gỡ bằng cách vượt qua mật khẩu, hoặc khi máy đơn giản đã tắt hay rời mạng.
 
 ## Khi không gỡ được agent
 
-**Quên mật khẩu.** Đặt một mật khẩu mới trên Console như mục [Đặt hoặc đổi mật khẩu](#đặt-hoặc-đổi-mật-khẩu), chờ máy trạm đồng bộ, rồi gỡ bằng mật khẩu mới.
+**Quên mật khẩu.** Đổi sang một mật khẩu mới trên Console như mục [Đặt hoặc đổi mật khẩu](#đặt-hoặc-đổi-mật-khẩu), chờ máy trạm đồng bộ, rồi gỡ bằng mật khẩu mới.
 
-**Nhập đúng mật khẩu mà vẫn bị từ chối.** Nếu máy vừa nhận mật khẩu mới, hãy chắc rằng bạn dùng mật khẩu mới nhất. Nếu vẫn bị từ chối, agent trên máy có thể không đọc được mật khẩu đã lưu: hãy lưu lại mật khẩu trên Console (có thể dùng đúng mật khẩu cũ), chờ máy đồng bộ để agent ghi lại mật khẩu, rồi gỡ lại.
+**Nhập đúng mật khẩu mà vẫn bị từ chối.** Nếu máy vừa nhận mật khẩu mới, hãy chắc rằng bạn dùng mật khẩu mới nhất. Nếu vẫn bị từ chối, agent trên máy có thể không đọc được mật khẩu đã lưu: hãy đổi mật khẩu trên Console (có thể nhập lại đúng mật khẩu cũ), chờ máy đồng bộ để agent ghi lại mật khẩu, rồi gỡ lại.
 
 **Chương trình agent bị hỏng hoặc mất.** Việc kiểm tra mật khẩu do chính chương trình agent thực hiện, nên khi chương trình này bị xóa hay hỏng, mọi lần gỡ đều bị từ chối. Hãy sửa bản cài trước bằng `msiexec /fa <mã sản phẩm>` trong PowerShell quyền quản trị; sửa bản cài không cần mật khẩu. Sau đó gỡ như bình thường. Nếu việc sửa bản cài cũng thất bại, hãy gửi tệp nhật ký cài đặt cho đội hỗ trợ NextDLP.
 
@@ -229,4 +226,4 @@ Trong những trường hợp đó NextDLP không ngăn được việc gỡ, nh
 
 ## Đọc tiếp
 
-Để xem trạng thái kết nối của từng máy và thu hồi máy đã gỡ agent, xem [Máy trạm](./machines.md). Để tạo lại bộ cài sau khi đặt mật khẩu, xem [Bộ cài Agent](./packages.md). Các cấu hình áp dụng cho toàn hệ thống khác nằm ở [Hệ thống](../admin/system.md).
+Để xem trạng thái kết nối của từng máy và thu hồi máy đã gỡ agent, xem [Máy trạm](./machines.md). Để tạo hoặc tạo lại bộ cài, xem [Bộ cài Agent](./packages.md). Các cấu hình áp dụng cho toàn hệ thống khác nằm ở [Hệ thống](../admin/system.md).
