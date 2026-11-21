@@ -4,7 +4,7 @@ title: Yêu cầu hệ thống
 description: Những gì cần chuẩn bị về máy chủ, máy trạm và mạng trước khi cài đặt NextDLP.
 ---
 
-Chuẩn bị đủ các mục dưới đây trước khi cài sẽ giúp quá trình triển khai diễn ra trong khoảng 15 phút.
+Chuẩn bị đủ các mục dưới đây trước khi cài để quá trình triển khai không bị gián đoạn.
 
 ## Máy chủ
 
@@ -32,7 +32,7 @@ Server mở các cổng dưới đây. Chỉ cổng 80, 443, 9090, 9091 và, khi
 |---|---|---|
 | 80 | Chuyển hướng sang HTTPS | Quản trị hệ thống, người dùng Console |
 | 443 | Console và `/api` qua HTTPS | Quản trị hệ thống, người dùng Console |
-| 9090 | HTTP API | Hệ thống tích hợp |
+| 9090 | API cho hệ thống tích hợp, qua HTTPS | Hệ thống tích hợp |
 | 9091 | gRPC cho agent | Máy trạm |
 | 9092 | Tải bản scan lên kho tạm của gói GPU AssistOCR (chỉ khi cài gói GPU) | Máy trạm |
 | 5432, 6379 | PostgreSQL và Redis | Chỉ nội bộ máy chủ |

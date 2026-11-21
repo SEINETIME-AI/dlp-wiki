@@ -12,7 +12,7 @@ Phần lớn sự cố khi triển khai NextDLP thuộc một trong ba nhóm: se
 |---|---|---|
 | Không mở được Console sau khi khởi động lại máy chủ | Docker chưa khởi động cùng Windows. | Bật tự khởi động của Docker (Docker Desktop: *Start Docker Desktop when you sign in*). Nếu dịch vụ vẫn chưa chạy, mở PowerShell trong thư mục cài đặt và chạy `docker compose -f docker-compose.deploy.yml up -d`. |
 | Trình duyệt cảnh báo chứng chỉ khi mở Console | Server dùng chứng chỉ riêng do script cài đặt tạo. | Chọn **Advanced** rồi **Continue**. |
-| Một dịch vụ không ở trạng thái `healthy` | Dịch vụ khởi động lỗi hoặc thiếu tài nguyên. | Xem log bằng `docker compose -f docker-compose.deploy.yml logs <tên-dịch-vụ>`. |
+| Một dịch vụ ghi `Restarting` hoặc `(unhealthy)` | Dịch vụ khởi động lỗi hoặc thiếu tài nguyên. | Xem log bằng `docker compose -f docker-compose.deploy.yml logs <tên-dịch-vụ>`. |
 | Cổng 80 đã bị chiếm | Máy chủ có web server khác như IIS. | Dừng dịch vụ đang dùng cổng 80 rồi khởi động lại NextDLP. |
 
 ## Agent không kết nối

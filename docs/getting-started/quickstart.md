@@ -34,11 +34,11 @@ Chuyển sang tab **Điều kiện phân loại** và bấm **Thêm điều ki�
 
 ### Bước 4. Lưu chính sách
 
-Bấm **Tạo chính sách**. Công tắc **Kích hoạt** mặc định đã bật, nên chính sách có hiệu lực ngay. Server đẩy chính sách xuống agent, và trang Máy trạm có thể hiện trạng thái **Chờ đồng bộ policy** trong ít phút trước khi agent nhận bản mới.
+Bấm **Tạo chính sách**. Công tắc **Kích hoạt** mặc định đã bật, nên chính sách có hiệu lực ngay. Server đẩy chính sách xuống agent, và trang Máy trạm có thể hiện trạng thái **Chờ đồng bộ policy** trong vài phút trước khi agent nhận bản mới.
 
 ### Bước 5. Kiểm tra kết quả
 
-Trên máy trạm, lưu một tệp Word có cụm "bảng lương" vào `C:\HoSo`. Sau khoảng một phút, mở **Dữ liệu › Kiểm kê dữ liệu**: tệp xuất hiện với nhãn vừa cấu hình. Mở **Giám sát › Nhật ký phân loại** để xem sự kiện phân loại và lý do tệp được gắn nhãn.
+Trên máy trạm, lưu một tệp Word có cụm "bảng lương" vào `C:\HoSo`. Chờ vài phút để agent nhận chính sách và quét thư mục, rồi mở **Dữ liệu › Kiểm kê dữ liệu**: tệp xuất hiện với nhãn vừa cấu hình. Mở **Giám sát › Nhật ký phân loại** để xem sự kiện phân loại và lý do tệp được gắn nhãn.
 
 ![Chi tiết sự kiện giải thích vì sao file được gắn nhãn](/img/console/events-detail.png)
 

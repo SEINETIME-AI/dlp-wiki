@@ -19,7 +19,7 @@ Mọi thành phần đều chạy trong mạng nội bộ của tổ chức. Nex
 | Agent NextDLP | Mỗi máy trạm Windows, dưới dạng dịch vụ `nextdlp` | Đọc và phân loại tệp ngay trên máy: trích xuất văn bản, OCR, dò dấu mộc, phân tích ngữ nghĩa. Ghi nhãn vào tệp và gửi kết quả về server. |
 | Server NextDLP | Máy chủ nội bộ, các container Docker | Cung cấp API, lưu nhãn và sự kiện trong PostgreSQL, đồng bộ chính sách xuống agent, đóng gói bộ cài. |
 | Console | Cùng máy chủ | Giao diện quản trị qua HTTPS. |
-| Mô hình Gợi ý AI | Cùng máy chủ, chạy bằng CPU | Đề xuất điều kiện khi quản trị viên soạn chính sách. Không tham gia phân loại tệp. |
+| Mô hình Gợi ý AI | Cùng máy chủ, chạy bằng CPU | Đề xuất điều kiện khi bạn soạn chính sách. Không tham gia phân loại tệp. |
 | Gói GPU AssistOCR (tùy chọn) | Máy chủ có GPU, cài cùng server | Đọc ảnh và bản scan, đọc tài liệu mẫu cho Gợi ý AI, đánh giá lại điều kiện ngữ nghĩa. Xem [AssistOCR](../admin/system.md#assistocr). |
 
 ## Cổng kết nối
@@ -35,11 +35,13 @@ Agent luôn chủ động kết nối từ máy trạm tới server; server khô
 | 9092 | Agent tải bản scan lên kho tạm của gói GPU (chỉ khi cài gói GPU) | Máy trạm → server |
 | 5432, 6379 và các cổng của gói GPU | Cơ sở dữ liệu, bộ nhớ đệm, gói GPU | Chỉ bên trong máy chủ, không mở ra mạng |
 
+Kết nối qua cổng 443 và 9090 được mã hóa bằng TLS, dùng chứng chỉ do script cài đặt tạo trên máy chủ. Kết nối của agent qua cổng 9091 và 9092 không được mã hóa ở tầng ứng dụng: dữ liệu trong hai bảng [Dữ liệu nào rời máy trạm](#dữ-liệu-nào-rời-máy-trạm) và [Dữ liệu từ server xuống máy trạm](#dữ-liệu-từ-server-xuống-máy-trạm), kể cả bản scan gửi qua cổng 9092 và khóa API của máy, đi trên mạng nội bộ ở dạng rõ. Khóa API giúp server nhận đúng máy, không chống được nghe lén. Vì vậy hãy mã hóa lưu lượng giữa máy trạm và máy chủ ở tầng mạng và giới hạn nguồn kết nối, theo các khuyến nghị dưới đây.
+
 ## Khuyến nghị bảo vệ kết nối
 
 Các biện pháp dưới đây giúp giới hạn ai có thể tới được server và dữ liệu đi trên mạng nội bộ:
 
-- **Giới hạn nguồn kết nối theo từng cổng.** Trên tường lửa của máy chủ, chỉ cho phép dải mạng của máy trạm vào cổng 9091 và 9092, máy của quản trị viên vào cổng 443, và hệ thống tích hợp vào cổng 9090.
+- **Giới hạn nguồn kết nối theo từng cổng.** Trên tường lửa của máy chủ, chỉ cho phép dải mạng của máy trạm vào cổng 9091 và 9092, máy dùng Console vào cổng 443, và hệ thống tích hợp vào cổng 9090.
 - **Đặt máy chủ NextDLP trong vùng mạng riêng**, ví dụ một VLAN dành cho máy chủ, tách khỏi mạng của người dùng và khách.
 - **Mã hóa lưu lượng ở tầng mạng.** Nếu tổ chức dùng Active Directory, áp dụng chính sách IPsec qua Group Policy cho lưu lượng giữa máy trạm và máy chủ NextDLP. Agent không cần thay đổi gì.
 - **Chống giả mạo trong mạng LAN**, như bật Dynamic ARP Inspection và port security trên switch.

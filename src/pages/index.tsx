@@ -62,7 +62,7 @@ export default function Home(): ReactNode {
             đang dùng. Toàn bộ chạy trong hạ tầng của bạn.
           </p>
           <Link className="button button--primary button--lg" to="/docs/getting-started/install">
-            Bắt đầu nhanh
+            Bắt đầu cài đặt
           </Link>
         </div>
       </header>

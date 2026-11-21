@@ -6,7 +6,7 @@ title: REST API
 description: REST API cho phép tự động hoá các tác vụ quản trị như quản lý máy trạm, chính sách và xuất báo cáo.
 ---
 
-Mọi thao tác trên Console đều đi qua REST API, nên bạn có thể tự động hoá chúng bằng script hoặc tích hợp với hệ thống khác. API phục vụ tại `http://<server>/api` (qua cổng 80) và `http://<server>:9090/api`.
+Mọi thao tác trên Console đều đi qua REST API, nên bạn có thể tự động hoá chúng bằng script hoặc tích hợp với hệ thống khác. API phục vụ tại `https://<server>/api` (cổng 443) và `https://<server>:9090/api`.
 
 ## Xác thực
 

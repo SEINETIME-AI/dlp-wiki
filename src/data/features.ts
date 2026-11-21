@@ -148,7 +148,7 @@ const phase1: Phase = {
       id: 'ai',
       icon: 'ai',
       title: 'Phân loại theo nội dung, có AI hỗ trợ',
-      summary: 'Kết hợp quy tắc với hiểu ngữ nghĩa, và luôn giải thích được vì sao tài liệu có nhãn đó.',
+      summary: 'Kết hợp quy tắc với phân tích ngữ nghĩa, và cho biết vì sao mỗi tài liệu được gắn nhãn.',
       items: [
         {
           title: 'Nhiều kỹ thuật trong một chính sách',
@@ -373,9 +373,23 @@ const phase1: Phase = {
         {
           title: 'Tự bảo vệ và tự khởi động lại',
           detail:
-            'Người dùng thông thường không dừng, gỡ hay sửa được dịch vụ agent; chỉ người có quyền quản trị máy mới làm được. Dịch vụ tự khởi động lại khi dừng bất thường hoặc bị treo.',
+            'Người dùng thông thường không dừng, gỡ hay sửa được dịch vụ agent. Dịch vụ tự khởi động lại khi dừng bất thường hoặc bị treo.',
           status: 'available',
           link: '/docs/endpoints/machines#agent-tự-bảo-vệ-và-tự-khởi-động-lại',
+        },
+        {
+          title: 'Mật khẩu gỡ agent',
+          detail:
+            'Quản trị hệ thống đặt mật khẩu gỡ agent trên Console trước khi tạo bộ cài. Gỡ agent trên máy trạm cần mật khẩu này, và người có quyền quản trị máy cũng không dừng được dịch vụ agent bằng các công cụ quản trị thông thường của Windows.',
+          status: 'available',
+          link: '/docs/endpoints/uninstall-password',
+        },
+        {
+          title: 'Sự kiện bảo vệ agent',
+          detail:
+            'Khi việc gỡ agent bị từ chối hoặc agent dừng bất thường, trang Máy trạm đánh dấu máy đó và lưu sự kiện trong chi tiết máy. Quản trị hệ thống đang mở Console còn nhận thông báo trên chuông.',
+          status: 'available',
+          link: '/docs/endpoints/uninstall-password#theo-dõi-trên-console',
         },
         {
           title: 'Bộ cài theo đơn vị',
@@ -535,13 +549,8 @@ const phase2: Phase = {
       id: 'bao-ve-agent',
       icon: 'lock',
       title: 'Bảo vệ agent nâng cao',
-      summary: 'Dừng hoặc gỡ agent cần mật khẩu, kể cả với người có quyền quản trị máy.',
+      summary: 'Agent khó bị can thiệp hơn, và Quản trị hệ thống gỡ được agent từ Console.',
       items: [
-        {
-          title: 'Mật khẩu khi gỡ agent',
-          detail: 'Yêu cầu mật khẩu hoặc mã xác thực khi gỡ hoặc dừng agent trên máy trạm.',
-          status: 'planned',
-        },
         {
           title: 'Chống sửa cấu hình',
           detail: 'Ngăn sửa cấu hình, registry và chính sách đã lưu trên máy.',
@@ -555,7 +564,8 @@ const phase2: Phase = {
         },
         {
           title: 'Cảnh báo can thiệp',
-          detail: 'Báo riêng khi agent bị dừng hoặc gỡ có chủ đích, phân biệt với máy tắt hay mất mạng.',
+          detail:
+            'Phân biệt agent bị dừng có chủ đích với máy mất điện hay mất mạng. Bản 1.0 đã ghi sự kiện khi việc gỡ agent bị từ chối và khi agent dừng bất thường.',
           status: 'planned',
         },
       ],

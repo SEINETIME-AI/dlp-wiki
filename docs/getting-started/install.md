@@ -1,7 +1,7 @@
 ---
 sidebar_position: 4
 title: Cài đặt & kết nối
-description: Hướng dẫn dựng server, cài agent lên máy trạm đầu tiên và kiểm tra kết nối. Thời gian dự kiến khoảng 15 phút.
+description: Hướng dẫn dựng server, cài agent lên máy trạm đầu tiên và kiểm tra kết nối.
 ---
 
 import DownloadCard from '@site/src/components/DownloadCard';
@@ -50,11 +50,13 @@ Script nạp các image, khởi động toàn bộ dịch vụ và in ra địa 
 
 ### Bước 3. Kiểm tra dịch vụ
 
-Chạy lệnh sau và đảm bảo mọi dịch vụ ở trạng thái `running` hoặc `healthy`:
+Chạy lệnh sau để xem trạng thái các dịch vụ:
 
 ```powershell
 docker compose -f docker-compose.deploy.yml ps
 ```
+
+Mỗi dòng là một dịch vụ. Server đã sẵn sàng khi cột `STATUS` của mọi dòng bắt đầu bằng `Up`; dịch vụ có cơ chế tự kiểm tra ghi thêm `(healthy)`. Dòng ghi `(health: starting)` nghĩa là dịch vụ còn đang khởi động; hãy chờ rồi chạy lại lệnh. Dòng ghi `Restarting` hoặc `(unhealthy)` là dịch vụ gặp lỗi; xem [Xử lý sự cố](../operations/troubleshooting.md).
 
 ### Bước 4. Mở cổng trên tường lửa
 
@@ -74,7 +76,7 @@ Nếu tổ chức dùng tường lửa riêng giữa các mạng, hãy mở thê
 
 ### Bước 5. Đăng nhập Console
 
-Mở trình duyệt tới `https://10.0.0.5`. Lần đầu truy cập, trình duyệt cảnh báo về chứng chỉ vì server dùng chứng chỉ riêng do script cài đặt tạo ra; chọn **Advanced** rồi **Continue** để vào Console. Đăng nhập bằng tài khoản quản trị mặc định **admin / admin**.
+Mở trình duyệt tới `https://10.0.0.5`. Lần đầu truy cập, trình duyệt cảnh báo về chứng chỉ vì server dùng chứng chỉ riêng do script cài đặt tạo ra; chọn **Advanced** rồi **Continue** để vào Console. Chứng chỉ này bảo vệ Console và API cho hệ thống tích hợp (cổng 443 và 9090). Kết nối của agent qua cổng 9091 không được mã hóa ở tầng ứng dụng; xem cách bảo vệ tại [Luồng dữ liệu & bảo mật](./data-flow.md#cổng-kết-nối). Đăng nhập bằng tài khoản quản trị mặc định **admin / admin**.
 
 ![Màn hình đăng nhập Console](/img/console/login.png)
 
@@ -86,7 +88,7 @@ Console yêu cầu đặt mật khẩu mới ngay ở lần đăng nhập đầu
 
 ## Phần 2. Chuẩn bị Console
 
-Trước khi tạo bộ cài, Console cần có giấy phép đã kích hoạt, ít nhất một đơn vị, một chính sách Agent và mật khẩu gỡ agent.
+Trước khi tạo bộ cài, Console cần có giấy phép đã kích hoạt, ít nhất một đơn vị và một chính sách Agent. Mật khẩu gỡ agent được đặt ở Bước 9, ngay trước khi tạo bộ cài.
 
 ### Bước 6. Kích hoạt giấy phép
 
