@@ -36,6 +36,16 @@ Mỗi điều kiện có thể đặt một **Tên điều kiện** dễ hiểu,
 
 ![Hộp thoại Thêm điều kiện phân loại](/img/console/policies-condition.png)
 
+## Tạo loại tài liệu khi đang thêm điều kiện
+
+Quản trị hệ thống có thể tạo loại tài liệu mới ngay trong hộp thoại Thêm điều kiện phân loại, không phải đóng hộp thoại để sang trang [Mức bảo mật & loại tài liệu](./taxonomy.md). Quản lý đơn vị không thấy dòng tạo này và cần nhờ Quản trị hệ thống tạo giúp.
+
+Mở ô **Loại tài liệu** và gõ tên loại cần tìm. Cuối danh sách có dòng **Tạo loại tài liệu “…”** kèm tên bạn vừa gõ. Chọn dòng đó; khi không có loại nào khớp, bạn cũng có thể nhấn Enter.
+
+Hộp thoại **Loại tài liệu mới** điền sẵn tên bạn vừa gõ. Hãy chọn loại cha nếu loại này thuộc một nhánh có sẵn; để trống thì loại mới thành một nhánh gốc. Console tự đặt mã của loại từ tên, và bạn đổi được mã và màu trong **Tùy chọn thêm: mã và màu**. Bấm **Tạo và chọn**: loại mới được chọn ngay cho điều kiện, và các ô bạn đã nhập trong điều kiện được giữ nguyên. Ô **Loại tài liệu đích** ở tab Gợi ý AI cũng dùng được cách này.
+
+Loại tài liệu tạo theo cách này dùng chung cho toàn hệ thống và vẫn còn kể cả khi bạn hủy chính sách đang soạn. Nếu tạo nhầm, hãy ngừng dùng hoặc xóa loại đó tại [Mức bảo mật & loại tài liệu](./taxonomy.md#loại-tài-liệu). Mức bảo mật mới vẫn được tạo tại trang đó, không tạo được từ hộp thoại điều kiện.
+
 ## Công ty trên dấu mộc
 
 Mặc định điều kiện Dấu mộc khớp với mọi con dấu đủ ngưỡng. Khi bạn cần chỉ gắn nhãn cho công văn đóng dấu của đúng đơn vị — ví dụ chỉ dấu của công ty mình, không phải dấu của đối tác trên cùng trang — dùng mục **Công ty trên dấu mộc**.
