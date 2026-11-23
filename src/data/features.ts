@@ -162,7 +162,7 @@ const phase1: Phase = {
           detail:
             'Mô hình học máy chạy trong hạ tầng của tổ chức nhận ra tài liệu cùng chủ đề dù diễn đạt khác. Nội dung không được gửi tới dịch vụ AI bên ngoài.',
           status: 'available',
-          link: '/docs/getting-started/data-flow#mô-hình-ai',
+          link: '/docs/getting-started/data-flow#thành-phần',
         },
         {
           title: 'Gợi ý điều kiện bằng AI',
