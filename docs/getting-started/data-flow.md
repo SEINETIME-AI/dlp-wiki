@@ -12,7 +12,7 @@ Dữ liệu không rời khỏi mạng nội bộ. Mọi thành phần chạy tr
 
 :::warning[Kết nối của agent không được mã hóa]
 
-Agent trao đổi với server qua cổng 9091 và 9092 ở dạng rõ. Ai nghe được đoạn mạng giữa máy trạm và máy chủ đều đọc được kết quả phân loại, bản scan gửi lên gói GPU và khóa API của máy. Hãy mã hóa đoạn mạng này ở tầng mạng, ví dụ bằng IPsec, theo mục [Khuyến nghị bảo vệ kết nối](#khuyến-nghị-bảo-vệ-kết-nối).
+Agent trao đổi với server qua cổng 9091 và 9092 mà không mã hóa. Ai nghe được đoạn mạng giữa máy trạm và máy chủ đều đọc được kết quả phân loại, bản scan gửi lên gói GPU và khóa API của máy. Hãy mã hóa đoạn mạng này ở tầng mạng, ví dụ bằng IPsec, theo mục [Khuyến nghị bảo vệ kết nối](#khuyến-nghị-bảo-vệ-kết-nối).
 
 :::
 
@@ -41,7 +41,7 @@ Agent luôn chủ động kết nối từ máy trạm tới server; server khô
 | 9092 | Agent tải bản scan lên kho tạm của gói GPU (chỉ khi cài gói GPU) | Máy trạm → server |
 | 5432, 6379 và các cổng của gói GPU | Cơ sở dữ liệu, bộ nhớ đệm, gói GPU | Chỉ bên trong máy chủ, không mở ra mạng |
 
-Cổng 443 và 9090 dùng TLS, với chứng chỉ do script cài đặt tạo trên máy chủ. Cổng 9091 và 9092 không có lớp mã hóa nào của NextDLP, nên mọi thứ kể ở hai mục [Dữ liệu nào rời máy trạm](#dữ-liệu-nào-rời-máy-trạm) và [Dữ liệu từ server xuống máy trạm](#dữ-liệu-từ-server-xuống-máy-trạm) đi trên mạng nội bộ ở dạng rõ. Khóa API chỉ giúp server nhận đúng máy; nó không chống được nghe lén.
+Cổng 443 và 9090 dùng TLS, với chứng chỉ do script cài đặt tạo trên máy chủ. Cổng 9091 và 9092 không có lớp mã hóa nào của NextDLP, nên mọi thứ kể ở hai mục [Dữ liệu nào rời máy trạm](#dữ-liệu-nào-rời-máy-trạm) và [Dữ liệu từ server xuống máy trạm](#dữ-liệu-từ-server-xuống-máy-trạm) đi trên mạng nội bộ mà không được mã hóa. Khóa API chỉ giúp server nhận đúng máy; nó không chống được nghe lén.
 
 ## Khuyến nghị bảo vệ kết nối
 
