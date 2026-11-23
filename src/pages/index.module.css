@@ -50,6 +50,27 @@
   color: #c8d2e3;
 }
 
+.lead a {
+  color: #93b4ff;
+  white-space: nowrap;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.ghost {
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  color: #fff;
+}
+
+.ghost:hover {
+  border-color: #fff;
+  color: #fff;
+}
+
 .sec {
   padding: 3.5rem 0 0;
 }

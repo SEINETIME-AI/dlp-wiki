@@ -15,7 +15,7 @@ const steps = [
   {
     tag: '02 · PHÂN LOẠI',
     title: 'Gắn nhãn theo chính sách',
-    text: 'Từ khóa, mẫu dữ liệu, ML, OCR và nhận diện dấu mộc xác định mức bảo mật và loại tài liệu. Nhãn được lưu trên server và ghi vào tệp Office, PDF.',
+    text: 'Từ khóa, mẫu dữ liệu, phân tích ngữ nghĩa, OCR và nhận diện dấu mộc xác định mức bảo mật và loại tài liệu. Nhãn được lưu trên server và ghi vào tệp Office, PDF.',
   },
   {
     tag: '03 · DLP',
@@ -59,11 +59,17 @@ export default function Home(): ReactNode {
           </Heading>
           <p className={styles.lead}>
             NextDLP đọc nội dung từng tệp, gắn mức bảo mật và loại tài liệu, rồi cung cấp nhãn cho hệ thống DLP bạn
-            đang dùng. Toàn bộ chạy trong hạ tầng của bạn.
+            đang dùng. Toàn bộ chạy trong hạ tầng của bạn.{' '}
+            <Link to="/docs/getting-started/data-flow">Luồng dữ liệu & bảo mật →</Link>
           </p>
-          <Link className="button button--primary button--lg" to="/docs/getting-started/install">
-            Bắt đầu cài đặt
-          </Link>
+          <div className={styles.actions}>
+            <Link className="button button--primary button--lg" to="/docs/getting-started/install">
+              Bắt đầu cài đặt
+            </Link>
+            <Link className={`button button--lg ${styles.ghost}`} to="/features">
+              Xem tính năng
+            </Link>
+          </div>
         </div>
       </header>
       <main className="container">
