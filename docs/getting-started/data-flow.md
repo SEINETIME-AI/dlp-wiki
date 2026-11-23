@@ -8,7 +8,7 @@ import {DataFlowDiagram} from '@site/src/components/DataFlowDiagram';
 
 Trước khi cho cài agent, bộ phận an toàn thông tin thường hỏi ba điều: agent gửi gì về server, đi qua cổng nào, và dữ liệu có rời khỏi mạng nội bộ không.
 
-Không. Mọi thành phần chạy trong mạng nội bộ của tổ chức, và NextDLP không cần internet để phân loại. Agent đọc và phân loại tệp ngay trên máy trạm, rồi gửi về server kết quả phân loại kèm bằng chứng khớp, tức là các từ khóa đã khớp và chữ đọc được trên con dấu. Nội dung tệp chỉ rời máy trạm trong hai trường hợp, và cả hai đều do chính sách phân loại bật: bản scan gửi lên gói GPU để đọc chữ, và vài đoạn văn bản ngắn gửi lên để đánh giá lại điều kiện ngữ nghĩa.
+Dữ liệu không rời khỏi mạng nội bộ. Mọi thành phần chạy trong mạng của tổ chức, và NextDLP không cần internet để phân loại. Agent đọc và phân loại tệp ngay trên máy trạm, rồi gửi về server kết quả phân loại kèm bằng chứng khớp, tức là các từ khóa đã khớp và chữ đọc được trên con dấu. Nội dung tệp chỉ rời máy trạm trong hai trường hợp, và cả hai đều do chính sách phân loại bật: bản scan gửi lên gói GPU để đọc chữ, và vài đoạn văn bản ngắn gửi lên để đánh giá lại điều kiện ngữ nghĩa.
 
 :::warning[Kết nối của agent không được mã hóa]
 
