@@ -23,13 +23,15 @@ Bấm **Thêm nguồn dữ liệu** và điền các phần sau.
 | Tên nguồn dữ liệu | Tên hiển thị trên Console, ví dụ "Ổ C – Nội quy công ty A". |
 | Loại nguồn | Thư mục cục bộ trên máy trạm, hoặc thư mục chia sẻ SMB/NAS dạng `\\server\share`. |
 | Owner / Phòng ban | Một hoặc nhiều phòng ban, hoặc **Tất cả phòng ban** của một công ty con. Chọn nhiều phòng sẽ tạo một nguồn cho mỗi phòng. |
-| Include / Exclude extensions | Đuôi tệp cần quét, có sẵn preset, và đuôi cần bỏ qua như `.tmp`, `.exe`, `.dll`. |
+| Đang quét / Tạm dừng | Công tắc bật hoặc tạm dừng việc quét nguồn này. |
+| Loại tệp | Chọn theo nhóm: Văn bản, Bảng tính, Trình chiếu, Ảnh / scan, Bản vẽ CAD, Dữ liệu, Tệp nén, hoặc **Chọn tất cả**. Đuôi không có trong các nhóm thì gõ vào ô **Đuôi khác**. |
+| Exclude extensions | Đuôi cần bỏ qua như `.tmp`, `.exe`, `.dll`. |
 | Include / Exclude paths | Thư mục con cần quét và thư mục cần bỏ qua như archive hoặc temp. |
 | Kích thước tối đa | Chọn 100 MB, 250 MB, 500 MB, 1 GB hoặc 2 GB (mặc định 500 MB). Tệp lớn hơn ngưỡng không được đọc nội dung nhưng vẫn hiện trong Kiểm kê dữ liệu kèm cảnh báo. |
 
 :::tip[Thu hẹp phạm vi quét]
 
-Hãy khai báo ít nhất một đuôi tệp hoặc thư mục cần quét. Không nên chọn cả ổ đĩa như `C:\` làm gốc, vì agent sẽ phải duyệt cả các thư mục hệ thống.
+Hãy chọn ít nhất một loại tệp hoặc thư mục cần quét. Không nên chọn cả ổ đĩa như `C:\` làm gốc, vì agent sẽ phải duyệt cả các thư mục hệ thống.
 
 :::
 

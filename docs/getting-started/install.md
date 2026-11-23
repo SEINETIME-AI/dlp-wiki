@@ -124,7 +124,7 @@ Trên cùng trang đó, bấm **Tạo bộ cài mới**. Chọn Công ty con ho�
 
 :::warning[Không để trống ô Agent server]
 
-Nếu để trống, agent sẽ kết nối về `localhost`, tức là chỉ hoạt động khi cài trên chính máy chủ. Máy trạm khác sẽ không bao giờ xuất hiện trên Console.
+Nếu để trống, bộ cài dùng địa chỉ mặc định ghi ngay dưới ô này. Với bản cài mới, địa chỉ đó là `localhost`: agent chỉ hoạt động khi cài trên chính máy chủ, và máy trạm khác không xuất hiện trên Console.
 
 :::
 

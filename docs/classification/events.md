@@ -57,7 +57,7 @@ Mỗi lần nhãn của một tài liệu được gắn hoặc thay đổi đ�
 | Quản trị hệ thống hoặc Quản lý đơn vị đổi nhãn trực tiếp | **Kiểm kê dữ liệu**, trạng thái **Admin ghi đè** | Những tài liệu đang mang nhãn được điều chỉnh bằng tay. |
 | Nhãn bị hạ mức bảo mật khi phân loại lại hoặc khi rà soát | **Báo cáo › Xuất CSV hạ cấp nhãn** | Mức cũ, mức mới, thời điểm, nguồn thay đổi và lý do. |
 
-Server hiện giữ toàn bộ sự kiện phân loại: thời gian lưu tại **Hệ thống › Lưu trữ và sao lưu** chưa được áp dụng. Để lưu hồ sơ kiểm toán ngoài hệ thống, hãy xuất nhật ký định kỳ bằng **Xuất CSV** hoặc **Xuất PDF**.
+Server hiện giữ toàn bộ sự kiện phân loại và chưa tự xóa sự kiện cũ. Để lưu hồ sơ kiểm toán ngoài hệ thống, hãy xuất nhật ký định kỳ bằng **Xuất CSV** hoặc **Xuất PDF**.
 
 Những giới hạn hiện có của dấu vết kiểm toán:
 

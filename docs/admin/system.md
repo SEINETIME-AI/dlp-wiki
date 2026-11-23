@@ -1,7 +1,7 @@
 ---
 sidebar_position: 2
 title: Hệ thống
-description: Trang Hệ thống tập trung cấu hình nền tảng, tích hợp phân loại, bảo mật, lưu trữ và giấy phép.
+description: Trang Hệ thống tập trung cấu hình nền tảng, gói GPU AssistOCR, thông báo vận hành và giấy phép.
 ---
 
 Trang **Báo cáo & quản trị › Hệ thống** tập trung các cấu hình áp dụng cho toàn bộ nền tảng. Chỉ Quản trị hệ thống truy cập được trang này.
@@ -14,12 +14,11 @@ Trang **Báo cáo & quản trị › Hệ thống** tập trung các cấu hình
 |---|---|
 | Thông tin chung | Tên tổ chức (hiển thị là cấp Tổng công ty trong Cơ cấu tổ chức), múi giờ và ngôn ngữ giao diện. |
 | Cấu hình Agent mặc định | Heartbeat, ngưỡng offline và kênh phát hành. Mật khẩu gỡ agent đặt tại trang Bộ cài Agent, xem [Mật khẩu gỡ agent](../endpoints/uninstall-password.md). Thiết lập theo nhóm máy nằm ở Chính sách Agent. |
-| Thông báo vận hành | Bật hoặc tắt thông báo về trạng thái gói cài, máy mất kết nối, đồng bộ chính sách, yêu cầu đổi nhãn và popup tệp mới được phân loại. |
-| Bảo mật đăng nhập | Độ dài mật khẩu tối thiểu, số lần nhập sai trước khi khóa tài khoản. |
-| Lưu trữ và sao lưu | Thời gian lưu sự kiện phân loại và kiểm kê tài liệu, lịch sao lưu, số bản giữ lại. Hiện các giá trị này mới được lưu lại: server chưa tự xóa dữ liệu cũ và chưa tự sao lưu, nên hãy sao lưu cơ sở dữ liệu theo quy trình của tổ chức. |
 | Nhà cung cấp phân loại | Trạng thái của gói GPU AssistOCR và quota tài liệu gửi lên mỗi ngày. Xem [AssistOCR](#assistocr). |
+| Thông báo vận hành | Cho biết loại thông báo nào đang bật: trạng thái gói cài, máy mất kết nối, đồng bộ chính sách, yêu cầu đổi nhãn và popup tệp mới được phân loại. Mục này chỉ để xem. |
 | Giấy phép & phiên bản | Trạng thái giấy phép, số máy đã dùng, kích hoạt giấy phép mới và phiên bản đang chạy. Xem [Giấy phép](./license.md). |
-| Bản ghi vượt phạm vi | Chỉ Quản trị hệ thống thấy khu vực này. Nó liệt kê chính sách Agent dùng chung, nguồn dữ liệu và quy tắc nhận diện mà người tạo hoặc sửa gần nhất không còn quản lý được vì nằm ngoài phạm vi đơn vị của họ. Danh sách chỉ để xem; bạn mở từng mục ở trang tương ứng để chỉnh. |
+
+Server hiện chưa tự xóa dữ liệu cũ và chưa tự sao lưu. Hãy sao lưu cơ sở dữ liệu theo quy trình của tổ chức.
 
 ## AssistOCR
 
@@ -33,9 +32,7 @@ AssistOCR là gói GPU tự cài trong mạng nội bộ, và là tùy chọn. G
 
 | Thông tin | Ý nghĩa |
 |---|---|
-| Trạng thái | **Hoạt động** khi server nhận được trả lời từ gói GPU. **Chưa sẵn sàng** khi gói chưa cài, chưa chạy hoặc model đang tải; lúc đó agent vẫn đọc tệp bằng OCR trên máy. |
-| Model | Model đọc tài liệu đang chạy và gói cấu hình của nó. |
-| Chấm lại rule ngữ nghĩa trên GPU | **Đang chạy** khi model ngữ nghĩa của gói GPU đã bật. Xem [Khi máy trạm nhờ AssistOCR](../getting-started/specs.md#khi-máy-trạm-nhờ-assistocr). |
+| Trạng thái | **Hoạt động** khi gói GPU trả lời và còn chỗ xử lý. **Đang bận** khi mọi chỗ xử lý đang dùng hoặc có tệp đang chờ. **Chưa sẵn sàng** khi gói chưa cài, chưa chạy hoặc mô hình đang tải. Lúc đó agent vẫn đọc tệp bằng OCR trên máy. Rê chuột vào trạng thái để xem số tệp đang xử lý và đang chờ, số tài liệu đã đọc trong ngày và số lần dùng lại kết quả cũ. |
 | Quota mỗi ngày | Số tài liệu agent gửi lên GPU để đọc mỗi ngày; quá mức thì agent tự đọc trên máy. 0 là không giới hạn. Đổi giá trị rồi bấm **Lưu cấu hình**. |
 
 Nếu không dùng AssistOCR, hãy chọn chế độ **OCR cục bộ** trong các chính sách phân loại.

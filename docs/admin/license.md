@@ -56,10 +56,12 @@ NextDLP có hai loại giấy phép theo thời hạn.
 
 Thời hạn hỗ trợ kỹ thuật và cập nhật phiên bản được quy định trong hợp đồng, không ghi trong tệp giấy phép. Vì vậy khi hết thời hạn hỗ trợ, NextDLP dùng giấy phép vĩnh viễn vẫn hoạt động bình thường.
 
-Với giấy phép có thời hạn, mục Giấy phép & phiên bản cho biết trạng thái giấy phép, ngày hết hạn và số ngày còn lại.
+Mục Giấy phép & phiên bản cho biết trạng thái giấy phép, và với giấy phép có thời hạn là ngày hết hạn cùng số ngày còn lại. Hai trạng thái đầu bảng chỉ gặp khi chưa kích hoạt giấy phép nào.
 
 | Trạng thái | Khi nào | NextDLP hoạt động |
 |---|---|---|
+| Chưa kích hoạt | Bản cài mới, chưa có giấy phép. | Console cấu hình được, máy trạm chưa kết nối được. |
+| Chuyển tiếp | Hệ thống đã có máy trạm từ trước khi NextDLP yêu cầu giấy phép, và chưa kích hoạt. | Bình thường trong 30 ngày, banner đếm số ngày còn lại. Hết 30 ngày mà chưa kích hoạt thì chuyển sang Đã khóa. |
 | Còn hạn | Còn hơn 30 ngày tới ngày hết hạn. | Bình thường. |
 | Sắp hết hạn | Còn 30 ngày trở xuống. | Bình thường. Banner vàng nhắc gia hạn. |
 | Đã hết hạn | Đã qua ngày hết hạn, đang trong thời gian ân hạn. | Bình thường. Banner đỏ nhắc gia hạn. |

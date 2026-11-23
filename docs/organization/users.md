@@ -20,7 +20,7 @@ Mỗi người dùng Console có một vai trò và một phạm vi đơn vị. 
 
 Phạm vi của một Quản lý đơn vị gồm các đơn vị được gán và mọi đơn vị nằm dưới chúng. Một quản lý được gán một Công ty con sẽ thấy máy trạm, tài liệu, nhật ký phân loại, báo cáo và thông báo của tất cả phòng ban thuộc công ty đó, và không thấy gì của công ty con hay ban khác. Quản lý chưa được gán đơn vị nào thì không thấy dữ liệu nào.
 
-Trong phạm vi của mình, Quản lý đơn vị tạo và sửa chính sách phân loại, quy tắc nhận diện, chính sách Agent, nguồn dữ liệu và bộ cài Agent. Chính sách Agent và quy tắc nhận diện có thể được đặt dùng chung cho mọi đơn vị; những mục dùng chung đó Quản lý đơn vị chỉ xem được, chỉ Quản trị hệ thống sửa. Với máy trạm, Quản lý đơn vị xem được danh sách máy trong phạm vi của mình; còn chuyển đơn vị, thu hồi máy và tạo lại khóa API của agent tại trang [Máy trạm](../endpoints/machines.md) là thao tác của Quản trị hệ thống.
+Trong phạm vi của mình, Quản lý đơn vị tạo và sửa chính sách phân loại, quy tắc nhận diện, chính sách Agent, nguồn dữ liệu và bộ cài Agent. Chính sách Agent và quy tắc nhận diện có thể được đặt dùng chung cho mọi đơn vị; những mục dùng chung đó Quản lý đơn vị chỉ xem được, chỉ Quản trị hệ thống sửa. Quản lý đơn vị cũng tạo, sửa, chuyển và xóa được phòng ban trong phạm vi, trừ chính đơn vị mình được gán. Với máy trạm, họ xem được danh sách máy trong phạm vi và chuyển máy giữa các đơn vị trong phạm vi đó. Thu hồi máy và tạo lại khóa API của agent tại trang [Máy trạm](../endpoints/machines.md) là thao tác của Quản trị hệ thống.
 
 Console chỉ hiện những nút mà tài khoản đang đăng nhập được phép dùng. Khi một thao tác bị từ chối, Console hiển thị lý do cụ thể do server trả về, ví dụ "Bạn không có quyền thực hiện thao tác này."
 

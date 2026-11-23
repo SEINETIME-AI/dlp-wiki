@@ -26,7 +26,7 @@ Máy có sự kiện bảo vệ trong 7 ngày qua được đánh dấu bằng b
 
 ## Thao tác quản trị
 
-Các thao tác dưới đây dành cho Quản trị hệ thống; Quản lý đơn vị xem được danh sách máy trong phạm vi của mình nhưng không thấy các nút này. Nếu một thao tác không thực hiện được, Console hiển thị lý do cụ thể do server trả về.
+Quản trị hệ thống dùng được cả ba thao tác dưới đây. Quản lý đơn vị chỉ dùng được **Chuyển đơn vị**, khi cả máy lẫn đơn vị đích nằm trong phạm vi của mình, và không thấy hai nút còn lại. Nếu một thao tác không thực hiện được, Console hiển thị lý do cụ thể do server trả về.
 
 **Chuyển đơn vị** đổi phòng ban của máy sau khi đã đăng ký, ví dụ khi nhân viên chuyển công tác. Máy sẽ dùng chính sách phân loại của đơn vị mới. Lưu ý rằng chính sách Agent vẫn đi theo bộ cài cũ; nếu cần cấu hình vận hành của đơn vị mới, hãy cài lại bằng bộ cài của đơn vị đó.
 

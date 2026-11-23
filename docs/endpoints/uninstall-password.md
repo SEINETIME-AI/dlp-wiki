@@ -87,7 +87,7 @@ Bảng dưới đây tóm tắt các tình huống cần chú ý khi cài hoặc
 | Tình huống | Kết quả | Việc cần làm |
 |---|---|---|
 | Cài bộ cài có số phiên bản cao hơn đè lên bản đang có | Windows thay bản cũ trong quá trình nâng cấp, không hỏi mật khẩu. | Không cần. |
-| Cài lại bằng `Reinstall-NextDLP.ps1` | Script gỡ hẳn bản cũ trước khi cài, nên cần mật khẩu. | Thêm `-UninstallPassword`. |
+| Cài lại bằng `Reinstall-NextDLP.ps1` | Script gỡ hẳn bản cũ trước khi cài, nên cần mật khẩu. | Thêm `-UninstallPassword`, và `-CleanState:$false` để giữ dữ liệu đã quét. |
 | Máy không kết nối được server | Giữ mật khẩu cuối cùng đã nhận. | Xem [Máy không kết nối được server](#máy-không-kết-nối-được-server). |
 
 Hiện các bộ cài agent mang cùng một số phiên bản, nên cài bộ cài mới đè lên agent đang chạy không phải là nâng cấp theo cách Windows hiểu. Vì vậy, để cập nhật agent, hãy dùng `Reinstall-NextDLP.ps1` kèm mật khẩu. Việc cài đè không cần mật khẩu chỉ áp dụng khi bộ cài mới có số phiên bản cao hơn bản đang cài.
@@ -164,8 +164,14 @@ VerifyUninstall: uninstall refused (verify-uninstall exit 1)
 Script `Reinstall-NextDLP.ps1` trong gói tải về gỡ hẳn bản agent cũ trước khi cài bản mới. Bước gỡ đó cần mật khẩu như mọi lần gỡ khác, nên hãy truyền mật khẩu cho script:
 
 ```powershell
-.\Reinstall-NextDLP.ps1 -UninstallPassword "<mật khẩu gỡ agent>"
+.\Reinstall-NextDLP.ps1 -UninstallPassword "<mật khẩu gỡ agent>" -CleanState:$false
 ```
+
+:::warning[Thêm `-CleanState:$false` để giữ dữ liệu đã quét]
+
+Chạy không có tham số này, script xóa thư mục dữ liệu của agent `C:\ProgramData\DlpExtension` trước khi cài. Agent khi đó đăng ký lại từ đầu và quét lại toàn bộ nguồn dữ liệu. Chỉ bỏ tham số này khi bạn muốn cài sạch.
+
+:::
 
 Thiếu mật khẩu, script dừng ở bước gỡ với mã 1603 và nhắc bạn truyền `-UninstallPassword`. Mật khẩu gõ theo cách này nằm trong lịch sử lệnh của PowerShell, nên hãy xóa lịch sử sau khi cài lại, hoặc đổi mật khẩu.
 

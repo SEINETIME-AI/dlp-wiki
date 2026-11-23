@@ -21,7 +21,7 @@ Tên Tổng công ty được cấu hình tại **Hệ thống › Thông tin ch
 
 ## Tạo đơn vị
 
-Bấm **Tạo đơn vị**, chọn loại đơn vị, nhập tên và mã đơn vị. **Mã đơn vị** chỉ gồm chữ thường, số và dấu gạch, được gợi ý tự động theo tên, và **không thể đổi sau khi tạo**. Chỉ Quản trị hệ thống được tạo Công ty con và Ban chuyên môn; Quản lý đơn vị chỉ tạo được phòng ban trong công ty con mình phụ trách.
+Bấm **Tạo đơn vị**, chọn loại đơn vị, nhập tên và mã đơn vị. **Mã đơn vị** chỉ gồm chữ thường, số và dấu gạch, được gợi ý tự động theo tên, và **không thể đổi sau khi tạo**. Chỉ Quản trị hệ thống được tạo và sửa Công ty con và Ban chuyên môn. Quản lý đơn vị tạo, sửa, chuyển và xóa được phòng ban trong công ty con mình phụ trách, trừ chính đơn vị mình được gán.
 
 Trang có hai cách xem: **Cây phân cấp** để thao tác nhanh và **Sơ đồ tổ chức** để trình bày. Bấm vào một đơn vị để xem chi tiết gồm phòng ban, máy trạm và chính sách đang áp dụng. Bạn có thể xuất toàn bộ cơ cấu ra CSV.
 

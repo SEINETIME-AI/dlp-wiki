@@ -16,7 +16,7 @@ Vào **Phân loại › Mức bảo mật & loại tài liệu**. Ở tab **Mứ
 
 ### Bước 2. Khai báo nguồn dữ liệu
 
-Vào **Dữ liệu › Nguồn dữ liệu** và bấm **Thêm nguồn dữ liệu**. Đặt tên dễ nhận biết như "Hồ sơ phòng Nhân sự", chọn loại thư mục cục bộ, chọn phòng ban của máy trạm ở ô **Owner / Phòng ban**, nhập đường dẫn `C:\HoSo` và thêm các đuôi tệp cần quét như `.docx`, `.xlsx`, `.pdf`. Bấm **Tạo nguồn**.
+Vào **Dữ liệu › Nguồn dữ liệu** và bấm **Thêm nguồn dữ liệu**. Đặt tên dễ nhận biết như "Hồ sơ phòng Nhân sự", chọn loại thư mục cục bộ, chọn phòng ban của máy trạm ở ô **Owner / Phòng ban**, nhập đường dẫn `C:\HoSo` và chọn nhóm loại tệp cần quét, ví dụ **Văn bản** và **Bảng tính**. Bấm **Tạo nguồn**.
 
 ![Hộp thoại Thêm nguồn dữ liệu](/img/console/data-sources-create.png)
 

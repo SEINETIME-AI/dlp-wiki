@@ -14,19 +14,20 @@ Bấm **Tạo bộ cài mới** và điền các thông tin sau.
 
 | Trường | Ý nghĩa |
 |---|---|
+| Tên bộ cài | Tên hiển thị trên Console. |
 | Công ty con / Ban chuyên môn | Chọn phạm vi cấp 2 trước để lọc danh sách đơn vị. |
 | Phòng ban | Đơn vị lá mà các máy cài từ bộ này sẽ thuộc về. Với Ban chuyên môn, bộ cài gắn thẳng vào ban. |
 | Chính sách Agent | Mẫu cấu hình vận hành của agent, xem [Chính sách Agent](./agent-policy.md). |
+| Classification Policy | Giữ **Tự nhận policy đang active của đơn vị** để agent nhận chính sách phân loại đang bật của đơn vị khi kết nối, hoặc chọn sẵn một chính sách. |
+| Phiên bản | Số phiên bản hiện ở cột Phiên bản của danh sách bộ cài. |
 | Quota đăng ký | Số máy tối đa được đăng ký bằng bộ cài này tại một thời điểm. Máy bị thu hồi trả lại chỗ cho máy khác. |
 | Agent server | Địa chỉ IP của máy chủ NextDLP mà agent sẽ kết nối về. |
-
-Chính sách phân loại không cần gắn vào bộ cài: agent tự nhận chính sách đang bật của đơn vị mỗi khi kết nối.
 
 ![Hộp thoại Tạo bộ cài Agent](/img/console/agent-deployment-create.png)
 
 :::warning[Agent server phải là IP mà máy trạm truy cập được]
 
-Hãy nhập IP nội bộ của máy chủ, ví dụ `10.0.0.5`. Không dùng `localhost` hoặc để trống, vì khi đó agent chỉ hoạt động trên chính máy chủ.
+Hãy nhập IP nội bộ của máy chủ, ví dụ `10.0.0.5`. Nếu để trống, bộ cài dùng địa chỉ mặc định ghi ngay dưới ô này. Khi địa chỉ mặc định là `localhost`, agent chỉ hoạt động trên chính máy chủ.
 
 :::
 
@@ -40,6 +41,7 @@ Sau khi tạo, server đóng gói bộ cài trong nền. Trạng thái của b�
 | Sẵn sàng | Có thể tải về và cài đặt. |
 | Thất bại | Quá trình đóng gói gặp lỗi. Hãy tạo lại bộ cài. |
 | Hết hạn | Bộ cài không còn dùng được để đăng ký máy mới. |
+| Không hoạt động | Bộ cài đã bị thu hồi. |
 
 Mỗi dòng có các thao tác **Tải bộ cài**, **Tạo lại**, **Thu hồi** và **Xóa**. Quản trị hệ thống thao tác trên mọi bộ cài; Quản lý đơn vị tạo bộ cài và dùng đủ bốn thao tác này với bộ cài của các đơn vị trong phạm vi của mình.
 
@@ -53,10 +55,10 @@ Cột **Máy đang dùng** cho biết bao nhiêu máy đang gắn với bộ cà
 
 **Tải bộ cài** trả về một tệp zip gồm ba thành phần. Tệp `.msi` dùng để cài lần đầu. Script `Reinstall-NextDLP.ps1` dùng để cài lại hoặc thay bộ cài trên máy đã có agent; script tự gỡ bản cũ, cài bản trong thư mục và khởi động dịch vụ. Tệp `README-INSTALL.txt` tóm tắt hai cách cài này.
 
-Mọi bộ cài mang sẵn dạng băm một chiều của [mật khẩu gỡ agent](./uninstall-password.md), nên máy được bảo vệ ngay từ lúc cài; không thể lấy lại mật khẩu từ bộ cài. Nếu sau đó bạn đổi mật khẩu, bộ cài đã tạo vẫn mang mật khẩu cũ và máy cài từ đó chuyển sang mật khẩu mới sau lần đồng bộ đầu tiên. Script `Reinstall-NextDLP.ps1` gỡ hẳn bản cũ trước khi cài bản mới, và bước gỡ đó cần mật khẩu, nên hãy thêm tham số `-UninstallPassword` với mật khẩu này.
+Mọi bộ cài mang sẵn dạng băm một chiều của [mật khẩu gỡ agent](./uninstall-password.md), nên máy được bảo vệ ngay từ lúc cài; không thể lấy lại mật khẩu từ bộ cài. Nếu sau đó bạn đổi mật khẩu, bộ cài đã tạo vẫn mang mật khẩu cũ và máy cài từ đó chuyển sang mật khẩu mới sau lần đồng bộ đầu tiên. Script `Reinstall-NextDLP.ps1` gỡ hẳn bản cũ trước khi cài bản mới, và bước gỡ đó cần mật khẩu, nên hãy thêm tham số `-UninstallPassword` với mật khẩu này, và `-CleanState:$false` để giữ dữ liệu agent đã quét. Xem [Cài lại và cập nhật agent](./uninstall-password.md#cài-lại-và-cập-nhật-agent).
 
 Cách cài chi tiết có tại [Cài đặt & kết nối](../getting-started/install.md#phần-3-cài-agent-lên-máy-trạm).
 
 ## Sau khi cài
 
-Agent tự gửi về hostname, mã thiết bị, hệ điều hành và người dùng đang đăng nhập. Đơn vị của máy lấy từ cấu hình nhúng trong gói; Quản trị hệ thống vẫn có thể chuyển máy sang đơn vị khác sau đó tại trang [Máy trạm](./machines.md).
+Agent tự gửi về hostname, mã thiết bị, hệ điều hành và người dùng đang đăng nhập. Đơn vị của máy lấy từ cấu hình nhúng trong gói. Sau đó Quản trị hệ thống, hoặc Quản lý đơn vị trong phạm vi của mình, vẫn chuyển được máy sang đơn vị khác tại trang [Máy trạm](./machines.md).

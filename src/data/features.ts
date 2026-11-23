@@ -338,7 +338,7 @@ const phase1: Phase = {
         {
           title: 'Thông báo trên Console',
           detail:
-            'Console báo khi máy mất kết nối, nguồn dữ liệu gặp sự cố kết nối, có yêu cầu đổi nhãn mới, hoặc máy không kết nối được vì đã dùng hết số máy trong giấy phép. Bật hoặc tắt từng loại thông báo tại Hệ thống.',
+            'Console báo khi máy mất kết nối, nguồn dữ liệu gặp sự cố kết nối, có yêu cầu đổi nhãn mới, hoặc máy không kết nối được vì đã dùng hết số máy trong giấy phép. Trang Hệ thống cho biết loại thông báo nào đang bật.',
           status: 'available',
           link: '/docs/admin/system',
         },
@@ -394,7 +394,7 @@ const phase1: Phase = {
         {
           title: 'Bộ cài theo đơn vị',
           detail:
-            'Bộ cài gắn sẵn đơn vị và Chính sách Agent. Máy cài từ bộ cài tự đăng ký với server, không cần cấu hình trên từng máy. Khi nâng cấp, chạy bộ cài mới trên máy trạm; máy giữ nguyên danh tính và dữ liệu đã quét.',
+            'Bộ cài gắn sẵn đơn vị và Chính sách Agent. Máy cài từ bộ cài tự đăng ký với server, không cần cấu hình trên từng máy. Khi cập nhật agent, dùng script cài lại đi kèm bộ cài.',
           status: 'available',
           link: '/docs/endpoints/packages',
         },
