@@ -8,11 +8,15 @@ Chuẩn bị đủ các mục dưới đây trước khi cài để quá trình 
 
 ## Máy chủ
 
-Server NextDLP chạy dưới dạng các container Docker. Máy chủ cần có **Docker và Docker Compose v2** đang chạy, cùng **PowerShell** để chạy script cài đặt. Trên Windows, Docker Desktop đáp ứng cả hai yêu cầu này.
+Server NextDLP chạy dưới dạng các container Docker, trên Windows hoặc Linux. Trên Windows, máy chủ cần **Docker Desktop** và **PowerShell** để chạy script cài đặt. Trên Linux (x86_64), máy chủ cần **Docker Engine** cùng Compose plugin. Các bản Linux đã hỗ trợ là Ubuntu 22.04 và 24.04, Debian 12, RHEL và Rocky 9.
 
 Máy chủ nên có **địa chỉ IP cố định** trong mạng nội bộ, vì mọi agent sẽ kết nối về địa chỉ này. Nếu IP máy chủ thay đổi, bạn phải tạo lại bộ cài cho các máy trạm.
 
 Gói cài đặt thường cần internet khi cài lần đầu. Với máy chủ không có internet, hãy dùng bản offline đầy đủ của gói cài đặt (xem [Cài đặt & kết nối](./install.md)).
+
+### Máy chủ có GPU (tùy chọn)
+
+Gói GPU AssistOCR cần một card NVIDIA từ 16 GB bộ nhớ, đã cài driver. Trên Linux cần thêm NVIDIA Container Toolkit. Lần khởi động đầu tiên tải máy chủ mô hình và các mô hình về, khoảng 35 GB, nên máy chủ cần internet ở bước này kể cả khi bạn dùng bản offline của gói cài đặt.
 
 ## Máy trạm
 

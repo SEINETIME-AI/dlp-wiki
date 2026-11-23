@@ -31,20 +31,30 @@ Get-ChildItem -Recurse *.ps1 | Unblock-File
 
 Lệnh đầu tiên gỡ đánh dấu "tải từ internet" của Windows trên các script, để PowerShell cho phép chạy chúng.
 
+**Máy chủ Linux.** Cài Docker Engine trước, giải nén gói vào một thư mục như `/opt/nextdlp`, rồi chạy:
+
+```sh
+cd /opt/nextdlp
+sudo bash docker/load-and-start.sh
+```
+
+Script báo thứ còn thiếu cần cài và đặt Docker tự khởi động cùng máy. Các tùy chọn ở dưới có dạng tương ứng trên Linux: `--gpu`, `--gpu-preset 16gb`, `--gpu-model ocr` và `--skip-pull`.
+
 **Máy chủ có GPU (tùy chọn).** Nếu gói cài kèm gói GPU AssistOCR và máy chủ có card NVIDIA phù hợp, khởi động kèm GPU để đọc ảnh và bản scan khó trên máy chủ:
 
 ```powershell
 .\docker\load-and-start.ps1 -Gpu -GpuPreset 16gb
 ```
 
-Đổi `16gb` thành `24gb` hoặc `32gb` nếu card có bộ nhớ lớn hơn. Trạng thái gói GPU sau này xem tại **Hệ thống › Nhà cung cấp phân loại**; chi tiết tại [AssistOCR](../admin/system.md#assistocr).
+Đổi `16gb` thành `24gb` hoặc `32gb` nếu card có bộ nhớ lớn hơn. Thêm `-GpuModel ocr` để dùng mô hình lớn hơn cho bản scan bẩn và bảng biểu, chậm hơn mô hình mặc định. Trạng thái gói GPU sau này xem tại **Hệ thống › Nhà cung cấp phân loại**; chi tiết tại [AssistOCR](../admin/system.md#assistocr).
 
-Với bản offline đầy đủ trên máy chủ không có internet, thêm tùy chọn `-SkipPull` (kèm hoặc không kèm GPU):
+Với bản offline đầy đủ trên máy chủ không có internet, thêm tùy chọn `-SkipPull`:
 
 ```powershell
 .\docker\load-and-start.ps1 -SkipPull
-.\docker\load-and-start.ps1 -Gpu -GpuPreset 16gb -SkipPull
 ```
+
+Riêng gói GPU cần internet ở lần khởi động đầu, vì máy chủ mô hình và các mô hình, khoảng 35 GB, được tải về lúc đó.
 
 Script nạp các image, khởi động toàn bộ dịch vụ và in ra địa chỉ truy cập khi xong.
 
@@ -72,7 +82,7 @@ Nếu đã bật gói GPU, mở thêm cổng **9092** để máy trạm gửi b�
 New-NetFirewallRule -DisplayName "NextDLP GPU" -Direction Inbound -Protocol TCP -LocalPort 9092 -Action Allow
 ```
 
-Nếu tổ chức dùng tường lửa riêng giữa các mạng, hãy mở thêm các cổng này trên đó. Danh sách đầy đủ các cổng có tại [Yêu cầu hệ thống](./requirements.md#cổng-mạng).
+Trên Linux, Docker tự mở các cổng này trên máy chủ, nên không cần lệnh trên. Nếu tổ chức dùng tường lửa riêng giữa các mạng, hãy mở thêm các cổng này trên đó. Danh sách đầy đủ các cổng có tại [Yêu cầu hệ thống](./requirements.md#cổng-mạng).
 
 ### Bước 5. Đăng nhập Console
 

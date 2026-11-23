@@ -133,7 +133,7 @@ const phase1: Phase = {
           detail:
             'Agent đọc chữ trên vòng dấu để biết đó là dấu của cơ quan, đơn vị nào. Bạn nêu tên đơn vị trong điều kiện Dấu mộc, và có thể chỉ gắn nhãn khi đúng là dấu của các đơn vị đó, ví dụ chỉ công văn đóng dấu của chính công ty. Khi vòng dấu mờ, agent tìm tên đơn vị trong khối ký tên quanh con dấu.',
           status: 'available',
-          link: '/docs/classification/policies#công-ty-trên-dấu-mộc',
+          link: '/docs/classification/policies#tên-trên-dấu-mộc',
         },
         {
           title: 'Đọc bản scan trên máy chủ GPU (tùy chọn)',
@@ -153,7 +153,7 @@ const phase1: Phase = {
         {
           title: 'Nhiều kỹ thuật trong một chính sách',
           detail:
-            'Từ khóa, mẫu ký tự (ví dụ dãy 12 chữ số của CCCD), từ điển có trọng số, ngữ nghĩa và dấu mộc được dùng cùng nhau. Mỗi loại tài liệu chọn kỹ thuật phù hợp với nó.',
+            'Từ khóa, mẫu ký tự (ví dụ dãy 12 chữ số của CCCD), từ điển có trọng số, ngữ nghĩa, dấu mộc và bản vẽ kỹ thuật được dùng cùng nhau. Mỗi loại tài liệu chọn kỹ thuật phù hợp với nó.',
           status: 'available',
           link: '/docs/classification/policies#kỹ-thuật-nhận-diện',
         },
@@ -163,6 +163,13 @@ const phase1: Phase = {
             'Mô hình học máy chạy trong hạ tầng của tổ chức nhận ra tài liệu cùng chủ đề dù diễn đạt khác. Nội dung không được gửi tới dịch vụ AI bên ngoài.',
           status: 'available',
           link: '/docs/getting-started/data-flow#thành-phần',
+        },
+        {
+          title: 'Nhận diện bản vẽ kỹ thuật theo ngành (cần gói GPU)',
+          detail:
+            'Gói GPU AssistOCR nhìn hình và cho biết ảnh, bản scan, PDF hay bản vẽ AutoCAD là bản vẽ của ngành nào: điện, mạng máy tính, kiến trúc, kết cấu, cơ khí hay cấp thoát nước. Chính sách gắn nhãn theo ngành, kể cả khi bản vẽ gần như không có chữ.',
+          status: 'available',
+          link: '/docs/classification/policies#bản-vẽ-kỹ-thuật',
         },
         {
           title: 'Gợi ý điều kiện bằng AI',
