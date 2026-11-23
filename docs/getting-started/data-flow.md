@@ -8,11 +8,11 @@ import {DataFlowDiagram} from '@site/src/components/DataFlowDiagram';
 
 Trước khi cho cài agent, bộ phận an toàn thông tin thường hỏi ba điều: agent gửi gì về server, đi qua cổng nào, và dữ liệu có rời khỏi mạng nội bộ không.
 
-Dữ liệu không rời khỏi mạng nội bộ. Mọi thành phần chạy trong mạng của tổ chức, và NextDLP không cần internet để phân loại. Agent đọc và phân loại tệp ngay trên máy trạm, rồi gửi về server kết quả phân loại kèm bằng chứng khớp, tức là các từ khóa đã khớp và chữ đọc được trên con dấu. Cả tệp, hoặc các đoạn văn của tệp, chỉ rời máy trạm trong hai trường hợp, và cả hai đều do chính sách phân loại bật: bản scan gửi lên gói GPU để đọc chữ, và vài đoạn văn bản ngắn gửi lên để đánh giá lại điều kiện ngữ nghĩa.
+Dữ liệu không rời khỏi mạng nội bộ. Mọi thành phần chạy trong mạng của tổ chức, và NextDLP không cần internet để phân loại. Agent đọc và phân loại tệp ngay trên máy trạm, rồi gửi về server kết quả phân loại kèm bằng chứng khớp, tức là các từ khóa đã khớp và chữ đọc được trên con dấu. Cả tệp, hoặc các đoạn văn của tệp, chỉ rời máy trạm trong hai trường hợp, và cả hai đều do chính sách phân loại bật: bản scan và bản vẽ gửi lên gói GPU để đọc, và vài đoạn văn bản ngắn gửi lên để đánh giá lại điều kiện ngữ nghĩa.
 
 :::warning[Kết nối của agent không được mã hóa]
 
-Agent trao đổi với server qua cổng 9091 và 9092 mà không mã hóa. Ai nghe được đoạn mạng giữa máy trạm và máy chủ đều đọc được kết quả phân loại, bản scan gửi lên gói GPU và khóa API của máy. Nên mã hóa đoạn mạng này ở tầng mạng, ví dụ bằng IPsec, theo mục [Khuyến nghị bảo vệ kết nối](#khuyến-nghị-bảo-vệ-kết-nối).
+Agent trao đổi với server qua cổng 9091 và 9092 mà không mã hóa. Ai nghe được đoạn mạng giữa máy trạm và máy chủ đều đọc được kết quả phân loại, tệp gửi lên gói GPU và khóa API của máy. Nên mã hóa đoạn mạng này ở tầng mạng, ví dụ bằng IPsec, theo mục [Khuyến nghị bảo vệ kết nối](#khuyến-nghị-bảo-vệ-kết-nối).
 
 :::
 
@@ -32,7 +32,7 @@ Mọi mô hình AI chạy trong hạ tầng của tổ chức, không học từ
 
 ## Cổng kết nối
 
-Agent luôn chủ động kết nối từ máy trạm tới server. Server không mở kết nối vào máy trạm. Mỗi máy trạm xác thực với server bằng khóa API riêng, và mỗi lần tải bản scan dùng một đường dẫn ký sẵn cho đúng tệp đó.
+Agent luôn chủ động kết nối từ máy trạm tới server. Server không mở kết nối vào máy trạm. Mỗi máy trạm xác thực với server bằng khóa API riêng, và mỗi lần tải tệp lên gói GPU dùng một đường dẫn ký sẵn cho đúng tệp đó.
 
 | Cổng | Dùng cho | Chiều kết nối |
 |---|---|---|
@@ -40,7 +40,7 @@ Agent luôn chủ động kết nối từ máy trạm tới server. Server khô
 | 80 | Chuyển hướng sang cổng 443 | Trình duyệt → server |
 | 9090 | API cho hệ thống tích hợp | Hệ thống tích hợp → server |
 | 9091 | Agent gửi kết quả và nhận chính sách | Máy trạm → server |
-| 9092 | Agent tải bản scan lên kho tạm của gói GPU (chỉ khi cài gói GPU) | Máy trạm → server |
+| 9092 | Agent tải bản scan và bản vẽ lên kho tạm của gói GPU (chỉ khi cài gói GPU) | Máy trạm → server |
 | 5432, 6379 và các cổng của gói GPU | Cơ sở dữ liệu, bộ nhớ đệm, gói GPU | Chỉ bên trong máy chủ, không mở ra mạng |
 
 Cổng 443 và 9090 dùng TLS, với chứng chỉ do script cài đặt tạo trên máy chủ. Cổng 9091 và 9092 không mã hóa. Khóa API chỉ giúp server nhận đúng máy, không chống được nghe lén.
@@ -60,7 +60,7 @@ Với thư mục chia sẻ SMB/NAS mà NextDLP quét, cấp một tài khoản r
 | Kết quả phân loại | Server, cổng 9091 |
 | Bằng chứng khớp | Server, cổng 9091 |
 | Trạng thái máy | Server, cổng 9091 |
-| Tệp ảnh, tệp PDF có trang scan | Kho tạm của gói GPU, cổng 9092 |
+| Tệp ảnh, tệp PDF, bản vẽ AutoCAD | Kho tạm của gói GPU, cổng 9092 |
 | Đoạn văn bản của tài liệu | Server, chuyển tiếp tới gói GPU |
 
 Kết quả phân loại gồm đường dẫn, tên và chủ sở hữu tệp, mức bảo mật, loại tài liệu, điều kiện đã khớp, mã băm SHA-256 của nội dung và mức phân tích. Agent gửi mỗi lần một tệp được phân loại. Server lưu chúng trong cơ sở dữ liệu, hiện chưa có thời hạn tự xóa.
@@ -69,7 +69,11 @@ Bằng chứng khớp cho biết vì sao tệp có nhãn đó, nên nó mang the
 
 Trạng thái máy gồm tên máy, địa chỉ IP, người đang đăng nhập, phiên bản agent và Windows, dung lượng RAM và trạng thái nguồn dữ liệu, gửi theo mỗi chu kỳ báo trạng thái.
 
-Bản scan là trường hợp duy nhất cả tệp rời máy trạm. Khi chính sách dùng chế độ OCR hybrid hoặc máy chủ và gói GPU đang chạy, toàn bộ tệp ảnh, hoặc tệp PDF có trang scan, được tải lên kho tạm của gói GPU. Xem [Chế độ OCR](../classification/policies.md#chế-độ-ocr). Kho tạm tự xóa tệp sau 1 ngày. Server không lưu chữ đọc được mà trả về agent để phân loại.
+Tệp gửi lên gói GPU là trường hợp duy nhất cả tệp rời máy trạm. Việc này chỉ xảy ra khi chính sách dùng chế độ OCR hybrid hoặc máy chủ và gói GPU đang chạy. Ở chế độ hybrid, agent tải lên tệp ảnh và những tệp PDF có trang scan hoặc gần như không có chữ. Ở chế độ máy chủ, agent tải lên mọi tệp ảnh và tệp PDF. Xem [Chế độ OCR](../classification/policies.md#chế-độ-ocr).
+
+Khi chính sách có điều kiện Bản vẽ kỹ thuật, agent còn tải lên hai thứ nữa: bản vẽ AutoCAD mà phần chữ trong tệp chưa đủ để gắn nhãn, và tối đa 8 trang có hình vẽ của một tệp PDF.
+
+Kho tạm tự xóa tệp sau 1 ngày. Kết quả đọc của gói GPU, gồm chữ đọc được, con dấu và nhận định về hình vẽ, được server giữ trong bộ nhớ đệm 7 ngày rồi tự xóa. Nhờ đó cùng một nội dung nằm trên nhiều máy chỉ phải đọc một lần.
 
 Đoạn văn bản được gửi khi chính sách cho phép dùng gói GPU, và điểm ngữ nghĩa của tài liệu sát ngưỡng hoặc máy trạm không nạp được mô hình ngữ nghĩa. Mỗi tài liệu gửi tối đa 8 đoạn, mỗi đoạn 4.000 byte. Server chỉ chuyển tiếp, không lưu.
 
