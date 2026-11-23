@@ -1,14 +1,20 @@
 ---
 sidebar_position: 2.5
 title: Luồng dữ liệu & bảo mật
-description: Các thành phần của NextDLP chạy ở đâu, kết nối qua cổng nào, và dữ liệu nào rời khỏi máy trạm.
+description: Agent gửi gì về server, qua cổng nào, và phần nào của kết nối chưa được mã hóa.
 ---
 
 import {DataFlowDiagram} from '@site/src/components/DataFlowDiagram';
 
-Trang này dành cho bộ phận an toàn thông tin khi đánh giá NextDLP. Trang trả lời ba câu hỏi: các thành phần chạy ở đâu, chúng kết nối với nhau qua cổng nào, và dữ liệu nào rời khỏi máy trạm.
+Trước khi cho cài agent, bộ phận an toàn thông tin thường hỏi ba điều: agent gửi gì về server, đi qua cổng nào, và có gì ra internet không.
 
-Mọi thành phần đều chạy trong mạng nội bộ của tổ chức. NextDLP không gửi dữ liệu ra internet và không cần internet để phân loại.
+Không có gì ra internet. Mọi thành phần chạy trong mạng nội bộ của tổ chức, và NextDLP không cần internet để phân loại. Agent đọc và phân loại tệp ngay trên máy trạm, rồi gửi về server kết quả phân loại kèm bằng chứng khớp, tức là các từ khóa đã khớp và chữ đọc được trên con dấu. Nội dung tệp chỉ rời máy trạm trong hai trường hợp, và cả hai đều do chính sách phân loại bật: bản scan gửi lên gói GPU để đọc chữ, và vài đoạn văn bản ngắn gửi lên để đánh giá lại điều kiện ngữ nghĩa.
+
+:::warning[Kết nối của agent không được mã hóa]
+
+Agent trao đổi với server qua cổng 9091 và 9092 ở dạng rõ. Ai nghe được đoạn mạng giữa máy trạm và máy chủ đều đọc được kết quả phân loại, bản scan gửi lên gói GPU và khóa API của máy. Hãy mã hóa đoạn mạng này ở tầng mạng, ví dụ bằng IPsec, theo mục [Khuyến nghị bảo vệ kết nối](#khuyến-nghị-bảo-vệ-kết-nối).
+
+:::
 
 ## Thành phần
 
@@ -17,7 +23,7 @@ Mọi thành phần đều chạy trong mạng nội bộ của tổ chức. Nex
 | Thành phần | Chạy ở đâu | Vai trò |
 |---|---|---|
 | Agent NextDLP | Mỗi máy trạm Windows, dưới dạng dịch vụ `nextdlp` | Đọc và phân loại tệp ngay trên máy: trích xuất văn bản, OCR, dò dấu mộc, phân tích ngữ nghĩa. Ghi nhãn vào tệp và gửi kết quả về server. |
-| Server NextDLP | Máy chủ nội bộ, các container Docker | Cung cấp API, lưu nhãn và sự kiện trong PostgreSQL, đồng bộ chính sách xuống agent, đóng gói bộ cài. |
+| Server NextDLP | Máy chủ nội bộ, các container Docker | Cung cấp API, lưu nhãn và sự kiện trong cơ sở dữ liệu, đồng bộ chính sách xuống agent, đóng gói bộ cài. |
 | Console | Cùng máy chủ | Giao diện quản trị qua HTTPS. |
 | Mô hình Gợi ý AI | Cùng máy chủ, chạy bằng CPU | Đề xuất điều kiện khi bạn soạn chính sách. Không tham gia phân loại tệp. |
 | Gói GPU AssistOCR (tùy chọn) | Máy chủ có GPU, cài cùng server | Đọc ảnh và bản scan, đọc tài liệu mẫu cho Gợi ý AI, đánh giá lại điều kiện ngữ nghĩa. Xem [AssistOCR](../admin/system.md#assistocr). |
@@ -35,36 +41,37 @@ Agent luôn chủ động kết nối từ máy trạm tới server; server khô
 | 9092 | Agent tải bản scan lên kho tạm của gói GPU (chỉ khi cài gói GPU) | Máy trạm → server |
 | 5432, 6379 và các cổng của gói GPU | Cơ sở dữ liệu, bộ nhớ đệm, gói GPU | Chỉ bên trong máy chủ, không mở ra mạng |
 
-Kết nối qua cổng 443 và 9090 được mã hóa bằng TLS, dùng chứng chỉ do script cài đặt tạo trên máy chủ. Kết nối của agent qua cổng 9091 và 9092 không được mã hóa ở tầng ứng dụng: dữ liệu trong hai bảng [Dữ liệu nào rời máy trạm](#dữ-liệu-nào-rời-máy-trạm) và [Dữ liệu từ server xuống máy trạm](#dữ-liệu-từ-server-xuống-máy-trạm), kể cả bản scan gửi qua cổng 9092 và khóa API của máy, đi trên mạng nội bộ ở dạng rõ. Khóa API giúp server nhận đúng máy, không chống được nghe lén. Vì vậy hãy mã hóa lưu lượng giữa máy trạm và máy chủ ở tầng mạng và giới hạn nguồn kết nối, theo các khuyến nghị dưới đây.
+Cổng 443 và 9090 dùng TLS, với chứng chỉ do script cài đặt tạo trên máy chủ. Cổng 9091 và 9092 không có lớp mã hóa nào của NextDLP, nên mọi thứ kể ở hai mục [Dữ liệu nào rời máy trạm](#dữ-liệu-nào-rời-máy-trạm) và [Dữ liệu từ server xuống máy trạm](#dữ-liệu-từ-server-xuống-máy-trạm) đi trên mạng nội bộ ở dạng rõ. Khóa API chỉ giúp server nhận đúng máy; nó không chống được nghe lén.
 
 ## Khuyến nghị bảo vệ kết nối
 
-Các biện pháp dưới đây giúp giới hạn ai có thể tới được server và dữ liệu đi trên mạng nội bộ:
+Việc đầu tiên là mã hóa lưu lượng giữa máy trạm và máy chủ ở tầng mạng. Nếu tổ chức dùng Active Directory, cách gọn nhất là áp một chính sách IPsec qua Group Policy; agent không cần cấu hình gì thêm.
 
-- **Giới hạn nguồn kết nối theo từng cổng.** Trên tường lửa của máy chủ, chỉ cho phép dải mạng của máy trạm vào cổng 9091 và 9092, máy dùng Console vào cổng 443, và hệ thống tích hợp vào cổng 9090.
-- **Đặt máy chủ NextDLP trong vùng mạng riêng**, ví dụ một VLAN dành cho máy chủ, tách khỏi mạng của người dùng và khách.
-- **Mã hóa lưu lượng ở tầng mạng.** Nếu tổ chức dùng Active Directory, áp dụng chính sách IPsec qua Group Policy cho lưu lượng giữa máy trạm và máy chủ NextDLP. Agent không cần thay đổi gì.
-- **Chống giả mạo trong mạng LAN**, như bật Dynamic ARP Inspection và port security trên switch.
-- **Dùng tài khoản riêng, chỉ có quyền đọc** cho các thư mục chia sẻ SMB/NAS mà NextDLP quét.
-- **Thu hồi khóa khi cần.** Khi máy bị thanh lý hoặc nghi lộ khóa, dùng **Tạo lại khóa** hoặc **Thu hồi** tại [Máy trạm](../endpoints/machines.md).
+Tiếp theo là thu hẹp đường tới server. Đặt máy chủ NextDLP trong một vùng mạng riêng, ví dụ một VLAN dành cho máy chủ, tách khỏi mạng của người dùng và khách. Trên tường lửa của máy chủ, mở từng cổng cho đúng nguồn: 9091 và 9092 cho dải mạng của máy trạm, 443 cho máy dùng Console, 9090 cho hệ thống tích hợp. Trên switch, bật Dynamic ARP Inspection và port security để chống giả mạo trong mạng LAN.
+
+Với thư mục chia sẻ SMB/NAS mà NextDLP quét, cấp một tài khoản riêng chỉ có quyền đọc. Khi máy bị thanh lý hoặc nghi lộ khóa API, dùng **Tạo lại khóa** hoặc **Thu hồi** tại [Máy trạm](../endpoints/machines.md).
 
 ## Dữ liệu nào rời máy trạm
 
-| Dữ liệu | Gửi tới | Khi nào | Lưu ở đâu |
-|---|---|---|---|
-| Kết quả phân loại: đường dẫn, tên và chủ sở hữu tệp, mức bảo mật, loại tài liệu, điều kiện đã khớp, mã băm SHA-256 của nội dung, mức phân tích | Server, cổng 9091 | Mỗi lần một tệp được phân loại | Cơ sở dữ liệu của server; hiện được giữ toàn bộ |
-| Bằng chứng khớp: từ khóa đã khớp; giá trị khớp biểu thức chính quy được che, chỉ giữ vài ký tự đầu và cuối; tối đa 5 mẫu cho mỗi bộ khớp. Chữ đọc được trên con dấu, tối đa 300 ký tự mỗi dấu | Server, cổng 9091 | Cùng kết quả phân loại | Cơ sở dữ liệu của server |
-| Trạng thái máy: tên máy, địa chỉ IP, người đang đăng nhập, phiên bản agent và Windows, dung lượng RAM, trạng thái nguồn dữ liệu | Server, cổng 9091 | Mỗi chu kỳ báo trạng thái | Cơ sở dữ liệu của server |
-| Toàn bộ tệp ảnh, hoặc tệp PDF có trang scan | Kho tạm của gói GPU, cổng 9092 | Chỉ khi chính sách dùng chế độ OCR hybrid hoặc máy chủ và gói GPU đang chạy; xem [Chế độ OCR](../classification/policies.md#chế-độ-ocr) | Kho tạm tự xóa tệp sau 1 ngày. Server không lưu chữ đọc được; chữ được trả về agent để phân loại |
-| Tối đa 8 đoạn văn bản, mỗi đoạn 4.000 byte, của một tài liệu | Server, chuyển tiếp tới gói GPU | Chỉ khi chính sách cho phép dùng gói GPU, và điểm ngữ nghĩa sát ngưỡng hoặc máy trạm không nạp được mô hình ngữ nghĩa | Không lưu; server chỉ chuyển tiếp |
+| Dữ liệu | Gửi tới | Khi nào |
+|---|---|---|
+| Kết quả phân loại | Server, cổng 9091 | Mỗi lần một tệp được phân loại |
+| Bằng chứng khớp | Server, cổng 9091 | Cùng kết quả phân loại |
+| Trạng thái máy | Server, cổng 9091 | Mỗi chu kỳ báo trạng thái |
+| Tệp ảnh, tệp PDF có trang scan | Kho tạm của gói GPU, cổng 9092 | Khi chính sách dùng chế độ OCR hybrid hoặc máy chủ |
+| Đoạn văn bản của tài liệu | Server, chuyển tiếp tới gói GPU | Khi chính sách cho phép dùng gói GPU |
 
-Những gì **không** rời máy trạm:
+Kết quả phân loại gồm đường dẫn, tên và chủ sở hữu tệp, mức bảo mật, loại tài liệu, điều kiện đã khớp, mã băm SHA-256 của nội dung và mức phân tích. Server lưu chúng trong cơ sở dữ liệu và hiện giữ toàn bộ.
 
-- toàn văn tài liệu Office và tệp văn bản, ngoài các đoạn ở dòng cuối của bảng trên;
-- mọi nội dung tệp khi chính sách dùng chế độ OCR cục bộ;
-- các tệp nằm ngoài [Nguồn dữ liệu](../data/sources.md).
+Bằng chứng khớp cho biết vì sao tệp có nhãn đó, nên nó mang theo mảnh nội dung. Nó gồm từ khóa đã khớp, tối đa 5 mẫu cho mỗi bộ khớp; giá trị khớp biểu thức chính quy được che, chỉ giữ vài ký tự đầu và cuối. Với con dấu, agent gửi chữ đọc được trên dấu, tối đa 300 ký tự mỗi dấu. Bằng chứng được lưu cùng kết quả phân loại.
 
-Nhật ký phân loại và các tệp xuất trên Console không bao giờ chứa toàn bộ nội dung tệp.
+Trạng thái máy gồm tên máy, địa chỉ IP, người đang đăng nhập, phiên bản agent và Windows, dung lượng RAM và trạng thái nguồn dữ liệu.
+
+Bản scan là trường hợp duy nhất cả tệp rời máy trạm. Khi chính sách dùng chế độ OCR hybrid hoặc máy chủ và gói GPU đang chạy, toàn bộ tệp ảnh, hoặc tệp PDF có trang scan, được tải lên kho tạm của gói GPU; xem [Chế độ OCR](../classification/policies.md#chế-độ-ocr). Kho tạm tự xóa tệp sau 1 ngày. Server không lưu chữ đọc được mà trả về agent để phân loại.
+
+Đoạn văn bản được gửi khi chính sách cho phép dùng gói GPU, và điểm ngữ nghĩa của tài liệu sát ngưỡng hoặc máy trạm không nạp được mô hình ngữ nghĩa. Mỗi tài liệu gửi tối đa 8 đoạn, mỗi đoạn 4.000 byte. Server chỉ chuyển tiếp, không lưu.
+
+Ngoài hai trường hợp đó, nội dung tệp ở lại máy trạm. Toàn văn tài liệu Office và tệp văn bản không được gửi đi, chế độ OCR cục bộ không gửi nội dung của tệp nào, và tệp nằm ngoài [Nguồn dữ liệu](../data/sources.md) không được gửi đi. Nhật ký phân loại và các tệp xuất trên Console không bao giờ chứa toàn bộ nội dung tệp.
 
 ## Dữ liệu từ server xuống máy trạm
 
