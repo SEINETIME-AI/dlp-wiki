@@ -346,7 +346,7 @@ const phase1: Phase = {
           title: 'Tìm kiếm nhanh',
           detail: 'Một ô tìm kiếm chung cho máy trạm, đơn vị, chính sách và tài liệu.',
           status: 'available',
-          link: '/docs/getting-started/intro#tìm-kiếm-nhanh',
+          link: '/docs/getting-started/concepts#tìm-kiếm-nhanh',
         },
       ],
     },

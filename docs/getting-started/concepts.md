@@ -35,7 +35,7 @@ Khi một tệp khớp nhiều điều kiện, agent chọn **mức bảo mật 
 | Thuật ngữ | Ý nghĩa |
 |---|---|
 | Đơn vị | Một nút trong Cơ cấu tổ chức: Công ty con, Ban chuyên môn hoặc Phòng ban. |
-| Mức bảo mật | Độ nhạy của tài liệu. Thang mức do quản trị viên sắp xếp, mức trên cùng là mật nhất. |
+| Mức bảo mật | Độ nhạy của tài liệu. Thang mức do tổ chức tự sắp xếp, mức trên cùng là mật nhất. |
 | Loại tài liệu | Nhóm nghiệp vụ của tài liệu, có thể phân cấp cha con, ví dụ Tài chính › Báo cáo quý. |
 | Chưa gắn nhãn | Tài liệu đã được quét nhưng không khớp điều kiện mức bảo mật nào, hoặc không đọc được nội dung và Chính sách Agent không đặt nhãn tối thiểu. |
 | Chính sách phân loại | Tập điều kiện quyết định tệp được gắn nhãn gì, áp dụng theo đơn vị. |
@@ -48,6 +48,10 @@ Khi một tệp khớp nhiều điều kiện, agent chọn **mức bảo mật 
 ## Chính sách phân loại và Chính sách Agent khác nhau thế nào
 
 Hai khái niệm này dễ nhầm. **Chính sách phân loại** quyết định *tệp được gắn nhãn gì*, và được áp dụng theo đơn vị. **Chính sách Agent** quyết định *agent chạy ra sao trên máy*, và đi theo bộ cài mà máy đã dùng để cài đặt.
+
+## Tìm kiếm nhanh
+
+Trên hầu hết trang Console có một ô tìm kiếm ở thanh trên. Gõ tên máy, đơn vị, chính sách phân loại, chính sách Agent hoặc tài liệu, kết quả hiện ngay bên dưới và bấm vào sẽ mở đúng trang. Phím tắt **Ctrl+K** (hoặc **Cmd+K** trên macOS) đưa con trỏ vào ô tìm kiếm.
 
 ## Đọc tiếp
 

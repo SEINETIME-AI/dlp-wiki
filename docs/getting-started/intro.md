@@ -4,23 +4,19 @@ title: Giới thiệu NextDLP
 description: NextDLP tự động phân loại và gắn nhãn tài liệu trên máy trạm dựa trên nội dung, rồi cung cấp nhãn đó cho hệ thống DLP mà tổ chức đang sử dụng.
 ---
 
-NextDLP tự động phân loại và gắn nhãn tài liệu trên máy trạm dựa trên nội dung, rồi cung cấp nhãn đó cho hệ thống DLP mà tổ chức đang sử dụng.
+Hệ thống DLP chặn được tệp gửi ra ngoài, nhưng chỉ chặn đúng khi biết tệp nào quan trọng. Phần lớn tài liệu lại không mang dấu hiệu nào để DLP nhận ra. Một bảng lương được scan thành PDF, có chữ ký và dấu đỏ của công ty, với nhiều hệ thống DLP chỉ là một tệp ảnh như mọi tệp ảnh khác, và có thể đi qua email mà không bị chặn.
 
-## NextDLP làm gì
+NextDLP lấp chỗ trống đó. Agent cài trên máy trạm đọc nội dung của từng tài liệu, kể cả bản scan, rồi gắn hai tầng nhãn: **mức bảo mật** cho biết tài liệu nhạy cảm đến đâu, và **loại tài liệu** cho biết nó thuộc nghiệp vụ nào, như Tài chính, Nhân sự hay Pháp lý. Nhãn được lưu trên server NextDLP và ghi vào thuộc tính của tệp Office và PDF. Khi người dùng gửi hoặc sao chép tệp, hệ thống DLP của bạn đọc nhãn này để quyết định cho phép, cảnh báo hay chặn.
 
-Công cụ DLP chỉ chặn đúng khi biết tài liệu nào thực sự quan trọng. NextDLP cung cấp đúng thông tin đó. Agent cài trên máy trạm đọc nội dung của từng tài liệu, kể cả bản scan, rồi gắn hai tầng nhãn: **mức bảo mật** cho biết tài liệu nhạy cảm đến đâu, và **loại tài liệu** cho biết tài liệu thuộc nghiệp vụ nào như Tài chính, Nhân sự hay Pháp lý.
+## Cách NextDLP phân loại
 
-Nhãn được lưu trên server NextDLP và ghi thẳng vào thuộc tính của tệp. Khi người dùng gửi hoặc sao chép tệp, hệ thống DLP của bạn dựa vào nhãn này để quyết định cho phép, cảnh báo hay chặn.
+Một chính sách phân loại kết hợp được nhiều kỹ thuật: từ khóa, biểu thức chính quy, từ điển có trọng số, phân tích ngữ nghĩa bằng mô hình học máy và nhận diện dấu mộc. Mỗi loại tài liệu dùng kỹ thuật hợp với nó. Ví dụ, hợp đồng thường nhận ra qua từ khóa và mẫu số hiệu, còn công văn scan thì qua con dấu.
 
-## Điểm khác biệt
+Với bản scan và ảnh chụp, agent đọc chữ bằng OCR và dò con dấu ngay trên máy trạm. Loại hồ sơ này phổ biến ở ngân hàng và cơ quan nhà nước, nơi giấy tờ được số hóa từ bản giấy.
 
-**Phân loại theo nội dung thật.** NextDLP kết hợp nhiều kỹ thuật trong cùng một chính sách: từ khóa, biểu thức chính quy, từ điển có trọng số, phân tích ngữ nghĩa bằng mô hình học máy và nhận diện dấu mộc. Bạn chọn kỹ thuật phù hợp với từng loại tài liệu thay vì phải viết một quy tắc khổng lồ.
+Kết quả tập trung về trang Kiểm kê dữ liệu trên Console: từng tài liệu đã quét, nhãn hiện tại, máy và đơn vị đang giữ nó. Từ đó bạn xuất báo cáo ra CSV hoặc PDF.
 
-**Đọc được tài liệu scan.** OCR và nhận diện con dấu chạy ngay trên máy trạm, phù hợp với hồ sơ giấy đã số hóa của ngân hàng và cơ quan nhà nước.
-
-**Biết dữ liệu nhạy cảm đang nằm ở đâu.** Trang Kiểm kê dữ liệu cho biết từng tài liệu đã quét, nhãn hiện tại, máy và đơn vị chứa nó, kèm báo cáo xuất CSV và PDF.
-
-**Chạy hoàn toàn trong hạ tầng của bạn.** Server, cơ sở dữ liệu và các mô hình đều chạy on-premises. Nội dung tài liệu không rời khỏi mạng nội bộ.
+Server, cơ sở dữ liệu và các mô hình đều chạy trong hạ tầng của tổ chức, và nội dung tài liệu không rời khỏi mạng nội bộ. Agent gửi gì về server và qua cổng nào được nêu ở [Luồng dữ liệu & bảo mật](./data-flow.md).
 
 ## Phạm vi sản phẩm
 
@@ -28,19 +24,6 @@ NextDLP không thay thế DLP. Việc thực thi như chặn email hay chặn sa
 
 ![Trang Tổng quan của Console](/img/console/dashboard.png)
 
-## Tìm kiếm nhanh
-
-Trên hầu hết trang Console có một ô tìm kiếm ở thanh trên. Gõ tên máy, đơn vị, chính sách phân loại, chính sách Agent hoặc tài liệu; kết quả hiện ngay bên dưới và bấm vào sẽ mở đúng trang. Phím tắt **Ctrl+K** (hoặc **Cmd+K** trên macOS) đưa con trỏ vào ô tìm kiếm.
-
-## Thành phần hệ thống
-
-| Thành phần | Vai trò |
-|---|---|
-| Console | Giao diện web để quản trị cơ cấu tổ chức, chính sách, máy trạm, kiểm kê và báo cáo. |
-| Server | Cung cấp API, lưu nhãn, đóng gói bộ cài và đồng bộ chính sách xuống agent. Chạy bằng Docker. |
-| Agent Windows | Theo dõi thư mục, trích xuất nội dung, áp dụng chính sách phân loại, ghi nhãn vào tệp và gửi kết quả về server. |
-| AssistOCR (tùy chọn) | Gói GPU tự host: đọc ảnh và bản scan khó đọc, đọc tài liệu mẫu cho Gợi ý AI, và chấm lại các luật ngữ nghĩa khó. |
-
 ## Đọc tiếp
 
-Nếu bạn mới bắt đầu, hãy đọc [Kiến trúc & khái niệm](./concepts.md) để nắm các thuật ngữ, sau đó làm theo [Cài đặt & kết nối](./install.md) và [Phân loại tài liệu đầu tiên](./quickstart.md).
+Nếu bạn mới bắt đầu, hãy đọc [Kiến trúc & khái niệm](./concepts.md) để nắm các thuật ngữ, sau đó làm theo [Cài đặt & kết nối](./install.md) và [Phân loại tài liệu đầu tiên](./quickstart.md). Các thành phần của hệ thống và sơ đồ kết nối giữa chúng có tại [Luồng dữ liệu & bảo mật](./data-flow.md#thành-phần).
