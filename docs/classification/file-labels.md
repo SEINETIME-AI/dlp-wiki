@@ -43,7 +43,7 @@ Vì nhãn nằm trong tệp, nhãn được giữ nguyên khi tệp được:
 
 NextDLP không ghi nhãn vào bản thân email. Hệ thống DLP đọc nhãn từ thuộc tính của tệp đính kèm.
 
-Một bản sao nằm trong [Nguồn dữ liệu](../data/sources.md) được agent phân loại như một tệp mới; nếu nội dung giống hệt tệp đã phân loại, agent dùng lại kết quả cũ.
+Một bản sao nằm trong [Nguồn dữ liệu](../data/sources.md) được agent phân loại như một tệp mới. Nếu nội dung giống hệt tệp đã phân loại, agent dùng lại kết quả cũ.
 
 :::warning[Nhãn điều chỉnh bằng tay chưa được giữ cố định]
 
@@ -53,7 +53,7 @@ Nhãn do Quản trị hệ thống hoặc Quản lý đơn vị điều chỉnh 
 
 ## Khi nhãn thay đổi
 
-Khi chính sách thay đổi hoặc nhãn được điều chỉnh trên Console, agent cập nhật lại các thuộc tính trong tệp. Lần ghi nhãn giữ nguyên chủ sở hữu, quyền truy cập và ngày tạo của tệp; ngày sửa đổi được cập nhật vì nội dung tệp thay đổi.
+Khi chính sách thay đổi hoặc nhãn được điều chỉnh trên Console, agent cập nhật lại các thuộc tính trong tệp. Lần ghi nhãn giữ nguyên chủ sở hữu, quyền truy cập và ngày tạo của tệp. Ngày sửa đổi được cập nhật vì nội dung tệp thay đổi.
 
 Nếu tệp đang được một ứng dụng khác mở để sửa, agent bỏ qua lần ghi đó. Nhãn trong tệp được cập nhật ở lần tệp được phân loại lại, ví dụ sau khi người dùng lưu và đóng tệp.
 

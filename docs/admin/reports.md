@@ -14,7 +14,7 @@ Trang hiển thị số tệp đã kiểm kê, lượng dữ liệu nhạy cảm
 
 ![Trang Báo cáo](/img/console/reports.png)
 
-Chọn **Khoảng thời gian báo cáo** để giới hạn số liệu, biểu đồ và mọi tệp xuất trên trang. Tài liệu được tính theo lần phân loại gần nhất; để trống để lấy toàn bộ.
+Chọn **Khoảng thời gian báo cáo** để giới hạn số liệu, biểu đồ và mọi tệp xuất trên trang. Tài liệu được tính theo lần phân loại gần nhất. Để trống ô này để lấy toàn bộ.
 
 Báo cáo và tệp xuất chỉ bao gồm dữ liệu trong phạm vi đơn vị của người đang xem. Một Quản lý đơn vị chỉ thấy số liệu của các đơn vị mình phụ trách.
 
@@ -29,7 +29,7 @@ Báo cáo và tệp xuất chỉ bao gồm dữ liệu trong phạm vi đơn v�
 | Xuất CSV nhật ký phân loại | Chi tiết từng sự kiện phân loại trong khoảng thời gian đã chọn. |
 | Xuất báo cáo PDF | Báo cáo chi tiết sự kiện phân loại kèm phần tổng hợp, phù hợp để trình lãnh đạo hoặc lưu hồ sơ. |
 
-Các tệp xuất về sự kiện gồm thời gian, máy, IP, đơn vị, chủ sở hữu tệp, đường dẫn, mức bảo mật, loại tài liệu, quy tắc đã khớp và đoạn nội dung khớp đã được che bớt. Toàn bộ nội dung tệp không bao giờ được xuất.
+Các tệp xuất về sự kiện gồm thời gian, máy, IP, đơn vị, chủ sở hữu tệp, đường dẫn, mức bảo mật, loại tài liệu, quy tắc đã khớp và đoạn nội dung khớp đã được che bớt. Tệp xuất không chứa toàn văn của tài liệu.
 
 :::info[Phạm vi báo cáo]
 

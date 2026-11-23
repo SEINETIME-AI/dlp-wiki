@@ -4,7 +4,7 @@ title: Chính sách phân loại
 description: Chính sách phân loại kết hợp các điều kiện nhận diện để gắn mức bảo mật và loại tài liệu cho tệp.
 ---
 
-Chính sách phân loại là nơi bạn mô tả "tài liệu như thế nào thì gắn nhãn gì". Mỗi chính sách áp dụng cho một đơn vị và gồm nhiều **điều kiện**; mỗi điều kiện dùng một kỹ thuật nhận diện và gắn kết quả vào mức bảo mật, loại tài liệu hoặc cả hai. Bạn quản lý chính sách tại **Phân loại › Chính sách phân loại**.
+Chính sách phân loại là nơi bạn mô tả "tài liệu như thế nào thì gắn nhãn gì". Mỗi chính sách áp dụng cho một đơn vị và gồm nhiều **điều kiện**. Mỗi điều kiện dùng một kỹ thuật nhận diện và gắn kết quả vào mức bảo mật, loại tài liệu hoặc cả hai. Bạn quản lý chính sách tại **Phân loại › Chính sách phân loại**.
 
 Chính sách chỉ định nghĩa cách gắn nhãn. Phạm vi thư mục cần quét được cấu hình riêng tại [Nguồn dữ liệu](../data/sources.md).
 
@@ -20,7 +20,7 @@ Công tắc **Kích hoạt** mặc định bật, nên chính sách có hiệu l
 
 ## Kỹ thuật nhận diện
 
-Mỗi điều kiện dùng một trong các kỹ thuật dưới đây. Agent đánh giá đồng thời mọi điều kiện trên cùng một bộ tín hiệu của tệp.
+Mỗi điều kiện dùng một kỹ thuật trong bảng. Agent đánh giá các điều kiện cùng lúc, trên cùng một bộ tín hiệu của tệp.
 
 | Kỹ thuật | Cách hoạt động | Phù hợp khi |
 |---|---|---|
@@ -28,12 +28,14 @@ Mỗi điều kiện dùng một trong các kỹ thuật dưới đây. Agent đ
 | Ngữ nghĩa (ML) | So khớp ý nghĩa nội dung với các câu mô tả mẫu, kể cả khi diễn đạt khác. | Nhận diện loại tài liệu theo chủ đề, ví dụ hợp đồng lao động. |
 | Từ điển có trọng số | Cộng trọng số các thuật ngữ xuất hiện rồi so với ngưỡng. | Một từ đơn lẻ chưa đủ kết luận nhưng nhiều từ cùng xuất hiện thì đủ. |
 | Hybrid | Kết hợp nhiều điều kiện con theo quy tắc "Tất cả", "Bất kỳ" hoặc "Ít nhất N". | Cần nhiều tín hiệu cùng lúc, ví dụ vừa có số căn cước vừa có cụm "hợp đồng lao động". |
-| Dấu mộc | Nhận diện con dấu đỏ trên bản scan và hình ảnh, với ngưỡng độ tin cậy. Có thể nêu tên trên dấu để chỉ bắt dấu của đúng đơn vị (xem [Tên trên dấu mộc](#tên-trên-dấu-mộc)). | Hồ sơ giấy đã số hóa, công văn có đóng dấu. Mỗi chính sách có tối đa một điều kiện dấu mộc. |
-| Bản vẽ kỹ thuật | Gói GPU nhận ra ảnh, bản scan, PDF hay bản vẽ AutoCAD là bản vẽ của ngành nào, kể cả khi gần như không có chữ (xem [Bản vẽ kỹ thuật](#bản-vẽ-kỹ-thuật)). | Bản vẽ điện, kiến trúc, kết cấu cần nhãn riêng mà không có từ khóa để bám vào. Cần gói GPU AssistOCR. |
+| Dấu mộc | Nhận diện con dấu đỏ trên bản scan và hình ảnh, với ngưỡng độ tin cậy. | Hồ sơ giấy đã số hóa, công văn có đóng dấu. |
+| Bản vẽ kỹ thuật | Gói GPU nhận ra ảnh, bản scan, PDF hay bản vẽ AutoCAD là bản vẽ của ngành nào, kể cả khi gần như không có chữ. | Bản vẽ điện, kiến trúc, kết cấu cần nhãn riêng mà không có từ khóa để bám vào. |
+
+Mỗi chính sách có tối đa một điều kiện Dấu mộc. Điều kiện này có thể nêu tên trên dấu để chỉ bắt dấu của đúng đơn vị, xem [Tên trên dấu mộc](#tên-trên-dấu-mộc). Điều kiện Bản vẽ kỹ thuật cần gói GPU AssistOCR, xem [Bản vẽ kỹ thuật](#bản-vẽ-kỹ-thuật).
 
 Trong một điều kiện Từ khóa / Regex, các bộ khớp có quan hệ **HOẶC**: khớp một giá trị là đủ. Để bắt buộc nhiều tín hiệu cùng xuất hiện, hãy dùng **Hybrid** với tổ hợp **Tất cả điều kiện**.
 
-Mỗi điều kiện có thể đặt một **Tên điều kiện** dễ hiểu, ví dụ "CCCD trong hồ sơ nhân sự". Tên này hiển thị trong Nhật ký phân loại và báo cáo thay cho mã quy tắc, giúp người xem hiểu ngay vì sao tệp bị gắn nhãn.
+Mỗi điều kiện có thể đặt một **Tên điều kiện** dễ hiểu, ví dụ "CCCD trong hồ sơ nhân sự". Tên này hiển thị trong Nhật ký phân loại và báo cáo thay cho mã quy tắc, nên người xem biết vì sao tệp bị gắn nhãn.
 
 ![Hộp thoại Thêm điều kiện phân loại](/img/console/policies-condition.png)
 
@@ -41,9 +43,9 @@ Mỗi điều kiện có thể đặt một **Tên điều kiện** dễ hiểu,
 
 Quản trị hệ thống có thể tạo loại tài liệu mới ngay trong hộp thoại Thêm điều kiện phân loại, không phải đóng hộp thoại để sang trang [Mức bảo mật & loại tài liệu](./taxonomy.md). Quản lý đơn vị không thấy dòng tạo này và cần nhờ Quản trị hệ thống tạo giúp.
 
-Mở ô **Loại tài liệu** và gõ tên loại cần tìm. Cuối danh sách có dòng **Tạo loại tài liệu “…”** kèm tên bạn vừa gõ. Chọn dòng đó; khi không có loại nào khớp, bạn cũng có thể nhấn Enter.
+Mở ô **Loại tài liệu** và gõ tên loại cần tìm. Cuối danh sách có dòng **Tạo loại tài liệu “…”** kèm tên bạn vừa gõ. Chọn dòng đó. Khi không có loại nào khớp, bạn cũng có thể nhấn Enter.
 
-Hộp thoại **Loại tài liệu mới** điền sẵn tên bạn vừa gõ. Hãy chọn loại cha nếu loại này thuộc một nhánh có sẵn; để trống thì loại mới thành một nhánh gốc. Console tự đặt mã của loại từ tên, và bạn đổi được mã và màu trong **Tùy chọn thêm: mã và màu**. Bấm **Tạo và chọn**: loại mới được chọn ngay cho điều kiện, và các ô bạn đã nhập trong điều kiện được giữ nguyên. Ô **Loại tài liệu đích** ở tab Gợi ý AI cũng dùng được cách này.
+Hộp thoại **Loại tài liệu mới** điền sẵn tên bạn vừa gõ. Hãy chọn loại cha nếu loại này thuộc một nhánh có sẵn. Để trống thì loại mới thành một nhánh gốc. Console tự đặt mã của loại từ tên, và bạn đổi được mã và màu trong **Tùy chọn thêm: mã và màu**. Bấm **Tạo và chọn**: loại mới được chọn ngay cho điều kiện, và các ô bạn đã nhập trong điều kiện được giữ nguyên. Ô **Loại tài liệu đích** ở tab Gợi ý AI cũng dùng được cách này.
 
 Loại tài liệu tạo theo cách này dùng chung cho toàn hệ thống và vẫn còn kể cả khi bạn hủy chính sách đang soạn. Nếu tạo nhầm, hãy ngừng dùng hoặc xóa loại đó tại [Mức bảo mật & loại tài liệu](./taxonomy.md#loại-tài-liệu). Mức bảo mật mới vẫn được tạo tại trang đó, không tạo được từ hộp thoại điều kiện.
 
@@ -77,7 +79,7 @@ Mục **Kỹ thuật phân loại** cho phép bật hoặc tắt từng kỹ thu
 
 ![Tab Điều kiện phân loại với phần Kỹ thuật phân loại](/img/console/policies-conditions-tab.png)
 
-Tính năng này hữu ích khi bạn muốn so sánh kết quả giữa các kỹ thuật, hoặc khi quy chế của tổ chức chỉ chấp nhận phân loại theo một phương pháp nhất định.
+Bạn tắt bớt kỹ thuật khi muốn so sánh kết quả giữa các kỹ thuật, hoặc khi quy chế của tổ chức chỉ chấp nhận phân loại theo một phương pháp nhất định.
 
 ## Ngưỡng trước khi gắn nhãn
 
@@ -116,7 +118,7 @@ Chế độ hybrid và máy chủ cần gói GPU AssistOCR đang chạy; trạng
 
 Mỗi lần lưu, chính sách được nâng phiên bản và đẩy xuống agent của các máy thuộc đơn vị. Trong ít phút, các máy trực tuyến sẽ nhận bản mới và phân loại lại tài liệu theo điều kiện mới.
 
-Một đơn vị có thể có **nhiều chính sách đang bật**; agent nhận bản gộp điều kiện của tất cả. Để xem chính xác những gì agent của một đơn vị đang nhận, chọn đơn vị trong bộ lọc rồi bấm **Xem chính sách hiệu lực**. Màn hình này cũng cho biết đơn vị đang dùng chính sách riêng hay kế thừa từ công ty con.
+Một đơn vị có thể có **nhiều chính sách đang bật**. Agent nhận bản gộp điều kiện của tất cả. Để xem chính xác những gì agent của một đơn vị đang nhận, chọn đơn vị trong bộ lọc rồi bấm **Xem chính sách hiệu lực**. Màn hình này cũng cho biết đơn vị đang dùng chính sách riêng hay kế thừa từ công ty con.
 
 ## Nhập và xuất JSON
 
@@ -124,4 +126,4 @@ Tab **JSON** trong trình soạn chính sách cho phép xuất toàn bộ chính
 
 ## Gợi ý điều kiện bằng AI
 
-Quản trị hệ thống có thể dùng tab **Gợi ý AI** để mô tả chính sách bằng lời hoặc tải lên một tài liệu mẫu; hệ thống đề xuất các điều kiện để bạn sửa rồi bấm **Áp dụng vào điều kiện**. Gợi ý được tạo bởi mô hình chạy trên server của bạn, tài liệu mẫu không rời khỏi hệ thống. Khi mô hình chưa sẵn sàng, hệ thống vẫn tạo điều kiện từ văn bản trích xuất bằng phương pháp heuristic. Luôn rà soát điều kiện đề xuất trước khi lưu. Xem [Viết mô tả cho Gợi ý AI](./ai-suggest.md) để biết cách viết mô tả và chọn tài liệu mẫu cho kết quả tốt nhất.
+Quản trị hệ thống có thể dùng tab **Gợi ý AI** để mô tả chính sách bằng lời hoặc tải lên một tài liệu mẫu. Hệ thống đề xuất các điều kiện để bạn sửa rồi bấm **Áp dụng vào điều kiện**. Gợi ý được tạo bởi mô hình chạy trên server của bạn, và tài liệu mẫu không rời khỏi hệ thống. Khi mô hình chưa sẵn sàng, hệ thống vẫn tạo điều kiện từ văn bản trích xuất bằng phương pháp heuristic. Hãy rà soát điều kiện đề xuất trước khi lưu. Cách viết mô tả và chọn tài liệu mẫu có ở [Viết mô tả cho Gợi ý AI](./ai-suggest.md).

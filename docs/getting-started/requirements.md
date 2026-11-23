@@ -4,13 +4,13 @@ title: Yêu cầu hệ thống
 description: Những gì cần chuẩn bị về máy chủ, máy trạm và mạng trước khi cài đặt NextDLP.
 ---
 
-Chuẩn bị đủ các mục dưới đây trước khi cài để quá trình triển khai không bị gián đoạn.
+Trước khi cài, bạn cần một máy chủ chạy được Docker, các máy trạm Windows 64-bit, và một số cổng mạng mở giữa hai bên.
 
 ## Máy chủ
 
 Server NextDLP chạy dưới dạng các container Docker, trên Windows hoặc Linux. Trên Windows, máy chủ cần **Docker Desktop** và **PowerShell** để chạy script cài đặt. Trên Linux (x86_64), máy chủ cần **Docker Engine** cùng Compose plugin. Các bản Linux đã hỗ trợ là Ubuntu 22.04 và 24.04, Debian 12, RHEL và Rocky 9.
 
-Máy chủ nên có **địa chỉ IP cố định** trong mạng nội bộ, vì mọi agent sẽ kết nối về địa chỉ này. Nếu IP máy chủ thay đổi, bạn phải tạo lại bộ cài cho các máy trạm.
+Máy chủ nên có **địa chỉ IP cố định** trong mạng nội bộ, vì các agent kết nối về địa chỉ này. Nếu IP máy chủ thay đổi, bạn phải tạo lại bộ cài cho các máy trạm.
 
 Gói cài đặt thường cần internet khi cài lần đầu. Với máy chủ không có internet, hãy dùng bản offline đầy đủ của gói cài đặt (xem [Cài đặt & kết nối](./install.md)).
 
@@ -30,7 +30,7 @@ Console là ứng dụng web, dùng tốt trên phiên bản mới của Microso
 
 ## Cổng mạng
 
-Server mở các cổng dưới đây. Chỉ cổng 80, 443, 9090, 9091 và, khi cài gói GPU, 9092 cần truy cập được từ mạng nội bộ; cơ sở dữ liệu và bộ nhớ đệm chỉ dùng bên trong máy chủ. Console chạy qua HTTPS ở cổng 443, và cổng 80 chỉ chuyển hướng sang HTTPS. Dữ liệu đi qua từng cổng và các khuyến nghị bảo vệ kết nối có tại [Luồng dữ liệu & bảo mật](./data-flow.md).
+Server mở các cổng dưới đây. Chỉ cổng 80, 443, 9090, 9091 và, khi cài gói GPU, 9092 cần truy cập được từ mạng nội bộ. Cơ sở dữ liệu và bộ nhớ đệm chỉ dùng bên trong máy chủ. Dữ liệu đi qua từng cổng và các khuyến nghị bảo vệ kết nối có tại [Luồng dữ liệu & bảo mật](./data-flow.md).
 
 | Cổng | Dịch vụ | Ai cần truy cập |
 |---|---|---|
@@ -38,18 +38,12 @@ Server mở các cổng dưới đây. Chỉ cổng 80, 443, 9090, 9091 và, khi
 | 443 | Console và `/api` qua HTTPS | Quản trị hệ thống, người dùng Console |
 | 9090 | API cho hệ thống tích hợp, qua HTTPS | Hệ thống tích hợp |
 | 9091 | gRPC cho agent | Máy trạm |
-| 9092 | Tải bản scan lên kho tạm của gói GPU AssistOCR (chỉ khi cài gói GPU) | Máy trạm |
+| 9092 | Tải bản scan và bản vẽ lên kho tạm của gói GPU AssistOCR (chỉ khi cài gói GPU) | Máy trạm |
 | 5432, 6379 | PostgreSQL và Redis | Chỉ nội bộ máy chủ |
 
 :::warning[Lưu ý]
 
-Máy trạm và người dùng Console phải kết nối được tới server qua cổng **443** và **9091**. Hãy mở các cổng này trên tường lửa của máy chủ trước khi cài agent, ví dụ bằng lệnh PowerShell quyền quản trị:
-
-```powershell
-New-NetFirewallRule -DisplayName "NextDLP" -Direction Inbound -Protocol TCP -LocalPort 443,9091 -Action Allow
-```
-
-Khi cài gói GPU AssistOCR, mở thêm cổng **9092** cho máy trạm.
+Máy trạm và người dùng Console phải kết nối được tới server qua cổng **443** và **9091**. Khi cài gói GPU AssistOCR, máy trạm cần thêm cổng **9092**. Hãy mở các cổng này trên tường lửa của máy chủ trước khi cài agent. Lệnh mở cổng có ở [Bước 4 của Cài đặt & kết nối](./install.md#bước-4-mở-cổng-trên-tường-lửa).
 
 :::
 

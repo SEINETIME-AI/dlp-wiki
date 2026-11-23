@@ -15,18 +15,18 @@ Mỗi phiên bản NextDLP có một bài thông báo phát hành tại mục [P
 
 ## Cách đánh số phiên bản
 
-NextDLP đánh số phiên bản theo dạng **MAJOR.MINOR.PATCH**, giống phần lớn phần mềm doanh nghiệp.
+NextDLP đánh số phiên bản theo dạng **MAJOR.MINOR.PATCH**.
 
 <dl>
   <dt><strong>MAJOR</strong>, ví dụ 1.0.0 lên 2.0.0</dt>
-  <dd>Thay đổi lớn về kiến trúc hoặc cách vận hành. Nâng cấp có thể cần thêm bước chuẩn bị; trang ghi chú của bản đó sẽ có mục hướng dẫn riêng.</dd>
+  <dd>Thay đổi lớn về kiến trúc hoặc cách vận hành. Nâng cấp có thể cần thêm bước chuẩn bị. Trang ghi chú của bản đó sẽ có mục hướng dẫn riêng.</dd>
   <dt><strong>MINOR</strong>, ví dụ 1.0.0 lên 1.1.0</dt>
   <dd>Tính năng mới và cải tiến. Dữ liệu, chính sách và cấu hình hiện có được giữ nguyên khi nâng cấp.</dd>
   <dt><strong>PATCH</strong>, ví dụ 1.1.0 lên 1.1.1</dt>
   <dd>Chỉ sửa lỗi, không thay đổi cách sử dụng. Nên cập nhật sớm.</dd>
 </dl>
 
-Mỗi gói cài đặt gồm server, Console và bộ cài agent của cùng một phiên bản. Hãy cài agent từ bộ cài tạo trên server đang chạy, để agent và server luôn cùng phiên bản.
+Mỗi gói cài đặt gồm server, Console và bộ cài agent của cùng một phiên bản. Hãy cài agent từ bộ cài tạo trên server đang chạy, để agent và server cùng phiên bản.
 
 ## Nâng cấp
 

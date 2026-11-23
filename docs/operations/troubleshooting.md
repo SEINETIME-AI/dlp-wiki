@@ -21,7 +21,7 @@ Phần lớn sự cố khi triển khai NextDLP thuộc một trong ba nhóm: se
 |---|---|---|
 | Cài xong nhưng máy không xuất hiện trên Console | Ô Agent server của bộ cài để trống hoặc là `localhost`. | Tạo lại bộ cài với IP máy chủ đúng, rồi cài lại bằng `Reinstall-NextDLP.ps1`. |
 | Cài xong nhưng máy không xuất hiện trên Console | Tường lửa chặn cổng 9091 giữa máy trạm và máy chủ. | Mở cổng 9091 trên máy chủ. Kiểm tra bằng `Test-NetConnection 10.0.0.5 -Port 9091` từ máy trạm. |
-| Máy báo Mất kết nối | Dịch vụ agent đã dừng. | Chạy `Get-Service nextdlp` trên máy; nếu dừng, chạy `Start-Service nextdlp`. |
+| Máy báo Mất kết nối | Dịch vụ agent đã dừng. | Chạy `Get-Service nextdlp` trên máy. Nếu dịch vụ đã dừng, chạy `Start-Service nextdlp`. |
 | Máy báo Mất kết nối sau khi đổi IP máy chủ | Agent vẫn kết nối về IP cũ. | Tạo lại bộ cài với IP mới và cài lại agent. |
 
 ## Agent chạy nhưng không phân loại
@@ -29,14 +29,14 @@ Phần lớn sự cố khi triển khai NextDLP thuộc một trong ba nhóm: se
 | Triệu chứng | Nguyên nhân thường gặp | Cách xử lý |
 |---|---|---|
 | Không có tài liệu nào trong Kiểm kê | Đơn vị của máy chưa có nguồn dữ liệu, hoặc chính sách chưa được kích hoạt. | Kiểm tra [Nguồn dữ liệu](../data/sources.md) và công tắc Kích hoạt của [Chính sách phân loại](../classification/policies.md). |
-| Máy ở trạng thái Chờ đồng bộ policy lâu | Agent chưa tải phiên bản chính sách mới. | Đợi vài phút khi máy trực tuyến; nếu vẫn vậy, khởi động lại dịch vụ `nextdlp`. |
+| Máy ở trạng thái Chờ đồng bộ policy lâu | Agent chưa tải phiên bản chính sách mới. | Đợi vài phút khi máy trực tuyến. Nếu vẫn vậy, khởi động lại dịch vụ `nextdlp`. |
 | Một tệp cụ thể không xuất hiện trong Kiểm kê | Tệp nằm ngoài nguồn dữ liệu, hoặc đuôi tệp hay thư mục của nó bị loại trừ. | Kiểm tra Include / Exclude của nguồn dữ liệu. |
 | Tệp có cảnh báo "chưa được phân tích đầy đủ" | Tệp lớn hơn Mức quét hoặc Kích thước tối đa của nguồn, bản scan quá dài, hoặc tệp không phải tài liệu. | Xem lý do trong chi tiết tài liệu và làm theo [Tệp lớn & mức phân tích](../data/large-files.md). |
 | Người dùng phản ánh máy chậm khi agent quét | Máy cấu hình thấp đang quét nhiều tài liệu lần đầu. | Chọn Mức quét **Nhẹ** trong chính sách Agent của nhóm máy đó. |
 | Tệp ở trạng thái Chưa gắn nhãn | Không điều kiện mức bảo mật nào khớp, hoặc tệp hỏng hay không có lớp văn bản. | Mở sự kiện trong Nhật ký phân loại để xem lý do. |
 | Tệp bị gắn nhãn khác mong đợi | Một điều kiện khác cũng khớp, và agent chọn mức mật nhất. | Mở sự kiện trong Nhật ký phân loại để xem điều kiện nào đã khớp, rồi dùng **Xem chính sách hiệu lực** để rà soát. |
-| AssistOCR ở trạng thái Chưa sẵn sàng | Gói GPU chưa cài, chưa chạy hoặc model đang tải. | Kiểm tra các dịch vụ của gói GPU trên máy chủ đã cài gói; lần khởi động đầu, model cần vài phút để tải. Trạng thái tại Hệ thống › Nhà cung cấp phân loại tự chuyển sang Hoạt động khi gói trả lời. Trong lúc đó agent vẫn đọc tệp bằng OCR trên máy. |
-| Tệp có dấu mộc nhưng điều kiện "Chỉ áp dụng khi khớp một trong các tên trên dấu này" không khớp | Agent không đọc được tên công ty trên dấu (dấu nhạt, đóng đè lên chữ, con dấu cơ quan nhà nước) và khối ký tên quanh dấu cũng không ghi đúng từ khóa; hoặc từ khóa chỉ gồm từ chung như "Công ty", "TNHH" nên bị bỏ qua. | Mở sự kiện: phần dấu mộc cho biết chữ đã đọc được trên dấu và tên công ty tìm thấy trên dấu hay quanh dấu. Dùng tên riêng của công ty làm từ khóa, đúng như in trên trang. Xem [Tên trên dấu mộc](../classification/policies.md#tên-trên-dấu-mộc). |
+| AssistOCR ở trạng thái Chưa sẵn sàng | Gói GPU chưa cài, chưa chạy hoặc mô hình đang tải. | Kiểm tra các dịch vụ của gói GPU trên máy chủ đã cài gói. Lần khởi động đầu, mô hình cần vài phút để tải. Trạng thái tại Hệ thống › Nhà cung cấp phân loại tự chuyển sang Hoạt động khi gói trả lời. Trong lúc đó agent vẫn đọc tệp bằng OCR trên máy. |
+| Tệp có dấu mộc nhưng điều kiện "Chỉ áp dụng khi khớp một trong các tên trên dấu này" không khớp | Agent không đọc được tên trên dấu (dấu nhạt, đóng đè lên chữ, con dấu cơ quan nhà nước) và khối ký tên quanh dấu cũng không ghi đúng từ khóa. Hoặc từ khóa chỉ gồm từ chung như "Công ty", "TNHH" nên bị bỏ qua. | Mở sự kiện: phần dấu mộc cho biết chữ đã đọc được trên dấu và tên tìm thấy trên dấu hay quanh dấu. Dùng tên riêng của công ty làm từ khóa, đúng như in trên trang. Xem [Tên trên dấu mộc](../classification/policies.md#tên-trên-dấu-mộc). |
 | Không tệp nào có dấu mộc được nhận diện, kể cả mẫu rõ nét | Mô hình nhận diện dấu mộc trên máy không đúng bản phát hành. | Xem log của agent tại `C:\ProgramData\DlpExtension\logs`: dòng nạp mô hình dấu mộc phải ghi kích thước và ngày huấn luyện khớp bản trong bộ cài. Cài lại agent từ bộ cài để thay mô hình. |
 
 ## Khi cần liên hệ hỗ trợ

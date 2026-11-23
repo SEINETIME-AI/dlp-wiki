@@ -6,9 +6,9 @@ description: Hướng dẫn dựng server, cài agent lên máy trạm đầu ti
 
 import DownloadCard from '@site/src/components/DownloadCard';
 
-Hướng dẫn này đưa bạn từ một máy chủ trống đến lúc máy trạm đầu tiên xuất hiện trên Console. Hãy kiểm tra [Yêu cầu hệ thống](./requirements.md) trước khi bắt đầu.
+Việc cài đặt gồm ba phần: dựng server trên một máy chủ trống, chuẩn bị Console, rồi cài agent lên máy trạm đầu tiên. Khi xong, máy trạm đó xuất hiện trên Console. Hãy kiểm tra [Yêu cầu hệ thống](./requirements.md) trước khi bắt đầu.
 
-Trong các ví dụ dưới đây, `10.0.0.5` là địa chỉ IP của máy chủ NextDLP. Hãy thay bằng IP thật của bạn.
+Trong các ví dụ dưới đây, `10.0.0.5` là địa chỉ IP của máy chủ NextDLP. Hãy thay bằng IP máy chủ của bạn.
 
 ## Phần 1. Cài server
 
@@ -31,7 +31,7 @@ Get-ChildItem -Recurse *.ps1 | Unblock-File
 
 Lệnh đầu tiên gỡ đánh dấu "tải từ internet" của Windows trên các script, để PowerShell cho phép chạy chúng.
 
-**Máy chủ Linux.** Cài Docker Engine trước, giải nén gói vào một thư mục như `/opt/nextdlp`, rồi chạy:
+Trên máy chủ Linux, cài Docker Engine trước, giải nén gói vào một thư mục như `/opt/nextdlp`, rồi chạy:
 
 ```sh
 cd /opt/nextdlp
@@ -40,13 +40,13 @@ sudo bash docker/load-and-start.sh
 
 Script báo thứ còn thiếu cần cài và đặt Docker tự khởi động cùng máy. Các tùy chọn ở dưới có dạng tương ứng trên Linux: `--gpu`, `--gpu-preset 16gb`, `--gpu-model ocr` và `--skip-pull`.
 
-**Máy chủ có GPU (tùy chọn).** Nếu gói cài kèm gói GPU AssistOCR và máy chủ có card NVIDIA phù hợp, khởi động kèm GPU để đọc ảnh và bản scan khó trên máy chủ:
+Gói GPU là tùy chọn. Nếu gói cài kèm gói GPU AssistOCR và máy chủ có card NVIDIA phù hợp, khởi động kèm GPU để đọc ảnh và bản scan khó trên máy chủ:
 
 ```powershell
 .\docker\load-and-start.ps1 -Gpu -GpuPreset 16gb
 ```
 
-Đổi `16gb` thành `24gb` hoặc `32gb` nếu card có bộ nhớ lớn hơn. Thêm `-GpuModel ocr` để dùng mô hình lớn hơn cho bản scan bẩn và bảng biểu, chậm hơn mô hình mặc định. Trạng thái gói GPU sau này xem tại **Hệ thống › Nhà cung cấp phân loại**; chi tiết tại [AssistOCR](../admin/system.md#assistocr).
+Đổi `16gb` thành `24gb` hoặc `32gb` nếu card có bộ nhớ lớn hơn. Thêm `-GpuModel ocr` để dùng mô hình lớn hơn cho bản scan bẩn và bảng biểu, chậm hơn mô hình mặc định. Trạng thái gói GPU sau này xem tại **Hệ thống › Nhà cung cấp phân loại**. Chi tiết có tại [AssistOCR](../admin/system.md#assistocr).
 
 Với bản offline đầy đủ trên máy chủ không có internet, thêm tùy chọn `-SkipPull`:
 
@@ -66,7 +66,7 @@ Chạy lệnh sau để xem trạng thái các dịch vụ:
 docker compose -f docker-compose.deploy.yml ps
 ```
 
-Mỗi dòng là một dịch vụ. Server đã sẵn sàng khi cột `STATUS` của mọi dòng bắt đầu bằng `Up`; dịch vụ có cơ chế tự kiểm tra ghi thêm `(healthy)`. Dòng ghi `(health: starting)` nghĩa là dịch vụ còn đang khởi động; hãy chờ rồi chạy lại lệnh. Dòng ghi `Restarting` hoặc `(unhealthy)` là dịch vụ gặp lỗi; xem [Xử lý sự cố](../operations/troubleshooting.md).
+Mỗi dòng là một dịch vụ. Server đã sẵn sàng khi cột `STATUS` của mọi dòng bắt đầu bằng `Up`. Dịch vụ có cơ chế tự kiểm tra ghi thêm `(healthy)`. Dòng ghi `(health: starting)` nghĩa là dịch vụ còn đang khởi động, hãy chờ rồi chạy lại lệnh. Dòng ghi `Restarting` hoặc `(unhealthy)` là dịch vụ gặp lỗi, khi đó xem [Xử lý sự cố](../operations/troubleshooting.md).
 
 ### Bước 4. Mở cổng trên tường lửa
 
@@ -86,7 +86,7 @@ Trên Linux, Docker tự mở các cổng này trên máy chủ, nên không c�
 
 ### Bước 5. Đăng nhập Console
 
-Mở trình duyệt tới `https://10.0.0.5`. Lần đầu truy cập, trình duyệt cảnh báo về chứng chỉ vì server dùng chứng chỉ riêng do script cài đặt tạo ra; chọn **Advanced** rồi **Continue** để vào Console. Chứng chỉ này bảo vệ Console và API cho hệ thống tích hợp (cổng 443 và 9090). Kết nối của agent qua cổng 9091 không được mã hóa ở tầng ứng dụng; xem cách bảo vệ tại [Luồng dữ liệu & bảo mật](./data-flow.md#cổng-kết-nối). Đăng nhập bằng tài khoản quản trị mặc định **admin / admin**.
+Mở trình duyệt tới `https://10.0.0.5`. Lần đầu truy cập, trình duyệt cảnh báo về chứng chỉ vì server dùng chứng chỉ riêng do script cài đặt tạo ra. Chọn **Advanced** rồi **Continue** để vào Console. Chứng chỉ này bảo vệ Console và API cho hệ thống tích hợp (cổng 443 và 9090). Kết nối của agent qua cổng 9091 không được mã hóa ở tầng ứng dụng. Xem cách bảo vệ tại [Luồng dữ liệu & bảo mật](./data-flow.md#cổng-kết-nối). Đăng nhập bằng tài khoản quản trị mặc định **admin / admin**.
 
 ![Màn hình đăng nhập Console](/img/console/login.png)
 
@@ -102,7 +102,7 @@ Trước khi tạo bộ cài, Console cần có giấy phép đã kích hoạt, 
 
 ### Bước 6. Kích hoạt giấy phép
 
-Sau khi đăng nhập, mọi trang đều hiện banner *"Chưa kích hoạt license nên chưa cài được agent"*. Khi chưa kích hoạt giấy phép, máy trạm cài agent sẽ không kết nối được về server.
+Sau khi đăng nhập, mọi trang đều hiện dải thông báo *"Chưa kích hoạt license nên chưa cài được agent"*. Khi chưa kích hoạt giấy phép, máy trạm cài agent sẽ không kết nối được về server.
 
 Vào **Báo cáo & quản trị › Hệ thống › Giấy phép & phiên bản**, bấm **Kích hoạt license** rồi chọn tệp `.lic` nhận từ đội hỗ trợ NextDLP. Console hiện **Đã kích hoạt license** cùng số máy và ngày hết hạn của giấy phép. Xem [Giấy phép](../admin/license.md).
 
@@ -110,7 +110,7 @@ Vào **Báo cáo & quản trị › Hệ thống › Giấy phép & phiên bản
 
 ### Bước 7. Tạo đơn vị
 
-Vào **Tổ chức › Cơ cấu tổ chức** và tạo một **Công ty con** (rồi thêm **Phòng ban** bên dưới) hoặc một **Ban chuyên môn**. Bộ cài luôn gắn với đơn vị cấp thấp nhất: phòng ban của công ty con, hoặc chính ban chuyên môn. Xem [Cơ cấu tổ chức](../organization/org.md).
+Vào **Tổ chức › Cơ cấu tổ chức** và tạo một **Công ty con** (rồi thêm **Phòng ban** bên dưới) hoặc một **Ban chuyên môn**. Bộ cài gắn với đơn vị cấp thấp nhất: phòng ban của công ty con, hoặc chính ban chuyên môn. Xem [Cơ cấu tổ chức](../organization/org.md).
 
 ![Trang Cơ cấu tổ chức](/img/console/organization.png)
 
@@ -124,7 +124,7 @@ Vào **Thiết bị & Agent › Chính sách Agent** và bấm **Chính sách Ag
 
 ### Bước 9. Đặt mật khẩu gỡ agent
 
-Vào **Thiết bị & Agent › Bộ cài Agent**. Trang báo chưa đặt mật khẩu gỡ agent; bấm **Đặt mật khẩu gỡ agent**, nhập mật khẩu hai lần rồi bấm **Lưu**. Mật khẩu này được gắn sẵn vào mọi bộ cài và cần khi gỡ agent trên máy trạm, nên hãy cất nó cẩn thận. Xem [Mật khẩu gỡ agent](../endpoints/uninstall-password.md).
+Vào **Thiết bị & Agent › Bộ cài Agent**. Trang báo chưa đặt mật khẩu gỡ agent. Bấm **Đặt mật khẩu gỡ agent**, nhập mật khẩu hai lần rồi bấm **Lưu**. Mật khẩu này được gắn sẵn vào mọi bộ cài và cần khi gỡ agent trên máy trạm, nên hãy cất nó cẩn thận. Xem [Mật khẩu gỡ agent](../endpoints/uninstall-password.md).
 
 ### Bước 10. Tạo bộ cài cho đơn vị
 
@@ -147,7 +147,7 @@ Khi bộ cài chuyển sang trạng thái **Sẵn sàng**, bấm **Tải bộ c�
 Muốn cài không cần thao tác, mở PowerShell với quyền quản trị trong thư mục đã giải nén và chạy:
 
 ```powershell
-msiexec /i .\<tên-file>.msi /qn
+msiexec /i .\<tên-tệp>.msi /qn
 Start-Service nextdlp
 ```
 
@@ -155,7 +155,7 @@ Vì bộ cài là tệp MSI chuẩn, bạn có thể dùng cùng lệnh này v�
 
 ### Bước 12. Kiểm tra kết nối
 
-Trong vòng một phút, máy trạm xuất hiện tại **Thiết bị & Agent › Máy trạm** với trạng thái **Trực tuyến**, và số máy đã đăng ký của bộ cài tăng thêm một. Hệ thống cũng tự tạo một tài khoản Console cho máy này, xem [Người dùng & phân quyền](../organization/users.md).
+Trong vòng một phút, máy trạm xuất hiện tại **Thiết bị & Agent › Máy trạm** với trạng thái `active`, và số máy đã đăng ký của bộ cài tăng thêm một. Hệ thống cũng tự tạo một tài khoản Console cho máy này, xem [Người dùng & phân quyền](../organization/users.md).
 
 ![Máy trạm đã đăng ký ở trạng thái hoạt động](/img/console/endpoints.png)
 

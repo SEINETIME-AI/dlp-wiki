@@ -492,7 +492,7 @@ const phase2: Phase = {
         },
         {
           title: 'Thêm định dạng',
-          detail: 'Đọc nội dung tài liệu Word đời cũ (.doc) và đọc đầy đủ các ô số trong bảng tính Excel.',
+          detail: 'Đọc nội dung tài liệu Word đời cũ (.doc).',
           status: 'in-progress',
         },
         {

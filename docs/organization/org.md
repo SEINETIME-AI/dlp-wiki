@@ -4,7 +4,7 @@ title: Cơ cấu tổ chức
 description: Cơ cấu tổ chức gồm tối đa ba cấp và là nền tảng để gắn máy trạm, chính sách cũng như phạm vi phân quyền.
 ---
 
-Cơ cấu tổ chức là nền tảng của mọi cấu hình khác trong NextDLP. Máy trạm thuộc về một đơn vị, chính sách phân loại áp dụng theo đơn vị, và quản lý chỉ thao tác được trong đơn vị mình phụ trách. Bạn quản lý cơ cấu tại **Tổ chức › Cơ cấu tổ chức**.
+Máy trạm thuộc về một đơn vị, chính sách phân loại áp dụng theo đơn vị, và Quản lý đơn vị chỉ thao tác được trong đơn vị mình phụ trách. Bạn quản lý cơ cấu tại **Tổ chức › Cơ cấu tổ chức**.
 
 ## Mô hình ba cấp
 
@@ -29,7 +29,7 @@ Trang có hai cách xem: **Cây phân cấp** để thao tác nhanh và **Sơ đ
 
 ## Chính sách kế thừa
 
-Một phòng ban chưa có chính sách phân loại riêng sẽ **kế thừa** chính sách đang bật của công ty con cấp trên. Console hiển thị nhãn "Kế thừa · tên chính sách" cho các phòng ban này. Khi phòng ban có chính sách riêng, chính sách riêng **thay thế hoàn toàn** chính sách của công ty con, không gộp với nhau.
+Một phòng ban chưa có chính sách phân loại riêng sẽ **kế thừa** chính sách đang bật của công ty con cấp trên. Console hiển thị nhãn "Kế thừa · tên chính sách" cho các phòng ban này. Khi phòng ban có chính sách riêng, chính sách riêng **thay thế** chính sách của công ty con, hai chính sách không gộp với nhau.
 
 :::warning[Đơn vị chưa có chính sách]
 

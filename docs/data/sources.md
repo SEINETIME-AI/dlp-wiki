@@ -4,7 +4,7 @@ title: Nguồn dữ liệu
 description: Nguồn dữ liệu xác định những thư mục cục bộ hoặc SMB/NAS mà agent giám sát và phân loại.
 ---
 
-Nguồn dữ liệu cho agent biết phải theo dõi thư mục nào. Agent không quét toàn bộ ổ đĩa; nó chỉ phân loại những tệp nằm trong các nguồn được gán cho đơn vị của máy. Bạn quản lý nguồn tại **Dữ liệu › Nguồn dữ liệu**.
+Agent không quét toàn bộ ổ đĩa. Nó chỉ phân loại những tệp nằm trong các nguồn dữ liệu được gán cho đơn vị của máy, tức những thư mục bạn chỉ định. Bạn quản lý nguồn tại **Dữ liệu › Nguồn dữ liệu**.
 
 ## Cách hoạt động
 
@@ -27,7 +27,7 @@ Bấm **Thêm nguồn dữ liệu** và điền các phần sau.
 | Loại tệp | Chọn theo nhóm: Văn bản, Bảng tính, Trình chiếu, Ảnh / scan, Bản vẽ CAD, Dữ liệu, Tệp nén, hoặc **Chọn tất cả**. Đuôi không có trong các nhóm thì gõ vào ô **Đuôi khác**. |
 | Exclude extensions | Đuôi cần bỏ qua như `.tmp`, `.exe`, `.dll`. |
 | Include / Exclude paths | Thư mục con cần quét và thư mục cần bỏ qua như archive hoặc temp. |
-| Kích thước tối đa | Chọn 100 MB, 250 MB, 500 MB, 1 GB hoặc 2 GB (mặc định 500 MB). Tệp lớn hơn ngưỡng không được đọc nội dung nhưng vẫn hiện trong Kiểm kê dữ liệu kèm cảnh báo. |
+| Kích thước tối đa | Chọn 100 MB, 250 MB, 500 MB, 1 GB hoặc 2 GB (mặc định 500 MB). Xem [Kích thước tối đa và Mức quét](#kích-thước-tối-đa-và-mức-quét). |
 
 :::tip[Thu hẹp phạm vi quét]
 
@@ -57,9 +57,9 @@ Khác với Kích thước tối đa, những tệp bạn chủ động loại b
 
 ## Thư mục chia sẻ SMB/NAS
 
-Với nguồn mạng, bạn cần nhập **tên đăng nhập** dạng `DOMAIN\user` hoặc `user@domain` và **mật khẩu** của thư mục chia sẻ. Mật khẩu được mã hóa trên server và bắt buộc nhập khi tạo nguồn; khi sửa nguồn, để trống để giữ mật khẩu cũ.
+Với nguồn mạng, bạn cần nhập **tên đăng nhập** dạng `DOMAIN\user` hoặc `user@domain` và **mật khẩu** của thư mục chia sẻ. Mật khẩu được mã hóa trên server và bắt buộc nhập khi tạo nguồn. Khi sửa nguồn, để trống ô này để giữ mật khẩu cũ.
 
-Để tránh nhiều máy cùng quét một thư mục chia sẻ, nguồn mạng cần chỉ định một **Máy quét**. Chỉ máy này quét thư mục; hãy chọn một máy luôn bật như máy chủ hoặc máy phòng IT. Cột **Kết nối** cho biết máy quét có truy cập được thư mục không.
+Để tránh nhiều máy cùng quét một thư mục chia sẻ, nguồn mạng cần chỉ định một **Máy quét**. Chỉ máy này quét thư mục, nên hãy chọn một máy luôn bật như máy chủ hoặc máy phòng IT. Cột **Kết nối** cho biết máy quét có truy cập được thư mục không.
 
 | Trạng thái kết nối | Ý nghĩa |
 |---|---|
@@ -71,7 +71,7 @@ Với nguồn mạng, bạn cần nhập **tên đăng nhập** dạng `DOMAIN\u
 
 ## Sửa và xóa nguồn
 
-Khi bạn sửa hoặc xóa một nguồn, các agent thuộc đơn vị sở hữu sẽ đồng bộ lại cấu hình. Với nguồn bị xóa, agent ngừng theo dõi đường dẫn đó; các tài liệu đã kiểm kê từ nguồn vẫn được giữ lại trong Kiểm kê dữ liệu.
+Khi bạn sửa hoặc xóa một nguồn, các agent thuộc đơn vị sở hữu sẽ đồng bộ lại cấu hình. Với nguồn bị xóa, agent ngừng theo dõi đường dẫn đó. Các tài liệu đã kiểm kê từ nguồn vẫn được giữ lại trong Kiểm kê dữ liệu.
 
 ## Đọc tiếp
 

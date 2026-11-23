@@ -18,11 +18,11 @@ Không. Cơ cấu tổ chức và tài khoản được quản lý trực tiếp
 
 ### NextDLP đọc được tài liệu scan không?
 
-Có. OCR và nhận diện dấu mộc chạy ngay trên máy trạm. AssistOCR tự host là tùy chọn cho ảnh và bản scan khó đọc.
+Có. OCR và nhận diện dấu mộc chạy ngay trên máy trạm. AssistOCR tự cài trong mạng nội bộ là tùy chọn cho ảnh và bản scan khó đọc.
 
 ### Agent có làm chậm máy không?
 
-Agent quét ở chế độ nền của Windows, nên Word, Excel và các ứng dụng khác của người dùng luôn được ưu tiên. Agent chừa lại ít nhất một luồng CPU, chỉ dùng tối đa 20% phần CPU và 20% phần bộ nhớ mà máy đang để trống, và tạm dừng khi Windows báo sắp hết bộ nhớ. Khi người dùng đang dùng nhiều CPU, agent tự chậm lại tương ứng. Với máy cấu hình yếu, chọn Mức quét **Nhẹ** trong [Chính sách Agent](../endpoints/agent-policy.md#hiệu-năng--tài-nguyên-máy).
+Agent quét ở chế độ nền của Windows, nên Word, Excel và các ứng dụng khác của người dùng được ưu tiên. Agent chừa lại ít nhất một luồng CPU, chỉ dùng tối đa 20% phần CPU và 20% phần bộ nhớ mà máy đang để trống, và tạm dừng khi Windows báo sắp hết bộ nhớ. Khi người dùng đang dùng nhiều CPU, agent tự chậm lại tương ứng. Với máy cấu hình yếu, chọn Mức quét **Nhẹ** trong [Chính sách Agent](../endpoints/agent-policy.md#hiệu-năng--tài-nguyên-máy).
 
 ### Agent có bỏ qua tệp quá lớn không?
 
@@ -42,7 +42,7 @@ Mở sự kiện của tệp trong [Nhật ký phân loại](../classification/e
 
 ### Người dùng có tự sửa nhãn được không?
 
-Không trực tiếp. Người dùng máy trạm gửi yêu cầu đổi nhãn trong Kiểm kê dữ liệu; Quản lý đơn vị hoặc Quản trị hệ thống duyệt thì nhãn mới có hiệu lực. Xem [Kiểm kê dữ liệu & đổi nhãn](../data/inventory.md).
+Không trực tiếp. Người dùng máy trạm gửi yêu cầu đổi nhãn trong Kiểm kê dữ liệu. Quản lý đơn vị hoặc Quản trị hệ thống duyệt thì nhãn mới có hiệu lực. Xem [Kiểm kê dữ liệu & đổi nhãn](../data/inventory.md).
 
 ### Có đổi nhãn nhiều tài liệu hoặc cả thư mục cùng lúc được không?
 
@@ -58,7 +58,7 @@ Không. NextDLP phân loại tệp trên máy trạm và thư mục chia sẻ, k
 
 ### NextDLP có phân loại bản vẽ kỹ thuật và sơ đồ không?
 
-Có. Khi có gói GPU AssistOCR, điều kiện [Bản vẽ kỹ thuật](../classification/policies.md#bản-vẽ-kỹ-thuật) nhận ra bản vẽ theo ngành ngay cả khi bản vẽ gần như không có chữ. Không có gói GPU, agent vẫn phân loại bản vẽ theo phần chữ. Với bản vẽ dạng PDF hoặc ảnh, agent đọc chữ, dò dấu mộc, rồi phân loại theo từ khóa (ký hiệu bản vẽ, tên công trình) hoặc theo mô tả ngữ nghĩa. Với tệp AutoCAD gốc (`.dwg`, `.dxf`), agent đọc chữ trong bản vẽ: tiêu đề, khung tên, ghi chú và thông tin gắn với đối tượng trong bản vẽ; font tiếng Việt cũ như TCVN3 hay VNI vẫn đọc được. Bản vẽ thường ít câu văn mà nhiều thuật ngữ ngành, nên điều kiện phù hợp nhất là Từ điển có trọng số (ví dụ "sơ đồ nguyên lý", "trạm biến áp") kết hợp mẫu ký tự cho số hiệu bản vẽ. Nhãn của bản vẽ chỉ lưu trên server và trong Kiểm kê, không ghi vào tệp. Tệp Visio (`.vsdx`) chưa được đọc nội dung. Xem [Thông số kỹ thuật](../getting-started/specs.md#định-dạng-tệp).
+Có. Khi có gói GPU AssistOCR, điều kiện [Bản vẽ kỹ thuật](../classification/policies.md#bản-vẽ-kỹ-thuật) nhận ra bản vẽ theo ngành kể cả khi bản vẽ gần như không có chữ. Không có gói GPU, agent vẫn phân loại bản vẽ theo phần chữ. Với bản vẽ dạng PDF hoặc ảnh, agent đọc chữ, dò dấu mộc, rồi phân loại theo từ khóa (ký hiệu bản vẽ, tên công trình) hoặc theo mô tả ngữ nghĩa. Với tệp AutoCAD gốc (`.dwg`, `.dxf`), agent đọc chữ trong bản vẽ: tiêu đề, khung tên, ghi chú và thông tin gắn với đối tượng trong bản vẽ. Font tiếng Việt cũ như TCVN3 hay VNI vẫn đọc được. Bản vẽ thường ít câu văn mà nhiều thuật ngữ ngành, nên điều kiện phù hợp nhất là Từ điển có trọng số (ví dụ "sơ đồ nguyên lý", "trạm biến áp") kết hợp mẫu ký tự cho số hiệu bản vẽ. Nhãn của bản vẽ chỉ lưu trên server và trong Kiểm kê, không ghi vào tệp. Tệp Visio (`.vsdx`) chưa được đọc nội dung. Xem [Thông số kỹ thuật](../getting-started/specs.md#định-dạng-tệp).
 
 ### Từ khóa có bắt được khi gõ sai hoặc viết không dấu không?
 

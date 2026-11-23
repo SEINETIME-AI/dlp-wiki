@@ -4,7 +4,7 @@ title: Kiến trúc & khái niệm
 description: Tổng quan luồng dữ liệu từ máy trạm đến DLP và các thuật ngữ được dùng xuyên suốt tài liệu.
 ---
 
-Trang này mô tả một tài liệu đi qua NextDLP như thế nào, từ lúc được lưu trên máy trạm cho đến khi DLP dùng nhãn của nó, và giải thích các thuật ngữ bạn sẽ gặp trong Console.
+Từ lúc được lưu trên máy trạm đến khi DLP dùng nhãn của nó, một tài liệu đi qua bốn bước. Các tên in đậm là tên bạn sẽ gặp trong Console, được giải thích ở mục [Thuật ngữ](#thuật-ngữ).
 
 ## Luồng hoạt động
 
@@ -47,7 +47,7 @@ Khi một tệp khớp nhiều điều kiện, agent chọn **mức bảo mật 
 
 ## Chính sách phân loại và Chính sách Agent khác nhau thế nào
 
-Hai khái niệm này dễ nhầm. **Chính sách phân loại** quyết định *tệp được gắn nhãn gì*, và được áp dụng theo đơn vị. **Chính sách Agent** quyết định *agent chạy ra sao trên máy*, và đi theo bộ cài mà máy đã dùng để cài đặt.
+Chính sách phân loại áp dụng theo đơn vị, còn Chính sách Agent đi theo bộ cài mà máy đã dùng để cài đặt. Xem [Chính sách đi theo bộ cài](../endpoints/agent-policy.md#chính-sách-đi-theo-bộ-cài).
 
 ## Tìm kiếm nhanh
 

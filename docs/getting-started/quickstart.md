@@ -6,7 +6,7 @@ description: Từ lúc agent đã kết nối đến lúc thấy tài liệu đ�
 
 Sau khi cài xong, agent đã kết nối nhưng chưa làm gì cả. Để agent bắt đầu gắn nhãn, đơn vị của máy cần hai thứ: **nguồn dữ liệu** cho agent biết phải theo dõi thư mục nào, và **chính sách phân loại đang bật** cho agent biết phải gắn nhãn gì.
 
-Trang này đi qua một ví dụ đơn giản: mọi tài liệu trong thư mục `C:\HoSo` có chứa cụm "bảng lương" sẽ được gắn mức bảo mật Mật và loại tài liệu Nhân sự.
+Ví dụ dưới đây gắn mức bảo mật Mật và loại tài liệu Nhân sự cho các tài liệu trong thư mục `C:\HoSo` có chứa cụm "bảng lương".
 
 ### Bước 1. Kiểm tra bộ nhãn
 
@@ -20,7 +20,7 @@ Vào **Dữ liệu › Nguồn dữ liệu** và bấm **Thêm nguồn dữ li�
 
 ![Hộp thoại Thêm nguồn dữ liệu](/img/console/data-sources-create.png)
 
-Mọi máy thuộc phòng ban đã chọn sẽ nhận nguồn này và bắt đầu theo dõi thư mục. Xem [Nguồn dữ liệu](../data/sources.md).
+Các máy thuộc phòng ban đã chọn sẽ nhận nguồn này và bắt đầu theo dõi thư mục. Xem [Nguồn dữ liệu](../data/sources.md).
 
 ### Bước 3. Tạo chính sách phân loại
 
@@ -28,7 +28,7 @@ Vào **Phân loại › Chính sách phân loại** và bấm **Chính sách m�
 
 ![Tab Thông tin chung của chính sách mới](/img/console/policies-create.png)
 
-Chuyển sang tab **Điều kiện phân loại** và bấm **Thêm điều kiện**. Giữ kỹ thuật **Từ khóa / Regex**, nhập "bảng lương" vào ô **Giá trị** của bộ khớp. Ở mục **Gắn kết quả phân loại**, chọn mức bảo mật và loại tài liệu "Nhân sự", rồi bấm **Lưu điều kiện**.
+Chuyển sang tab **Điều kiện phân loại** và bấm **Thêm điều kiện**. Giữ kỹ thuật **Từ khóa / Regex**, nhập "bảng lương" vào ô **Giá trị** của bộ khớp. Ở mục **Gắn kết quả phân loại**, chọn mức bảo mật Mật và loại tài liệu "Nhân sự", rồi bấm **Lưu điều kiện**.
 
 ![Hộp thoại Thêm điều kiện phân loại](/img/console/policies-condition.png)
 
@@ -40,11 +40,11 @@ Bấm **Tạo chính sách**. Công tắc **Kích hoạt** mặc định đã b�
 
 Trên máy trạm, lưu một tệp Word có cụm "bảng lương" vào `C:\HoSo`. Chờ vài phút để agent nhận chính sách và quét thư mục, rồi mở **Dữ liệu › Kiểm kê dữ liệu**: tệp xuất hiện với nhãn vừa cấu hình. Mở **Giám sát › Nhật ký phân loại** để xem sự kiện phân loại và lý do tệp được gắn nhãn.
 
-![Chi tiết sự kiện giải thích vì sao file được gắn nhãn](/img/console/events-detail.png)
+![Chi tiết sự kiện giải thích vì sao tệp được gắn nhãn](/img/console/events-detail.png)
 
 :::tip[Không thấy tệp?]
 
-Hãy kiểm tra ba điều: máy trạm đang **Trực tuyến**, đuôi tệp nằm trong danh sách đuôi cần quét của nguồn dữ liệu, và chính sách đã được **Kích hoạt** cho đúng đơn vị của máy.
+Hãy kiểm tra ba điều: máy trạm đang ở trạng thái `active`, loại tệp nằm trong các loại tệp cần quét của nguồn dữ liệu, và chính sách đã được **Kích hoạt** cho đúng đơn vị của máy.
 
 :::
 

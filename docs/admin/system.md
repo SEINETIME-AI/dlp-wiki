@@ -4,7 +4,7 @@ title: Hệ thống
 description: Trang Hệ thống tập trung cấu hình nền tảng, gói GPU AssistOCR, thông báo vận hành và giấy phép.
 ---
 
-Trang **Báo cáo & quản trị › Hệ thống** tập trung các cấu hình áp dụng cho toàn bộ nền tảng. Chỉ Quản trị hệ thống truy cập được trang này.
+Những thiết lập áp dụng cho cả hệ thống, chứ không riêng đơn vị nào, nằm ở **Báo cáo & quản trị › Hệ thống**. Chỉ Quản trị hệ thống truy cập được trang này.
 
 ![Trang Hệ thống](/img/console/system.png)
 
@@ -22,11 +22,9 @@ Server hiện chưa tự xóa dữ liệu cũ và chưa tự sao lưu. Hãy sao 
 
 ## AssistOCR
 
-AssistOCR là gói GPU tự cài trong mạng nội bộ, và là tùy chọn. Gói này:
+AssistOCR là gói GPU tự cài trong mạng nội bộ, và là tùy chọn. Ở chế độ OCR hybrid hoặc máy chủ, gói này đọc ảnh, bản scan và chữ trên dấu mộc thay cho agent, và đọc tốt hơn OCR trên máy trạm với bản scan chất lượng thấp. Gói cũng xem hình cho điều kiện Bản vẽ kỹ thuật, và đọc tài liệu mẫu khi bạn dùng Gợi ý AI.
 
-- đọc ảnh, bản scan và chữ trên dấu mộc cho agent ở chế độ OCR hybrid hoặc máy chủ, tốt hơn OCR trên máy trạm với bản scan chất lượng thấp;
-- đọc tài liệu mẫu khi Quản trị hệ thống dùng Gợi ý AI;
-- đánh giá lại các điều kiện ngữ nghĩa có điểm sát ngưỡng, và đánh giá thay cho máy trạm không nạp được mô hình ngữ nghĩa.
+Với điều kiện ngữ nghĩa, AssistOCR đánh giá lại những điểm sát ngưỡng, và đánh giá thay cho máy trạm không nạp được mô hình ngữ nghĩa. Xem [Khi máy trạm nhờ AssistOCR](../getting-started/specs.md#khi-máy-trạm-nhờ-assistocr).
 
 Địa chỉ của AssistOCR được đặt khi cài server cùng gói GPU, không nhập trên Console. Mục **Nhà cung cấp phân loại** cho biết tình trạng của gói:
 

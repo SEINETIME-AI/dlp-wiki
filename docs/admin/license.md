@@ -35,15 +35,15 @@ Nếu Console không nhận tệp, giấy phép đang dùng được giữ nguy�
 
 Mỗi máy trạm đã cài agent chiếm một chỗ trong giấy phép. Máy đang tắt hoặc mất kết nối vẫn được tính cho tới khi bạn **Thu hồi** máy đó ở trang [Máy trạm](../endpoints/machines.md). Cài lại agent trên cùng một máy không tính thêm chỗ, còn thu hồi một máy thì trả lại chỗ ngay.
 
-Khi đã dùng hết số máy, máy mới cài agent sẽ không kết nối được về server. Máy đó xuất hiện trong bảng **Máy đang chờ chỗ trống** của mục Giấy phép & phiên bản, kèm tên máy, đơn vị, địa chỉ IP và lần thử gần nhất. Console cũng hiện banner vàng và báo trên chuông thông báo, mỗi máy tối đa một lần mỗi ngày.
+Khi đã dùng hết số máy, máy mới cài agent sẽ không kết nối được về server. Máy đó xuất hiện trong bảng **Máy đang chờ chỗ trống** của mục Giấy phép & phiên bản, kèm tên máy, đơn vị, địa chỉ IP và lần thử gần nhất. Console cũng hiện dải thông báo vàng và báo trên chuông thông báo, mỗi máy tối đa một lần mỗi ngày.
 
 ![Máy đang chờ chỗ trống](/img/console/system-license-waiting.png)
 
 Agent trên máy đang chờ tự thử kết nối lại. Khi có chỗ trống, do bạn thu hồi một máy không còn dùng hoặc kích hoạt giấy phép có nhiều máy hơn, máy đó tự kết nối ở lần thử kế tiếp, theo chu kỳ heartbeat của agent (mặc định 30 giây), mà không cần cài lại.
 
-Console không nhận giấy phép có số máy ít hơn số máy đang chiếm chỗ, tức mọi máy đã cài agent và chưa thu hồi, kể cả máy đang tắt hoặc mất kết nối. Máy đang chờ chỗ trống không được tính. Ví dụ tổ chức đang có 300 máy mà tệp mới chỉ cho 200 máy: Console giữ nguyên giấy phép hiện tại và cho biết cần thu hồi bớt 100 máy. Hãy thu hồi các máy không còn dùng ở trang Máy trạm rồi kích hoạt lại; nếu mọi máy đều còn dùng, hãy liên hệ đội hỗ trợ NextDLP để nhận giấy phép đủ số máy.
+Console không nhận giấy phép có số máy ít hơn số máy đang chiếm chỗ, tức các máy đã cài agent và chưa thu hồi. Máy đang chờ chỗ trống không được tính. Ví dụ tổ chức đang có 300 máy mà tệp mới chỉ cho 200 máy: Console giữ nguyên giấy phép hiện tại và cho biết cần thu hồi bớt 100 máy. Hãy thu hồi các máy không còn dùng ở trang Máy trạm rồi kích hoạt lại. Nếu máy nào cũng còn dùng, hãy liên hệ đội hỗ trợ NextDLP để nhận giấy phép đủ số máy.
 
-Console không bao giờ tự thu hồi máy. Tệp có số máy bằng đúng số máy đang chiếm chỗ vẫn được nhận; khi đó giấy phép vừa hết chỗ và máy cài thêm sẽ phải chờ chỗ trống.
+Console không tự thu hồi máy. Tệp có số máy bằng đúng số máy đang chiếm chỗ vẫn được nhận. Khi đó giấy phép vừa hết chỗ và máy cài thêm sẽ phải chờ chỗ trống.
 
 ## Thời hạn và ân hạn
 
@@ -51,8 +51,10 @@ NextDLP có hai loại giấy phép theo thời hạn.
 
 | Loại | Thời hạn |
 |---|---|
-| Vĩnh viễn | Không có ngày hết hạn. Mục Giấy phép & phiên bản hiển thị **Vĩnh viễn** ở dòng ngày hết hạn, giấy phép luôn ở trạng thái Còn hạn và không bao giờ bị khóa vì thời gian. |
-| Có thời hạn | Có ngày hết hạn và thời gian ân hạn như mô tả bên dưới. Giấy phép dùng thử luôn thuộc loại này. |
+| Vĩnh viễn | Không có ngày hết hạn. |
+| Có thời hạn | Có ngày hết hạn và thời gian ân hạn. |
+
+Với giấy phép vĩnh viễn, mục Giấy phép & phiên bản hiển thị **Vĩnh viễn** ở dòng ngày hết hạn, giấy phép ở trạng thái Còn hạn và không bị khóa vì thời gian. Giấy phép dùng thử thuộc loại có thời hạn.
 
 Thời hạn hỗ trợ kỹ thuật và cập nhật phiên bản được quy định trong hợp đồng, không ghi trong tệp giấy phép. Vì vậy khi hết thời hạn hỗ trợ, NextDLP dùng giấy phép vĩnh viễn vẫn hoạt động bình thường.
 
@@ -61,10 +63,10 @@ Mục Giấy phép & phiên bản cho biết trạng thái giấy phép, và v�
 | Trạng thái | Khi nào | NextDLP hoạt động |
 |---|---|---|
 | Chưa kích hoạt | Bản cài mới, chưa có giấy phép. | Console cấu hình được, máy trạm chưa kết nối được. |
-| Chuyển tiếp | Hệ thống đã có máy trạm từ trước khi NextDLP yêu cầu giấy phép, và chưa kích hoạt. | Bình thường trong 30 ngày, banner đếm số ngày còn lại. Hết 30 ngày mà chưa kích hoạt thì chuyển sang Đã khóa. |
+| Chuyển tiếp | Hệ thống đã có máy trạm từ trước khi NextDLP yêu cầu giấy phép, và chưa kích hoạt. | Bình thường trong 30 ngày, dải thông báo đếm số ngày còn lại. Hết 30 ngày mà chưa kích hoạt thì chuyển sang Đã khóa. |
 | Còn hạn | Còn hơn 30 ngày tới ngày hết hạn. | Bình thường. |
-| Sắp hết hạn | Còn 30 ngày trở xuống. | Bình thường. Banner vàng nhắc gia hạn. |
-| Đã hết hạn | Đã qua ngày hết hạn, đang trong thời gian ân hạn. | Bình thường. Banner đỏ nhắc gia hạn. |
+| Sắp hết hạn | Còn 30 ngày trở xuống. | Bình thường. Dải thông báo vàng nhắc gia hạn. |
+| Đã hết hạn | Đã qua ngày hết hạn, đang trong thời gian ân hạn. | Bình thường. Dải thông báo đỏ nhắc gia hạn. |
 | Đã khóa | Đã hết thời gian ân hạn. | Agent ngừng phân loại. Console chỉ còn dùng được màn hình Giấy phép và trang Máy trạm. |
 
 Ân hạn là khoảng thời gian sau ngày hết hạn mà NextDLP vẫn hoạt động đầy đủ, để tổ chức kịp hoàn tất thủ tục gia hạn. Giấy phép chính thức thường có 30 ngày ân hạn, tùy hợp đồng. Giấy phép dùng thử không có ân hạn và chuyển sang Đã khóa ngay khi hết hạn.
@@ -79,4 +81,4 @@ Khi hết ân hạn, NextDLP dừng cho tới khi có giấy phép mới. Agent 
 
 Gia hạn, nâng số máy hay chuyển từ dùng thử sang chính thức đều làm cùng một cách: nhận tệp `.lic` mới rồi kích hoạt như các bước ở đầu trang. Giấy phép mới có hiệu lực ngay, kể cả khi giấy phép đang bị khóa. Các máy đã cài giữ nguyên, và agent phân loại tiếp các tệp đang chờ ngay ở lần heartbeat kế tiếp sau khi kích hoạt.
 
-Riêng khi giấy phép mới có ít máy hơn số máy đang chiếm chỗ, Console không nhận tệp cho tới khi bạn thu hồi bớt máy; xem [Số máy trong giấy phép](#số-máy-trong-giấy-phép).
+Nếu giấy phép mới có ít máy hơn số máy đang chiếm chỗ, Console không nhận tệp. Xem [Số máy trong giấy phép](#số-máy-trong-giấy-phép).

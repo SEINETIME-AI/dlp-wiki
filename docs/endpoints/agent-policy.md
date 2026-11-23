@@ -16,7 +16,7 @@ Chính sách Agent khác với chính sách phân loại. Nó không quyết đ�
 
 ## Tham số cấu hình
 
-Bấm **Chính sách Agent mới**, đặt tên cho chính sách (ví dụ "Máy văn phòng" hoặc "Máy chủ tệp"), chọn đơn vị mà chính sách thuộc về ở ô **Công ty con / Ban chuyên môn**, rồi điền các tham số dưới đây. Quản trị hệ thống có thể chọn **Tất cả đơn vị** để chính sách dùng chung cho mọi đơn vị. Quản lý đơn vị chọn một đơn vị trong phạm vi của mình; chính sách dùng chung thì họ chỉ xem, không sửa được. Mỗi thẻ chính sách trên trang hiển thị lại Heartbeat, Mức quét và thời gian Offline đã chọn.
+Bấm **Chính sách Agent mới**, đặt tên cho chính sách (ví dụ "Máy văn phòng" hoặc "Máy chủ tệp"), chọn đơn vị mà chính sách thuộc về ở ô **Công ty con / Ban chuyên môn**, rồi điền các tham số dưới đây. Quản trị hệ thống có thể chọn **Tất cả đơn vị** để chính sách dùng chung cho mọi đơn vị. Quản lý đơn vị chọn một đơn vị trong phạm vi của mình. Chính sách dùng chung thì họ chỉ xem, không sửa được. Mỗi thẻ chính sách trên trang hiển thị lại Heartbeat, Mức quét và thời gian Offline đã chọn.
 
 ![Hộp thoại tạo Chính sách Agent với ô chọn đơn vị](/img/console/agent-policies-create.png)
 
@@ -30,20 +30,6 @@ Bấm **Chính sách Agent mới**, đặt tên cho chính sách (ví dụ "Máy
 ## Mức quét
 
 Thay vì tự nhập một con số dung lượng, bạn chọn một trong ba mức đã được cân chỉnh sẵn. Mỗi mức quy định cùng lúc dung lượng tệp được đọc toàn bộ, số trang scan được đọc chữ (OCR), thời gian tối đa dành cho một tệp và giới hạn khi mở tệp nén.
-
-<Cards>
-  <Card title="Nhẹ" tag="Máy yếu">
-    Đọc đầy đủ tệp đến 50 MB, đọc chữ tối đa 20 trang scan mỗi tệp, tối đa 10 phút cho một tệp. Phù hợp với laptop cũ hoặc máy có ít bộ nhớ.
-  </Card>
-  <Card title="Chuẩn" tag="Mặc định, khuyến nghị">
-    Đọc đầy đủ tệp đến 250 MB, đọc chữ tối đa 100 trang scan mỗi tệp, tối đa 30 phút cho một tệp. Phù hợp với phần lớn máy văn phòng.
-  </Card>
-  <Card title="Sâu" tag="Máy chủ tệp">
-    Đọc đầy đủ tệp đến 2 GB, đọc chữ tối đa 500 trang scan mỗi tệp, tối đa 60 phút cho một tệp. Dành cho máy chủ tệp hoặc máy quét thư mục chia sẻ.
-  </Card>
-</Cards>
-
-Bảng dưới đây tóm tắt đầy đủ giới hạn của từng mức để tiện tra cứu.
 
 | Giới hạn | Nhẹ | Chuẩn | Sâu |
 |---|---|---|---|
@@ -59,15 +45,15 @@ Bảng dưới đây tóm tắt đầy đủ giới hạn của từng mức đ�
 
 Mọi tài liệu trong phạm vi quét đều được ghi nhận. Một tệp văn bản (như `.txt`, `.csv`, `.log`, `.json`, `.xml`) lớn hơn ngưỡng đọc toàn bộ vẫn được đọc phần đầu và phần cuối, rồi gắn nhãn theo những gì đã đọc. Các định dạng khác như PDF, Word hay Excel lớn hơn ngưỡng này chưa được đọc nội dung, mà được đánh giá theo thông tin của tệp. Một bản scan dài hơn số trang OCR vẫn được kiểm tra dấu mộc trên mọi trang, chỉ phần chữ của các trang còn lại là chưa được đọc. Một tệp chạy quá thời gian cho phép được kết luận dựa trên phần đã đọc xong.
 
-Trong mọi trường hợp đó, tài liệu vẫn có nhãn và vẫn xuất hiện trong Kiểm kê dữ liệu, nhưng kèm cảnh báo **Tài liệu chưa được phân tích đầy đủ** cùng lý do. Xem [Tệp lớn & mức phân tích](../data/large-files.md) để biết cách đọc cảnh báo và xử lý.
+Trong các trường hợp đó, tài liệu vẫn có nhãn và vẫn xuất hiện trong Kiểm kê dữ liệu, nhưng kèm cảnh báo **Tài liệu chưa được phân tích đầy đủ** cùng lý do. Xem [Tệp lớn & mức phân tích](../data/large-files.md) để biết cách đọc cảnh báo và xử lý.
 
 ### Tệp chưa đọc hết
 
 Có những lúc agent chỉ đọc được một phần tệp: tệp lớn hơn ngưỡng của Mức quét, bản scan dài hơn số trang OCR, tệp chạy quá thời gian, tài liệu đặt mật khẩu, hay tệp nén lồng quá sâu, có mật khẩu, quá nhiều tệp hoặc quá dung lượng. Phần chưa đọc có thể chứa dữ liệu nhạy cảm mà phần đã đọc không có.
 
-Vì vậy Chính sách Agent có ngưỡng **Tệp chưa phân tích đầy đủ thì gắn ít nhất**. Cách áp dụng đơn giản: so nhãn lấy từ phần đã đọc với ngưỡng, **lấy mức cao hơn**. Tệp đọc dở mà phần đã đọc đã là Tối mật thì vẫn Tối mật; tệp đọc dở mà chưa thấy gì thì nhận mức ngưỡng. Ngưỡng không bao giờ hạ nhãn xuống.
+Vì vậy Chính sách Agent có ngưỡng **Tệp chưa phân tích đầy đủ thì gắn ít nhất**. Nhãn lấy từ phần đã đọc được so với ngưỡng, và tệp nhận **mức cao hơn**. Tệp đọc dở mà phần đã đọc đã là Tối mật thì vẫn Tối mật. Tệp đọc dở mà chưa thấy gì thì nhận mức ngưỡng. Ngưỡng không hạ nhãn xuống.
 
-Mặc định ngưỡng là **Chờ rà soát**. Đây không phải một mức trên thang mật mà là trạng thái "cần người xem", khi so sánh được tính ngang với Mật. DLP có thể chặn hoặc cảnh báo theo nhãn này; Quản trị hệ thống hoặc Quản lý đơn vị lọc Kiểm kê dữ liệu theo Chờ rà soát, xem lý do trong chi tiết tài liệu rồi **Cập nhật nhãn**. Nếu đơn vị chưa có người rà soát, chọn **Không áp dụng** để giữ nguyên nhãn từ phần đã đọc; hoặc chọn một mức cụ thể như Mật nếu muốn DLP chặn thẳng.
+Mặc định ngưỡng là **Chờ rà soát**. Đây không phải một mức trên thang mật mà là trạng thái "cần người xem", khi so sánh được tính ngang với Mật. DLP có thể chặn hoặc cảnh báo theo nhãn này. Quản trị hệ thống hoặc Quản lý đơn vị lọc Kiểm kê dữ liệu theo Chờ rà soát, xem lý do trong chi tiết tài liệu rồi **Cập nhật nhãn**. Nếu đơn vị chưa có người rà soát, chọn **Không áp dụng** để giữ nguyên nhãn từ phần đã đọc, hoặc chọn một mức cụ thể như Mật nếu muốn DLP chặn thẳng.
 
 Ngưỡng này không áp dụng cho hai loại tệp agent cố ý không đọc: tệp không phải tài liệu (video, ảnh đĩa, bản sao lưu) và tệp lớn hơn **Kích thước tối đa** bạn đặt cho nguồn dữ liệu. Chúng ở trạng thái Chưa gắn nhãn, để danh sách rà soát không bị ngập bởi những tệp bạn đã chủ động loại.
 
@@ -79,20 +65,20 @@ Mức quét chỉ quyết định agent đọc kỹ đến đâu đối với nh
 
 ## Hiệu năng & tài nguyên máy
 
-Agent được thiết kế để làm việc ở chế độ nền và nhường máy cho người dùng. Bạn không cần cấu hình gì thêm cho các cơ chế dưới đây; chúng luôn bật trên mọi máy.
+Agent được thiết kế để làm việc ở chế độ nền và nhường máy cho người dùng. Các cơ chế dưới đây luôn bật trên mọi máy và không cần cấu hình gì thêm.
 
 <Cards>
   <Card title="Chạy ở chế độ nền của Windows">
     Việc quét chạy ở mức ưu tiên thấp về CPU, ổ đĩa và bộ nhớ. Khi người dùng mở Word, Excel hay trình duyệt, Windows dành tài nguyên cho các ứng dụng đó trước.
   </Card>
   <Card title="Số luồng quét vừa sức máy">
-    Agent quét cùng lúc tối đa số luồng CPU của máy trừ một, và không quá hai, ba hoặc bốn tệp tùy máy có dưới 12 GB, dưới 24 GB hay từ 24 GB RAM. Máy hai luồng chỉ quét một tệp mỗi lúc, luôn chừa lại phần còn lại cho người dùng.
+    Agent quét cùng lúc tối đa số luồng CPU của máy trừ một, và không quá hai, ba hoặc bốn tệp tùy máy có dưới 12 GB, dưới 24 GB hay từ 24 GB RAM. Máy hai luồng chỉ quét một tệp mỗi lúc, chừa phần còn lại cho người dùng.
   </Card>
   <Card title="Giới hạn CPU của agent">
     Agent dùng tối đa 20% phần CPU mà các chương trình khác để trống, nên khi người dùng đang bận, agent tự chậm lại. Khi vượt mức, agent tạm dừng trước tệp tiếp theo và giữa các trang, các ảnh, các đoạn của tệp đang đọc, cho tới khi CPU giảm xuống.
   </Card>
   <Card title="Hạn mức bộ nhớ">
-    Agent dùng tối đa 20% phần bộ nhớ đang trống của máy. Mỗi tệp giữ chỗ trước khi đọc; tệp chưa đủ chỗ chờ tới lượt, còn tệp văn bản lớn được đọc theo từng đoạn. Tệp lớn không chiếm hết các luồng, nên tệp nhỏ không phải xếp hàng chờ sau tệp lớn.
+    Agent dùng tối đa 20% phần bộ nhớ đang trống của máy. Mỗi tệp giữ chỗ trước khi đọc. Tệp chưa đủ chỗ chờ tới lượt, còn tệp văn bản lớn được đọc theo từng đoạn. Tệp lớn không chiếm hết các luồng, nên tệp nhỏ không phải xếp hàng chờ sau tệp lớn.
   </Card>
   <Card title="Tạm dừng khi máy thiếu bộ nhớ">
     Khi Windows báo bộ nhớ sắp cạn, agent không nhận thêm tệp mới và tạm dừng giữa chừng tệp đang đọc, rồi tiếp tục khi máy có lại bộ nhớ trống. Khi máy rảnh, agent trả lại bộ nhớ của các mô hình.
@@ -102,11 +88,11 @@ Agent được thiết kế để làm việc ở chế độ nền và nhườn
   </Card>
 </Cards>
 
-Agent vẫn cần tài nguyên khi phân loại một lượng lớn tài liệu lần đầu, đặc biệt là bản scan cần đọc chữ. Vì agent luôn nhường máy cho người dùng, lần quét đầu trên một máy có nhiều dữ liệu có thể kéo dài; sau đó agent chỉ xử lý tệp mới hoặc tệp vừa sửa.
+Agent vẫn cần tài nguyên khi phân loại một lượng lớn tài liệu lần đầu, đặc biệt là bản scan cần đọc chữ. Vì agent nhường máy cho người dùng, lần quét đầu trên một máy có nhiều dữ liệu có thể kéo dài. Sau đó agent chỉ xử lý tệp mới hoặc tệp vừa sửa.
 
 ## Gợi ý cấu hình
 
-Với **máy văn phòng** luôn nối mạng nội bộ, giá trị mặc định là phù hợp. Với **laptop công tác** thường làm việc bên ngoài, hãy tăng Offline cache lên khoảng 14 ngày để kết quả phân loại không bị mất trước khi máy quay lại mạng nội bộ. Với **máy cấu hình yếu**, chọn Mức quét **Nhẹ**. Với **máy chủ tệp**, chọn Mức quét **Sâu**.
+Máy văn phòng luôn nối mạng nội bộ dùng giá trị mặc định là phù hợp. Laptop công tác thường làm việc bên ngoài thì nên tăng Offline cache lên khoảng 14 ngày, để kết quả phân loại không bị mất trước khi máy quay lại mạng nội bộ. Máy cấu hình yếu chọn Mức quét **Nhẹ** và máy chủ tệp chọn Mức quét **Sâu**, như giải thích ở [Chọn mức nào](#chọn-mức-nào).
 
 ## Chính sách đi theo bộ cài
 
